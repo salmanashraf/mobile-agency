@@ -1,395 +1,366 @@
 # Mobile Dev Skill Agents
 
-> An open-source productivity toolkit for mobile and game developers powered by AI agents, skills, and prompts.
+> An open-source AI productivity toolkit for mobile and game developers.
 
+[![Version](https://img.shields.io/badge/version-v1.0.0-blue)](https://github.com/salmanashraf/mobile-dev-skills/releases/tag/v1.0.0)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
-[![Platforms](https://img.shields.io/badge/platforms-Android%20%7C%20iOS%20%7C%20Flutter%20%7C%20React%20Native%20%7C%20Unity%20%7C%20Unreal-blue)](#platforms)
+[![Platforms](https://img.shields.io/badge/platforms-Android%20%7C%20iOS%20%7C%20Flutter%20%7C%20React%20Native%20%7C%20Unity%20%7C%20Unreal-blue)](#-platforms)
+
+Drop any agent into **Claude Code**, **Cursor**, **ChatGPT**, or **GitHub Copilot** and get structured, actionable output immediately — no setup, no plugins, just paste and go.
 
 ---
 
 ## What Is This?
 
-**Mobile Dev Skill Agents** is a curated collection of AI agents, reusable skill prompts, and developer tools designed specifically for mobile and game development workflows.
+**Mobile Dev Skill Agents** is a curated collection of AI agents, reusable skill prompts, and standalone prompts designed for mobile and game developers.
 
-Each agent has a **clear purpose**, **defined input/output format**, and **real example usage** — not just theoretical prompts. You can drop these into Claude Code, any LLM-powered IDE extension, or your own AI pipeline.
+**Every agent has:**
+- A clear **purpose** and supported use cases
+- A typed **input format** — you know exactly what to paste
+- A structured **output format** — consistent, parseable results every time
+- A real **worked example** — tested input and verified output, not placeholder text
 
-This toolkit helps you:
-
-- Accelerate code reviews for Android, iOS, Flutter, and React Native
-- Generate and debug shaders, blueprints, and game logic
-- Analyze crash logs and performance bottlenecks
-- Write store listings, release notes, and documentation
-- Set up CI/CD pipelines tailored to mobile stacks
-
----
-
-## Platforms
-
-| Platform | Status | Agents | Skills | Prompts |
-|---|---|---|---|---|
-| Android | Stable | 3 | 1 | 5 |
-| iOS | Stable | 2 | 2 | 4 |
-| Flutter | Stable | 1 | 1 | 4 |
-| React Native | Stable | 1 | 2 | 4 |
-| Unity | Beta | 1 | 1 | 2 |
-| Unreal Engine | Beta | 1 | 0 | 2 |
-| Cross-Platform | Stable | 5 | 2 | 5 |
-
----
-
-## Folder Structure
-
-```
-mobile-dev-skill-agents/
-├── README.md                        # This file
-├── LICENSE                          # MIT License
-├── CONTRIBUTING.md                  # How to contribute
-├── CODE_OF_CONDUCT.md               # Community standards
-│
-├── .github/
-│   ├── ISSUE_TEMPLATE/
-│   │   ├── bug_report.md
-│   │   ├── feature_request.md
-│   │   └── new_agent.md
-│   └── PULL_REQUEST_TEMPLATE.md
-│
-├── agents/                          # Self-contained AI agents
-│   ├── android/
-│   │   ├── code-reviewer/           # Agent 01
-│   │   └── crash-analyzer/          # Agent 02
-│   ├── ios/
-│   │   └── swift-reviewer/          # Agent 03
-│   ├── flutter/
-│   │   └── widget-generator/        # Agent 04
-│   ├── react-native/
-│   │   └── performance-optimizer/   # Agent 05
-│   ├── unity/
-│   │   └── shader-generator/        # Agent 06
-│   ├── unreal/
-│   │   └── blueprint-advisor/       # Agent 07
-│   └── cross-platform/
-│       ├── release-notes-generator/ # Agent 08
-│       ├── ci-cd-generator/         # Agent 09
-│       └── store-listing-writer/    # Agent 10
-│
-├── skills/                          # Reusable skill prompt modules
-│   ├── android/
-│   ├── ios/
-│   ├── flutter/
-│   ├── react-native/
-│   ├── unity/
-│   └── shared/
-│
-├── prompts/                         # Standalone prompt collections
-│   ├── android/
-│   ├── ios/
-│   ├── flutter/
-│   ├── react-native/
-│   └── game-dev/
-│
-├── templates/                       # Templates for creating new agents/skills
-│   ├── agent-template.md
-│   ├── skill-template.md
-│   └── prompt-template.md
-│
-├── examples/                        # Real code examples for agents to operate on
-│   ├── android/
-│   ├── ios/
-│   ├── flutter/
-│   ├── react-native/
-│   └── game-dev/
-│
-└── docs/                            # Extended documentation
-    ├── getting-started.md
-    ├── agent-guide.md
-    └── skill-categories.md
-```
-
----
-
-## Skill Categories
-
-### Code Quality
-Review, refactor, and enforce best practices per platform.
-
-### Performance & Optimization
-Profile bottlenecks, reduce frame drops, shrink APK/IPA size.
-
-### UI & Design
-Generate widgets, layouts, composables, and shader effects.
-
-### Debugging & Crash Analysis
-Parse crash logs, symbolicate stack traces, identify root causes.
-
-### DevOps & Release
-Generate CI/CD configs, changelogs, and store listings.
-
-### Game Development
-Shader authoring, blueprint logic, game object architecture.
-
-### Documentation
-Auto-generate API docs, inline comments, and README files.
-
----
-
-## The First 10 Agents
-
-| # | Agent | Platform | Purpose |
-|---|---|---|---|
-| 01 | [Android Code Reviewer](agents/android/code-reviewer/agent.md) | Android | Reviews Kotlin/Compose code for correctness and Clean Architecture |
-| 02 | [Android Crash Analyzer](agents/android/crash-analyzer/agent.md) | Android | Parses crash logs → 9-section report with root cause, fix, and test checklist |
-| 03 | [Android Compose UI Reviewer](agents/android/compose-ui-reviewer/agent.md) | Android | Compose-specific: recomposition scope, state hoisting, LazyColumn, side effects |
-| 04 | [Swift Code Reviewer](agents/ios/swift-reviewer/agent.md) | iOS | Reviews Swift/SwiftUI code for memory safety and idiomatic patterns |
-| 05 | [iOS Crash Analyzer](agents/ios/crash-analyzer/agent.md) | iOS | Analyzes symbolicated iOS crash reports → root cause, fix, test checklist |
-| 06 | [Flutter Widget Generator](agents/flutter/widget-generator/agent.md) | Flutter | Generates Dart widget code from a plain-English description |
-| 07 | [RN Performance Optimizer](agents/react-native/performance-optimizer/agent.md) | React Native | Identifies re-render bottlenecks and bridge call overhead |
-| 08 | [Unity Shader Generator](agents/unity/shader-generator/agent.md) | Unity | Produces HLSL/ShaderLab shaders from a visual description |
-| 09 | [Unreal Blueprint Advisor](agents/unreal/blueprint-advisor/agent.md) | Unreal Engine | Advises on Blueprint-to-C++ migration and logic optimization |
-| 10 | [Release Notes Generator](agents/cross-platform/release-notes-generator/agent.md) | All | Converts git commit history into user-facing release notes |
-| 11 | [CI/CD Pipeline Generator](agents/cross-platform/ci-cd-generator/agent.md) | All | Produces GitHub Actions / Bitrise / Fastlane configs for mobile |
-| 12 | [Store Listing Writer](agents/cross-platform/store-listing-writer/agent.md) | All | Writes App Store / Play Store descriptions optimized for ASO |
-| 13 | [Mobile Security Scanner](agents/cross-platform/security-scanner/agent.md) | All | OWASP Mobile Top 10 vulnerability scan with exploitability and fix |
-| 14 | [Accessibility Auditor](agents/cross-platform/accessibility-auditor/agent.md) | All | a11y audit: labels, touch targets, roles, focus order, dynamic announcements |
-
----
-
-## Real Examples
-
-Three complete input → analysis → solution walkthroughs showing what the agents actually produce on real-world engineering problems.
-
----
-
-### Example 1 — Android Crash Debugging
-
-**Scenario:** A social app is seeing crashes in the top 5 Crashlytics issues. The user taps the back button while a photo upload is in progress.
-
-**Input** (pasted into the Android Crash Analyzer):
-
-```
-PLATFORM: Android
-APP_VERSION: 3.7.1 (build 412)
-OS_VERSION: Android 13
-USER_ACTION: User tapped Back while profile photo was uploading.
-CRASH_LOG:
-Fatal Exception: java.lang.IllegalStateException:
-Fragment ProfileFragment not attached to a context.
-  at androidx.fragment.app.Fragment.requireContext(Fragment.java:947)
-  at com.example.app.ui.profile.ProfileFragment.showUploadSuccess(ProfileFragment.kt:124)
-  at com.example.app.ui.profile.ProfileFragment$observeViewModel$1.onChanged(ProfileFragment.kt:89)
-```
-
-**Agent Analysis:**
-
-> Two compounding bugs: (1) LiveData observed with `this` instead of `viewLifecycleOwner` — the observer stays active after `onDestroyView`. (2) `requireContext()` called inside that observer fires after the Fragment detaches. The ViewModel's `viewModelScope` coroutine completes the upload after navigation, posts to `_uploadState`, and triggers the orphaned observer.
-
-**Solution (generated by the agent):**
-
-```kotlin
-// Before
-viewModel.uploadState.observe(this) { state ->
-    showUploadSuccess(state.photoUrl)  // requireContext() inside → CRASH
-}
-
-// After — observer self-cancels when view is destroyed
-viewLifecycleOwner.lifecycleScope.launch {
-    repeatOnLifecycle(Lifecycle.State.STARTED) {
-        viewModel.uploadState.collect { state ->
-            showUploadSuccess(state.photoUrl)   // safe — only runs while view is STARTED
-        }
-    }
-}
-
-private fun showUploadSuccess(photoUrl: String) {
-    // binding.root.context instead of requireContext() — no throws
-    Glide.with(binding.root.context).load(photoUrl).into(binding.avatarImage)
-}
-```
-
-**Full report:** [`agents/android/android-crash-analyzer/example-output.md`](agents/android/android-crash-analyzer/example-output.md)
-
----
-
-### Example 2 — Flutter Feature Generation
-
-**Scenario:** A team needs to scaffold a product catalog screen with BLoC, Dio, Clean Architecture, and pagination in under 10 minutes.
-
-**Input** (pasted into the Flutter BLoC Feature Builder):
-
-```
-FEATURE_NAME: ProductCatalog
-PATTERN: cubit
-DESCRIPTION: Paginated grid of products fetched from GET /v1/products.
-  Filter by category chip. Pull-to-refresh. Load-more on scroll.
-  Empty state, error state with retry.
-API_ENDPOINT: GET /v1/products
-REQUEST_PARAMS: category (String, optional), page (int), limit (int)
-RESPONSE_FIELDS: data[].id, data[].name, data[].price, data[].imageUrl,
-  data[].rating, meta.hasMore, meta.page
-ACTIONS: Load, Filter by category, Load more, Refresh, Retry
-```
-
-**Agent Output (files generated):**
-
-```
-✓ domain/entities/product.dart             — immutable Equatable entity
-✓ domain/repositories/product_catalog_repository.dart — interface + Either<Failure, T>
-✓ domain/usecases/get_products_usecase.dart — single-responsibility use case
-✓ data/models/product_model.dart           — fromJson + toEntity()
-✓ data/datasources/product_catalog_remote_datasource.dart — Dio + DioException handling
-✓ data/repositories/product_catalog_repository_impl.dart — Failure mapping
-✓ presentation/cubit/product_catalog_state.dart — 5 sealed states including LoadingMore
-✓ presentation/cubit/product_catalog_cubit.dart — loadProducts, loadMore, refresh, filterByCategory
-✓ presentation/pages/product_catalog_page.dart — BlocBuilder, GridView, PullToRefresh
-✓ presentation/widgets/product_card.dart   — CachedNetworkImage, star rating
-✓ test/product_catalog_cubit_test.dart     — bloc_test stubs for all scenarios
-✓ get_it DI registration snippet
-✓ pubspec.yaml additions
-```
-
-**Full output:** [`agents/flutter/bloc-feature-builder/example-output.md`](agents/flutter/bloc-feature-builder/example-output.md)
-
----
-
-### Example 3 — Architecture Review
-
-**Scenario:** A React Native feed screen is dropping frames on scroll. The lead developer suspects re-renders but isn't sure where.
-
-**Input** (pasted into the RN Performance Optimizer):
-
-```
-RN_VERSION: 0.76
-ARCH: new
-FILE_PATH: src/screens/FeedScreen.tsx
-
-const FeedScreen = () => {
-  const [posts, setPosts] = useState<Post[]>([]);
-  const theme = useContext(ThemeContext);
-
-  const renderItem = ({ item }: { item: Post }) => (
-    <PostCard
-      post={item}
-      onLike={() => handleLike(item.id)}
-      style={{ backgroundColor: theme.colors.background }}
-    />
-  );
-
-  return <FlatList data={posts} renderItem={renderItem}
-                   keyExtractor={(item) => item.id} />;
-};
-```
-
-**Agent Analysis:**
-
-```
-PERFORMANCE AUDIT
-=================
-Issues Found: 4  |  High: 2  |  Medium: 1  |  Low: 1
-
-[HIGH] renderItem recreated every parent render
-  Impact: Every state change in FeedScreen recreates renderItem, forcing all
-          10–20 visible PostCards to re-render.
-  Fix: const renderItem = useCallback(({ item }) => <PostCard ... />, [cardStyle])
-
-[HIGH] Inline style object created per renderItem call
-  Impact: { backgroundColor: theme.colors.background } is a new object reference
-          on every render — breaks React.memo on PostCard.
-  Fix: const cardStyle = useMemo(() => ({ backgroundColor: theme.colors.background }),
-                                 [theme.colors.background])
-
-[MEDIUM] onLike closure captures item.id inline per cell
-  Fix: Pass item.id as prop, call stable handleLike inside PostCard.
-
-[LOW] FlatList missing getItemLayout
-  Fix: getItemLayout={(_, i) => ({ length: ITEM_HEIGHT, offset: ITEM_HEIGHT * i, index: i })}
-
-ESTIMATED IMPROVEMENT
----------------------
-Before: ~15 PostCard re-renders per state change
-After : ~0 PostCard re-renders for unrelated state changes
-```
-
-**Full report:** [`examples/react-native/FeedScreen.tsx`](examples/react-native/FeedScreen.tsx) + [`agents/react-native/performance-optimizer/agent.md`](agents/react-native/performance-optimizer/agent.md)
+**Use it to:**
+- Debug and analyze crashes (Android, iOS) in seconds
+- Generate complete features — Compose screens, Flutter BLoC layers, shaders
+- Review code for Clean Architecture, memory safety, performance, security, and accessibility
+- Write release notes, CI/CD pipelines, and App Store listings
+- Design game object architectures and Blueprint → C++ migrations
 
 ---
 
 ## Works With
 
-| Tool | How | Guide |
+| Tool | How It Loads | Guide |
 |---|---|---|
-| **Claude Code** | `CLAUDE.md` loaded automatically | [Getting Started](docs/getting-started.md) |
-| **Cursor** | `.cursorrules` loaded automatically | [Cursor Integration](docs/cursor-integration.md) |
-| **ChatGPT** | Paste system prompt or use Custom GPT builder | [ChatGPT Integration](docs/chatgpt-integration.md) |
-| **GitHub Copilot** | `.github/copilot-instructions.md` loaded via `@workspace` | [Copilot Integration](docs/vscode-copilot-integration.md) |
-
----
-
-## Roadmap
-
-Contributions welcome for any of these:
-
-**New Agents**
-- [ ] iOS App Size Optimizer — analyze IPA binary for size reduction opportunities
-- [ ] Android ProGuard/R8 Advisor — review keep rules and shrinking configuration
-- [ ] Flutter State Architecture Advisor — recommend state management approach for a given project
-- [ ] Game Localization Helper — generate i18n string tables and flag hardcoded strings
-
-**Skills**
-- [ ] skills/unreal/blueprint-review.md
-- [ ] skills/shared/localization-audit.md
-- [ ] skills/shared/api-design-review.md
-
-**Prompts**
-- [ ] prompts/android/proguard-rules.md
-- [ ] prompts/ios/app-clip-setup.md
-- [ ] prompts/flutter/app-size-reduction.md
+| **Claude Code** | `CLAUDE.md` loaded automatically when repo is open | [Getting Started](docs/getting-started.md) |
+| **Cursor** | `.cursorrules` loaded automatically — full agent index + platform rules | [Cursor Guide](docs/cursor-integration.md) |
+| **ChatGPT** | Paste system prompt, or use the ready-made Custom GPT instructions | [ChatGPT Guide](docs/chatgpt-integration.md) |
+| **GitHub Copilot** | `.github/copilot-instructions.md` loaded via `@workspace` | [Copilot Guide](docs/vscode-copilot-integration.md) |
 
 ---
 
 ## Quick Start
 
-### Using an Agent with Claude Code
+**3 steps to use any agent:**
 
-1. Open any agent file (e.g. `agents/android/code-reviewer/agent.md`)
-2. Copy the **System Prompt** section into your Claude Code session
-3. Paste your code/input into the **Input** field
-4. Run the agent and review the structured output
-
-### Using a Skill Prompt Directly
-
-```bash
-# Example: paste into Claude Code chat
-cat skills/android/code-review.md
+**1. Open the agent folder**
+```
+agents/android/android-crash-analyzer/
 ```
 
-### Running the Examples
+**2. Copy the System Prompt**  
+Open `agent.md`, find the `## System Prompt` section, copy it.
 
-Each example file in `examples/` pairs with an agent. See the agent's `agent.md` for the exact usage.
+**3. Paste into your tool**
+```
+# Claude Code / Cursor / ChatGPT:
+[paste the system prompt]
+
+# Then paste your code using the Input Format from agent.md
+PLATFORM: Android
+APP_VERSION: 3.7.1
+CRASH_LOG:
+[paste your crash log]
+```
+
+That's it. See [`docs/getting-started.md`](docs/getting-started.md) for the full guide, or [`docs/wiki.md`](docs/wiki.md) for a comprehensive reference.
+
+---
+
+## Platforms
+
+| Platform | Agents | Skills | Prompts |
+|---|---|---|---|
+| Android | 4 | 1 | 5 |
+| iOS | 2 | 6 | 4 |
+| Flutter | 2 | 1 | 4 |
+| React Native | 1 | 2 | 4 |
+| Unity | 1 | 1 | 2 |
+| Unreal Engine | 1 | 0 | 5 |
+| Cross-Platform | 5 | 3 (shared) | — |
+| **Total** | **16** | **14** | **22** |
+
+---
+
+## All 16 Agents
+
+Each agent folder contains: `README.md` (quick start) · `agent.md` (full spec + system prompt) · `example-input.md` · `example-output.md`
+
+### Android
+
+| Agent | What It Does |
+|---|---|
+| [Code Reviewer](agents/android/code-reviewer/) | Reviews Kotlin/Compose for Clean Architecture violations, coroutine leaks, anti-patterns |
+| [Crash Analyzer](agents/android/android-crash-analyzer/) | Paste a crash log → 9-section report: root cause, fix, edge cases, test checklist |
+| [Compose Screen Builder](agents/android/compose-screen-builder/) | Describe a screen → complete ViewModel + StateFlow + Material 3 + Navigation code |
+| [Compose UI Reviewer](agents/android/compose-ui-reviewer/) | Compose-only: recomposition scope, `remember`/`derivedStateOf`, `LazyColumn` keys |
+
+### iOS
+
+| Agent | What It Does |
+|---|---|
+| [Swift Code Reviewer](agents/ios/swift-reviewer/) | Reviews Swift/SwiftUI for ARC cycles, `@MainActor`, async/await, force-unwrap |
+| [Crash Analyzer](agents/ios/crash-analyzer/) | Symbolicated `.crash` report → 9-section analysis (EXC_BAD_ACCESS, watchdog, force-unwrap) |
+
+### Flutter
+
+| Agent | What It Does |
+|---|---|
+| [Widget Generator](agents/flutter/widget-generator/) | Describe a widget → complete null-safe Dart widget with theming and accessibility |
+| [BLoC Feature Builder](agents/flutter/bloc-feature-builder/) | Describe a feature → full Clean Architecture layer: Cubit/BLoC + Repository + Dio |
+
+### React Native
+
+| Agent | What It Does |
+|---|---|
+| [Performance Optimizer](agents/react-native/performance-optimizer/) | Finds re-render bottlenecks, FlatList issues, bridge overhead — with corrected TypeScript |
+
+### Unity
+
+| Agent | What It Does |
+|---|---|
+| [Shader Generator](agents/unity/shader-generator/) | Describe a visual effect → complete `.shader` file (URP / HDRP / Built-in) |
+
+### Unreal Engine
+
+| Agent | What It Does |
+|---|---|
+| [Blueprint Advisor](agents/unreal/blueprint-advisor/) | Analyzes Blueprint logic → Tick audit + C++ migration candidates + C++ code |
+
+### Cross-Platform
+
+| Agent | What It Does |
+|---|---|
+| [Security Scanner](agents/cross-platform/security-scanner/) | OWASP Mobile Top 10 audit — hardcoded keys, insecure storage, WebView, permissions |
+| [Accessibility Auditor](agents/cross-platform/accessibility-auditor/) | WCAG 2.2 audit across Compose, SwiftUI, Flutter, React Native |
+| [Release Notes Generator](agents/cross-platform/release-notes-generator/) | `git log` → App Store copy + developer changelog + QA regression notes |
+| [CI/CD Pipeline Generator](agents/cross-platform/ci-cd-generator/) | GitHub Actions / Bitrise / Fastlane configs with signing, caching, and secrets reference |
+| [Store Listing Writer](agents/cross-platform/store-listing-writer/) | ASO-optimized App Store + Play Store listings with keyword density analysis |
+
+---
+
+## Real Examples
+
+### Android Crash Debugging
+
+**Input:**
+```
+PLATFORM: Android
+USER_ACTION: User tapped Back while profile photo was uploading.
+CRASH_LOG:
+Fatal Exception: java.lang.IllegalStateException:
+Fragment ProfileFragment not attached to a context.
+  at ProfileFragment.showUploadSuccess(ProfileFragment.kt:124)
+  at ProfileFragment$observeViewModel$1.onChanged(ProfileFragment.kt:89)
+```
+
+**Agent identifies two compounding bugs:**
+1. LiveData observed with `this` instead of `viewLifecycleOwner` — stays active after view is destroyed
+2. `requireContext()` called inside that observer fires after Fragment detaches
+
+**Generated fix:**
+```kotlin
+// Before — observer stays alive after screen is gone
+viewModel.uploadState.observe(this) { state ->
+    showUploadSuccess(state.photoUrl)  // requireContext() throws → CRASH
+}
+
+// After — auto-cancels when view is destroyed
+viewLifecycleOwner.lifecycleScope.launch {
+    repeatOnLifecycle(Lifecycle.State.STARTED) {
+        viewModel.uploadState.collect { state ->
+            showUploadSuccess(state.photoUrl)
+        }
+    }
+}
+```
+→ Full 9-section report: [`agents/android/android-crash-analyzer/example-output.md`](agents/android/android-crash-analyzer/example-output.md)
+
+---
+
+### Flutter BLoC Feature Generation
+
+**Input:** Describe a paginated product catalog with filter chips, pull-to-refresh, and load-more.
+
+**Output in under 10 minutes:**
+```
+✓ domain/entities/product.dart
+✓ domain/repositories/product_catalog_repository.dart
+✓ domain/usecases/get_products_usecase.dart
+✓ data/models/product_model.dart
+✓ data/datasources/product_catalog_remote_datasource.dart   — Dio + error handling
+✓ data/repositories/product_catalog_repository_impl.dart    — Either<Failure, T>
+✓ presentation/cubit/product_catalog_state.dart             — 5 sealed states
+✓ presentation/cubit/product_catalog_cubit.dart             — load, loadMore, refresh, filter
+✓ presentation/pages/product_catalog_page.dart              — BlocBuilder + PullToRefresh
+✓ presentation/widgets/product_card.dart
+✓ test/product_catalog_cubit_test.dart                      — bloc_test stubs
+✓ get_it DI registration snippet
+✓ pubspec.yaml additions
+```
+→ Full output: [`agents/flutter/bloc-feature-builder/example-output.md`](agents/flutter/bloc-feature-builder/example-output.md)
+
+---
+
+### React Native Performance Audit
+
+**Input:** FeedScreen with 4 performance problems.
+
+**Output:**
+```
+[HIGH]   renderItem recreated on every render → useCallback fix
+[HIGH]   Inline style object per cell → useMemo fix
+[MEDIUM] onLike closure per cell → stable callback pattern
+[LOW]    FlatList missing getItemLayout → fix provided
+
+Before: ~15 re-renders per state change
+After : ~0 re-renders for unrelated state changes
+```
+→ Full audit: [`agents/react-native/performance-optimizer/example-output.md`](agents/react-native/performance-optimizer/example-output.md)
+
+---
+
+## Skills (14 Composable Modules)
+
+Skills are lightweight prompt modules — paste one at the start of any LLM session to add focused analysis rules.
+
+| Platform | Skills |
+|---|---|
+| **Android** | Coroutines, Clean Architecture, Compose |
+| **iOS** | Swift memory safety · SwiftUI state · Networking · Unit testing · Performance · Data persistence |
+| **Flutter** | Widget generation rules |
+| **React Native** | Performance · Bridge audit |
+| **Unity** | Shader budget review |
+| **Shared** | Crash analysis · Accessibility (WCAG 2.2) · Security (OWASP Mobile) |
+
+Browse: [`skills/`](skills/) — each platform folder has a `README.md` index.
+
+---
+
+## Prompts (22 Standalone)
+
+Ready-to-paste prompts for focused one-shot tasks.
+
+| Platform | Prompts |
+|---|---|
+| **Android** | Unit test generation · Migration guide · Compose layout · Gradle audit · Flow explainer |
+| **iOS** | Swift concurrency explainer · Unit test generation · SwiftUI accessibility · Combine → async |
+| **Flutter** | Widget from design · Riverpod migration · Golden test · Performance audit |
+| **React Native** | Component audit · New Architecture migration · Navigation setup · Detox E2E test |
+| **Game Dev** | Shader from reference · Blueprint → C++ · Game object architecture · Balance table · Level design review |
+
+Browse: [`prompts/`](prompts/) — each platform folder has a `README.md` index.
+
+---
+
+## Repo Structure
+
+```
+mobile-dev-skill-agents/
+│
+├── agents/                        ← Start here — 16 AI agents
+│   ├── android/
+│   │   ├── android-crash-analyzer/    ← Crash logs → 9-section report
+│   │   ├── code-reviewer/             ← Kotlin/Compose review
+│   │   ├── compose-screen-builder/    ← Full screen from description
+│   │   └── compose-ui-reviewer/       ← Compose-specific deep review
+│   ├── ios/
+│   │   ├── crash-analyzer/            ← iOS crash reports
+│   │   └── swift-reviewer/            ← Swift/SwiftUI review
+│   ├── flutter/
+│   │   ├── bloc-feature-builder/      ← Full BLoC feature layer
+│   │   └── widget-generator/          ← Widget from description
+│   ├── react-native/
+│   │   └── performance-optimizer/     ← Re-render + FlatList audit
+│   ├── unity/
+│   │   └── shader-generator/          ← HLSL shader from description
+│   ├── unreal/
+│   │   └── blueprint-advisor/         ← Blueprint review + C++ migration
+│   └── cross-platform/
+│       ├── accessibility-auditor/     ← WCAG 2.2 across all platforms
+│       ├── ci-cd-generator/           ← GitHub Actions / Fastlane
+│       ├── release-notes-generator/   ← git log → release notes
+│       ├── security-scanner/          ← OWASP Mobile Top 10
+│       └── store-listing-writer/      ← ASO-optimized store copy
+│
+├── skills/                        ← 14 composable prompt modules
+│   ├── android/                   ← README index inside each folder
+│   ├── ios/                       ← 6 skills (most complete platform)
+│   ├── flutter/
+│   ├── react-native/
+│   ├── unity/
+│   └── shared/                    ← Cross-platform: crash, a11y, security
+│
+├── prompts/                       ← 22 standalone one-shot prompts
+│   ├── android/
+│   ├── ios/
+│   ├── flutter/
+│   ├── react-native/
+│   └── game-dev/
+│
+├── examples/                      ← Real code files paired with agents
+│   ├── android/                   ← ProfileViewModel.kt, crash log
+│   ├── ios/                       ← ProfileViewModel.swift
+│   ├── flutter/                   ← expandable_card.dart
+│   ├── react-native/              ← FeedScreen.tsx
+│   └── game-dev/                  ← HolographicScanline.shader
+│
+├── templates/                     ← Scaffold for contributors
+│   ├── agent-template.md
+│   ├── skill-template.md
+│   └── prompt-template.md
+│
+├── docs/                          ← Guides and reference
+│   ├── wiki.md                    ← Full reference (start here)
+│   ├── getting-started.md
+│   ├── agent-guide.md
+│   ├── cursor-integration.md
+│   ├── chatgpt-integration.md
+│   ├── vscode-copilot-integration.md
+│   ├── skill-categories.md
+│   ├── releases/
+│   │   └── release-v1.0.0.md
+│   └── roadmap/
+│       └── github-issues.md
+│
+├── .cursorrules                   ← Cursor AI auto-loads this
+├── CLAUDE.md                      ← Claude Code auto-loads this
+├── .github/copilot-instructions.md ← Copilot @workspace loads this
+├── CONTRIBUTING.md
+├── CODE_OF_CONDUCT.md
+└── LICENSE                        ← MIT
+```
 
 ---
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for the full guide.
+See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the complete guide.
 
 **Short version:**
-- Follow the [agent template](templates/agent-template.md) for new agents
-- Follow the [skill template](templates/skill-template.md) for new skills
-- Each agent needs: purpose, input format, output format, and a working example
-- Open an issue using the [New Agent template](.github/ISSUE_TEMPLATE/new_agent.md) before starting large work
+1. Copy [`templates/agent-template.md`](templates/agent-template.md) into `agents/<platform>/<name>/agent.md`
+2. Fill every section — no placeholders
+3. Test on at least one real example and paste the real output into `example-output.md`
+4. Open a GitHub issue using the [New Agent template](.github/ISSUE_TEMPLATE/new_agent.md) before large work
+5. Submit a PR
+
+**Contribution ideas:** See [`docs/roadmap/github-issues.md`](docs/roadmap/github-issues.md) for 10 planned agents.
+
+---
+
+## Release
+
+**Current version:** [v1.0.0](https://github.com/salmanashraf/mobile-dev-skills/releases/tag/v1.0.0)  
+Full release notes: [`docs/releases/release-v1.0.0.md`](docs/releases/release-v1.0.0.md)
 
 ---
 
 ## License
 
-[MIT](LICENSE) — free to use, modify, and distribute. Attribution appreciated.
+[MIT](LICENSE) — free to use, modify, and distribute.
 
 ---
 
-## Community
-
-- Issues: GitHub Issues tab
-- Discussions: GitHub Discussions
-- Contact: open a PR or issue
-
-> Built for developers, by developers. Every agent in this repo solves a problem we've actually hit.
+*Built for developers, by developers. Every agent solves a problem we've actually hit.*
