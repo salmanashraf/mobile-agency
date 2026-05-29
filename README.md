@@ -24,22 +24,6 @@ This toolkit helps you:
 
 ---
 
-## Repo Name Suggestions
-
-If you are forking or adapting this project, consider:
-
-| Name | Rationale |
-|---|---|
-| `mobile-dev-skill-agents` | Clear, descriptive, SEO-friendly |
-| `mobileai-toolkit` | Short, catchy |
-| `mobagents` | Compact portmanteau |
-| `devskills-mobile` | Emphasizes skills over agents |
-| `ai-mobile-forge` | Evokes crafting and tooling |
-
-This repo uses **`mobile-dev-skill-agents`** as the canonical name.
-
----
-
 ## Platforms
 
 | Platform | Status | Agents | Skills | Prompts |
