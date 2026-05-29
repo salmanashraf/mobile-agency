@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Node (for any tooling scripts)
+node_modules/
+npm-debug.log*
+
+# Python tooling
+__pycache__/
+*.pyc
+.env
+
+# Build outputs (if any tooling is added)
+dist/
+build/
