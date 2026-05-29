@@ -1,0 +1,17 @@
+// Paired with: agents/android/crash-analyzer/agent.md
+// This is a synthetic crash log for demonstration purposes.
+
+--------- beginning of crash
+Fatal Exception: java.lang.NullPointerException: Attempt to invoke virtual method 'android.graphics.Bitmap android.graphics.drawable.BitmapDrawable.getBitmap()' on a null object reference
+       at com.example.app.ui.profile.AvatarUtils.resizeBitmap(AvatarUtils.kt:42)
+       at com.example.app.ui.profile.ProfileFragment.displayAvatar(ProfileFragment.kt:118)
+       at com.example.app.ui.profile.ProfileFragment.onUserLoaded(ProfileFragment.kt:97)
+       at com.example.app.ui.profile.ProfileViewModel$loadUser$1.invokeSuspend(ProfileViewModel.kt:63)
+       at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+       at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:106)
+       at android.os.Handler.handleMessage(Handler.java:942)
+       at android.os.Looper.loop(Looper.java:223)
+       at android.app.ActivityThread.main(ActivityThread.java:7963)
+       at java.lang.reflect.Method.invoke(Method.java)
+       at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:592)
+       at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:971)
