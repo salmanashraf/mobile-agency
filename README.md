@@ -28,13 +28,13 @@ This toolkit helps you:
 
 | Platform | Status | Agents | Skills | Prompts |
 |---|---|---|---|---|
-| Android | Stable | 2 | 3 | 10+ |
-| iOS | Stable | 1 | 2 | 8+ |
-| Flutter | Stable | 1 | 2 | 8+ |
-| React Native | Stable | 1 | 2 | 6+ |
-| Unity | Beta | 1 | 2 | 6+ |
-| Unreal Engine | Beta | 1 | 1 | 4+ |
-| Cross-Platform | Stable | 3 | 4 | 10+ |
+| Android | Stable | 3 | 1 | 5 |
+| iOS | Stable | 2 | 2 | 4 |
+| Flutter | Stable | 1 | 1 | 4 |
+| React Native | Stable | 1 | 2 | 4 |
+| Unity | Beta | 1 | 1 | 2 |
+| Unreal Engine | Beta | 1 | 0 | 2 |
+| Cross-Platform | Stable | 5 | 2 | 5 |
 
 ---
 
@@ -138,15 +138,52 @@ Auto-generate API docs, inline comments, and README files.
 | # | Agent | Platform | Purpose |
 |---|---|---|---|
 | 01 | [Android Code Reviewer](agents/android/code-reviewer/agent.md) | Android | Reviews Kotlin/Compose code for correctness and Clean Architecture |
-| 02 | [Crash Log Analyzer](agents/android/crash-analyzer/agent.md) | Android / iOS | Parses crash logs and produces a root-cause summary with fix suggestions |
-| 03 | [Swift Code Reviewer](agents/ios/swift-reviewer/agent.md) | iOS | Reviews Swift/SwiftUI code for memory safety and idiomatic patterns |
-| 04 | [Flutter Widget Generator](agents/flutter/widget-generator/agent.md) | Flutter | Generates Dart widget code from a plain-English description |
-| 05 | [RN Performance Optimizer](agents/react-native/performance-optimizer/agent.md) | React Native | Identifies re-render bottlenecks and bridge call overhead |
-| 06 | [Unity Shader Generator](agents/unity/shader-generator/agent.md) | Unity | Produces HLSL/ShaderLab shaders from a visual description |
-| 07 | [Unreal Blueprint Advisor](agents/unreal/blueprint-advisor/agent.md) | Unreal Engine | Advises on Blueprint-to-C++ migration and logic optimization |
-| 08 | [Release Notes Generator](agents/cross-platform/release-notes-generator/agent.md) | All | Converts git commit history into user-facing release notes |
-| 09 | [CI/CD Pipeline Generator](agents/cross-platform/ci-cd-generator/agent.md) | All | Produces GitHub Actions / Bitrise / Fastlane configs for mobile |
-| 10 | [Store Listing Writer](agents/cross-platform/store-listing-writer/agent.md) | All | Writes App Store / Play Store descriptions optimized for ASO |
+| 02 | [Android Crash Analyzer](agents/android/crash-analyzer/agent.md) | Android | Parses crash logs → 9-section report with root cause, fix, and test checklist |
+| 03 | [Android Compose UI Reviewer](agents/android/compose-ui-reviewer/agent.md) | Android | Compose-specific: recomposition scope, state hoisting, LazyColumn, side effects |
+| 04 | [Swift Code Reviewer](agents/ios/swift-reviewer/agent.md) | iOS | Reviews Swift/SwiftUI code for memory safety and idiomatic patterns |
+| 05 | [iOS Crash Analyzer](agents/ios/crash-analyzer/agent.md) | iOS | Analyzes symbolicated iOS crash reports → root cause, fix, test checklist |
+| 06 | [Flutter Widget Generator](agents/flutter/widget-generator/agent.md) | Flutter | Generates Dart widget code from a plain-English description |
+| 07 | [RN Performance Optimizer](agents/react-native/performance-optimizer/agent.md) | React Native | Identifies re-render bottlenecks and bridge call overhead |
+| 08 | [Unity Shader Generator](agents/unity/shader-generator/agent.md) | Unity | Produces HLSL/ShaderLab shaders from a visual description |
+| 09 | [Unreal Blueprint Advisor](agents/unreal/blueprint-advisor/agent.md) | Unreal Engine | Advises on Blueprint-to-C++ migration and logic optimization |
+| 10 | [Release Notes Generator](agents/cross-platform/release-notes-generator/agent.md) | All | Converts git commit history into user-facing release notes |
+| 11 | [CI/CD Pipeline Generator](agents/cross-platform/ci-cd-generator/agent.md) | All | Produces GitHub Actions / Bitrise / Fastlane configs for mobile |
+| 12 | [Store Listing Writer](agents/cross-platform/store-listing-writer/agent.md) | All | Writes App Store / Play Store descriptions optimized for ASO |
+| 13 | [Mobile Security Scanner](agents/cross-platform/security-scanner/agent.md) | All | OWASP Mobile Top 10 vulnerability scan with exploitability and fix |
+| 14 | [Accessibility Auditor](agents/cross-platform/accessibility-auditor/agent.md) | All | a11y audit: labels, touch targets, roles, focus order, dynamic announcements |
+
+---
+
+## Works With
+
+| Tool | How | Guide |
+|---|---|---|
+| **Claude Code** | `CLAUDE.md` loaded automatically | [Getting Started](docs/getting-started.md) |
+| **Cursor** | `.cursorrules` loaded automatically | [Cursor Integration](docs/cursor-integration.md) |
+| **ChatGPT** | Paste system prompt or use Custom GPT builder | [ChatGPT Integration](docs/chatgpt-integration.md) |
+| **GitHub Copilot** | `.github/copilot-instructions.md` loaded via `@workspace` | [Copilot Integration](docs/vscode-copilot-integration.md) |
+
+---
+
+## Roadmap
+
+Contributions welcome for any of these:
+
+**New Agents**
+- [ ] iOS App Size Optimizer — analyze IPA binary for size reduction opportunities
+- [ ] Android ProGuard/R8 Advisor — review keep rules and shrinking configuration
+- [ ] Flutter State Architecture Advisor — recommend state management approach for a given project
+- [ ] Game Localization Helper — generate i18n string tables and flag hardcoded strings
+
+**Skills**
+- [ ] skills/unreal/blueprint-review.md
+- [ ] skills/shared/localization-audit.md
+- [ ] skills/shared/api-design-review.md
+
+**Prompts**
+- [ ] prompts/android/proguard-rules.md
+- [ ] prompts/ios/app-clip-setup.md
+- [ ] prompts/flutter/app-size-reduction.md
 
 ---
 

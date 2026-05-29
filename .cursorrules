@@ -1,0 +1,113 @@
+# Mobile Dev Skill Agents — Cursor Rules
+# This file is loaded automatically by Cursor AI for every session in this repo.
+
+## What This Repo Is
+
+A toolkit of AI agents, skill prompts, and reusable workflows for Android, iOS,
+Flutter, React Native, Unity, and Unreal Engine developers. Every agent has a
+defined input format, output format, and a real worked example.
+
+---
+
+## How to Use an Agent in Cursor
+
+### Option A — Cursor Chat (fastest)
+In Cursor Chat, say:
+  "Read agents/android/code-reviewer/agent.md and use it to review the file I paste below:"
+  Then paste your code.
+
+### Option B — @file reference
+In Cursor Chat:
+  @agents/android/code-reviewer/agent.md
+  Review this ViewModel for Clean Architecture issues: [paste code]
+
+### Option C — Cursor Composer (multi-file)
+Open Composer (Cmd+I), then:
+  "Apply the agent at agents/react-native/performance-optimizer/agent.md
+   to every component in src/screens/ and list all findings."
+
+---
+
+## Agent Index
+
+| Agent | File | Platform | What It Does |
+|---|---|---|---|
+| Android Code Reviewer | agents/android/code-reviewer/agent.md | Android | Kotlin/Compose: Clean Architecture, coroutines, anti-patterns |
+| Android Crash Analyzer | agents/android/crash-analyzer/agent.md | Android | Crash log → root cause, fix, test checklist |
+| Android Compose Reviewer | agents/android/compose-ui-reviewer/agent.md | Android | Compose-specific: recomposition, state hoisting, LazyColumn |
+| Swift Code Reviewer | agents/ios/swift-reviewer/agent.md | iOS | Swift/SwiftUI: memory safety, concurrency, idiomatic patterns |
+| iOS Crash Analyzer | agents/ios/crash-analyzer/agent.md | iOS | iOS crash/symbolicated reports → root cause + fix |
+| Flutter Widget Generator | agents/flutter/widget-generator/agent.md | Flutter | Plain English → production Dart widget |
+| RN Performance Optimizer | agents/react-native/performance-optimizer/agent.md | React Native | Re-renders, bridge calls, FlatList tuning |
+| Unity Shader Generator | agents/unity/shader-generator/agent.md | Unity | Visual description → HLSL/ShaderLab shader |
+| Unreal Blueprint Advisor | agents/unreal/blueprint-advisor/agent.md | Unreal | Blueprint review + C++ migration |
+| Release Notes Generator | agents/cross-platform/release-notes-generator/agent.md | All | git log → App Store / changelog / QA notes |
+| CI/CD Pipeline Generator | agents/cross-platform/ci-cd-generator/agent.md | All | GitHub Actions / Fastlane / Bitrise configs |
+| Store Listing Writer | agents/cross-platform/store-listing-writer/agent.md | All | ASO-optimized App Store + Play Store copy |
+| Security Scanner | agents/cross-platform/security-scanner/agent.md | All | OWASP Mobile Top 10 vulnerabilities |
+| Accessibility Auditor | agents/cross-platform/accessibility-auditor/agent.md | All | a11y audit: labels, touch targets, focus order |
+
+---
+
+## Severity Levels (Used in All Review Agents)
+
+- CRITICAL — causes crashes, memory leaks, data loss, security vulnerabilities
+- WARNING  — bad practice, technical debt, will cause problems at scale
+- INFO     — minor improvement, style, optional enhancement
+
+---
+
+## Platform Conventions
+
+### Android (Kotlin / Jetpack Compose)
+- Architecture: MVVM + Clean Architecture (domain layer = zero Android imports)
+- State: prefer StateFlow + collectAsStateWithLifecycle over LiveData
+- Flag as CRITICAL: GlobalScope, !! force-unwrap, direct repository instantiation in ViewModel
+- Compose: check remember, LaunchedEffect, derivedStateOf, collectAsStateWithLifecycle
+
+### iOS (Swift / SwiftUI)
+- Architecture: MVVM or TCA; clean separation of view and business logic
+- Flag as CRITICAL: retain cycles in closures, force unwrap (!), unowned in async callbacks
+- Concurrency: Swift 5.9+ async/await; flag missing @MainActor on UI-bound state
+- Memory: weak self in all escaping closures that outlive the owner
+
+### Flutter (Dart 3.x)
+- All code must be null-safe; use const constructors wherever possible
+- Never hardcode colors/font sizes — use Theme.of(context)
+- State: match the project's declared state management (Riverpod, Bloc, Provider, setState)
+- Always dispose AnimationControllers and other disposables
+
+### React Native (TypeScript)
+- Performance: useCallback for callbacks passed to list items, useMemo for expensive values
+- FlatList: always provide keyExtractor and getItemLayout for fixed-height items
+- Architecture: New Architecture (JSI/Fabric) preferred; flag synchronous bridge calls
+- Avoid inline style objects in render — extract with useMemo or StyleSheet.create
+
+### Unity (HLSL / ShaderLab / URP / HDRP)
+- Mobile: ≤2 texture samples per fragment, use half precision, no dynamic branching
+- Always expose tweakable values as Properties (never hardcode in shader body)
+- URP: use HLSLPROGRAM; Built-in: use CGPROGRAM
+
+### Unreal Engine (Blueprints / C++)
+- Avoid logic in Event Tick — use timers, delegates, and event-driven patterns
+- Cache GetPlayerCharacter() in BeginPlay, not in Tick
+- Flag synchronous Cast To nodes inside Tick as CRITICAL performance issues
+
+---
+
+## File Naming Conventions
+
+- Agent folders: kebab-case (e.g., code-reviewer, crash-analyzer)
+- Agent files: always named agent.md
+- Skill files: kebab-case.md in skills/<platform>/
+- Prompt files: kebab-case.md in prompts/<platform>/
+
+---
+
+## Adding New Content
+
+- New agent: copy templates/agent-template.md → agents/<platform>/<name>/agent.md
+- New skill: copy templates/skill-template.md → skills/<platform>/<name>.md
+- New prompt: copy templates/prompt-template.md → prompts/<platform>/<name>.md
+- Every agent needs a real worked Example section — no placeholder output
+- System prompts must be under 600 tokens
