@@ -6,15 +6,17 @@
 Android · iOS · Flutter · React Native · Unity · Unreal
 
 ```bash
-# Install everything
+# One-liner (no clone needed)
+npx mobile-agency install
+
+# Or clone and run locally
+git clone https://github.com/salmanashraf/mobile-dev-skills
 ./install.sh
 
 # Install by platform
-./install.sh android
-./install.sh ios
-./install.sh flutter
-./install.sh react-native
-./install.sh gaming
+./install.sh --platform android
+./install.sh --platform ios
+./install.sh --platform flutter
 ```
 
 ---
@@ -157,10 +159,11 @@ Every agent comes with a real worked example (not toy pseudocode):
 
 | Example | Input | Output |
 |---|---|---|
-| Android review | `examples/android-code-review/input.kt` | `output.md` |
-| Crash triage | `examples/crash-triage/input.txt` | `output.md` |
-| Store listing | `examples/store-listing/input.md` | `output.md` |
-| New screen workflow | `examples/new-screen-workflow/figma-spec.md` | `output.kt` |
+| Android review | [`examples/android-code-review/input.kt`](examples/android-code-review/input.kt) | [`output.md`](examples/android-code-review/output.md) |
+| Crash triage | [`examples/crash-triage/input.txt`](examples/crash-triage/input.txt) | [`output.md`](examples/crash-triage/output.md) |
+| Flutter review | [`examples/flutter-review/input.dart`](examples/flutter-review/input.dart) | [`output.md`](examples/flutter-review/output.md) |
+| Store listing | [`examples/store-listing/input.md`](examples/store-listing/input.md) | [`output.md`](examples/store-listing/output.md) |
+| New screen workflow | [`examples/new-screen-workflow/figma-spec.md`](examples/new-screen-workflow/figma-spec.md) | [`output.kt`](examples/new-screen-workflow/output.kt) |
 
 ---
 
@@ -168,9 +171,10 @@ Every agent comes with a real worked example (not toy pseudocode):
 
 | Tool | Install |
 |---|---|
-| Claude Code | `./install.sh` or `./scripts/install-claude.sh` |
-| Cursor | `./scripts/install-cursor.sh` |
-| Windsurf | `./scripts/install-windsurf.sh` |
+| Claude Code | `./install.sh` |
+| Claude Code (npx) | `npx mobile-agency install` |
+| Cursor | `./install.sh --tool cursor` |
+| Windsurf | `./install.sh --tool windsurf` |
 | Xcode (2026) | `./scripts/install-xcode.sh` |
 
 ---
