@@ -1,200 +1,126 @@
-#!/usr/bin/env bash
-# mobile-agency install script
-# Installs agents and skills into ~/.claude/agents/ and ~/.claude/skills/
+#!/bin/bash
 
-set -euo pipefail
+# Mobile Agency — One-command installer
+# Usage: ./install.sh [--platform android|ios|flutter|rn|gaming|all] [--tool claude|cursor|windsurf|all]
 
-REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-CLAUDE_DIR="${HOME}/.claude"
-AGENTS_DIR="${CLAUDE_DIR}/agents"
-SKILLS_DIR="${CLAUDE_DIR}/skills"
+set -e
 
-PLATFORM="${1:-all}"
-TOOL="${2:-claude}"
+PLATFORM="all"
+TOOL="claude"
+CLAUDE_AGENTS_DIR="$HOME/.claude/agents"
+CLAUDE_SKILLS_DIR="$HOME/.claude/skills"
 
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-BLUE='\033[0;34m'
-YELLOW='\033[1;33m'
-NC='\033[0m'
+# Parse args
+while [[ "$#" -gt 0 ]]; do
+    case $1 in
+        --platform) PLATFORM="$2"; shift ;;
+        --tool) TOOL="$2"; shift ;;
+        *) echo "Unknown parameter: $1"; exit 1 ;;
+    esac
+    shift
+done
 
-log()  { echo -e "${BLUE}[mobile-agency]${NC} $*"; }
-ok()   { echo -e "${GREEN}[✓]${NC} $*"; }
-warn() { echo -e "${YELLOW}[!]${NC} $*"; }
-err()  { echo -e "${RED}[✗]${NC} $*"; exit 1; }
-
-usage() {
-  cat <<EOF
-mobile-agency install script
-
-Usage:
-  ./install.sh [platform] [tool]
-
-Platform:
-  all           Install everything (default)
-  android       Android agents and skills only
-  ios           iOS agents and skills only
-  flutter       Flutter agents and skills only
-  react-native  React Native agents and skills only
-  gaming        Unity and Unreal agents and skills only
-  cross         Cross-platform agents and skills only
-
-Tool:
-  claude        Install for Claude Code (default) → ~/.claude/
-  cursor        Install for Cursor → .cursorrules
-  windsurf      Install for Windsurf → .windsurfrules
-
-Examples:
-  ./install.sh
-  ./install.sh android
-  ./install.sh ios claude
-  ./install.sh all cursor
-EOF
-}
+echo ""
+echo "📱 Mobile Agency Installer"
+echo "Platform: $PLATFORM | Tool: $TOOL"
+echo ""
 
 install_claude() {
-  log "Installing for Claude Code..."
-  mkdir -p "${AGENTS_DIR}" "${SKILLS_DIR}"
+    mkdir -p "$CLAUDE_AGENTS_DIR"
+    mkdir -p "$CLAUDE_SKILLS_DIR"
 
-  install_agents
-  install_skills
+    # Cross-platform agents (always installed)
+    echo "→ Installing cross-platform agents..."
+    cp agents/cross-platform/crasher/agent.md "$CLAUDE_AGENTS_DIR/crasher.md"
+    cp agents/cross-platform/launchpad/agent.md "$CLAUDE_AGENTS_DIR/launchpad.md"
+    cp agents/cross-platform/sentinel/agent.md "$CLAUDE_AGENTS_DIR/sentinel.md"
+    cp agents/cross-platform/pipeline/agent.md "$CLAUDE_AGENTS_DIR/pipeline.md"
+    cp agents/cross-platform/scribe/agent.md "$CLAUDE_AGENTS_DIR/scribe.md"
+    cp agents/cross-platform/perf/agent.md "$CLAUDE_AGENTS_DIR/perf.md"
+    cp agents/cross-platform/figma/agent.md "$CLAUDE_AGENTS_DIR/figma.md"
 
-  ok "Claude Code installation complete."
-  ok "Agents: ${AGENTS_DIR}"
-  ok "Skills: ${SKILLS_DIR}"
-  echo ""
-  log "Restart Claude Code to pick up new agents and skills."
+    # Cross-platform skills
+    echo "→ Installing cross-platform skills..."
+    cp skills/cross-platform/grill-mobile.md "$CLAUDE_SKILLS_DIR/grill-mobile.md"
+    cp skills/cross-platform/crash-triage.md "$CLAUDE_SKILLS_DIR/crash-triage.md"
+    cp skills/cross-platform/perf-audit.md "$CLAUDE_SKILLS_DIR/perf-audit.md"
+    cp skills/cross-platform/store-listing.md "$CLAUDE_SKILLS_DIR/store-listing.md"
+    cp skills/cross-platform/release-prep.md "$CLAUDE_SKILLS_DIR/release-prep.md"
+    cp skills/cross-platform/feature-slice.md "$CLAUDE_SKILLS_DIR/feature-slice.md"
+
+    # Platform-specific
+    if [[ "$PLATFORM" == "android" || "$PLATFORM" == "all" ]]; then
+        echo "→ Installing Android agents and skills..."
+        cp agents/android/axiom/agent.md "$CLAUDE_AGENTS_DIR/axiom.md"
+        cp skills/android/compose-review.md "$CLAUDE_SKILLS_DIR/compose-review.md"
+        cp skills/android/android-tdd.md "$CLAUDE_SKILLS_DIR/android-tdd.md"
+        cp skills/android/kotlin-modernize.md "$CLAUDE_SKILLS_DIR/kotlin-modernize.md"
+    fi
+
+    if [[ "$PLATFORM" == "ios" || "$PLATFORM" == "all" ]]; then
+        echo "→ Installing iOS agents and skills..."
+        cp agents/ios/swift/agent.md "$CLAUDE_AGENTS_DIR/swift-reviewer.md"
+        cp skills/ios/swiftui-review.md "$CLAUDE_SKILLS_DIR/swiftui-review.md"
+        cp skills/ios/ios-tdd.md "$CLAUDE_SKILLS_DIR/ios-tdd.md"
+    fi
+
+    if [[ "$PLATFORM" == "flutter" || "$PLATFORM" == "all" ]]; then
+        echo "→ Installing Flutter agents and skills..."
+        cp agents/flutter/dart/agent.md "$CLAUDE_AGENTS_DIR/dart-reviewer.md"
+        cp skills/flutter/flutter-review.md "$CLAUDE_SKILLS_DIR/flutter-review.md"
+        cp skills/flutter/flutter-tdd.md "$CLAUDE_SKILLS_DIR/flutter-tdd.md"
+    fi
+
+    if [[ "$PLATFORM" == "rn" || "$PLATFORM" == "all" ]]; then
+        echo "→ Installing React Native agents and skills..."
+        cp agents/react-native/bridge/agent.md "$CLAUDE_AGENTS_DIR/bridge.md"
+        cp skills/react-native/rn-review.md "$CLAUDE_SKILLS_DIR/rn-review.md"
+        cp skills/react-native/rn-tdd.md "$CLAUDE_SKILLS_DIR/rn-tdd.md"
+    fi
+
+    if [[ "$PLATFORM" == "gaming" || "$PLATFORM" == "all" ]]; then
+        echo "→ Installing Gaming agents and skills..."
+        cp agents/gaming/forge/agent.md "$CLAUDE_AGENTS_DIR/forge.md"
+        cp agents/gaming/unreal/agent.md "$CLAUDE_AGENTS_DIR/unreal.md"
+        cp skills/gaming/shader-gen.md "$CLAUDE_SKILLS_DIR/shader-gen.md"
+        cp skills/gaming/game-perf.md "$CLAUDE_SKILLS_DIR/game-perf.md"
+    fi
+
+    echo ""
+    echo "✅ Installed to:"
+    echo "   Agents → $CLAUDE_AGENTS_DIR"
+    echo "   Skills → $CLAUDE_SKILLS_DIR"
 }
 
-install_agents() {
-  local platform="${PLATFORM}"
-
-  case "${platform}" in
-    all)
-      copy_agent "android/axiom" "android-axiom"
-      copy_agent "ios/swift" "ios-swift"
-      copy_agent "flutter/dart" "flutter-dart"
-      copy_agent "react-native/bridge" "rn-bridge"
-      copy_agent "gaming/forge" "gaming-forge"
-      copy_agent "gaming/unreal" "gaming-unreal"
-      copy_agent "cross-platform/crasher" "crasher"
-      copy_agent "cross-platform/sentinel" "sentinel"
-      copy_agent "cross-platform/launchpad" "launchpad"
-      copy_agent "cross-platform/pipeline" "pipeline"
-      copy_agent "cross-platform/perf" "perf"
-      copy_agent "cross-platform/scribe" "scribe"
-      copy_agent "cross-platform/figma" "figma"
-      ;;
-    android)
-      copy_agent "android/axiom" "android-axiom"
-      copy_agent "cross-platform/crasher" "crasher"
-      ;;
-    ios)
-      copy_agent "ios/swift" "ios-swift"
-      copy_agent "cross-platform/crasher" "crasher"
-      ;;
-    flutter)
-      copy_agent "flutter/dart" "flutter-dart"
-      copy_agent "cross-platform/crasher" "crasher"
-      ;;
-    react-native)
-      copy_agent "react-native/bridge" "rn-bridge"
-      copy_agent "cross-platform/crasher" "crasher"
-      ;;
-    gaming)
-      copy_agent "gaming/forge" "gaming-forge"
-      copy_agent "gaming/unreal" "gaming-unreal"
-      ;;
-    cross)
-      copy_agent "cross-platform/crasher" "crasher"
-      copy_agent "cross-platform/sentinel" "sentinel"
-      copy_agent "cross-platform/launchpad" "launchpad"
-      copy_agent "cross-platform/pipeline" "pipeline"
-      copy_agent "cross-platform/perf" "perf"
-      copy_agent "cross-platform/scribe" "scribe"
-      copy_agent "cross-platform/figma" "figma"
-      ;;
-    *)
-      err "Unknown platform: ${platform}. Run ./install.sh --help"
-      ;;
-  esac
+install_cursor() {
+    echo "→ Installing for Cursor (.cursorrules)..."
+    cat agents/cross-platform/crasher/agent.md \
+        agents/cross-platform/launchpad/agent.md \
+        skills/cross-platform/grill-mobile.md > .cursorrules
+    echo "✅ .cursorrules created in current directory"
 }
 
-copy_agent() {
-  local src="${REPO_DIR}/agents/${1}/agent.md"
-  local dest="${AGENTS_DIR}/${2}.md"
-  if [[ -f "${src}" ]]; then
-    cp "${src}" "${dest}"
-    ok "Agent: ${2}"
-  else
-    warn "Agent not found: ${src}"
-  fi
+install_windsurf() {
+    echo "→ Installing for Windsurf (.windsurfrules)..."
+    cat agents/cross-platform/crasher/agent.md \
+        skills/cross-platform/grill-mobile.md > .windsurfrules
+    echo "✅ .windsurfrules created in current directory"
 }
 
-install_skills() {
-  local platform="${PLATFORM}"
-
-  case "${platform}" in
-    all)
-      copy_skills_dir "android"
-      copy_skills_dir "ios"
-      copy_skills_dir "flutter"
-      copy_skills_dir "react-native"
-      copy_skills_dir "gaming"
-      copy_skills_dir "cross-platform"
-      ;;
-    android)
-      copy_skills_dir "android"
-      copy_skills_dir "cross-platform"
-      ;;
-    ios)
-      copy_skills_dir "ios"
-      copy_skills_dir "cross-platform"
-      ;;
-    flutter)
-      copy_skills_dir "flutter"
-      copy_skills_dir "cross-platform"
-      ;;
-    react-native)
-      copy_skills_dir "react-native"
-      copy_skills_dir "cross-platform"
-      ;;
-    gaming)
-      copy_skills_dir "gaming"
-      copy_skills_dir "cross-platform"
-      ;;
-    cross)
-      copy_skills_dir "cross-platform"
-      ;;
-  esac
-}
-
-copy_skills_dir() {
-  local dir="${REPO_DIR}/skills/${1}"
-  local dest="${SKILLS_DIR}/${1}"
-  if [[ -d "${dir}" ]]; then
-    mkdir -p "${dest}"
-    cp "${dir}"/*.md "${dest}/" 2>/dev/null || true
-    ok "Skills: ${1}/"
-  fi
-}
-
-if [[ "${PLATFORM}" == "--help" || "${PLATFORM}" == "-h" ]]; then
-  usage
-  exit 0
+# Run installs
+if [[ "$TOOL" == "claude" || "$TOOL" == "all" ]]; then
+    install_claude
 fi
 
-case "${TOOL}" in
-  claude)
-    install_claude
-    ;;
-  cursor)
-    log "Cursor install: run ./scripts/install-cursor.sh"
-    ;;
-  windsurf)
-    log "Windsurf install: run ./scripts/install-windsurf.sh"
-    ;;
-  *)
-    err "Unknown tool: ${TOOL}"
-    ;;
-esac
+if [[ "$TOOL" == "cursor" || "$TOOL" == "all" ]]; then
+    install_cursor
+fi
+
+if [[ "$TOOL" == "windsurf" || "$TOOL" == "all" ]]; then
+    install_windsurf
+fi
+
+echo ""
+echo "🚀 Mobile Agency installed. Happy shipping."
+echo "   → github.com/salmanashraf/mobile-dev-skills"
+echo ""
