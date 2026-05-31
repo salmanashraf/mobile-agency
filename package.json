@@ -1,22 +1,16 @@
 {
   "name": "mobile-agency",
   "version": "1.0.0",
-  "description": "The complete AI dev team for mobile engineers. Install agents and skills for Android, iOS, Flutter, React Native, Unity, and Unreal.",
+  "description": "The complete AI dev team for mobile engineers — 13 agents, 28 skills, 9 workflows for Android, iOS, Flutter, React Native, Unity, and Unreal.",
   "bin": {
     "mobile-agency": "./cli/index.js"
   },
+  "files": [
+    "cli/"
+  ],
   "keywords": [
-    "mobile",
-    "android",
-    "ios",
-    "flutter",
-    "react-native",
-    "unity",
-    "unreal",
-    "claude",
-    "ai",
-    "agents",
-    "skills"
+    "mobile", "android", "ios", "flutter", "react-native", "unity", "unreal",
+    "claude", "claude-code", "ai", "agents", "skills", "llm", "cursor", "windsurf"
   ],
   "author": "Salman Ashraf",
   "license": "MIT",
@@ -25,6 +19,9 @@
     "url": "https://github.com/salmanashraf/mobile-dev-skills.git"
   },
   "homepage": "https://github.com/salmanashraf/mobile-dev-skills",
+  "bugs": {
+    "url": "https://github.com/salmanashraf/mobile-dev-skills/issues"
+  },
   "engines": {
     "node": ">=18.0.0"
   }

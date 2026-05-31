@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mobile Agency — AI agents for mobile engineers</title>
+  <meta name="description" content="13 personality-driven AI agents, 28 composable skills, and 9 end-to-end workflows for Android, iOS, Flutter, React Native, Unity, and Unreal." />
+  <meta property="og:title" content="Mobile Agency" />
+  <meta property="og:description" content="The complete AI dev team for mobile engineers. Specialists who never sleep." />
+  <meta property="og:type" content="website" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0d0d;
+      --surface: #161616;
+      --border: #282828;
+      --text: #f0f0f0;
+      --muted: #888;
+      --accent: #4f9cf9;
+      --accent-dim: #1a3a5c;
+      --green: #3ecf8e;
+      --yellow: #f5a623;
+      --red: #ff6b6b;
+      --purple: #c084fc;
+      --mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+      --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Layout ── */
+    .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Nav ── */
+    nav {
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+    }
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand { font-family: var(--mono); font-size: 14px; color: var(--text); font-weight: 600; }
+    .nav-links { display: flex; gap: 24px; font-size: 14px; color: var(--muted); }
+    .nav-links a { color: var(--muted); }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 96px 0 72px;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--accent-dim);
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 12px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+      border: 1px solid var(--accent-dim);
+    }
+    .hero h1 {
+      font-size: clamp(32px, 6vw, 56px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 540px;
+      margin: 0 auto 40px;
+    }
+    .hero-install {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 20px;
+      font-family: var(--mono);
+      font-size: 15px;
+      margin-bottom: 16px;
+    }
+    .prompt { color: var(--green); user-select: none; }
+    .cmd { color: var(--text); }
+    .copy-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all .15s;
+    }
+    .copy-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .hero-sub { font-size: 13px; color: var(--muted); }
+    .hero-sub a { color: var(--muted); text-decoration: underline; }
+
+    /* ── Stats ── */
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      padding: 32px 0 64px;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-num { font-size: 36px; font-weight: 800; color: var(--accent); font-family: var(--mono); }
+    .stat-label { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+    /* ── Section ── */
+    section { padding: 64px 0; border-top: 1px solid var(--border); }
+    .section-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    h2 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+    .section-sub { color: var(--muted); font-size: 15px; margin-bottom: 40px; }
+
+    /* ── Agent grid ── */
+    .agent-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .agent-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      transition: border-color .15s;
+    }
+    .agent-card:hover { border-color: var(--accent); }
+    .agent-name {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .platform-tag {
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+    .tag-android { background: #1a3d2b; color: #3ecf8e; }
+    .tag-ios     { background: #2a2040; color: #c084fc; }
+    .tag-flutter { background: #1a2d4a; color: #4f9cf9; }
+    .tag-rn      { background: #3a2020; color: #ff6b6b; }
+    .tag-gaming  { background: #3a3020; color: #f5a623; }
+    .tag-cross   { background: #282828; color: #888; }
+    .agent-mission { font-size: 13px; color: var(--muted); margin-top: 8px; line-height: 1.5; }
+    .agent-quote { font-size: 12px; color: #555; margin-top: 8px; font-style: italic; }
+
+    /* ── Skills table ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    @media (max-width: 640px) { .skills-grid { grid-template-columns: 1fr; } }
+    .skills-platform h3 {
+      font-size: 13px;
+      font-family: var(--mono);
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    .skill-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+    .skill-cmd { font-family: var(--mono); color: var(--accent); flex-shrink: 0; }
+    .skill-desc { color: var(--muted); }
+
+    /* ── Workflows ── */
+    .workflow-list { display: flex; flex-direction: column; gap: 12px; }
+    .workflow-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+    }
+    .workflow-name {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text);
+      font-weight: 600;
+      flex-shrink: 0;
+      width: 160px;
+    }
+    .workflow-desc { font-size: 13px; color: var(--muted); }
+
+    /* ── Karpathy ── */
+    .rules-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 640px) { .rules-grid { grid-template-columns: 1fr; } }
+    .rule-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .rule-num {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .rule-title { font-weight: 700; font-size: 15px; margin-bottom: 8px; }
+    .rule-body { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* ── Install section ── */
+    .install-tabs { display: flex; gap: 8px; margin-bottom: 20px; }
+    .tab-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: 13px;
+      cursor: pointer;
+      font-family: var(--sans);
+      transition: all .15s;
+    }
+    .tab-btn.active { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+    .code-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 24px;
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.8;
+      overflow-x: auto;
+    }
+    .code-block .comment { color: #555; }
+    .code-block .cmd2 { color: var(--text); }
+    .code-block .flag { color: var(--yellow); }
+    .code-block .val { color: var(--green); }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    footer a { color: var(--muted); }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .stats { gap: 24px; }
+      .hero { padding: 64px 0 48px; }
+      .workflow-item { flex-direction: column; gap: 4px; }
+      .workflow-name { width: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <div class="container">
+    <span class="nav-brand">mobile-agency</span>
+    <div class="nav-links">
+      <a href="#agents">Agents</a>
+      <a href="#skills">Skills</a>
+      <a href="#workflows">Workflows</a>
+      <a href="https://github.com/salmanashraf/mobile-dev-skills">GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-badge">v1.0 — Open Source</div>
+    <h1>The complete AI dev team<br>for <span>mobile engineers</span>.</h1>
+    <p>13 personality-driven agents. 28 composable skills. 9 end-to-end workflows. Android · iOS · Flutter · React Native · Unity · Unreal.</p>
+
+    <div class="hero-install">
+      <span class="prompt">$</span>
+      <span class="cmd" id="install-cmd">npx mobile-agency install</span>
+      <button class="copy-btn" onclick="copyInstall()">copy</button>
+    </div>
+    <br>
+    <span class="hero-sub">
+      or <a href="https://github.com/salmanashraf/mobile-dev-skills">clone the repo</a> and run <code>./install.sh</code>
+    </span>
+  </div>
+</div>
+
+<!-- Stats -->
+<div class="container">
+  <div class="stats">
+    <div class="stat"><div class="stat-num">13</div><div class="stat-label">Agents</div></div>
+    <div class="stat"><div class="stat-num">28</div><div class="stat-label">Skills</div></div>
+    <div class="stat"><div class="stat-num">9</div><div class="stat-label">Workflows</div></div>
+    <div class="stat"><div class="stat-num">6</div><div class="stat-label">Platforms</div></div>
+  </div>
+</div>
+
+<!-- Agents -->
+<section id="agents">
+  <div class="container">
+    <div class="section-label">Agents</div>
+    <h2>Specialists who never sleep.</h2>
+    <p class="section-sub">Each agent has a name, a personality, and a single clear mission. Drop any agent into Claude Code, Cursor, or Windsurf and it works immediately.</p>
+
+    <div class="agent-grid">
+      <div class="agent-card">
+        <div class="agent-name">AXIOM <span class="platform-tag tag-android">Android</span></div>
+        <div class="agent-mission">Reviews Kotlin/Compose for Clean Architecture violations, coroutine leaks, and anti-patterns.</div>
+        <div class="agent-quote">"Zero tolerance for GlobalScope. Has survived 3 Jetpack migrations."</div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-name">SWIFT <span class="platform-tag tag-ios">iOS</span></div>
+        <div class="agent-mission">Reviews Swift/SwiftUI for retain cycles, force unwraps, MainActor misuse, and async/await correctness.</div>
+        <div class="agent-quote">"Will shame your retain cycles in iambic pentameter if necessary."</div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-name">DART <span class="platform-tag tag-flutter">Flutter</span></div>
+        <div class="agent-mission">Reviews Flutter for widget rebuild inefficiency, missing const, and state management misuse.</div>
+        <div class="agent-quote">"Counts rebuilds like a miser counts coins."</div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-name">BRIDGE <span class="platform-tag tag-rn">React Native</span></div>
+        <div class="agent-mission">Finds bridge call bottlenecks, re-renders, and New Architecture migration paths.</div>
+        <div class="agent-quote">"Tracks every bridge crossing like a border guard."</div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-name">FORGE <span class="platform-tag tag-gaming">Unity</span></div>
+        <div class="agent-mission">Reviews C# for GC pressure, Update() loop abuse, and draw call inefficiency.</div>
+        <div class="agent-quote">"Frame budget is sacred."</div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-name">UNREAL <span class="platform-tag tag-gaming">Unreal</span></div>
+        <div class="agent-mission">Blueprint optimization, C++ migration, Tick() abuse, and GC safety.</div>
+        <div class="agent-quote">"Will rewrite your Blueprint in C++ while explaining exactly why."</div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-name">CRASHER <span class="platform-tag tag-cross">All Platforms</span></div>
+        <div class="agent-mission">Parses any mobile crash log → root cause → concrete fix → regression test.</div>
+        <div class="agent-quote">"Has a wall covered in stacktraces and string."</div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-name">SENTINEL <span class="platform-tag tag-cross">All Platforms</span></div>
+        <div class="agent-mission">OWASP Mobile Top 10 security audit with concrete exploitation paths, not theoretical risks.</div>
+        <div class="agent-quote">"Assumes every input is malicious until proven otherwise."</div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-name">LAUNCHPAD <span class="platform-tag tag-cross">All Platforms</span></div>
+        <div class="agent-mission">Play Store + App Store ASO-optimized listing copy, keyword strategy, screenshot brief.</div>
+        <div class="agent-quote">"Knows every keyword algorithm."</div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-name">PIPELINE <span class="platform-tag tag-cross">All Platforms</span></div>
+        <div class="agent-mission">Generates complete GitHub Actions / Bitrise / Fastlane configs from project context.</div>
+        <div class="agent-quote">"If it's done manually twice, it's a pipeline waiting to exist."</div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-name">PERF <span class="platform-tag tag-cross">All Platforms</span></div>
+        <div class="agent-mission">Profiles slow screens, identifies frame budget bottlenecks, produces concrete optimization plans.</div>
+        <div class="agent-quote">"Carries a stopwatch everywhere."</div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-name">SCRIBE <span class="platform-tag tag-cross">All Platforms</span></div>
+        <div class="agent-mission">Converts git commit logs into polished, user-facing release notes for stores and stakeholders.</div>
+        <div class="agent-quote">"Translates git commits into things humans actually understand."</div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-name">FIGMA <span class="platform-tag tag-cross">All Platforms</span></div>
+        <div class="agent-mission">Translates Figma specs into production-ready Compose, SwiftUI, Flutter, or React Native code.</div>
+        <div class="agent-quote">"Pixel-perfect or it didn't happen."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Skills -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label">Skills</div>
+    <h2>28 composable prompt modules.</h2>
+    <p class="section-sub">Use inline in a session, or compose into agents. Each has a slash command.</p>
+
+    <div class="skills-grid">
+      <div class="skills-platform">
+        <h3>Android</h3>
+        <div class="skill-row"><span class="skill-cmd">/android-tdd</span><span class="skill-desc">JUnit5 + Compose TDD loop</span></div>
+        <div class="skill-row"><span class="skill-cmd">/compose-review</span><span class="skill-desc">Recomposition audit</span></div>
+        <div class="skill-row"><span class="skill-cmd">/compose-migration</span><span class="skill-desc">XML → Jetpack Compose</span></div>
+        <div class="skill-row"><span class="skill-cmd">/kotlin-modernize</span><span class="skill-desc">Legacy Kotlin → modern idioms</span></div>
+        <div class="skill-row"><span class="skill-cmd">/proguard-rules</span><span class="skill-desc">R8 rules from your deps</span></div>
+      </div>
+      <div class="skills-platform">
+        <h3>iOS</h3>
+        <div class="skill-row"><span class="skill-cmd">/ios-tdd</span><span class="skill-desc">XCTest TDD loop</span></div>
+        <div class="skill-row"><span class="skill-cmd">/swiftui-review</span><span class="skill-desc">View lifecycle + memory audit</span></div>
+        <div class="skill-row"><span class="skill-cmd">/swift-concurrency</span><span class="skill-desc">Callbacks → async/await</span></div>
+        <div class="skill-row"><span class="skill-cmd">/xcode-warnings</span><span class="skill-desc">Warnings in plain English</span></div>
+      </div>
+      <div class="skills-platform">
+        <h3>Flutter</h3>
+        <div class="skill-row"><span class="skill-cmd">/flutter-tdd</span><span class="skill-desc">Widget + Bloc TDD loop</span></div>
+        <div class="skill-row"><span class="skill-cmd">/flutter-review</span><span class="skill-desc">Widget tree + state audit</span></div>
+        <div class="skill-row"><span class="skill-cmd">/widget-extract</span><span class="skill-desc">Extract oversized build()</span></div>
+        <div class="skill-row"><span class="skill-cmd">/dart-modernize</span><span class="skill-desc">Dart 2 → Dart 3.x patterns</span></div>
+      </div>
+      <div class="skills-platform">
+        <h3>React Native</h3>
+        <div class="skill-row"><span class="skill-cmd">/rn-tdd</span><span class="skill-desc">Jest + RNTL loop</span></div>
+        <div class="skill-row"><span class="skill-cmd">/rn-review</span><span class="skill-desc">Bridge + re-render audit</span></div>
+        <div class="skill-row"><span class="skill-cmd">/new-arch-migrate</span><span class="skill-desc">TurboModules + Fabric</span></div>
+        <div class="skill-row"><span class="skill-cmd">/expo-optimize</span><span class="skill-desc">OTA + bundle size</span></div>
+      </div>
+      <div class="skills-platform">
+        <h3>Gaming</h3>
+        <div class="skill-row"><span class="skill-cmd">/unity-tdd</span><span class="skill-desc">NUnit + Unity Test Runner</span></div>
+        <div class="skill-row"><span class="skill-cmd">/shader-gen</span><span class="skill-desc">English → HLSL shader</span></div>
+        <div class="skill-row"><span class="skill-cmd">/game-perf</span><span class="skill-desc">Frame budget audit</span></div>
+        <div class="skill-row"><span class="skill-cmd">/blueprint-to-cpp</span><span class="skill-desc">Blueprint → C++</span></div>
+      </div>
+      <div class="skills-platform">
+        <h3>Cross-Platform</h3>
+        <div class="skill-row"><span class="skill-cmd">/grill-mobile</span><span class="skill-desc">20 questions before any code</span></div>
+        <div class="skill-row"><span class="skill-cmd">/crash-triage</span><span class="skill-desc">Stacktrace → root cause</span></div>
+        <div class="skill-row"><span class="skill-cmd">/perf-audit</span><span class="skill-desc">Slow screen profiling guide</span></div>
+        <div class="skill-row"><span class="skill-cmd">/store-listing</span><span class="skill-desc">ASO-optimized copy</span></div>
+        <div class="skill-row"><span class="skill-cmd">/feature-slice</span><span class="skill-desc">Epic → shippable tickets</span></div>
+        <div class="skill-row"><span class="skill-cmd">/release-prep</span><span class="skill-desc">Full release checklist</span></div>
+        <div class="skill-row"><span class="skill-cmd">/accessibility-audit</span><span class="skill-desc">WCAG 2.1 AA review</span></div>
+        <div class="skill-row"><span class="skill-cmd">/deeplink-debug</span><span class="skill-desc">Fix broken deep links</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Workflows -->
+<section id="workflows">
+  <div class="container">
+    <div class="section-label">Workflows</div>
+    <h2>9 end-to-end processes.</h2>
+    <p class="section-sub">The differentiator. No other mobile AI toolkit has these — full sequences that chain agents and skills from ticket to store.</p>
+
+    <div class="workflow-list">
+      <div class="workflow-item">
+        <div class="workflow-name">feature-ship</div>
+        <div class="workflow-desc">Ticket → /grill-mobile → /feature-slice → implement → review → tests → PR description</div>
+      </div>
+      <div class="workflow-item">
+        <div class="workflow-name">crash-to-fix</div>
+        <div class="workflow-desc">Crash alert → CRASHER → fix → regression test → deploy (OTA if available)</div>
+      </div>
+      <div class="workflow-item">
+        <div class="workflow-name">app-launch</div>
+        <div class="workflow-desc">Release build → SENTINEL → PERF → LAUNCHPAD → SCRIBE → /release-prep → store submission</div>
+      </div>
+      <div class="workflow-item">
+        <div class="workflow-name">new-screen</div>
+        <div class="workflow-desc">Figma spec → FIGMA → implement → /compose-review → PERF → shipped</div>
+      </div>
+      <div class="workflow-item">
+        <div class="workflow-name">ci-setup</div>
+        <div class="workflow-desc">PIPELINE generates GitHub Actions / Bitrise / Fastlane → secrets → running on first PR</div>
+      </div>
+      <div class="workflow-item">
+        <div class="workflow-name">release-cycle</div>
+        <div class="workflow-desc">Feature freeze → CRASHER → SENTINEL → SCRIBE → /release-prep → staged rollout</div>
+      </div>
+      <div class="workflow-item">
+        <div class="workflow-name">perf-sprint</div>
+        <div class="workflow-desc">Baseline → /perf-audit screen by screen → fix → re-measure → before/after documented</div>
+      </div>
+      <div class="workflow-item">
+        <div class="workflow-name">game-level</div>
+        <div class="workflow-desc">Design doc → FORGE/UNREAL → /shader-gen → /game-perf → /unity-tdd → playtest-ready</div>
+      </div>
+      <div class="workflow-item">
+        <div class="workflow-name">new-project-setup</div>
+        <div class="workflow-desc">/grill-mobile → architecture → CI from day one → SENTINEL baseline → test infrastructure</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Karpathy rules -->
+<section id="rules">
+  <div class="container">
+    <div class="section-label">mobile-karpathy.md</div>
+    <h2>4 rules that stop AI agents<br>shipping broken mobile apps.</h2>
+    <p class="section-sub">Add to your project's CLAUDE.md. Share independently. <a href="https://github.com/salmanashraf/mobile-dev-skills/blob/main/mobile-karpathy.md">Read the full file →</a></p>
+
+    <div class="rules-grid">
+      <div class="rule-card">
+        <div class="rule-num">Rule 1</div>
+        <div class="rule-title">Ask the API level before assuming</div>
+        <div class="rule-body">Never assume minimum SDK or OS version. Always ask minSdkVersion or iOS deployment target before writing any platform API call.</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-num">Rule 2</div>
+        <div class="rule-title">Check for existing platform components first</div>
+        <div class="rule-body">Before generating a custom component, check whether a native or framework equivalent exists. Building custom when standard exists is always wrong.</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-num">Rule 3</div>
+        <div class="rule-title">Never touch what wasn't asked</div>
+        <div class="rule-body">Mobile codebases are deeply interconnected. State the blast radius before touching anything. Change only the specific file or function asked about.</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-num">Rule 4</div>
+        <div class="rule-title">Performance is a feature, not an afterthought</div>
+        <div class="rule-body">Ask: "Will this run at 60fps on a mid-range device from 3 years ago?" Never generate synchronous main-thread work or unbounded lists.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Install -->
+<section id="install">
+  <div class="container">
+    <div class="section-label">Install</div>
+    <h2>One command. All platforms.</h2>
+    <p class="section-sub">Works with Claude Code, Cursor, and Windsurf.</p>
+
+    <div class="install-tabs">
+      <button class="tab-btn active" onclick="showTab('npx', this)">npx</button>
+      <button class="tab-btn" onclick="showTab('bash', this)">bash</button>
+      <button class="tab-btn" onclick="showTab('android', this)">android only</button>
+      <button class="tab-btn" onclick="showTab('cursor', this)">cursor</button>
+    </div>
+
+    <div class="code-block" id="tab-npx">
+      <span class="comment"># Install everything for Claude Code</span><br>
+      <span class="cmd2">npx mobile-agency install</span><br><br>
+      <span class="comment"># Install by platform</span><br>
+      <span class="cmd2">npx mobile-agency install</span> <span class="flag">--platform</span> <span class="val">android</span><br>
+      <span class="cmd2">npx mobile-agency install</span> <span class="flag">--platform</span> <span class="val">ios</span><br>
+      <span class="cmd2">npx mobile-agency install</span> <span class="flag">--platform</span> <span class="val">flutter</span><br><br>
+      <span class="comment"># Install a single agent or skill</span><br>
+      <span class="cmd2">npx mobile-agency add agent crasher</span><br>
+      <span class="cmd2">npx mobile-agency add skill grill-mobile</span>
+    </div>
+    <div class="code-block" id="tab-bash" style="display:none">
+      <span class="comment"># Clone and install</span><br>
+      <span class="cmd2">git clone https://github.com/salmanashraf/mobile-dev-skills</span><br>
+      <span class="cmd2">cd mobile-dev-skills</span><br>
+      <span class="cmd2">./install.sh</span><br><br>
+      <span class="comment"># Platform-specific</span><br>
+      <span class="cmd2">./install.sh</span> <span class="flag">--platform</span> <span class="val">android</span><br>
+      <span class="cmd2">./install.sh</span> <span class="flag">--platform</span> <span class="val">ios</span>
+    </div>
+    <div class="code-block" id="tab-android" style="display:none">
+      <span class="comment"># Android agents: AXIOM + cross-platform team</span><br>
+      <span class="comment"># Android skills: 5 android + cross-platform skills</span><br>
+      <span class="cmd2">npx mobile-agency install</span> <span class="flag">--platform</span> <span class="val">android</span><br><br>
+      <span class="comment"># Or just the AXIOM agent</span><br>
+      <span class="cmd2">npx mobile-agency add agent axiom</span>
+    </div>
+    <div class="code-block" id="tab-cursor" style="display:none">
+      <span class="comment"># Install for Cursor (.cursorrules in current project)</span><br>
+      <span class="cmd2">npx mobile-agency install</span> <span class="flag">--tool</span> <span class="val">cursor</span><br><br>
+      <span class="comment"># Or for Windsurf</span><br>
+      <span class="cmd2">npx mobile-agency install</span> <span class="flag">--tool</span> <span class="val">windsurf</span><br><br>
+      <span class="comment"># Both tools, all platforms</span><br>
+      <span class="cmd2">npx mobile-agency install</span> <span class="flag">--tool</span> <span class="val">all</span>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <p>
+      <a href="https://github.com/salmanashraf/mobile-dev-skills">github.com/salmanashraf/mobile-dev-skills</a>
+      &nbsp;·&nbsp; MIT License
+      &nbsp;·&nbsp; Built for mobile engineers who ship.
+    </p>
+  </div>
+</footer>
+
+<script>
+  function copyInstall() {
+    navigator.clipboard.writeText('npx mobile-agency install').then(() => {
+      const btn = document.querySelector('.copy-btn');
+      btn.textContent = 'copied!';
+      setTimeout(() => btn.textContent = 'copy', 2000);
+    });
+  }
+
+  function showTab(name, btn) {
+    document.querySelectorAll('[id^="tab-"]').forEach(el => el.style.display = 'none');
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + name).style.display = 'block';
+    btn.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
