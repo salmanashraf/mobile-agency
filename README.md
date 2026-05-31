@@ -1,366 +1,197 @@
-# Mobile Dev Skill Agents
+# mobile-dev-skills
 
-> An open-source AI productivity toolkit for mobile and game developers.
+**The complete AI dev team for mobile engineers. Specialists who never sleep.**
 
-[![Version](https://img.shields.io/badge/version-v1.0.0-blue)](https://github.com/salmanashraf/mobile-dev-skills/releases/tag/v1.0.0)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
-[![Platforms](https://img.shields.io/badge/platforms-Android%20%7C%20iOS%20%7C%20Flutter%20%7C%20React%20Native%20%7C%20Unity%20%7C%20Unreal-blue)](#-platforms)
+13 personality-driven agents · 28 composable skills · 9 end-to-end workflows  
+Android · iOS · Flutter · React Native · Unity · Unreal
 
-Drop any agent into **Claude Code**, **Cursor**, **ChatGPT**, or **GitHub Copilot** and get structured, actionable output immediately — no setup, no plugins, just paste and go.
+```bash
+# Install everything
+./install.sh
+
+# Install by platform
+./install.sh android
+./install.sh ios
+./install.sh flutter
+./install.sh react-native
+./install.sh gaming
+```
 
 ---
 
-## What Is This?
+## Why This Exists
 
-**Mobile Dev Skill Agents** is a curated collection of AI agents, reusable skill prompts, and standalone prompts designed for mobile and game developers.
+Every viral AI toolkit in 2026 solves one specific problem exceptionally well.
 
-**Every agent has:**
-- A clear **purpose** and supported use cases
-- A typed **input format** — you know exactly what to paste
-- A structured **output format** — consistent, parseable results every time
-- A real **worked example** — tested input and verified output, not placeholder text
+Nobody has done it for mobile. Not one repo covers Android + iOS + Flutter + React Native + Unity + Unreal with real, opinionated, personality-driven agents that know your platform from the inside.
 
-**Use it to:**
-- Debug and analyze crashes (Android, iOS) in seconds
-- Generate complete features — Compose screens, Flutter BLoC layers, shaders
-- Review code for Clean Architecture, memory safety, performance, security, and accessibility
-- Write release notes, CI/CD pipelines, and App Store listings
-- Design game object architectures and Blueprint → C++ migrations
+This is that repo.
 
 ---
 
-## Works With
+## The Agent Roster
 
-| Tool | How It Loads | Guide |
-|---|---|---|
-| **Claude Code** | `CLAUDE.md` loaded automatically when repo is open | [Getting Started](docs/getting-started.md) |
-| **Cursor** | `.cursorrules` loaded automatically — full agent index + platform rules | [Cursor Guide](docs/cursor-integration.md) |
-| **ChatGPT** | Paste system prompt, or use the ready-made Custom GPT instructions | [ChatGPT Guide](docs/chatgpt-integration.md) |
-| **GitHub Copilot** | `.github/copilot-instructions.md` loaded via `@workspace` | [Copilot Guide](docs/vscode-copilot-integration.md) |
+Each agent has a name, a personality, and a clear mission. They're not generic "code reviewer" prompts — they're specialists with opinions.
 
----
+### Platform Agents
 
-## Quick Start
-
-**3 steps to use any agent:**
-
-**1. Open the agent folder**
-```
-agents/android/android-crash-analyzer/
-```
-
-**2. Copy the System Prompt**  
-Open `agent.md`, find the `## System Prompt` section, copy it.
-
-**3. Paste into your tool**
-```
-# Claude Code / Cursor / ChatGPT:
-[paste the system prompt]
-
-# Then paste your code using the Input Format from agent.md
-PLATFORM: Android
-APP_VERSION: 3.7.1
-CRASH_LOG:
-[paste your crash log]
-```
-
-That's it. See [`docs/getting-started.md`](docs/getting-started.md) for the full guide, or [`docs/wiki.md`](docs/wiki.md) for a comprehensive reference.
-
----
-
-## Platforms
-
-| Platform | Agents | Skills | Prompts |
+| Agent | Platform | Personality | Mission |
 |---|---|---|---|
-| Android | 4 | 1 | 5 |
-| iOS | 2 | 6 | 4 |
-| Flutter | 2 | 1 | 4 |
-| React Native | 1 | 2 | 4 |
-| Unity | 1 | 1 | 2 |
-| Unreal Engine | 1 | 0 | 5 |
-| Cross-Platform | 5 | 3 (shared) | — |
-| **Total** | **16** | **14** | **22** |
+| **AXIOM** | Android | Battle-scarred architect. Zero tolerance for GlobalScope. Has survived 3 Jetpack migrations. | Reviews Kotlin/Compose for Clean Architecture, leaks, and anti-patterns |
+| **SWIFT** | iOS | Elegant, memory-safety obsessed. Will shame your retain cycles if necessary. | Reviews Swift/SwiftUI for memory safety, concurrency, and idiomatic patterns |
+| **DART** | Flutter | Pixel-perfect widget obsessive. Counts rebuilds like a miser counts coins. | Reviews Flutter for rebuild efficiency, state management, and performance |
+| **BRIDGE** | React Native | JSI evangelist. Tracks every bridge crossing like a border guard. | Finds bridge bottlenecks, re-renders, and New Architecture migration paths |
+| **FORGE** | Unity | Game systems architect. Frame budget is sacred. | Reviews C# for GC pressure, Update() abuse, and draw call inefficiency |
+| **UNREAL** | Unreal Engine | Blueprint-to-C++ enforcer. | Blueprint optimization, C++ migration, and Tick() abuse |
+
+### Cross-Platform Agents
+
+| Agent | Personality | Mission |
+|---|---|---|
+| **CRASHER** | Forensic investigator. Nothing escapes. | Crash log → root cause → concrete fix, all platforms |
+| **SENTINEL** | Paranoid by design. Every input is malicious until proven otherwise. | OWASP Mobile Top 10 security audit |
+| **LAUNCHPAD** | ASO-obsessed conversion scientist. | Play Store + App Store copy, keywords, screenshot brief |
+| **PIPELINE** | Automation purist. If it's done manually twice, it's a pipeline waiting to exist. | GitHub Actions / Bitrise / Fastlane configuration |
+| **PERF** | Frame-rate zealot. Carries a stopwatch everywhere. | Profile slow screens → concrete optimization plan |
+| **SCRIBE** | User-first writer. Translates git commits into things humans understand. | Git log → polished release notes |
+| **FIGMA** | Pixel-perfect or it didn't happen. | Figma spec → Compose / SwiftUI / Flutter / RN code |
 
 ---
 
-## All 16 Agents
+## The Skills Library (28 skills)
 
-Each agent folder contains: `README.md` (quick start) · `agent.md` (full spec + system prompt) · `example-input.md` · `example-output.md`
+Skills are smaller than agents — focused prompt modules you can use inline or compose into agents.
 
 ### Android
-
-| Agent | What It Does |
+| Skill | What It Does |
 |---|---|
-| [Code Reviewer](agents/android/code-reviewer/) | Reviews Kotlin/Compose for Clean Architecture violations, coroutine leaks, anti-patterns |
-| [Crash Analyzer](agents/android/android-crash-analyzer/) | Paste a crash log → 9-section report: root cause, fix, edge cases, test checklist |
-| [Compose Screen Builder](agents/android/compose-screen-builder/) | Describe a screen → complete ViewModel + StateFlow + Material 3 + Navigation code |
-| [Compose UI Reviewer](agents/android/compose-ui-reviewer/) | Compose-only: recomposition scope, `remember`/`derivedStateOf`, `LazyColumn` keys |
+| `/android-tdd` | Red-green-refactor loop for JUnit5 + Compose UI tests |
+| `/compose-review` | Recomposition audit before PR |
+| `/compose-migration` | XML layouts → Jetpack Compose |
+| `/kotlin-modernize` | Old Kotlin → modern idioms |
+| `/proguard-rules` | R8/ProGuard rules from your dependency list |
 
 ### iOS
-
-| Agent | What It Does |
+| Skill | What It Does |
 |---|---|
-| [Swift Code Reviewer](agents/ios/swift-reviewer/) | Reviews Swift/SwiftUI for ARC cycles, `@MainActor`, async/await, force-unwrap |
-| [Crash Analyzer](agents/ios/crash-analyzer/) | Symbolicated `.crash` report → 9-section analysis (EXC_BAD_ACCESS, watchdog, force-unwrap) |
+| `/ios-tdd` | XCTest TDD loop for Swift/SwiftUI |
+| `/swiftui-review` | View lifecycle + memory audit + unnecessary redraws |
+| `/swift-concurrency` | Completion handlers → async/await safely |
+| `/xcode-warnings` | Explains and fixes Xcode warnings in plain English |
 
 ### Flutter
-
-| Agent | What It Does |
+| Skill | What It Does |
 |---|---|
-| [Widget Generator](agents/flutter/widget-generator/) | Describe a widget → complete null-safe Dart widget with theming and accessibility |
-| [BLoC Feature Builder](agents/flutter/bloc-feature-builder/) | Describe a feature → full Clean Architecture layer: Cubit/BLoC + Repository + Dio |
+| `/flutter-tdd` | Widget test + unit test + Bloc test loop |
+| `/flutter-review` | Widget tree audit, const constructors, state management |
+| `/widget-extract` | Extracts oversized build() into reusable components |
+| `/dart-modernize` | Pre-null-safety Dart → Dart 3.x patterns |
 
 ### React Native
-
-| Agent | What It Does |
+| Skill | What It Does |
 |---|---|
-| [Performance Optimizer](agents/react-native/performance-optimizer/) | Finds re-render bottlenecks, FlatList issues, bridge overhead — with corrected TypeScript |
+| `/rn-tdd` | Jest + React Native Testing Library loop |
+| `/rn-review` | Bridge calls audit + re-render profiling |
+| `/new-arch-migrate` | Step-by-step New Architecture migration |
+| `/expo-optimize` | Expo config + OTA + bundle size audit |
 
-### Unity
-
-| Agent | What It Does |
+### Gaming
+| Skill | What It Does |
 |---|---|
-| [Shader Generator](agents/unity/shader-generator/) | Describe a visual effect → complete `.shader` file (URP / HDRP / Built-in) |
-
-### Unreal Engine
-
-| Agent | What It Does |
-|---|---|
-| [Blueprint Advisor](agents/unreal/blueprint-advisor/) | Analyzes Blueprint logic → Tick audit + C++ migration candidates + C++ code |
+| `/unity-tdd` | NUnit + Unity Test Runner (EditMode + PlayMode) |
+| `/shader-gen` | Plain English → HLSL/ShaderLab shader |
+| `/game-perf` | Frame budget audit + draw call optimizer |
+| `/blueprint-to-cpp` | Unreal Blueprint → C++ with explanation |
 
 ### Cross-Platform
-
-| Agent | What It Does |
+| Skill | Why It Gets Shared |
 |---|---|
-| [Security Scanner](agents/cross-platform/security-scanner/) | OWASP Mobile Top 10 audit — hardcoded keys, insecure storage, WebView, permissions |
-| [Accessibility Auditor](agents/cross-platform/accessibility-auditor/) | WCAG 2.2 audit across Compose, SwiftUI, Flutter, React Native |
-| [Release Notes Generator](agents/cross-platform/release-notes-generator/) | `git log` → App Store copy + developer changelog + QA regression notes |
-| [CI/CD Pipeline Generator](agents/cross-platform/ci-cd-generator/) | GitHub Actions / Bitrise / Fastlane configs with signing, caching, and secrets reference |
-| [Store Listing Writer](agents/cross-platform/store-listing-writer/) | ASO-optimized App Store + Play Store listings with keyword density analysis |
+| `/grill-mobile` | 20 questions before any mobile code is written — the most shareable skill |
+| `/crash-triage` | Paste stacktrace → root cause → fix |
+| `/perf-audit` | Slow screen → systematic profiling guide |
+| `/store-listing` | Conversation → ASO-optimized listing copy |
+| `/feature-slice` | Epic → independently shippable tickets |
+| `/release-prep` | Full release checklist from freeze to store |
+| `/accessibility-audit` | WCAG 2.1 AA + platform accessibility review |
+| `/api-versioning` | API deprecation strategy for mobile clients |
+| `/deeplink-debug` | Diagnoses broken deep links across Android and iOS |
+
+---
+
+## The Workflows (9 workflows)
+
+End-to-end processes that combine agents and skills. This is the differentiator — no other mobile AI toolkit has these.
+
+| Workflow | What It Covers |
+|---|---|
+| `feature-ship` | Ticket → /grill-mobile → /feature-slice → implement → review → test → PR |
+| `crash-to-fix` | Crash alert → CRASHER → fix → regression test → deploy |
+| `app-launch` | Release build → SENTINEL → PERF → LAUNCHPAD → SCRIBE → /release-prep → store |
+| `new-screen` | Figma spec → FIGMA → implement → review → performance check |
+| `ci-setup` | PIPELINE → generate config → secrets → test → document |
+| `release-cycle` | Feature freeze → CRASHER → SENTINEL → SCRIBE → /release-prep → staged rollout |
+| `perf-sprint` | Baseline → /perf-audit → fix → re-measure → document |
+| `game-level` | Design doc → FORGE/UNREAL → /shader-gen → /game-perf → /unity-tdd → playtest |
+| `new-project-setup` | /grill-mobile → architecture → CI → security baseline → test infrastructure |
+
+---
+
+## The Viral File
+
+**[mobile-karpathy.md](mobile-karpathy.md)** — 4 rules that stop AI coding agents shipping broken mobile apps.
+
+Add it to your project's CLAUDE.md. Share it independently. It's designed to travel.
+
+```
+Rule 1 — Ask the API level before assuming
+Rule 2 — Check for existing platform components first
+Rule 3 — Never touch what wasn't asked
+Rule 4 — Performance is a feature, not an afterthought
+```
 
 ---
 
 ## Real Examples
 
-### Android Crash Debugging
+Every agent comes with a real worked example (not toy pseudocode):
 
-**Input:**
-```
-PLATFORM: Android
-USER_ACTION: User tapped Back while profile photo was uploading.
-CRASH_LOG:
-Fatal Exception: java.lang.IllegalStateException:
-Fragment ProfileFragment not attached to a context.
-  at ProfileFragment.showUploadSuccess(ProfileFragment.kt:124)
-  at ProfileFragment$observeViewModel$1.onChanged(ProfileFragment.kt:89)
-```
-
-**Agent identifies two compounding bugs:**
-1. LiveData observed with `this` instead of `viewLifecycleOwner` — stays active after view is destroyed
-2. `requireContext()` called inside that observer fires after Fragment detaches
-
-**Generated fix:**
-```kotlin
-// Before — observer stays alive after screen is gone
-viewModel.uploadState.observe(this) { state ->
-    showUploadSuccess(state.photoUrl)  // requireContext() throws → CRASH
-}
-
-// After — auto-cancels when view is destroyed
-viewLifecycleOwner.lifecycleScope.launch {
-    repeatOnLifecycle(Lifecycle.State.STARTED) {
-        viewModel.uploadState.collect { state ->
-            showUploadSuccess(state.photoUrl)
-        }
-    }
-}
-```
-→ Full 9-section report: [`agents/android/android-crash-analyzer/example-output.md`](agents/android/android-crash-analyzer/example-output.md)
+| Example | Input | Output |
+|---|---|---|
+| Android review | `examples/android-code-review/input.kt` | `output.md` |
+| Crash triage | `examples/crash-triage/input.txt` | `output.md` |
+| Store listing | `examples/store-listing/input.md` | `output.md` |
+| New screen workflow | `examples/new-screen-workflow/figma-spec.md` | `output.kt` |
 
 ---
 
-### Flutter BLoC Feature Generation
+## Multi-Tool Support
 
-**Input:** Describe a paginated product catalog with filter chips, pull-to-refresh, and load-more.
-
-**Output in under 10 minutes:**
-```
-✓ domain/entities/product.dart
-✓ domain/repositories/product_catalog_repository.dart
-✓ domain/usecases/get_products_usecase.dart
-✓ data/models/product_model.dart
-✓ data/datasources/product_catalog_remote_datasource.dart   — Dio + error handling
-✓ data/repositories/product_catalog_repository_impl.dart    — Either<Failure, T>
-✓ presentation/cubit/product_catalog_state.dart             — 5 sealed states
-✓ presentation/cubit/product_catalog_cubit.dart             — load, loadMore, refresh, filter
-✓ presentation/pages/product_catalog_page.dart              — BlocBuilder + PullToRefresh
-✓ presentation/widgets/product_card.dart
-✓ test/product_catalog_cubit_test.dart                      — bloc_test stubs
-✓ get_it DI registration snippet
-✓ pubspec.yaml additions
-```
-→ Full output: [`agents/flutter/bloc-feature-builder/example-output.md`](agents/flutter/bloc-feature-builder/example-output.md)
-
----
-
-### React Native Performance Audit
-
-**Input:** FeedScreen with 4 performance problems.
-
-**Output:**
-```
-[HIGH]   renderItem recreated on every render → useCallback fix
-[HIGH]   Inline style object per cell → useMemo fix
-[MEDIUM] onLike closure per cell → stable callback pattern
-[LOW]    FlatList missing getItemLayout → fix provided
-
-Before: ~15 re-renders per state change
-After : ~0 re-renders for unrelated state changes
-```
-→ Full audit: [`agents/react-native/performance-optimizer/example-output.md`](agents/react-native/performance-optimizer/example-output.md)
-
----
-
-## Skills (14 Composable Modules)
-
-Skills are lightweight prompt modules — paste one at the start of any LLM session to add focused analysis rules.
-
-| Platform | Skills |
+| Tool | Install |
 |---|---|
-| **Android** | Coroutines, Clean Architecture, Compose |
-| **iOS** | Swift memory safety · SwiftUI state · Networking · Unit testing · Performance · Data persistence |
-| **Flutter** | Widget generation rules |
-| **React Native** | Performance · Bridge audit |
-| **Unity** | Shader budget review |
-| **Shared** | Crash analysis · Accessibility (WCAG 2.2) · Security (OWASP Mobile) |
-
-Browse: [`skills/`](skills/) — each platform folder has a `README.md` index.
-
----
-
-## Prompts (22 Standalone)
-
-Ready-to-paste prompts for focused one-shot tasks.
-
-| Platform | Prompts |
-|---|---|
-| **Android** | Unit test generation · Migration guide · Compose layout · Gradle audit · Flow explainer |
-| **iOS** | Swift concurrency explainer · Unit test generation · SwiftUI accessibility · Combine → async |
-| **Flutter** | Widget from design · Riverpod migration · Golden test · Performance audit |
-| **React Native** | Component audit · New Architecture migration · Navigation setup · Detox E2E test |
-| **Game Dev** | Shader from reference · Blueprint → C++ · Game object architecture · Balance table · Level design review |
-
-Browse: [`prompts/`](prompts/) — each platform folder has a `README.md` index.
-
----
-
-## Repo Structure
-
-```
-mobile-dev-skill-agents/
-│
-├── agents/                        ← Start here — 16 AI agents
-│   ├── android/
-│   │   ├── android-crash-analyzer/    ← Crash logs → 9-section report
-│   │   ├── code-reviewer/             ← Kotlin/Compose review
-│   │   ├── compose-screen-builder/    ← Full screen from description
-│   │   └── compose-ui-reviewer/       ← Compose-specific deep review
-│   ├── ios/
-│   │   ├── crash-analyzer/            ← iOS crash reports
-│   │   └── swift-reviewer/            ← Swift/SwiftUI review
-│   ├── flutter/
-│   │   ├── bloc-feature-builder/      ← Full BLoC feature layer
-│   │   └── widget-generator/          ← Widget from description
-│   ├── react-native/
-│   │   └── performance-optimizer/     ← Re-render + FlatList audit
-│   ├── unity/
-│   │   └── shader-generator/          ← HLSL shader from description
-│   ├── unreal/
-│   │   └── blueprint-advisor/         ← Blueprint review + C++ migration
-│   └── cross-platform/
-│       ├── accessibility-auditor/     ← WCAG 2.2 across all platforms
-│       ├── ci-cd-generator/           ← GitHub Actions / Fastlane
-│       ├── release-notes-generator/   ← git log → release notes
-│       ├── security-scanner/          ← OWASP Mobile Top 10
-│       └── store-listing-writer/      ← ASO-optimized store copy
-│
-├── skills/                        ← 14 composable prompt modules
-│   ├── android/                   ← README index inside each folder
-│   ├── ios/                       ← 6 skills (most complete platform)
-│   ├── flutter/
-│   ├── react-native/
-│   ├── unity/
-│   └── shared/                    ← Cross-platform: crash, a11y, security
-│
-├── prompts/                       ← 22 standalone one-shot prompts
-│   ├── android/
-│   ├── ios/
-│   ├── flutter/
-│   ├── react-native/
-│   └── game-dev/
-│
-├── examples/                      ← Real code files paired with agents
-│   ├── android/                   ← ProfileViewModel.kt, crash log
-│   ├── ios/                       ← ProfileViewModel.swift
-│   ├── flutter/                   ← expandable_card.dart
-│   ├── react-native/              ← FeedScreen.tsx
-│   └── game-dev/                  ← HolographicScanline.shader
-│
-├── templates/                     ← Scaffold for contributors
-│   ├── agent-template.md
-│   ├── skill-template.md
-│   └── prompt-template.md
-│
-├── docs/                          ← Guides and reference
-│   ├── wiki.md                    ← Full reference (start here)
-│   ├── getting-started.md
-│   ├── agent-guide.md
-│   ├── cursor-integration.md
-│   ├── chatgpt-integration.md
-│   ├── vscode-copilot-integration.md
-│   ├── skill-categories.md
-│   ├── releases/
-│   │   └── release-v1.0.0.md
-│   └── roadmap/
-│       └── github-issues.md
-│
-├── .cursorrules                   ← Cursor AI auto-loads this
-├── CLAUDE.md                      ← Claude Code auto-loads this
-├── .github/copilot-instructions.md ← Copilot @workspace loads this
-├── CONTRIBUTING.md
-├── CODE_OF_CONDUCT.md
-└── LICENSE                        ← MIT
-```
+| Claude Code | `./install.sh` or `./scripts/install-claude.sh` |
+| Cursor | `./scripts/install-cursor.sh` |
+| Windsurf | `./scripts/install-windsurf.sh` |
+| Xcode (2026) | `./scripts/install-xcode.sh` |
 
 ---
 
 ## Contributing
 
-See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the complete guide.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the full guide.
 
-**Short version:**
-1. Copy [`templates/agent-template.md`](templates/agent-template.md) into `agents/<platform>/<name>/agent.md`
-2. Fill every section — no placeholders
-3. Test on at least one real example and paste the real output into `example-output.md`
-4. Open a GitHub issue using the [New Agent template](.github/ISSUE_TEMPLATE/new_agent.md) before large work
-5. Submit a PR
-
-**Contribution ideas:** See [`docs/roadmap/github-issues.md`](docs/roadmap/github-issues.md) for 10 planned agents.
+Short version:
+- Every agent needs a personality, not just a function
+- Every agent needs a real worked example
+- Run your agent against at least 2 real files before submitting
+- Skills must have a slash command name
 
 ---
 
-## Release
+## Community
 
-**Current version:** [v1.0.0](https://github.com/salmanashraf/mobile-dev-skills/releases/tag/v1.0.0)  
-Full release notes: [`docs/releases/release-v1.0.0.md`](docs/releases/release-v1.0.0.md)
-
----
-
-## License
-
-[MIT](LICENSE) — free to use, modify, and distribute.
+- [GitHub Discussions](../../discussions) — share your output, ask questions
+- [Issues](../../issues) — bug reports, new agent requests
 
 ---
 
-*Built for developers, by developers. Every agent solves a problem we've actually hit.*
+*Skills for Real Mobile Engineers. Straight from the trenches.*

@@ -1,0 +1,16 @@
+PLATFORM: Android
+SOURCE: Firebase Crashlytics
+APP_VERSION: 3.2.0
+CRASH_LOG:
+Fatal Exception: java.lang.NullPointerException
+       at com.example.app.profile.ProfileFragment.onViewCreated(ProfileFragment.kt:47)
+       at androidx.fragment.app.Fragment.performCreateView(Fragment.java:3104)
+       at androidx.fragment.app.FragmentStateManager.createView(FragmentStateManager.java:524)
+       at androidx.fragment.app.FragmentManager.moveToState(FragmentManager.java:1409)
+       at com.example.app.MainActivity.navigateToProfile(MainActivity.kt:89)
+       at com.example.app.home.HomeViewModel$loadDashboard$1.invokeSuspend(HomeViewModel.kt:62)
+
+Device: Samsung Galaxy A32 (Android 13)
+Affected users: 847 (8.3% of daily actives)
+CONTEXT: Happens when user taps profile from the home screen.
+Recent change: added async profile prefetch in HomeViewModel 2 days ago.

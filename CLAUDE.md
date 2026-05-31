@@ -1,4 +1,4 @@
-# CLAUDE.md — Mobile Dev Skill Agents
+# CLAUDE.md — Mobile Agency
 
 > This file is read automatically by Claude Code when the repo is opened.
 > It tells Claude how to navigate, use, and contribute to this toolkit.
@@ -7,12 +7,25 @@
 
 ## What This Repo Is
 
-A curated toolkit of AI agents, skill prompts, and reusable workflows for
-Android, iOS, Flutter, React Native, Unity, and Unreal Engine developers.
+The complete AI dev team for mobile engineers. 13 personality-driven agents, 28 composable
+skills, and 9 end-to-end workflows for Android, iOS, Flutter, React Native, Unity, and Unreal.
 
-Each agent is self-contained: it has a purpose, an input format, an output
-format, and a real worked example. Drop any agent into Claude Code as a
-system prompt and it works immediately.
+Each agent has a name, a personality, a mission, and a real worked example. Drop any agent
+into Claude Code as a system prompt and it works immediately.
+
+---
+
+## Quick Start
+
+```bash
+# Install everything
+./install.sh
+
+# Install by platform
+./install.sh android
+./install.sh ios
+./install.sh flutter
+```
 
 ---
 
@@ -20,171 +33,188 @@ system prompt and it works immediately.
 
 ```
 mobile-dev-skills/
-├── agents/          ← Self-contained AI agents (start here)
-│   ├── android/
-│   ├── ios/
-│   ├── flutter/
-│   ├── react-native/
-│   ├── unity/
-│   ├── unreal/
+├── agents/                   ← 13 personality-driven agents
+│   ├── android/axiom/        ← AXIOM (Android architect)
+│   ├── ios/swift/            ← SWIFT (iOS engineer)
+│   ├── flutter/dart/         ← DART (Flutter specialist)
+│   ├── react-native/bridge/  ← BRIDGE (RN optimizer)
+│   ├── gaming/
+│   │   ├── forge/            ← FORGE (Unity architect)
+│   │   └── unreal/           ← UNREAL (Unreal specialist)
 │   └── cross-platform/
-├── skills/          ← Reusable skill modules (compose into agents)
-├── prompts/         ← Standalone one-shot prompts
-├── templates/       ← Scaffold for new agents / skills / prompts
-├── examples/        ← Real code samples for agents to operate on
-└── docs/            ← Extended guides
+│       ├── crasher/          ← CRASHER (crash investigator)
+│       ├── sentinel/         ← SENTINEL (security auditor)
+│       ├── launchpad/        ← LAUNCHPAD (ASO writer)
+│       ├── pipeline/         ← PIPELINE (CI/CD)
+│       ├── perf/             ← PERF (performance)
+│       ├── scribe/           ← SCRIBE (release notes)
+│       └── figma/            ← FIGMA (design-to-code)
+├── skills/                   ← 28 composable skill modules
+│   ├── android/              ← android-tdd, compose-review, compose-migration, ...
+│   ├── ios/                  ← ios-tdd, swiftui-review, swift-concurrency, ...
+│   ├── flutter/              ← flutter-tdd, flutter-review, widget-extract, ...
+│   ├── react-native/         ← rn-tdd, rn-review, new-arch-migrate, ...
+│   ├── gaming/               ← unity-tdd, shader-gen, game-perf, blueprint-to-cpp
+│   └── cross-platform/       ← grill-mobile, crash-triage, perf-audit, ...
+├── workflows/                ← 9 end-to-end process guides
+├── mobile-karpathy.md        ← 4 rules that prevent AI mobile mistakes (standalone)
+├── examples/                 ← Real input/output pairs for each agent
+├── templates/                ← Scaffold for new agents / skills / workflows
+├── scripts/                  ← install-claude.sh, install-cursor.sh, ...
+└── docs/                     ← Extended guides
 ```
+
+---
+
+## Agent Roster
+
+| Agent | Path | Platform | Mission |
+|---|---|---|---|
+| **AXIOM** | `agents/android/axiom/` | Android | Clean Architecture + Kotlin + Compose review |
+| **SWIFT** | `agents/ios/swift/` | iOS | Memory safety + SwiftUI + async/await review |
+| **DART** | `agents/flutter/dart/` | Flutter | Widget tree efficiency + state management review |
+| **BRIDGE** | `agents/react-native/bridge/` | React Native | Bridge calls + re-renders + New Architecture |
+| **FORGE** | `agents/gaming/forge/` | Unity | C# performance + frame budget + architecture |
+| **UNREAL** | `agents/gaming/unreal/` | Unreal | Blueprint → C++ + performance + GC safety |
+| **CRASHER** | `agents/cross-platform/crasher/` | All | Crash log → root cause → fix |
+| **SENTINEL** | `agents/cross-platform/sentinel/` | All | OWASP Mobile Top 10 security audit |
+| **LAUNCHPAD** | `agents/cross-platform/launchpad/` | All | Play Store + App Store ASO-optimized copy |
+| **PIPELINE** | `agents/cross-platform/pipeline/` | All | GitHub Actions / Bitrise / Fastlane generation |
+| **PERF** | `agents/cross-platform/perf/` | All | Frame budget + profiling + optimization |
+| **SCRIBE** | `agents/cross-platform/scribe/` | All | Git log → polished release notes |
+| **FIGMA** | `agents/cross-platform/figma/` | All | Figma spec → Compose / SwiftUI / Flutter / RN |
 
 ---
 
 ## How to Use an Agent
 
-### Option A — Paste into Claude Code chat
+### Option A — Paste the System Prompt
 
 1. Open any `agents/<platform>/<name>/agent.md`
-2. Copy the **System Prompt** section
+2. Copy the **System Prompt** block
 3. Paste it at the start of your Claude Code session
-4. Follow the **Input Format** to send your code
+4. Follow the **Input Format**
 
-### Option B — Load via slash command (recommended)
+### Option B — Install and reference
 
-If you have this repo cloned locally, add to your Claude Code config:
+```bash
+./install.sh  # copies agents to ~/.claude/agents/
+```
+
+Then in any session: "Use the AXIOM agent to review this file: [paste code]"
+
+### Option C — Slash command
+
+Add to your Claude Code config (`~/.claude/settings.json`):
 
 ```json
 {
-  "mcpServers": {},
   "customSlashCommands": [
     {
-      "name": "android-review",
-      "description": "Android Kotlin code reviewer",
-      "prompt": "$(cat agents/android/code-reviewer/agent.md)"
+      "name": "axiom",
+      "description": "AXIOM — Android architect review",
+      "prompt": "$(cat agents/android/axiom/agent.md)"
     },
     {
-      "name": "crash-analyze",
-      "description": "Parse crash logs and suggest fixes",
-      "prompt": "$(cat agents/android/crash-analyzer/agent.md)"
+      "name": "crasher",
+      "description": "CRASHER — crash log investigation",
+      "prompt": "$(cat agents/cross-platform/crasher/agent.md)"
     }
   ]
 }
 ```
 
-Then type `/android-review` in any session to activate the agent.
-
-### Option C — Reference directly in Claude Code
-
-With this repo open as your working directory, Claude Code can read agents
-on demand. Just say:
-
-```
-Use the agent at agents/android/code-reviewer/agent.md to review this file:
-[paste your code]
-```
-
----
-
-## Agent Index
-
-| Agent | Path | Platform | What It Does |
-|---|---|---|---|
-| Android Code Reviewer | `agents/android/code-reviewer/` | Android | Reviews Kotlin/Compose for Clean Architecture, leaks, anti-patterns |
-| Crash Log Analyzer | `agents/android/crash-analyzer/` | Android / iOS | Parses crash logs → root cause + fix |
-| Swift Code Reviewer | `agents/ios/swift-reviewer/` | iOS | Reviews Swift/SwiftUI for memory safety and idiomatic patterns |
-| Flutter Widget Generator | `agents/flutter/widget-generator/` | Flutter | Generates Dart widget code from plain English |
-| RN Performance Optimizer | `agents/react-native/performance-optimizer/` | React Native | Finds re-render bottlenecks and bridge overhead |
-| Unity Shader Generator | `agents/unity/shader-generator/` | Unity | Produces HLSL/ShaderLab shaders from a visual description |
-| Unreal Blueprint Advisor | `agents/unreal/blueprint-advisor/` | Unreal | Blueprint → C++ migration and logic advice |
-| Release Notes Generator | `agents/cross-platform/release-notes-generator/` | All | Git commits → user-facing release notes |
-| CI/CD Pipeline Generator | `agents/cross-platform/ci-cd-generator/` | All | Generates GitHub Actions / Bitrise / Fastlane configs |
-| Store Listing Writer | `agents/cross-platform/store-listing-writer/` | All | Play Store / App Store descriptions optimised for ASO |
-
 ---
 
 ## How to Create a New Agent
 
-1. Copy `templates/agent-template.md` into `agents/<platform>/<your-agent-name>/agent.md`
-2. Fill in every section — **do not leave placeholders**
-3. The **Example** section is mandatory: one real input → one real output
-4. Open a GitHub issue using the `New Agent` template before large work
+1. Copy `templates/agent-template.md` → `agents/<platform>/<name>/agent.md`
+2. Give the agent a **personality** — not just a function, but a character
+3. Fill every section — no placeholders
+4. The **Example** section is mandatory: one real input → one real output
 5. Submit a PR — see `CONTRIBUTING.md`
 
 **Minimum bar for a merged agent:**
-- System prompt is under 600 tokens (keeps it usable in constrained sessions)
+- System prompt ≤ 600 tokens
 - Output format is deterministic and parseable
-- Example is real code, not toy pseudocode
+- Example uses real code, not toy pseudocode
+- Personality is clear in the system prompt
 
 ---
 
 ## How to Create a New Skill
 
-Skills are smaller than agents — they are reusable prompt modules that can
-be composed together or embedded inside agents.
-
-1. Copy `templates/skill-template.md` into `skills/<platform>/<skill-name>.md`
-2. A skill has: purpose, inputs, the prompt module itself, and usage notes
-3. Keep skills focused on one concern (e.g., "detect coroutine scope leaks",
-   not "review entire file")
+1. Copy `templates/skill-template.md` → `skills/<platform>/<slug>.md`
+2. One skill = one concern (e.g., "detect recomposition issues", not "review entire file")
+3. Include a slash command name
 
 ---
 
-## Conventions Claude Should Follow in This Repo
+## How to Create a New Workflow
 
-When Claude Code is helping with this repo, follow these rules:
+1. Copy `templates/workflow-template.md` → `workflows/<name>.md`
+2. List the agents and skills used
+3. Each step must reference a specific agent or skill
+
+---
+
+## Conventions
 
 **Naming**
-- Agent folders: `kebab-case` (e.g., `code-reviewer`, `crash-analyzer`)
-- Agent file: always named `agent.md`
-- Skill files: `kebab-case.md`
-- Prompt files: `kebab-case.md`
+- Agent folders: personality code name, lowercase (`axiom`, `crasher`, `swift`)
+- Agent file: always `agent.md`
+- Skill files: `kebab-case.md` with a `/slash-command` name
+- Workflow files: `kebab-case.md`
 
-**System prompts**
-- Written in second person ("You are a senior Android engineer…")
-- State the exact output format the agent must produce
-- Never exceed 600 tokens for the system prompt section alone
-- End with: "Output MUST follow the exact format specified. Do not add extra sections or omit any section."
+**Agent system prompts**
+- Open with the agent's name and personality in first person
+- State exact output format
+- ≤ 600 tokens
+- End: "Output MUST follow the exact format specified. Do not add extra sections or omit any section."
 
-**Severity levels (for review agents)**
-- `CRITICAL` — causes crashes, memory leaks, data loss, security issues
+**Severity levels**
+- `CRITICAL` — crashes, memory leaks, data loss, security vulnerabilities
 - `WARNING` — technical debt, bad practice, will cause pain at scale
 - `INFO` — minor improvement, style, optional enhancement
 
 **Tested with**
-- Always note which model(s) the agent was validated on (e.g., Claude Sonnet 4.6)
-- If an agent degrades on smaller models, note it
+- Note the model(s) validated on (e.g., Claude Sonnet 4.6)
 
 ---
 
-## Platform-Specific Notes
+## Platform Notes
 
 ### Android
-- Assume MVVM + Clean Architecture unless the agent specifies otherwise
-- Prefer `StateFlow` + `collectAsStateWithLifecycle` over `LiveData` in new agents
-- Flag `GlobalScope`, direct `!!` assertions, and repository-in-ViewModel as CRITICAL
-- Compose agents: check `remember`, `LaunchedEffect`, `derivedStateOf` usage
+- MVVM + Clean Architecture by default
+- StateFlow + collectAsStateWithLifecycle over LiveData in new code
+- GlobalScope, !! operators, repository-in-ViewModel = CRITICAL findings
 
 ### iOS
-- Assume Swift 5.9+ and SwiftUI unless specified
-- Flag retain cycles, force unwraps, and MainActor misuse
+- Swift 5.9+, SwiftUI by default
+- Retain cycles, force unwraps, MainActor misuse = CRITICAL findings
 
 ### Flutter
-- Assume Dart 3.x, null safety enabled
-- Flag `setState` in large widgets, missing `const` constructors
+- Dart 3.x, null safety enabled
+- setState in large widgets, missing const constructors = WARNING findings
 
 ### React Native
-- Flag bridge calls in hot paths, missing `useMemo`/`useCallback`
+- Check New Architecture compatibility on all new code
+- Bridge calls in hot paths = CRITICAL findings
+
+### Unity / Unreal
+- Mobile = tight frame budget, measure everything
+- Update() / Tick() logic that can be event-driven = WARNING findings
 
 ---
 
-## Contributing
+## The Viral Files
 
-See `CONTRIBUTING.md` for the full guide.
-
-Short version:
-- Every agent needs a working example — no placeholders
-- Run your agent against at least 2 real files before submitting
-- If you are updating an existing agent, note which model you tested on
+- `mobile-karpathy.md` — 4 rules that stop AI coding agents making mobile mistakes
+  Share this file independently. It has viral potential on its own.
 
 ---
 
-## Questions / Discussion
+## Questions / Contributing
 
 Open a GitHub Discussion or Issue. PRs are always welcome.
+See `CONTRIBUTING.md` for the full guide.
