@@ -25,7 +25,7 @@ git clone https://github.com/salmanashraf/mobile-dev-skills
 
 `/flutter-review` on a real Flutter project — prioritized findings, zero setup:
 
-<img width="600" alt="flutter-review demo" src="https://github.com/user-attachments/assets/e0c1d9d8-f66e-4983-a60b-b3b515fa0de0" />
+https://github.com/user-attachments/assets/427422db-b6b1-4e93-96d0-ad5dd2843f53
 
 ---
 
