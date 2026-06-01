@@ -17,25 +17,42 @@ Android · iOS · Flutter · React Native · Unity · Unreal
 
 ## Install
 
-```bash
-# One-liner — works immediately, no clone needed
-npx mobile-agency install
+**Pick your tool:**
 
-# Install by platform
+| Command | What it installs |
+|---|---|
+| `npx mobile-agency install` | **Claude Code** — agents + skills + workflows as slash commands in `~/.claude/commands/` |
+| `npx mobile-agency install --tool cursor` | **Cursor** — `.cursor/rules/*.mdc` (reference with `@axiom`, `@flutter-review` etc.) |
+| `npx mobile-agency install --tool windsurf` | **Windsurf** — full `.windsurfrules` in your project |
+| `npx mobile-agency install --tool copilot` | **GitHub Copilot** — `.github/copilot-instructions.md` |
+| `npx mobile-agency install --tool codex` | **Codex / OpenAI** — `AGENTS.md` in your project |
+| `npx mobile-agency install --tool all` | **All 5 tools** at once |
+
+**Install by platform:**
+
+```bash
 npx mobile-agency install --platform android
 npx mobile-agency install --platform ios
 npx mobile-agency install --platform flutter
-
-# Install for your AI coding tool
-npx mobile-agency install --tool cursor
-npx mobile-agency install --tool windsurf
+npx mobile-agency install --platform rn
+npx mobile-agency install --platform gaming
 ```
 
+**Combine platform + tool:**
+
 ```bash
-# Or clone and run locally
+npx mobile-agency install --platform flutter --tool cursor
+npx mobile-agency install --platform android --tool all
+```
+
+**Or clone and run locally:**
+
+```bash
 git clone https://github.com/salmanashraf/mobile-agency
 cd mobile-agency
 ./install.sh --platform android
+./install.sh --platform flutter --tool cursor
+./install.sh --tool all
 ```
 
 ---
