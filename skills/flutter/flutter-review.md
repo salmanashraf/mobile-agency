@@ -51,3 +51,9 @@ DART 3.x PATTERNS
 
 For each issue: widget name, line if given, what causes the problem, and the fix.
 ```
+
+---
+
+## Demo
+
+<img width="400" height="261" alt="flutter-review demo" src="https://github.com/user-attachments/assets/e0c1d9d8-f66e-4983-a60b-b3b515fa0de0" />

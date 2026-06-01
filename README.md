@@ -21,6 +21,14 @@ git clone https://github.com/salmanashraf/mobile-dev-skills
 
 ---
 
+## See It In Action
+
+`/flutter-review` on a real Flutter project — prioritized findings, zero setup:
+
+<img width="600" alt="flutter-review demo" src="https://github.com/user-attachments/assets/e0c1d9d8-f66e-4983-a60b-b3b515fa0de0" />
+
+---
+
 ## Why This Exists
 
 Every viral AI toolkit in 2026 solves one specific problem exceptionally well.
