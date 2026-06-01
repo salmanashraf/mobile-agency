@@ -32,7 +32,7 @@ into Claude Code as a system prompt and it works immediately.
 ## Repo Map
 
 ```
-mobile-dev-skills/
+mobile-agency/
 ├── agents/                   ← 13 personality-driven agents
 │   ├── android/axiom/        ← AXIOM (Android architect)
 │   ├── ios/swift/            ← SWIFT (iOS engineer)

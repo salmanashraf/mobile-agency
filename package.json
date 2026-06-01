@@ -16,11 +16,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/salmanashraf/mobile-dev-skills.git"
+    "url": "https://github.com/salmanashraf/mobile-agency.git"
   },
-  "homepage": "https://github.com/salmanashraf/mobile-dev-skills",
+  "homepage": "https://github.com/salmanashraf/mobile-agency",
   "bugs": {
-    "url": "https://github.com/salmanashraf/mobile-dev-skills/issues"
+    "url": "https://github.com/salmanashraf/mobile-agency/issues"
   },
   "engines": {
     "node": ">=18.0.0"

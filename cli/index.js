@@ -6,7 +6,7 @@ const fs = require('fs');
 const path = require('path');
 const os = require('os');
 
-const REPO = 'salmanashraf/mobile-dev-skills';
+const REPO = 'salmanashraf/mobile-agency';
 const BRANCH = 'main';
 const RAW = `https://raw.githubusercontent.com/${REPO}/${BRANCH}`;
 

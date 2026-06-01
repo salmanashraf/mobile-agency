@@ -1,4 +1,4 @@
-# mobile-dev-skills
+# mobile-agency
 
 **The complete AI dev team for mobile engineers. Specialists who never sleep.**
 
