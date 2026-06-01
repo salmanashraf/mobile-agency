@@ -9,14 +9,27 @@
     "cli/"
   ],
   "keywords": [
-    "mobile", "android", "ios", "flutter", "react-native", "unity", "unreal",
-    "claude", "claude-code", "ai", "agents", "skills", "llm", "cursor", "windsurf"
+    "mobile",
+    "android",
+    "ios",
+    "flutter",
+    "react-native",
+    "unity",
+    "unreal",
+    "claude",
+    "claude-code",
+    "ai",
+    "agents",
+    "skills",
+    "llm",
+    "cursor",
+    "windsurf"
   ],
   "author": "Salman Ashraf",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/salmanashraf/mobile-agency.git"
+    "url": "git+https://github.com/salmanashraf/mobile-agency.git"
   },
   "homepage": "https://github.com/salmanashraf/mobile-agency",
   "bugs": {

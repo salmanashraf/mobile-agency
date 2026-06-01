@@ -321,7 +321,7 @@
 
     <div class="hero-install">
       <span class="prompt">$</span>
-      <span class="cmd" id="install-cmd">npx github:salmanashraf/mobile-dev-skills install</span>
+      <span class="cmd" id="install-cmd">npx mobile-agency install</span>
       <button class="copy-btn" onclick="copyInstall()">copy</button>
     </div>
     <br>
@@ -573,14 +573,14 @@
 
     <div class="code-block" id="tab-npx">
       <span class="comment"># Install everything for Claude Code (runs from GitHub, no npm needed)</span><br>
-      <span class="cmd2">npx github:salmanashraf/mobile-dev-skills install</span><br><br>
+      <span class="cmd2">npx mobile-agency install</span><br><br>
       <span class="comment"># Install by platform</span><br>
-      <span class="cmd2">npx github:salmanashraf/mobile-dev-skills install</span> <span class="flag">--platform</span> <span class="val">android</span><br>
-      <span class="cmd2">npx github:salmanashraf/mobile-dev-skills install</span> <span class="flag">--platform</span> <span class="val">ios</span><br>
-      <span class="cmd2">npx github:salmanashraf/mobile-dev-skills install</span> <span class="flag">--platform</span> <span class="val">flutter</span><br><br>
+      <span class="cmd2">npx mobile-agency install</span> <span class="flag">--platform</span> <span class="val">android</span><br>
+      <span class="cmd2">npx mobile-agency install</span> <span class="flag">--platform</span> <span class="val">ios</span><br>
+      <span class="cmd2">npx mobile-agency install</span> <span class="flag">--platform</span> <span class="val">flutter</span><br><br>
       <span class="comment"># Install a single agent or skill</span><br>
-      <span class="cmd2">npx github:salmanashraf/mobile-dev-skills add agent crasher</span><br>
-      <span class="cmd2">npx github:salmanashraf/mobile-dev-skills add skill grill-mobile</span>
+      <span class="cmd2">npx mobile-agency add agent crasher</span><br>
+      <span class="cmd2">npx mobile-agency add skill grill-mobile</span>
     </div>
     <div class="code-block" id="tab-bash" style="display:none">
       <span class="comment"># Clone and install</span><br>
@@ -594,17 +594,17 @@
     <div class="code-block" id="tab-android" style="display:none">
       <span class="comment"># Android agents: AXIOM + cross-platform team</span><br>
       <span class="comment"># Android skills: 5 android + cross-platform skills</span><br>
-      <span class="cmd2">npx github:salmanashraf/mobile-dev-skills install</span> <span class="flag">--platform</span> <span class="val">android</span><br><br>
+      <span class="cmd2">npx mobile-agency install</span> <span class="flag">--platform</span> <span class="val">android</span><br><br>
       <span class="comment"># Or just the AXIOM agent</span><br>
-      <span class="cmd2">npx github:salmanashraf/mobile-dev-skills add agent axiom</span>
+      <span class="cmd2">npx mobile-agency add agent axiom</span>
     </div>
     <div class="code-block" id="tab-cursor" style="display:none">
       <span class="comment"># Install for Cursor (.cursorrules in current project)</span><br>
-      <span class="cmd2">npx github:salmanashraf/mobile-dev-skills install</span> <span class="flag">--tool</span> <span class="val">cursor</span><br><br>
+      <span class="cmd2">npx mobile-agency install</span> <span class="flag">--tool</span> <span class="val">cursor</span><br><br>
       <span class="comment"># Or for Windsurf</span><br>
-      <span class="cmd2">npx github:salmanashraf/mobile-dev-skills install</span> <span class="flag">--tool</span> <span class="val">windsurf</span><br><br>
+      <span class="cmd2">npx mobile-agency install</span> <span class="flag">--tool</span> <span class="val">windsurf</span><br><br>
       <span class="comment"># Both tools, all platforms</span><br>
-      <span class="cmd2">npx github:salmanashraf/mobile-dev-skills install</span> <span class="flag">--tool</span> <span class="val">all</span>
+      <span class="cmd2">npx mobile-agency install</span> <span class="flag">--tool</span> <span class="val">all</span>
     </div>
   </div>
 </section>
@@ -622,7 +622,7 @@
 
 <script>
   function copyInstall() {
-    navigator.clipboard.writeText('npx github:salmanashraf/mobile-dev-skills install').then(() => {
+    navigator.clipboard.writeText('npx mobile-agency install').then(() => {
       const btn = document.querySelector('.copy-btn');
       btn.textContent = 'copied!';
       setTimeout(() => btn.textContent = 'copy', 2000);

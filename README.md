@@ -7,12 +7,12 @@ Android · iOS · Flutter · React Native · Unity · Unreal
 
 ```bash
 # One-liner — runs directly from GitHub, no install needed
-npx github:salmanashraf/mobile-dev-skills install
+npx mobile-agency install
 
 # Install by platform
-npx github:salmanashraf/mobile-dev-skills install --platform android
-npx github:salmanashraf/mobile-dev-skills install --platform ios
-npx github:salmanashraf/mobile-dev-skills install --platform flutter
+npx mobile-agency install --platform android
+npx mobile-agency install --platform ios
+npx mobile-agency install --platform flutter
 
 # Or clone and run locally
 git clone https://github.com/salmanashraf/mobile-dev-skills
@@ -171,10 +171,10 @@ Every agent comes with a real worked example (not toy pseudocode):
 
 | Tool | Install |
 |---|---|
-| Claude Code | `npx github:salmanashraf/mobile-dev-skills install` |
+| Claude Code | `npx mobile-agency install` |
 | Claude Code (local) | `git clone … && ./install.sh` |
-| Cursor | `npx github:salmanashraf/mobile-dev-skills install --tool cursor` |
-| Windsurf | `npx github:salmanashraf/mobile-dev-skills install --tool windsurf` |
+| Cursor | `npx mobile-agency install --tool cursor` |
+| Windsurf | `npx mobile-agency install --tool windsurf` |
 | Xcode (2026) | `./scripts/install-xcode.sh` |
 
 ---
