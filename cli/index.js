@@ -10,82 +10,202 @@ const REPO = 'salmanashraf/mobile-agency';
 const BRANCH = 'main';
 const RAW = `https://raw.githubusercontent.com/${REPO}/${BRANCH}`;
 
-const CLAUDE_AGENTS_DIR = path.join(os.homedir(), '.claude', 'agents');
-const CLAUDE_SKILLS_DIR = path.join(os.homedir(), '.claude', 'commands');
+const CLAUDE_AGENTS_DIR  = path.join(os.homedir(), '.claude', 'agents');
+const CLAUDE_COMMANDS_DIR = path.join(os.homedir(), '.claude', 'commands');
 
 // ─── Manifest ────────────────────────────────────────────────────────────────
 
 const AGENTS = {
-  axiom:    { file: 'agents/android/axiom/agent.md',                   platform: 'android' },
-  swift:    { file: 'agents/ios/swift/agent.md',                       platform: 'ios'     },
-  dart:     { file: 'agents/flutter/dart/agent.md',                    platform: 'flutter' },
-  bridge:   { file: 'agents/react-native/bridge/agent.md',             platform: 'rn'      },
-  forge:    { file: 'agents/gaming/forge/agent.md',                    platform: 'gaming'  },
-  unreal:   { file: 'agents/gaming/unreal/agent.md',                   platform: 'gaming'  },
-  crasher:  { file: 'agents/cross-platform/crasher/agent.md',          platform: 'cross'   },
-  sentinel: { file: 'agents/cross-platform/sentinel/agent.md',         platform: 'cross'   },
-  launchpad:{ file: 'agents/cross-platform/launchpad/agent.md',        platform: 'cross'   },
-  pipeline: { file: 'agents/cross-platform/pipeline/agent.md',         platform: 'cross'   },
-  perf:     { file: 'agents/cross-platform/perf/agent.md',             platform: 'cross'   },
-  scribe:   { file: 'agents/cross-platform/scribe/agent.md',           platform: 'cross'   },
-  figma:    { file: 'agents/cross-platform/figma/agent.md',            platform: 'cross'   },
+  // Android
+  'android-crash-analyzer':  { file: 'agents/android/android-crash-analyzer/agent.md',       platform: 'android' },
+  'axiom':                   { file: 'agents/android/axiom/agent.md',                         platform: 'android' },
+  'code-reviewer':           { file: 'agents/android/code-reviewer/agent.md',                 platform: 'android' },
+  'compose-screen-builder':  { file: 'agents/android/compose-screen-builder/agent.md',        platform: 'android' },
+  'compose-ui-reviewer':     { file: 'agents/android/compose-ui-reviewer/agent.md',           platform: 'android' },
+  'crash-analyzer-android':  { file: 'agents/android/crash-analyzer/agent.md',                platform: 'android' },
+  // iOS
+  'crash-analyzer-ios':      { file: 'agents/ios/crash-analyzer/agent.md',                    platform: 'ios'     },
+  'swift-reviewer':          { file: 'agents/ios/swift-reviewer/agent.md',                    platform: 'ios'     },
+  'swift':                   { file: 'agents/ios/swift/agent.md',                             platform: 'ios'     },
+  // Flutter
+  'bloc-feature-builder':    { file: 'agents/flutter/bloc-feature-builder/agent.md',          platform: 'flutter' },
+  'dart':                    { file: 'agents/flutter/dart/agent.md',                          platform: 'flutter' },
+  'widget-generator':        { file: 'agents/flutter/widget-generator/agent.md',              platform: 'flutter' },
+  // React Native
+  'bridge':                  { file: 'agents/react-native/bridge/agent.md',                   platform: 'rn'      },
+  'performance-optimizer':   { file: 'agents/react-native/performance-optimizer/agent.md',    platform: 'rn'      },
+  // Gaming
+  'forge':                   { file: 'agents/gaming/forge/agent.md',                          platform: 'gaming'  },
+  'unreal':                  { file: 'agents/gaming/unreal/agent.md',                         platform: 'gaming'  },
+  'shader-generator':        { file: 'agents/unity/shader-generator/agent.md',                platform: 'gaming'  },
+  'blueprint-advisor':       { file: 'agents/unreal/blueprint-advisor/agent.md',              platform: 'gaming'  },
+  // Cross-platform
+  'accessibility-auditor':   { file: 'agents/cross-platform/accessibility-auditor/agent.md',  platform: 'cross'   },
+  'ci-cd-generator':         { file: 'agents/cross-platform/ci-cd-generator/agent.md',        platform: 'cross'   },
+  'crasher':                 { file: 'agents/cross-platform/crasher/agent.md',                platform: 'cross'   },
+  'figma':                   { file: 'agents/cross-platform/figma/agent.md',                  platform: 'cross'   },
+  'launchpad':               { file: 'agents/cross-platform/launchpad/agent.md',              platform: 'cross'   },
+  'perf':                    { file: 'agents/cross-platform/perf/agent.md',                   platform: 'cross'   },
+  'pipeline':                { file: 'agents/cross-platform/pipeline/agent.md',               platform: 'cross'   },
+  'release-notes-generator': { file: 'agents/cross-platform/release-notes-generator/agent.md',platform: 'cross'   },
+  'scribe':                  { file: 'agents/cross-platform/scribe/agent.md',                 platform: 'cross'   },
+  'security-scanner':        { file: 'agents/cross-platform/security-scanner/agent.md',       platform: 'cross'   },
+  'sentinel':                { file: 'agents/cross-platform/sentinel/agent.md',               platform: 'cross'   },
+  'store-listing-writer':    { file: 'agents/cross-platform/store-listing-writer/agent.md',   platform: 'cross'   },
 };
 
 const SKILLS = {
-  'android-tdd':       { file: 'skills/android/android-tdd.md',              platform: 'android' },
-  'compose-review':    { file: 'skills/android/compose-review.md',            platform: 'android' },
-  'compose-migration': { file: 'skills/android/compose-migration.md',         platform: 'android' },
-  'kotlin-modernize':  { file: 'skills/android/kotlin-modernize.md',          platform: 'android' },
-  'proguard-rules':    { file: 'skills/android/proguard-rules.md',            platform: 'android' },
-  'ios-tdd':           { file: 'skills/ios/ios-tdd.md',                       platform: 'ios'     },
-  'swiftui-review':    { file: 'skills/ios/swiftui-review.md',                platform: 'ios'     },
-  'swift-concurrency': { file: 'skills/ios/swift-concurrency.md',             platform: 'ios'     },
-  'xcode-warnings':    { file: 'skills/ios/xcode-warnings.md',                platform: 'ios'     },
-  'flutter-tdd':       { file: 'skills/flutter/flutter-tdd.md',               platform: 'flutter' },
-  'flutter-review':    { file: 'skills/flutter/flutter-review.md',            platform: 'flutter' },
-  'widget-extract':    { file: 'skills/flutter/widget-extract.md',            platform: 'flutter' },
-  'dart-modernize':    { file: 'skills/flutter/dart-modernize.md',            platform: 'flutter' },
-  'rn-tdd':            { file: 'skills/react-native/rn-tdd.md',               platform: 'rn'      },
-  'rn-review':         { file: 'skills/react-native/rn-review.md',            platform: 'rn'      },
-  'new-arch-migrate':  { file: 'skills/react-native/new-arch-migrate.md',     platform: 'rn'      },
-  'expo-optimize':     { file: 'skills/react-native/expo-optimize.md',        platform: 'rn'      },
-  'unity-tdd':         { file: 'skills/gaming/unity-tdd.md',                  platform: 'gaming'  },
-  'shader-gen':        { file: 'skills/gaming/shader-gen.md',                 platform: 'gaming'  },
-  'game-perf':         { file: 'skills/gaming/game-perf.md',                  platform: 'gaming'  },
-  'blueprint-to-cpp':  { file: 'skills/gaming/blueprint-to-cpp.md',           platform: 'gaming'  },
-  'grill-mobile':      { file: 'skills/cross-platform/grill-mobile.md',       platform: 'cross'   },
-  'crash-triage':      { file: 'skills/cross-platform/crash-triage.md',       platform: 'cross'   },
-  'perf-audit':        { file: 'skills/cross-platform/perf-audit.md',         platform: 'cross'   },
-  'store-listing':     { file: 'skills/cross-platform/store-listing.md',      platform: 'cross'   },
-  'feature-slice':     { file: 'skills/cross-platform/feature-slice.md',      platform: 'cross'   },
-  'release-prep':      { file: 'skills/cross-platform/release-prep.md',       platform: 'cross'   },
-  'accessibility-audit':{ file: 'skills/cross-platform/accessibility-audit.md',platform: 'cross'  },
-  'api-versioning':    { file: 'skills/cross-platform/api-versioning.md',     platform: 'cross'   },
-  'deeplink-debug':    { file: 'skills/cross-platform/deeplink-debug.md',     platform: 'cross'   },
+  // Android
+  'android-tdd':        { file: 'skills/android/android-tdd.md',              platform: 'android' },
+  'code-review':        { file: 'skills/android/code-review.md',              platform: 'android' },
+  'compose-migration':  { file: 'skills/android/compose-migration.md',        platform: 'android' },
+  'compose-review':     { file: 'skills/android/compose-review.md',           platform: 'android' },
+  'kotlin-modernize':   { file: 'skills/android/kotlin-modernize.md',         platform: 'android' },
+  'proguard-rules':     { file: 'skills/android/proguard-rules.md',           platform: 'android' },
+  // iOS
+  'data-persistence':   { file: 'skills/ios/data-persistence.md',             platform: 'ios'     },
+  'ios-tdd':            { file: 'skills/ios/ios-tdd.md',                      platform: 'ios'     },
+  'networking':         { file: 'skills/ios/networking.md',                   platform: 'ios'     },
+  'ios-performance':    { file: 'skills/ios/performance.md',                  platform: 'ios'     },
+  'swift-concurrency':  { file: 'skills/ios/swift-concurrency.md',            platform: 'ios'     },
+  'swift-review':       { file: 'skills/ios/swift-review.md',                 platform: 'ios'     },
+  'swiftui-review':     { file: 'skills/ios/swiftui-review.md',               platform: 'ios'     },
+  'swiftui-state':      { file: 'skills/ios/swiftui-state.md',                platform: 'ios'     },
+  'unit-testing':       { file: 'skills/ios/unit-testing.md',                 platform: 'ios'     },
+  'xcode-warnings':     { file: 'skills/ios/xcode-warnings.md',               platform: 'ios'     },
+  // Flutter
+  'dart-modernize':     { file: 'skills/flutter/dart-modernize.md',           platform: 'flutter' },
+  'flutter-review':     { file: 'skills/flutter/flutter-review.md',           platform: 'flutter' },
+  'flutter-tdd':        { file: 'skills/flutter/flutter-tdd.md',              platform: 'flutter' },
+  'widget-extract':     { file: 'skills/flutter/widget-extract.md',           platform: 'flutter' },
+  'widget-gen':         { file: 'skills/flutter/widget-gen.md',               platform: 'flutter' },
+  // React Native
+  'bridge-audit':       { file: 'skills/react-native/bridge-audit.md',        platform: 'rn'      },
+  'expo-optimize':      { file: 'skills/react-native/expo-optimize.md',       platform: 'rn'      },
+  'new-arch-migrate':   { file: 'skills/react-native/new-arch-migrate.md',    platform: 'rn'      },
+  'rn-performance':     { file: 'skills/react-native/performance.md',          platform: 'rn'      },
+  'rn-review':          { file: 'skills/react-native/rn-review.md',           platform: 'rn'      },
+  'rn-tdd':             { file: 'skills/react-native/rn-tdd.md',              platform: 'rn'      },
+  // Gaming
+  'blueprint-to-cpp':   { file: 'skills/gaming/blueprint-to-cpp.md',          platform: 'gaming'  },
+  'game-perf':          { file: 'skills/gaming/game-perf.md',                 platform: 'gaming'  },
+  'shader-gen':         { file: 'skills/gaming/shader-gen.md',                platform: 'gaming'  },
+  'unity-tdd':          { file: 'skills/gaming/unity-tdd.md',                 platform: 'gaming'  },
+  'shader-review':      { file: 'skills/unity/shader-review.md',              platform: 'gaming'  },
+  // Cross-platform
+  'accessibility-audit':{ file: 'skills/cross-platform/accessibility-audit.md', platform: 'cross' },
+  'api-versioning':     { file: 'skills/cross-platform/api-versioning.md',    platform: 'cross'   },
+  'crash-triage':       { file: 'skills/cross-platform/crash-triage.md',      platform: 'cross'   },
+  'deeplink-debug':     { file: 'skills/cross-platform/deeplink-debug.md',    platform: 'cross'   },
+  'feature-slice':      { file: 'skills/cross-platform/feature-slice.md',     platform: 'cross'   },
+  'grill-mobile':       { file: 'skills/cross-platform/grill-mobile.md',      platform: 'cross'   },
+  'perf-audit':         { file: 'skills/cross-platform/perf-audit.md',        platform: 'cross'   },
+  'release-prep':       { file: 'skills/cross-platform/release-prep.md',      platform: 'cross'   },
+  'store-listing':      { file: 'skills/cross-platform/store-listing.md',     platform: 'cross'   },
+  // Shared cross-platform (installed under unique slugs to avoid collision)
+  'crash-analysis':     { file: 'skills/shared/crash-analysis.md',            platform: 'cross'   },
+  'security-scan':      { file: 'skills/shared/security-scan.md',             platform: 'cross'   },
+};
+
+const WORKFLOWS = {
+  'feature-ship':       { file: 'workflows/feature-ship.md'       },
+  'release-cycle':      { file: 'workflows/release-cycle.md'      },
+  'game-level':         { file: 'workflows/game-level.md'         },
+  'crash-to-fix':       { file: 'workflows/crash-to-fix.md'       },
+  'ci-setup':           { file: 'workflows/ci-setup.md'           },
+  'new-screen':         { file: 'workflows/new-screen.md'         },
+  'new-project-setup':  { file: 'workflows/new-project-setup.md' },
+  'app-launch':         { file: 'workflows/app-launch.md'         },
+  'perf-sprint':        { file: 'workflows/perf-sprint.md'        },
 };
 
 const PLATFORM_AGENTS = {
-  android: ['axiom', 'crasher', 'sentinel', 'perf', 'scribe', 'pipeline', 'figma', 'launchpad'],
-  ios:     ['swift', 'crasher', 'sentinel', 'perf', 'scribe', 'pipeline', 'figma', 'launchpad'],
-  flutter: ['dart',  'crasher', 'sentinel', 'perf', 'scribe', 'pipeline', 'figma', 'launchpad'],
-  rn:      ['bridge','crasher', 'sentinel', 'perf', 'scribe', 'pipeline', 'figma', 'launchpad'],
-  gaming:  ['forge', 'unreal', 'perf'],
-  cross:   ['crasher','sentinel','launchpad','pipeline','perf','scribe','figma'],
+  android: [
+    'android-crash-analyzer', 'axiom', 'code-reviewer', 'compose-screen-builder',
+    'compose-ui-reviewer', 'crash-analyzer-android',
+    // cross-platform bundled for android
+    'crasher', 'sentinel', 'perf', 'scribe', 'pipeline', 'figma', 'launchpad',
+    'accessibility-auditor', 'ci-cd-generator', 'release-notes-generator',
+    'security-scanner', 'store-listing-writer',
+  ],
+  ios: [
+    'crash-analyzer-ios', 'swift-reviewer', 'swift',
+    // cross-platform bundled for ios
+    'crasher', 'sentinel', 'perf', 'scribe', 'pipeline', 'figma', 'launchpad',
+    'accessibility-auditor', 'ci-cd-generator', 'release-notes-generator',
+    'security-scanner', 'store-listing-writer',
+  ],
+  flutter: [
+    'bloc-feature-builder', 'dart', 'widget-generator',
+    // cross-platform bundled for flutter
+    'crasher', 'sentinel', 'perf', 'scribe', 'pipeline', 'figma', 'launchpad',
+    'accessibility-auditor', 'ci-cd-generator', 'release-notes-generator',
+    'security-scanner', 'store-listing-writer',
+  ],
+  rn: [
+    'bridge', 'performance-optimizer',
+    // cross-platform bundled for rn
+    'crasher', 'sentinel', 'perf', 'scribe', 'pipeline', 'figma', 'launchpad',
+    'accessibility-auditor', 'ci-cd-generator', 'release-notes-generator',
+    'security-scanner', 'store-listing-writer',
+  ],
+  gaming: [
+    'forge', 'unreal', 'shader-generator', 'blueprint-advisor',
+    // cross-platform bundled for gaming
+    'perf',
+  ],
+  cross: [
+    'accessibility-auditor', 'ci-cd-generator', 'crasher', 'figma', 'launchpad',
+    'perf', 'pipeline', 'release-notes-generator', 'scribe', 'security-scanner',
+    'sentinel', 'store-listing-writer',
+  ],
 };
 
 const PLATFORM_SKILLS = {
-  android: ['android-tdd','compose-review','compose-migration','kotlin-modernize','proguard-rules',
-            'grill-mobile','crash-triage','perf-audit','store-listing','feature-slice','release-prep'],
-  ios:     ['ios-tdd','swiftui-review','swift-concurrency','xcode-warnings',
-            'grill-mobile','crash-triage','perf-audit','store-listing','feature-slice','release-prep'],
-  flutter: ['flutter-tdd','flutter-review','widget-extract','dart-modernize',
-            'grill-mobile','crash-triage','perf-audit','store-listing','feature-slice','release-prep'],
-  rn:      ['rn-tdd','rn-review','new-arch-migrate','expo-optimize',
-            'grill-mobile','crash-triage','perf-audit','store-listing','feature-slice','release-prep'],
-  gaming:  ['unity-tdd','shader-gen','game-perf','blueprint-to-cpp'],
-  cross:   ['grill-mobile','crash-triage','perf-audit','store-listing','feature-slice',
-            'release-prep','accessibility-audit','api-versioning','deeplink-debug'],
+  android: [
+    'android-tdd', 'code-review', 'compose-migration', 'compose-review',
+    'kotlin-modernize', 'proguard-rules',
+    // cross-platform bundled for android
+    'accessibility-audit', 'api-versioning', 'crash-analysis', 'crash-triage',
+    'deeplink-debug', 'feature-slice', 'grill-mobile', 'perf-audit',
+    'release-prep', 'security-scan', 'store-listing',
+  ],
+  ios: [
+    'data-persistence', 'ios-tdd', 'networking', 'ios-performance',
+    'swift-concurrency', 'swift-review', 'swiftui-review', 'swiftui-state',
+    'unit-testing', 'xcode-warnings',
+    // cross-platform bundled for ios
+    'accessibility-audit', 'api-versioning', 'crash-analysis', 'crash-triage',
+    'deeplink-debug', 'feature-slice', 'grill-mobile', 'perf-audit',
+    'release-prep', 'security-scan', 'store-listing',
+  ],
+  flutter: [
+    'dart-modernize', 'flutter-review', 'flutter-tdd', 'widget-extract', 'widget-gen',
+    // cross-platform bundled for flutter
+    'accessibility-audit', 'api-versioning', 'crash-analysis', 'crash-triage',
+    'deeplink-debug', 'feature-slice', 'grill-mobile', 'perf-audit',
+    'release-prep', 'security-scan', 'store-listing',
+  ],
+  rn: [
+    'bridge-audit', 'expo-optimize', 'new-arch-migrate', 'rn-performance',
+    'rn-review', 'rn-tdd',
+    // cross-platform bundled for rn
+    'accessibility-audit', 'api-versioning', 'crash-analysis', 'crash-triage',
+    'deeplink-debug', 'feature-slice', 'grill-mobile', 'perf-audit',
+    'release-prep', 'security-scan', 'store-listing',
+  ],
+  gaming: [
+    'blueprint-to-cpp', 'game-perf', 'shader-gen', 'unity-tdd', 'shader-review',
+  ],
+  cross: [
+    'accessibility-audit', 'api-versioning', 'crash-analysis', 'crash-triage',
+    'deeplink-debug', 'feature-slice', 'grill-mobile', 'perf-audit',
+    'release-prep', 'security-scan', 'store-listing',
+  ],
 };
+
+// Workflows are always installed regardless of platform selection
+const ALL_WORKFLOWS = Object.keys(WORKFLOWS);
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -118,11 +238,13 @@ function ensureDir(dir) {
   fs.mkdirSync(dir, { recursive: true });
 }
 
-async function downloadFile(remotePath, destPath) {
+async function downloadFile(remotePath, destPaths) {
   const url = `${RAW}/${remotePath}`;
   const content = await fetch(url);
-  ensureDir(path.dirname(destPath));
-  fs.writeFileSync(destPath, content);
+  for (const destPath of destPaths) {
+    ensureDir(path.dirname(destPath));
+    fs.writeFileSync(destPath, content);
+  }
 }
 
 // ─── Commands ────────────────────────────────────────────────────────────────
@@ -137,11 +259,11 @@ async function cmdInstall(args) {
   }
 
   const platforms = platform === 'all'
-    ? ['android','ios','flutter','rn','gaming','cross']
+    ? ['android', 'ios', 'flutter', 'rn', 'gaming', 'cross']
     : [platform];
 
   console.log('');
-  console.log(bold('📱 Mobile Agency'));
+  console.log(bold('Mobile Agency'));
   console.log(dim(`   github.com/${REPO}`));
   console.log('');
   console.log(`   Platform : ${bold(platform)}`);
@@ -159,14 +281,14 @@ async function cmdInstall(args) {
   }
 
   console.log('');
-  console.log(green(bold('  🚀 Done. Happy shipping.')));
+  console.log(green(bold('  Done. Happy shipping.')));
   console.log('');
 }
 
 async function installForClaude(platforms) {
   log('Installing for Claude Code...');
   ensureDir(CLAUDE_AGENTS_DIR);
-  ensureDir(CLAUDE_SKILLS_DIR);
+  ensureDir(CLAUDE_COMMANDS_DIR);
 
   const agentNames = new Set();
   const skillNames = new Set();
@@ -176,31 +298,43 @@ async function installForClaude(platforms) {
     (PLATFORM_SKILLS[p] || []).forEach(s => skillNames.add(s));
   }
 
-  // Agents
+  // Agents — install to both ~/.claude/agents/ and ~/.claude/commands/
   const agentList = [...agentNames];
   process.stdout.write(`\n   Agents (${agentList.length})\n`);
   await Promise.all(agentList.map(async (name) => {
     const meta = AGENTS[name];
     if (!meta) return;
-    const dest = path.join(CLAUDE_AGENTS_DIR, `${name}.md`);
-    await downloadFile(meta.file, dest);
+    const agentDest   = path.join(CLAUDE_AGENTS_DIR,   `${name}.md`);
+    const commandDest = path.join(CLAUDE_COMMANDS_DIR, `${name}.md`);
+    await downloadFile(meta.file, [agentDest, commandDest]);
     ok(name);
   }));
 
-  // Skills
+  // Skills — install to ~/.claude/commands/
   const skillList = [...skillNames];
   process.stdout.write(`\n   Skills (${skillList.length})\n`);
   await Promise.all(skillList.map(async (name) => {
     const meta = SKILLS[name];
     if (!meta) return;
-    const dest = path.join(CLAUDE_SKILLS_DIR, `${name}.md`);
-    await downloadFile(meta.file, dest);
+    const dest = path.join(CLAUDE_COMMANDS_DIR, `${name}.md`);
+    await downloadFile(meta.file, [dest]);
+    ok(name);
+  }));
+
+  // Workflows — always install to ~/.claude/commands/
+  process.stdout.write(`\n   Workflows (${ALL_WORKFLOWS.length})\n`);
+  await Promise.all(ALL_WORKFLOWS.map(async (name) => {
+    const meta = WORKFLOWS[name];
+    if (!meta) return;
+    const dest = path.join(CLAUDE_COMMANDS_DIR, `${name}.md`);
+    await downloadFile(meta.file, [dest]);
     ok(name);
   }));
 
   console.log('');
-  log(`Agents → ${dim(CLAUDE_AGENTS_DIR)}`);
-  log(`Skills → ${dim(CLAUDE_SKILLS_DIR)}`);
+  log(`Agents   → ${dim(CLAUDE_AGENTS_DIR)}`);
+  log(`Commands → ${dim(CLAUDE_COMMANDS_DIR)}`);
+  log(`           (agents + skills + workflows as slash commands)`);
 }
 
 async function installForCursor() {
@@ -225,12 +359,13 @@ async function installForWindsurf() {
 }
 
 async function cmdAdd(args) {
-  const type = args[0]; // 'agent' | 'skill'
+  const type = args[0]; // 'agent' | 'skill' | 'workflow'
   const name = args[1];
 
   if (!type || !name) {
     console.error('\nUsage: npx mobile-agency add agent <name>');
-    console.error('       npx mobile-agency add skill <name>\n');
+    console.error('       npx mobile-agency add skill <name>');
+    console.error('       npx mobile-agency add workflow <name>\n');
     process.exit(1);
   }
 
@@ -244,10 +379,13 @@ async function cmdAdd(args) {
       process.exit(1);
     }
     ensureDir(CLAUDE_AGENTS_DIR);
-    const dest = path.join(CLAUDE_AGENTS_DIR, `${name}.md`);
+    ensureDir(CLAUDE_COMMANDS_DIR);
+    const agentDest   = path.join(CLAUDE_AGENTS_DIR,   `${name}.md`);
+    const commandDest = path.join(CLAUDE_COMMANDS_DIR, `${name}.md`);
     log(`Fetching ${bold(name)} agent...`);
-    await downloadFile(meta.file, dest);
-    ok(`${name} → ${dim(dest)}`);
+    await downloadFile(meta.file, [agentDest, commandDest]);
+    ok(`${name} → ${dim(agentDest)}`);
+    ok(`${name} → ${dim(commandDest)}`);
   } else if (type === 'skill') {
     const meta = SKILLS[name];
     if (!meta) {
@@ -255,13 +393,25 @@ async function cmdAdd(args) {
       console.log(`\n  Available skills: ${Object.keys(SKILLS).join(', ')}\n`);
       process.exit(1);
     }
-    ensureDir(CLAUDE_SKILLS_DIR);
-    const dest = path.join(CLAUDE_SKILLS_DIR, `${name}.md`);
+    ensureDir(CLAUDE_COMMANDS_DIR);
+    const dest = path.join(CLAUDE_COMMANDS_DIR, `${name}.md`);
     log(`Fetching ${bold(name)} skill...`);
-    await downloadFile(meta.file, dest);
+    await downloadFile(meta.file, [dest]);
+    ok(`${name} → ${dim(dest)}`);
+  } else if (type === 'workflow') {
+    const meta = WORKFLOWS[name];
+    if (!meta) {
+      err(`Unknown workflow: ${name}`);
+      console.log(`\n  Available workflows: ${Object.keys(WORKFLOWS).join(', ')}\n`);
+      process.exit(1);
+    }
+    ensureDir(CLAUDE_COMMANDS_DIR);
+    const dest = path.join(CLAUDE_COMMANDS_DIR, `${name}.md`);
+    log(`Fetching ${bold(name)} workflow...`);
+    await downloadFile(meta.file, [dest]);
     ok(`${name} → ${dim(dest)}`);
   } else {
-    err(`Unknown type: ${type}. Use 'agent' or 'skill'.`);
+    err(`Unknown type: ${type}. Use 'agent', 'skill', or 'workflow'.`);
     process.exit(1);
   }
 
@@ -269,12 +419,16 @@ async function cmdAdd(args) {
 }
 
 function cmdList() {
+  const agentCount    = Object.keys(AGENTS).length;
+  const skillCount    = Object.keys(SKILLS).length;
+  const workflowCount = Object.keys(WORKFLOWS).length;
+
   console.log('');
-  console.log(bold('📱 Mobile Agency — Available agents and skills'));
+  console.log(bold(`Mobile Agency — Agents (${agentCount}), Skills (${skillCount}), Workflows (${workflowCount})`));
   console.log(dim(`   github.com/${REPO}`));
   console.log('');
 
-  console.log(bold('  AGENTS (13)'));
+  console.log(bold(`  AGENTS (${agentCount})`));
   const agentsByPlatform = {};
   for (const [name, meta] of Object.entries(AGENTS)) {
     if (!agentsByPlatform[meta.platform]) agentsByPlatform[meta.platform] = [];
@@ -285,7 +439,7 @@ function cmdList() {
   }
 
   console.log('');
-  console.log(bold('  SKILLS (28)'));
+  console.log(bold(`  SKILLS (${skillCount})`));
   const skillsByPlatform = {};
   for (const [name, meta] of Object.entries(SKILLS)) {
     if (!skillsByPlatform[meta.platform]) skillsByPlatform[meta.platform] = [];
@@ -296,11 +450,16 @@ function cmdList() {
   }
 
   console.log('');
+  console.log(bold(`  WORKFLOWS (${workflowCount})`));
+  console.log(`    ${yellow('all'.padEnd(10))} ${Object.keys(WORKFLOWS).join(', ')}`);
+
+  console.log('');
   console.log(bold('  INSTALL'));
   console.log(dim('    npx mobile-agency install                      # everything'));
   console.log(dim('    npx mobile-agency install --platform android   # android only'));
   console.log(dim('    npx mobile-agency add agent crasher            # one agent'));
   console.log(dim('    npx mobile-agency add skill grill-mobile       # one skill'));
+  console.log(dim('    npx mobile-agency add workflow feature-ship    # one workflow'));
   console.log('');
 }
 
@@ -309,14 +468,20 @@ function cmdHelp() {
   console.log(bold('  npx mobile-agency <command> [options]'));
   console.log('');
   console.log('  Commands:');
-  console.log(`    ${bold('install')}                Install agents and skills`);
-  console.log(`    ${bold('add')} agent|skill <name> Install a single agent or skill`);
-  console.log(`    ${bold('list')}                   List all available agents and skills`);
-  console.log(`    ${bold('help')}                   Show this help`);
+  console.log(`    ${bold('install')}                       Install agents, skills, and workflows`);
+  console.log(`    ${bold('add')} agent|skill|workflow <name> Install a single item`);
+  console.log(`    ${bold('list')}                          List all available agents, skills, and workflows`);
+  console.log(`    ${bold('help')}                          Show this help`);
   console.log('');
   console.log('  Install options:');
   console.log('    --platform  android | ios | flutter | rn | gaming | cross | all (default: all)');
   console.log('    --tool      claude | cursor | windsurf | all (default: claude)');
+  console.log('');
+  console.log('  What gets installed (Claude Code):');
+  console.log('    Agents    → ~/.claude/agents/<name>.md  (subagents)');
+  console.log('    Agents    → ~/.claude/commands/<name>.md (slash commands)');
+  console.log('    Skills    → ~/.claude/commands/<slug>.md (slash commands)');
+  console.log('    Workflows → ~/.claude/commands/<name>.md (slash commands, always)');
   console.log('');
   console.log('  Examples:');
   console.log(dim('    npx mobile-agency install'));
@@ -324,6 +489,7 @@ function cmdHelp() {
   console.log(dim('    npx mobile-agency install --platform ios --tool cursor'));
   console.log(dim('    npx mobile-agency add agent crasher'));
   console.log(dim('    npx mobile-agency add skill grill-mobile'));
+  console.log(dim('    npx mobile-agency add workflow feature-ship'));
   console.log('');
   console.log(dim(`  github.com/${REPO}`));
   console.log('');
