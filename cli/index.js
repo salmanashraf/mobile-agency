@@ -11,7 +11,7 @@ const BRANCH = 'main';
 const RAW = `https://raw.githubusercontent.com/${REPO}/${BRANCH}`;
 
 const CLAUDE_AGENTS_DIR = path.join(os.homedir(), '.claude', 'agents');
-const CLAUDE_SKILLS_DIR = path.join(os.homedir(), '.claude', 'skills');
+const CLAUDE_SKILLS_DIR = path.join(os.homedir(), '.claude', 'commands');
 
 // ─── Manifest ────────────────────────────────────────────────────────────────
 

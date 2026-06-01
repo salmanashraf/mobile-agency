@@ -8,7 +8,7 @@ set -e
 PLATFORM="all"
 TOOL="claude"
 CLAUDE_AGENTS_DIR="$HOME/.claude/agents"
-CLAUDE_SKILLS_DIR="$HOME/.claude/skills"
+CLAUDE_SKILLS_DIR="$HOME/.claude/commands"
 
 # Parse args
 while [[ "$#" -gt 0 ]]; do
