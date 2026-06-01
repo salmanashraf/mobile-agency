@@ -58,6 +58,12 @@ cd mobile-agency
 
 https://github.com/user-attachments/assets/427422db-b6b1-4e93-96d0-ad5dd2843f53
 
+`@AXIOM` reviewing Android Kotlin/Compose code — Clean Architecture, lifecycle leaks, coroutine misuse, and Compose anti-patterns:
+
+https://github.com/user-attachments/assets/ee8bbd61-9c64-47bf-a9b3-7812cc12412c
+
+More context: [AXIOM discussion](https://github.com/salmanashraf/mobile-agency/discussions/5)
+
 ---
 
 ## How It Works
