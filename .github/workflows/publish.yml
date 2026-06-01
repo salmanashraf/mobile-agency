@@ -1,0 +1,22 @@
+name: Publish to npm
+
+on:
+  push:
+    tags:
+      - 'v*'   # triggers on v1.0.1, v1.1.0, v2.0.0, etc.
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Publish to npm
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
