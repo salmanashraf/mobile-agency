@@ -7,16 +7,17 @@
 ## Table of Contents
 
 1. [What Is This Repo?](#1-what-is-this-repo)
-2. [Three Resource Types](#2-three-resource-types)
-3. [How to Use an Agent](#3-how-to-use-an-agent)
-4. [Tool-by-Tool Guides](#4-tool-by-tool-guides)
-5. [Platform-by-Platform Agent Guide](#5-platform-by-platform-agent-guide)
-6. [How Skills Work](#6-how-skills-work)
-7. [How Prompts Work](#7-how-prompts-work)
-8. [Input Format Reference](#8-input-format-reference)
-9. [Output Format Reference](#9-output-format-reference)
-10. [Contributing a New Agent](#10-contributing-a-new-agent)
-11. [FAQ](#11-faq)
+2. [Installation](#2-installation)
+3. [Three Resource Types](#3-three-resource-types)
+4. [How to Use an Agent](#4-how-to-use-an-agent)
+5. [Tool-by-Tool Guides](#5-tool-by-tool-guides)
+6. [Platform-by-Platform Agent Guide](#6-platform-by-platform-agent-guide)
+7. [How Skills Work](#7-how-skills-work)
+8. [How Prompts Work](#8-how-prompts-work)
+9. [Input Format Reference](#9-input-format-reference)
+10. [Output Format Reference](#10-output-format-reference)
+11. [Contributing a New Agent](#11-contributing-a-new-agent)
+12. [FAQ](#12-faq)
 
 ---
 
@@ -34,7 +35,29 @@
 
 ---
 
-## 2. Three Resource Types
+## 2. Installation
+
+For first-time setup, use the dedicated [Installation Guide](installation.md). It explains which command to run for Claude Code, Cursor, Windsurf, GitHub Copilot, and Codex.
+
+Fast path:
+
+```bash
+npx mobile-agency install
+```
+
+Common installs:
+
+| I use... | Run this |
+|---|---|
+| Claude Code | `npx mobile-agency install` |
+| Cursor | `npx mobile-agency install --tool cursor` |
+| Windsurf | `npx mobile-agency install --tool windsurf` |
+| GitHub Copilot | `npx mobile-agency install --tool copilot` |
+| Codex / OpenAI | `npx mobile-agency install --tool codex` |
+
+---
+
+## 3. Three Resource Types
 
 ### Agents (`agents/`)
 
@@ -67,7 +90,7 @@ A single `.md` file for a one-shot task:
 
 ---
 
-## 3. How to Use an Agent
+## 4. How to Use an Agent
 
 ### Step 1 — Choose the right agent
 
@@ -118,7 +141,7 @@ The agent returns output in the exact structure defined by `## Output Format`. E
 
 ---
 
-## 4. Tool-by-Tool Guides
+## 5. Tool-by-Tool Guides
 
 ### Claude Code
 
@@ -213,7 +236,7 @@ Full guide: [`docs/vscode-copilot-integration.md`](vscode-copilot-integration.md
 
 ---
 
-## 5. Platform-by-Platform Agent Guide
+## 6. Platform-by-Platform Agent Guide
 
 ### Android
 
@@ -351,7 +374,7 @@ Full guide: [`docs/vscode-copilot-integration.md`](vscode-copilot-integration.md
 
 ---
 
-## 6. How Skills Work
+## 7. How Skills Work
 
 A skill is a focused prompt module — shorter than a full agent, covering one concern, composable with others.
 
@@ -389,7 +412,7 @@ The LLM applies both skill sets simultaneously — ARC + memory rules plus Swift
 
 ---
 
-## 7. How Prompts Work
+## 8. How Prompts Work
 
 Prompts are the simplest resource type — a complete, ready-to-paste prompt with a `[PASTE YOUR CODE HERE]` slot.
 
@@ -405,7 +428,7 @@ Prompts are one-shot — they don't require a system prompt, don't require a str
 
 ---
 
-## 8. Input Format Reference
+## 9. Input Format Reference
 
 Most agents use a consistent key-value input format:
 
@@ -430,7 +453,7 @@ MULTI_LINE_FIELD:
 
 ---
 
-## 9. Output Format Reference
+## 10. Output Format Reference
 
 ### Code Review Agents (Android, iOS)
 
@@ -504,7 +527,7 @@ OVERALL VERDICT: PASS / NEEDS WORK / INACCESSIBLE
 
 ---
 
-## 10. Contributing a New Agent
+## 11. Contributing a New Agent
 
 ### Before you start
 
@@ -551,7 +574,7 @@ An agent is accepted if:
 
 ---
 
-## 11. FAQ
+## 12. FAQ
 
 **Q: Which LLM works best?**  
 A: Claude Sonnet 4.6 and GPT-4o both produce high-quality structured output for all agents. Smaller models (GPT-4o-mini, Claude Haiku) work for simpler agents (prompts, skills) but may produce less consistent structured output for complex agents (BLoC Feature Builder, CI/CD Generator).

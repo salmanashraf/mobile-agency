@@ -11,41 +11,36 @@ Android · iOS · Flutter · React Native · Unity · Unreal
 [![GitHub Stars](https://img.shields.io/github/stars/salmanashraf/mobile-agency?style=social)](https://github.com/salmanashraf/mobile-agency/stargazers)
 [![Platform](https://img.shields.io/badge/platforms-Android%20%7C%20iOS%20%7C%20Flutter%20%7C%20RN%20%7C%20Unity%20%7C%20Unreal-brightgreen)](#agent-roster)
 
+[Installation Guide](docs/installation.md) · [Wiki](https://github.com/salmanashraf/mobile-agency/wiki) · [Getting Started](docs/getting-started.md) · [Contributing](CONTRIBUTING.md)
+
 > Most AI coding toolkits are generic. Mobile Agency is built specifically for mobile and game development workflows — with agents that know your platform from the inside.
 
 ---
 
 ## Install
 
-**Pick your tool:**
+New to AI coding tools? Start with the step-by-step [Installation Guide](docs/installation.md).
 
-| Command | What it installs |
+Fast path:
+
+```bash
+npx mobile-agency install
+```
+
+This installs Mobile Agency for Claude Code. For Cursor, Windsurf, GitHub Copilot, Codex, platform-only installs, and troubleshooting, see [docs/installation.md](docs/installation.md).
+
+Common installs:
+
+| I use... | Run this |
 |---|---|
-| `npx mobile-agency install` | **Claude Code** — agents + skills + workflows as slash commands in `~/.claude/commands/` |
-| `npx mobile-agency install --tool cursor` | **Cursor** — `.cursor/rules/*.mdc` (reference with `@axiom`, `@flutter-review` etc.) |
-| `npx mobile-agency install --tool windsurf` | **Windsurf** — full `.windsurfrules` in your project |
-| `npx mobile-agency install --tool copilot` | **GitHub Copilot** — `.github/copilot-instructions.md` |
-| `npx mobile-agency install --tool codex` | **Codex / OpenAI** — `AGENTS.md` in your project |
-| `npx mobile-agency install --tool all` | **All 5 tools** at once |
+| Claude Code | `npx mobile-agency install` |
+| Cursor | `npx mobile-agency install --tool cursor` |
+| Windsurf | `npx mobile-agency install --tool windsurf` |
+| GitHub Copilot | `npx mobile-agency install --tool copilot` |
+| Codex / OpenAI | `npx mobile-agency install --tool codex` |
+| All supported tools | `npx mobile-agency install --tool all` |
 
-**Install by platform:**
-
-```bash
-npx mobile-agency install --platform android
-npx mobile-agency install --platform ios
-npx mobile-agency install --platform flutter
-npx mobile-agency install --platform rn
-npx mobile-agency install --platform gaming
-```
-
-**Combine platform + tool:**
-
-```bash
-npx mobile-agency install --platform flutter --tool cursor
-npx mobile-agency install --platform android --tool all
-```
-
-**Or clone and run locally:**
+Local clone install:
 
 ```bash
 git clone https://github.com/salmanashraf/mobile-agency
