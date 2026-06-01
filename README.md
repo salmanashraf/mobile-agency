@@ -1,12 +1,24 @@
-# mobile-agency
+# Mobile Agency
 
-**The complete AI dev team for mobile engineers. Specialists who never sleep.**
+**The complete AI dev team for mobile engineers.**
 
 13 personality-driven agents · 28 composable skills · 9 end-to-end workflows  
 Android · iOS · Flutter · React Native · Unity · Unreal
 
+[![npm](https://img.shields.io/npm/v/mobile-agency?color=CB3837&label=npm)](https://www.npmjs.com/package/mobile-agency)
+[![npm downloads](https://img.shields.io/npm/dm/mobile-agency?color=CB3837)](https://www.npmjs.com/package/mobile-agency)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![GitHub Stars](https://img.shields.io/github/stars/salmanashraf/mobile-agency?style=social)](https://github.com/salmanashraf/mobile-agency/stargazers)
+[![Platform](https://img.shields.io/badge/platforms-Android%20%7C%20iOS%20%7C%20Flutter%20%7C%20RN%20%7C%20Unity%20%7C%20Unreal-brightgreen)](#agent-roster)
+
+> Most AI coding toolkits are generic. Mobile Agency is built specifically for mobile and game development workflows — with agents that know your platform from the inside.
+
+---
+
+## Install
+
 ```bash
-# One-liner — runs directly from GitHub, no install needed
+# One-liner — works immediately, no clone needed
 npx mobile-agency install
 
 # Install by platform
@@ -14,8 +26,15 @@ npx mobile-agency install --platform android
 npx mobile-agency install --platform ios
 npx mobile-agency install --platform flutter
 
+# Install for your AI coding tool
+npx mobile-agency install --tool cursor
+npx mobile-agency install --tool windsurf
+```
+
+```bash
 # Or clone and run locally
-git clone https://github.com/salmanashraf/mobile-dev-skills
+git clone https://github.com/salmanashraf/mobile-agency
+cd mobile-agency
 ./install.sh --platform android
 ```
 
@@ -29,30 +48,98 @@ https://github.com/user-attachments/assets/427422db-b6b1-4e93-96d0-ad5dd2843f53
 
 ---
 
-## Why This Exists
+## How It Works
 
-Every viral AI toolkit in 2026 solves one specific problem exceptionally well.
+```
+1. Install          npx mobile-agency install
+2. Open project     Claude Code · Cursor · Windsurf · Copilot · Codex
+3. Invoke           @AXIOM · @CRASHER · /flutter-review · /perf-audit
+4. Get results      Platform-specific findings, ranked by severity, with fixes
+```
 
-Nobody has done it for mobile. Not one repo covers Android + iOS + Flutter + React Native + Unity + Unreal with real, opinionated, personality-driven agents that know your platform from the inside.
+**Examples:**
 
-This is that repo.
+```
+@AXIOM review HomeViewModel.kt
+@CRASHER analyze crash.log
+/flutter-review lib/home_screen.dart
+/perf-audit startup
+```
 
 ---
 
-## The Agent Roster
+## Start Here
 
-Each agent has a name, a personality, and a clear mission. They're not generic "code reviewer" prompts — they're specialists with opinions.
+Not sure where to begin? Pick your situation:
+
+| I want to… | Use this |
+|---|---|
+| Debug a crash | `@CRASHER` + paste your stacktrace |
+| Review Android code | `@AXIOM` + paste your Kotlin file |
+| Review Flutter code | `/flutter-review` + paste your Dart file |
+| Optimize a slow screen | `/perf-audit` + describe the screen |
+| Prepare a release | `/release-prep` |
+| Generate release notes | `@SCRIBE` + paste your git log |
+
+---
+
+## Before vs After
+
+### Android — Memory Leak
+
+| | |
+|---|---|
+| **Input** | `HomeViewModel` holding a `Context` reference |
+| **Agent** | `@AXIOM` |
+| **Output** | `CRITICAL: Context leak via ViewModel — replace with ApplicationContext or use WeakReference` |
+| **Result** | Leak eliminated before PR merge |
+
+### Android — ANR
+
+| | |
+|---|---|
+| **Input** | Network call on main thread in `onCreate()` |
+| **Agent** | `@AXIOM` |
+| **Output** | `CRITICAL: Blocking IO on main thread — move to viewModelScope.launch(Dispatchers.IO)` |
+| **Result** | ANR fixed with coroutine scope and dispatcher |
+
+### Flutter — Widget Review
+
+| | |
+|---|---|
+| **Input** | `HomeScreen` with setState on a 400-line widget |
+| **Agent** | `/flutter-review` |
+| **Output** | 9 ranked findings: draft hydration in build(), ScrollController leak, missing semanticLabels, touch targets below 48dp |
+| **Result** | Findings fixed before merge, accessibility score improved |
+
+---
+
+## Why Mobile Agency?
+
+| | Generic AI prompt repos | Mobile Agency |
+|---|---|---|
+| Platform knowledge | Generic | Android · iOS · Flutter · React Native · Unity · Unreal |
+| Agent personalities | None | 13 named specialists with opinions |
+| Real workflows | No | 9 end-to-end processes |
+| Real examples | Toy pseudocode | Production code input/output pairs |
+| Installable | Copy-paste | `npx mobile-agency install` |
+| Severity levels | None | CRITICAL · WARNING · INFO |
+| Slash commands | No | 28 composable skills |
+
+---
+
+## Agent Roster
 
 ### Platform Agents
 
 | Agent | Platform | Personality | Mission |
 |---|---|---|---|
 | **AXIOM** | Android | Battle-scarred architect. Zero tolerance for GlobalScope. Has survived 3 Jetpack migrations. | Reviews Kotlin/Compose for Clean Architecture, leaks, and anti-patterns |
-| **SWIFT** | iOS | Elegant, memory-safety obsessed. Will shame your retain cycles if necessary. | Reviews Swift/SwiftUI for memory safety, concurrency, and idiomatic patterns |
+| **SWIFT** | iOS | Elegant, memory-safety obsessed. Will shame your retain cycles. | Reviews Swift/SwiftUI for memory safety, concurrency, and idiomatic patterns |
 | **DART** | Flutter | Pixel-perfect widget obsessive. Counts rebuilds like a miser counts coins. | Reviews Flutter for rebuild efficiency, state management, and performance |
 | **BRIDGE** | React Native | JSI evangelist. Tracks every bridge crossing like a border guard. | Finds bridge bottlenecks, re-renders, and New Architecture migration paths |
 | **FORGE** | Unity | Game systems architect. Frame budget is sacred. | Reviews C# for GC pressure, Update() abuse, and draw call inefficiency |
-| **UNREAL** | Unreal Engine | Blueprint-to-C++ enforcer. | Blueprint optimization, C++ migration, and Tick() abuse |
+| **UNREAL** | Unreal Engine | Blueprint-to-C++ enforcer. Every Tick() must earn its place. | Blueprint optimization, C++ migration, and Tick() abuse |
 
 ### Cross-Platform Agents
 
@@ -68,9 +155,9 @@ Each agent has a name, a personality, and a clear mission. They're not generic "
 
 ---
 
-## The Skills Library (28 skills)
+## Skills Library
 
-Skills are smaller than agents — focused prompt modules you can use inline or compose into agents.
+28 focused prompt modules — use inline or compose with agents.
 
 ### Android
 | Skill | What It Does |
@@ -114,9 +201,9 @@ Skills are smaller than agents — focused prompt modules you can use inline or 
 | `/blueprint-to-cpp` | Unreal Blueprint → C++ with explanation |
 
 ### Cross-Platform
-| Skill | Why It Gets Shared |
+| Skill | What It Does |
 |---|---|
-| `/grill-mobile` | 20 questions before any mobile code is written — the most shareable skill |
+| `/grill-mobile` | 20 questions before any mobile code is written |
 | `/crash-triage` | Paste stacktrace → root cause → fix |
 | `/perf-audit` | Slow screen → systematic profiling guide |
 | `/store-listing` | Conversation → ASO-optimized listing copy |
@@ -128,9 +215,9 @@ Skills are smaller than agents — focused prompt modules you can use inline or 
 
 ---
 
-## The Workflows (9 workflows)
+## Workflows
 
-End-to-end processes that combine agents and skills. This is the differentiator — no other mobile AI toolkit has these.
+9 end-to-end processes that chain agents and skills together.
 
 | Workflow | What It Covers |
 |---|---|
@@ -150,7 +237,7 @@ End-to-end processes that combine agents and skills. This is the differentiator 
 
 **[mobile-karpathy.md](mobile-karpathy.md)** — 4 rules that stop AI coding agents shipping broken mobile apps.
 
-Add it to your project's CLAUDE.md. Share it independently. It's designed to travel.
+Add it to your project's `CLAUDE.md`. Share it independently. It's designed to travel.
 
 ```
 Rule 1 — Ask the API level before assuming
@@ -163,7 +250,7 @@ Rule 4 — Performance is a feature, not an afterthought
 
 ## Real Examples
 
-Every agent comes with a real worked example (not toy pseudocode):
+Every agent ships with a real worked example — production code in, structured findings out.
 
 | Example | Input | Output |
 |---|---|---|
@@ -177,13 +264,14 @@ Every agent comes with a real worked example (not toy pseudocode):
 
 ## Multi-Tool Support
 
-| Tool | Install |
+| Tool | How to Use |
 |---|---|
 | Claude Code | `npx mobile-agency install` |
-| Claude Code (local) | `git clone … && ./install.sh` |
 | Cursor | `npx mobile-agency install --tool cursor` |
 | Windsurf | `npx mobile-agency install --tool windsurf` |
-| Xcode (2026) | `./scripts/install-xcode.sh` |
+| GitHub Copilot | Paste agent system prompt into Copilot instructions |
+| Codex / OpenAI | Use agents as system prompts via API or CLI |
+| Local repo | `git clone` + `./install.sh` |
 
 ---
 
@@ -191,19 +279,22 @@ Every agent comes with a real worked example (not toy pseudocode):
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the full guide.
 
-Short version:
 - Every agent needs a personality, not just a function
-- Every agent needs a real worked example
+- Every agent needs a real worked example using production code
 - Run your agent against at least 2 real files before submitting
 - Skills must have a slash command name
+- Workflows must list every agent and skill used, step by step
 
 ---
 
 ## Community
 
-- [GitHub Discussions](../../discussions) — share your output, ask questions
-- [Issues](../../issues) — bug reports, new agent requests
+- [GitHub Discussions](https://github.com/salmanashraf/mobile-agency/discussions) — share your output, ask questions, show and tell
+- [Issues](https://github.com/salmanashraf/mobile-agency/issues) — bug reports, new agent requests
+
+If Mobile Agency saved you time, a star helps others find it.  
+[![GitHub Stars](https://img.shields.io/github/stars/salmanashraf/mobile-agency?style=social)](https://github.com/salmanashraf/mobile-agency/stargazers)
 
 ---
 
-*Skills for Real Mobile Engineers. Straight from the trenches.*
+*Built for mobile engineers who ship real apps.*
