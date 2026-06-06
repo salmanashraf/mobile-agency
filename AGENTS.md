@@ -93,6 +93,7 @@ Use the agent at agents/android/code-reviewer/agent.md to review this file:
 | RN Performance Optimizer | `agents/react-native/performance-optimizer/` | React Native | Finds re-render bottlenecks and bridge overhead |
 | Unity Shader Generator | `agents/unity/shader-generator/` | Unity | Produces HLSL/ShaderLab shaders from a visual description |
 | Unreal Blueprint Advisor | `agents/unreal/blueprint-advisor/` | Unreal | Blueprint → C++ migration and logic advice |
+| MRecall | `agents/cross-platform/mrecall/` | All | Mobile knowledge graph + context preservation across AI tools |
 | Release Notes Generator | `agents/cross-platform/release-notes-generator/` | All | Git commits → user-facing release notes |
 | CI/CD Pipeline Generator | `agents/cross-platform/ci-cd-generator/` | All | Generates GitHub Actions / Bitrise / Fastlane configs |
 | Store Listing Writer | `agents/cross-platform/store-listing-writer/` | All | Play Store / App Store descriptions optimised for ASO |

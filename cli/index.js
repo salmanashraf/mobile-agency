@@ -45,6 +45,7 @@ const AGENTS = {
   'crasher':                 { file: 'agents/cross-platform/crasher/agent.md',                 platform: 'cross'   },
   'figma':                   { file: 'agents/cross-platform/figma/agent.md',                   platform: 'cross'   },
   'launchpad':               { file: 'agents/cross-platform/launchpad/agent.md',               platform: 'cross'   },
+  'mrecall':                 { file: 'agents/cross-platform/mrecall/agent.md',                 platform: 'cross'   },
   'perf':                    { file: 'agents/cross-platform/perf/agent.md',                    platform: 'cross'   },
   'pipeline':                { file: 'agents/cross-platform/pipeline/agent.md',                platform: 'cross'   },
   'release-notes-generator': { file: 'agents/cross-platform/release-notes-generator/agent.md', platform: 'cross'   },
@@ -99,6 +100,8 @@ const SKILLS = {
   'deeplink-debug':     { file: 'skills/cross-platform/deeplink-debug.md',     platform: 'cross'   },
   'feature-slice':      { file: 'skills/cross-platform/feature-slice.md',      platform: 'cross'   },
   'grill-mobile':       { file: 'skills/cross-platform/grill-mobile.md',       platform: 'cross'   },
+  'mrecall-graph':      { file: 'skills/cross-platform/mrecall-graph.md',      platform: 'cross'   },
+  'mrecall-save':       { file: 'skills/cross-platform/mrecall-save.md',       platform: 'cross'   },
   'perf-audit':         { file: 'skills/cross-platform/perf-audit.md',         platform: 'cross'   },
   'release-prep':       { file: 'skills/cross-platform/release-prep.md',       platform: 'cross'   },
   'store-listing':      { file: 'skills/cross-platform/store-listing.md',      platform: 'cross'   },
@@ -117,6 +120,7 @@ const WORKFLOWS = {
   'new-project-setup': { file: 'workflows/new-project-setup.md' },
   'app-launch':        { file: 'workflows/app-launch.md'        },
   'perf-sprint':       { file: 'workflows/perf-sprint.md'       },
+  'mrecall-workflow':  { file: 'workflows/mrecall-workflow.md'  },
 };
 
 const PLATFORM_AGENTS = {
@@ -124,38 +128,38 @@ const PLATFORM_AGENTS = {
     'android-crash-analyzer', 'axiom', 'code-reviewer', 'compose-screen-builder',
     'compose-ui-reviewer', 'crash-analyzer-android',
     // cross-platform bundled for android
-    'crasher', 'sentinel', 'perf', 'scribe', 'pipeline', 'figma', 'launchpad',
+    'crasher', 'sentinel', 'mrecall', 'perf', 'scribe', 'pipeline', 'figma', 'launchpad',
     'accessibility-auditor', 'ci-cd-generator', 'release-notes-generator',
     'security-scanner', 'store-listing-writer',
   ],
   ios: [
     'crash-analyzer-ios', 'swift-reviewer', 'swift',
     // cross-platform bundled for ios
-    'crasher', 'sentinel', 'perf', 'scribe', 'pipeline', 'figma', 'launchpad',
+    'crasher', 'sentinel', 'mrecall', 'perf', 'scribe', 'pipeline', 'figma', 'launchpad',
     'accessibility-auditor', 'ci-cd-generator', 'release-notes-generator',
     'security-scanner', 'store-listing-writer',
   ],
   flutter: [
     'bloc-feature-builder', 'dart', 'widget-generator',
     // cross-platform bundled for flutter
-    'crasher', 'sentinel', 'perf', 'scribe', 'pipeline', 'figma', 'launchpad',
+    'crasher', 'sentinel', 'mrecall', 'perf', 'scribe', 'pipeline', 'figma', 'launchpad',
     'accessibility-auditor', 'ci-cd-generator', 'release-notes-generator',
     'security-scanner', 'store-listing-writer',
   ],
   rn: [
     'bridge', 'performance-optimizer',
     // cross-platform bundled for rn
-    'crasher', 'sentinel', 'perf', 'scribe', 'pipeline', 'figma', 'launchpad',
+    'crasher', 'sentinel', 'mrecall', 'perf', 'scribe', 'pipeline', 'figma', 'launchpad',
     'accessibility-auditor', 'ci-cd-generator', 'release-notes-generator',
     'security-scanner', 'store-listing-writer',
   ],
   gaming: [
     'forge', 'unreal', 'shader-generator', 'blueprint-advisor',
     // cross-platform bundled for gaming
-    'perf',
+    'mrecall', 'perf',
   ],
   cross: [
-    'accessibility-auditor', 'ci-cd-generator', 'crasher', 'figma', 'launchpad',
+    'accessibility-auditor', 'ci-cd-generator', 'crasher', 'figma', 'launchpad', 'mrecall',
     'perf', 'pipeline', 'release-notes-generator', 'scribe', 'security-scanner',
     'sentinel', 'store-listing-writer',
   ],
@@ -167,7 +171,7 @@ const PLATFORM_SKILLS = {
     'kotlin-modernize', 'proguard-rules',
     // cross-platform bundled for android
     'accessibility-audit', 'api-versioning', 'crash-analysis', 'crash-triage',
-    'deeplink-debug', 'feature-slice', 'grill-mobile', 'perf-audit',
+    'deeplink-debug', 'feature-slice', 'grill-mobile', 'mrecall-graph', 'mrecall-save', 'perf-audit',
     'release-prep', 'security-scan', 'store-listing',
   ],
   ios: [
@@ -176,14 +180,14 @@ const PLATFORM_SKILLS = {
     'unit-testing', 'xcode-warnings',
     // cross-platform bundled for ios
     'accessibility-audit', 'api-versioning', 'crash-analysis', 'crash-triage',
-    'deeplink-debug', 'feature-slice', 'grill-mobile', 'perf-audit',
+    'deeplink-debug', 'feature-slice', 'grill-mobile', 'mrecall-graph', 'mrecall-save', 'perf-audit',
     'release-prep', 'security-scan', 'store-listing',
   ],
   flutter: [
     'dart-modernize', 'flutter-review', 'flutter-tdd', 'widget-extract', 'widget-gen',
     // cross-platform bundled for flutter
     'accessibility-audit', 'api-versioning', 'crash-analysis', 'crash-triage',
-    'deeplink-debug', 'feature-slice', 'grill-mobile', 'perf-audit',
+    'deeplink-debug', 'feature-slice', 'grill-mobile', 'mrecall-graph', 'mrecall-save', 'perf-audit',
     'release-prep', 'security-scan', 'store-listing',
   ],
   rn: [
@@ -191,15 +195,15 @@ const PLATFORM_SKILLS = {
     'rn-review', 'rn-tdd',
     // cross-platform bundled for rn
     'accessibility-audit', 'api-versioning', 'crash-analysis', 'crash-triage',
-    'deeplink-debug', 'feature-slice', 'grill-mobile', 'perf-audit',
+    'deeplink-debug', 'feature-slice', 'grill-mobile', 'mrecall-graph', 'mrecall-save', 'perf-audit',
     'release-prep', 'security-scan', 'store-listing',
   ],
   gaming: [
-    'blueprint-to-cpp', 'game-perf', 'shader-gen', 'unity-tdd', 'shader-review',
+    'blueprint-to-cpp', 'game-perf', 'mrecall-graph', 'mrecall-save', 'shader-gen', 'unity-tdd', 'shader-review',
   ],
   cross: [
     'accessibility-audit', 'api-versioning', 'crash-analysis', 'crash-triage',
-    'deeplink-debug', 'feature-slice', 'grill-mobile', 'perf-audit',
+    'deeplink-debug', 'feature-slice', 'grill-mobile', 'mrecall-graph', 'mrecall-save', 'perf-audit',
     'release-prep', 'security-scan', 'store-listing',
   ],
 };

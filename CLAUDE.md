@@ -7,8 +7,8 @@
 
 ## What This Repo Is
 
-The complete AI dev team for mobile engineers. 13 personality-driven agents, 28 composable
-skills, and 9 end-to-end workflows for Android, iOS, Flutter, React Native, Unity, and Unreal.
+The complete AI dev team for mobile engineers. 14 personality-driven agents, 30 composable
+skills, and 10 end-to-end workflows for Android, iOS, Flutter, React Native, Unity, and Unreal.
 
 Each agent has a name, a personality, a mission, and a real worked example. Drop any agent
 into Claude Code as a system prompt and it works immediately.
@@ -33,7 +33,7 @@ into Claude Code as a system prompt and it works immediately.
 
 ```
 mobile-agency/
-├── agents/                   ← 13 personality-driven agents
+├── agents/                   ← 14 personality-driven agents
 │   ├── android/axiom/        ← AXIOM (Android architect)
 │   ├── ios/swift/            ← SWIFT (iOS engineer)
 │   ├── flutter/dart/         ← DART (Flutter specialist)
@@ -45,18 +45,19 @@ mobile-agency/
 │       ├── crasher/          ← CRASHER (crash investigator)
 │       ├── sentinel/         ← SENTINEL (security auditor)
 │       ├── launchpad/        ← LAUNCHPAD (ASO writer)
+│       ├── mrecall/          ← MRECALL (context preservation)
 │       ├── pipeline/         ← PIPELINE (CI/CD)
 │       ├── perf/             ← PERF (performance)
 │       ├── scribe/           ← SCRIBE (release notes)
 │       └── figma/            ← FIGMA (design-to-code)
-├── skills/                   ← 28 composable skill modules
+├── skills/                   ← 30 composable skill modules
 │   ├── android/              ← android-tdd, compose-review, compose-migration, ...
 │   ├── ios/                  ← ios-tdd, swiftui-review, swift-concurrency, ...
 │   ├── flutter/              ← flutter-tdd, flutter-review, widget-extract, ...
 │   ├── react-native/         ← rn-tdd, rn-review, new-arch-migrate, ...
 │   ├── gaming/               ← unity-tdd, shader-gen, game-perf, blueprint-to-cpp
 │   └── cross-platform/       ← grill-mobile, crash-triage, perf-audit, ...
-├── workflows/                ← 9 end-to-end process guides
+├── workflows/                ← 10 end-to-end process guides
 ├── mobile-karpathy.md        ← 4 rules that prevent AI mobile mistakes (standalone)
 ├── examples/                 ← Real input/output pairs for each agent
 ├── templates/                ← Scaffold for new agents / skills / workflows
@@ -78,6 +79,7 @@ mobile-agency/
 | **UNREAL** | `agents/gaming/unreal/` | Unreal | Blueprint → C++ + performance + GC safety |
 | **CRASHER** | `agents/cross-platform/crasher/` | All | Crash log → root cause → fix |
 | **SENTINEL** | `agents/cross-platform/sentinel/` | All | OWASP Mobile Top 10 security audit |
+| **MRECALL** | `agents/cross-platform/mrecall/` | All | Mobile knowledge graph + context preservation |
 | **LAUNCHPAD** | `agents/cross-platform/launchpad/` | All | Play Store + App Store ASO-optimized copy |
 | **PIPELINE** | `agents/cross-platform/pipeline/` | All | GitHub Actions / Bitrise / Fastlane generation |
 | **PERF** | `agents/cross-platform/perf/` | All | Frame budget + profiling + optimization |

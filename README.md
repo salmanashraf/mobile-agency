@@ -2,7 +2,7 @@
 
 **The complete AI dev team for mobile engineers.**
 
-13 personality-driven agents · 28 composable skills · 9 end-to-end workflows  
+14 personality-driven agents · 30 composable skills · 10 end-to-end workflows
 Android · iOS · Flutter · React Native · Unity · Unreal
 
 [![npm](https://img.shields.io/npm/v/mobile-agency?color=CB3837&label=npm)](https://www.npmjs.com/package/mobile-agency)
@@ -137,12 +137,12 @@ Not sure where to begin? Pick your situation:
 | | Generic AI prompt repos | Mobile Agency |
 |---|---|---|
 | Platform knowledge | Generic | Android · iOS · Flutter · React Native · Unity · Unreal |
-| Agent personalities | None | 13 named specialists with opinions |
-| Real workflows | No | 9 end-to-end processes |
+| Agent personalities | None | 14 named specialists with opinions |
+| Real workflows | No | 10 end-to-end processes |
 | Real examples | Toy pseudocode | Production code input/output pairs |
 | Installable | Copy-paste | `npx mobile-agency install` |
 | Severity levels | None | CRITICAL · WARNING · INFO |
-| Slash commands | No | 28 composable skills |
+| Slash commands | No | 30 composable skills |
 
 ---
 
@@ -165,6 +165,7 @@ Not sure where to begin? Pick your situation:
 |---|---|---|
 | **CRASHER** | Forensic investigator. Nothing escapes. | Crash log → root cause → concrete fix, all platforms |
 | **SENTINEL** | Paranoid by design. Every input is malicious until proven otherwise. | OWASP Mobile Top 10 security audit |
+| **MRECALL** | The archivist. Never loses anything. | Mobile knowledge graph + context preservation across any AI tool |
 | **LAUNCHPAD** | ASO-obsessed conversion scientist. | Play Store + App Store copy, keywords, screenshot brief |
 | **PIPELINE** | Automation purist. If it's done manually twice, it's a pipeline waiting to exist. | GitHub Actions / Bitrise / Fastlane configuration |
 | **PERF** | Frame-rate zealot. Carries a stopwatch everywhere. | Profile slow screens → concrete optimization plan |
@@ -175,7 +176,7 @@ Not sure where to begin? Pick your situation:
 
 ## Skills Library
 
-28 focused prompt modules — use inline or compose with agents.
+30 focused prompt modules — use inline or compose with agents.
 
 ### Android
 | Skill | What It Does |
@@ -230,12 +231,14 @@ Not sure where to begin? Pick your situation:
 | `/accessibility-audit` | WCAG 2.1 AA + platform accessibility review |
 | `/api-versioning` | API deprecation strategy for mobile clients |
 | `/deeplink-debug` | Diagnoses broken deep links across Android and iOS |
+| `/mrecall-save` | Checkpoint your session — resume on any AI tool instantly |
+| `/mrecall-graph` | Build a mobile knowledge graph from your codebase files |
 
 ---
 
 ## Workflows
 
-9 end-to-end processes that chain agents and skills together.
+10 end-to-end processes that chain agents and skills together.
 
 | Workflow | What It Covers |
 |---|---|
@@ -248,6 +251,25 @@ Not sure where to begin? Pick your situation:
 | `perf-sprint` | Baseline → /perf-audit → fix → re-measure → document |
 | `game-level` | Design doc → FORGE/UNREAL → /shader-gen → /game-perf → /unity-tdd → playtest |
 | `new-project-setup` | /grill-mobile → architecture → CI → security baseline → test infrastructure |
+| `mrecall-workflow` | Restore context → capture decisions → save MRECALL.md → hand off across AI tools |
+
+---
+
+## MRecall — Never Lose Context
+
+When tokens run out or you switch AI tools, your entire session context — architectural decisions, agent findings, code in progress — vanishes. MRecall captures everything into a single portable `MRECALL.md` file.
+
+```
+/mrecall save     → produces MRECALL.md (full knowledge graph + session context)
+/mrecall restore  → any AI tool loads it and continues instantly
+/mrecall graph    → builds mobile architecture graph from your code files
+```
+
+Works across Claude Code, Cursor, Windsurf, ChatGPT, and Gemini. Integrates with every Mobile Agency agent — AXIOM findings, CRASHER analysis, and LAUNCHPAD copy are all preserved in the same file.
+
+Inspired by Graphify's token reduction approach, built for mobile architecture. Up to 80× token reduction on large mobile projects vs reading raw files.
+
+Full guide: [docs/mrecall.md](docs/mrecall.md)
 
 ---
 
