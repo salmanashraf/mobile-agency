@@ -2,7 +2,7 @@
 
 **The complete AI dev team for mobile engineers.**
 
-14 personality-driven agents · 30 composable skills · 10 end-to-end workflows
+15 personality-driven agents · 30 composable skills · 11 end-to-end workflows
 Android · iOS · Flutter · React Native · Unity · Unreal
 
 [![npm](https://img.shields.io/npm/v/mobile-agency?color=CB3837&label=npm)](https://www.npmjs.com/package/mobile-agency)
@@ -98,6 +98,7 @@ Not sure where to begin? Pick your situation:
 | Optimize a slow screen | `/perf-audit` + describe the screen |
 | Prepare a release | `/release-prep` |
 | Generate release notes | `@SCRIBE` + paste your git log |
+| Build an app from idea to store | `@APPFORGE` + answer the discovery questions |
 
 ---
 
@@ -137,8 +138,8 @@ Not sure where to begin? Pick your situation:
 | | Generic AI prompt repos | Mobile Agency |
 |---|---|---|
 | Platform knowledge | Generic | Android · iOS · Flutter · React Native · Unity · Unreal |
-| Agent personalities | None | 14 named specialists with opinions |
-| Real workflows | No | 10 end-to-end processes |
+| Agent personalities | None | 15 named specialists with opinions |
+| Real workflows | No | 11 end-to-end processes |
 | Real examples | Toy pseudocode | Production code input/output pairs |
 | Installable | Copy-paste | `npx mobile-agency install` |
 | Severity levels | None | CRITICAL · WARNING · INFO |
@@ -165,6 +166,7 @@ Not sure where to begin? Pick your situation:
 |---|---|---|
 | **CRASHER** | Forensic investigator. Nothing escapes. | Crash log → root cause → concrete fix, all platforms |
 | **SENTINEL** | Paranoid by design. Every input is malicious until proven otherwise. | OWASP Mobile Top 10 security audit |
+| **APPFORGE** | End-to-end product lead. Practical, launch-focused, allergic to vague MVPs. | Rough app idea → PRD → tasks → QA → Play Store launch prep |
 | **MRECALL** | The archivist. Never loses anything. | Mobile knowledge graph + context preservation across any AI tool |
 | **LAUNCHPAD** | ASO-obsessed conversion scientist. | Play Store + App Store copy, keywords, screenshot brief |
 | **PIPELINE** | Automation purist. If it's done manually twice, it's a pipeline waiting to exist. | GitHub Actions / Bitrise / Fastlane configuration |
@@ -238,7 +240,7 @@ Not sure where to begin? Pick your situation:
 
 ## Workflows
 
-10 end-to-end processes that chain agents and skills together.
+11 end-to-end processes that chain agents and skills together.
 
 | Workflow | What It Covers |
 |---|---|
@@ -252,6 +254,29 @@ Not sure where to begin? Pick your situation:
 | `game-level` | Design doc → FORGE/UNREAL → /shader-gen → /game-perf → /unity-tdd → playtest |
 | `new-project-setup` | /grill-mobile → architecture → CI → security baseline → test infrastructure |
 | `mrecall-workflow` | Restore context → capture decisions → save MRECALL.md → hand off across AI tools |
+| `appforge-workflow` | App idea → PRD → design plan → tasks → implementation gates → QA → Play Store |
+
+---
+
+## APPFORGE — Idea to Store
+
+APPFORGE turns a rough mobile app idea into a small, shippable MVP plan and Play Store launch package.
+
+```
+@APPFORGE
+1. Discovery        → refined ideas + best MVP recommendation
+2. PRD              → PRD.md
+3. Free design plan → screens, wireframes, design system, states
+4. Task breakdown   → TASKS.md + DEPENDENCIES.md + ROADMAP.md
+5. Implementation   → one approved subtask at a time
+6. UI match review  → layout, spacing, colors, accessibility
+7. Full QA          → QA_REPORT.md + launch readiness score
+8. Store prep       → PLAYSTORE_LISTING.md + SCREENSHOT_PLAN.md + RELEASE_CHECKLIST.md
+```
+
+APPFORGE does not write code until the PRD, design plan, and task breakdown are approved. It pairs with AXIOM, SWIFT, DART, and BRIDGE for platform review, then LAUNCHPAD and `/release-prep` for store launch.
+
+Mobile MCP fits the QA stage next: use it for emulator, simulator, or real-device automation once the app is ready for flow testing.
 
 ---
 
@@ -299,6 +324,7 @@ Every agent ships with a real worked example — production code in, structured 
 | Flutter review | [`examples/flutter-review/input.dart`](examples/flutter-review/input.dart) | [`output.md`](examples/flutter-review/output.md) |
 | Store listing | [`examples/store-listing/input.md`](examples/store-listing/input.md) | [`output.md`](examples/store-listing/output.md) |
 | New screen workflow | [`examples/new-screen-workflow/figma-spec.md`](examples/new-screen-workflow/figma-spec.md) | [`output.kt`](examples/new-screen-workflow/output.kt) |
+| App idea to store | [`agents/cross-platform/appforge/agent.md`](agents/cross-platform/appforge/agent.md) | Stage-gated discovery, PRD, design, tasks, QA, and store prep |
 
 ---
 

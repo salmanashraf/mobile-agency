@@ -44,7 +44,7 @@ _cp() {
 # Outputs: "<name> <src_path>" lines
 _agent_lines() {
     # Cross-platform (always)
-    for agent in crasher launchpad sentinel pipeline scribe perf figma mrecall \
+    for agent in appforge crasher launchpad sentinel pipeline scribe perf figma mrecall \
                  accessibility-auditor ci-cd-generator release-notes-generator \
                  security-scanner store-listing-writer; do
         src="agents/cross-platform/$agent/agent.md"
@@ -156,7 +156,7 @@ _skill_lines() {
 # Outputs: "<name> <src_path>" lines
 _workflow_lines() {
     for wf in feature-ship release-cycle game-level crash-to-fix ci-setup \
-               new-screen new-project-setup app-launch perf-sprint mrecall-workflow; do
+               new-screen new-project-setup app-launch perf-sprint mrecall-workflow appforge-workflow; do
         echo "$wf workflows/$wf.md"
     done
 }
@@ -198,7 +198,8 @@ install_claude() {
     echo "   Slash commands available:"
     echo ""
     echo "   Cross-platform agents:"
-    echo "   /crasher  /sentinel  /mrecall  /scribe  /pipeline  /perf  /launchpad  /figma"
+    echo "   /appforge  /crasher  /sentinel  /mrecall  /scribe  /pipeline  /perf"
+    echo "   /launchpad  /figma"
     echo "   /accessibility-auditor  /ci-cd-generator  /release-notes-generator"
     echo "   /security-scanner  /store-listing-writer"
     echo ""
@@ -210,7 +211,8 @@ install_claude() {
     echo ""
     echo "   Workflows:"
     echo "   /feature-ship  /release-cycle  /crash-to-fix  /ci-setup  /new-screen"
-    echo "   /new-project-setup  /app-launch  /perf-sprint  /game-level  /mrecall-workflow"
+    echo "   /new-project-setup  /app-launch  /perf-sprint  /game-level"
+    echo "   /mrecall-workflow  /appforge-workflow"
     if [[ "$PLATFORM" == "android" || "$PLATFORM" == "all" ]]; then
     echo ""
     echo "   Android agents:"

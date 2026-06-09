@@ -41,6 +41,7 @@ const AGENTS = {
   'blueprint-advisor':       { file: 'agents/unreal/blueprint-advisor/agent.md',               platform: 'gaming'  },
   // Cross-platform
   'accessibility-auditor':   { file: 'agents/cross-platform/accessibility-auditor/agent.md',   platform: 'cross'   },
+  'appforge':                { file: 'agents/cross-platform/appforge/agent.md',                platform: 'cross'   },
   'ci-cd-generator':         { file: 'agents/cross-platform/ci-cd-generator/agent.md',         platform: 'cross'   },
   'crasher':                 { file: 'agents/cross-platform/crasher/agent.md',                 platform: 'cross'   },
   'figma':                   { file: 'agents/cross-platform/figma/agent.md',                   platform: 'cross'   },
@@ -121,6 +122,7 @@ const WORKFLOWS = {
   'app-launch':        { file: 'workflows/app-launch.md'        },
   'perf-sprint':       { file: 'workflows/perf-sprint.md'       },
   'mrecall-workflow':  { file: 'workflows/mrecall-workflow.md'  },
+  'appforge-workflow': { file: 'workflows/appforge-workflow.md' },
 };
 
 const PLATFORM_AGENTS = {
@@ -128,38 +130,38 @@ const PLATFORM_AGENTS = {
     'android-crash-analyzer', 'axiom', 'code-reviewer', 'compose-screen-builder',
     'compose-ui-reviewer', 'crash-analyzer-android',
     // cross-platform bundled for android
-    'crasher', 'sentinel', 'mrecall', 'perf', 'scribe', 'pipeline', 'figma', 'launchpad',
+    'appforge', 'crasher', 'sentinel', 'mrecall', 'perf', 'scribe', 'pipeline', 'figma', 'launchpad',
     'accessibility-auditor', 'ci-cd-generator', 'release-notes-generator',
     'security-scanner', 'store-listing-writer',
   ],
   ios: [
     'crash-analyzer-ios', 'swift-reviewer', 'swift',
     // cross-platform bundled for ios
-    'crasher', 'sentinel', 'mrecall', 'perf', 'scribe', 'pipeline', 'figma', 'launchpad',
+    'appforge', 'crasher', 'sentinel', 'mrecall', 'perf', 'scribe', 'pipeline', 'figma', 'launchpad',
     'accessibility-auditor', 'ci-cd-generator', 'release-notes-generator',
     'security-scanner', 'store-listing-writer',
   ],
   flutter: [
     'bloc-feature-builder', 'dart', 'widget-generator',
     // cross-platform bundled for flutter
-    'crasher', 'sentinel', 'mrecall', 'perf', 'scribe', 'pipeline', 'figma', 'launchpad',
+    'appforge', 'crasher', 'sentinel', 'mrecall', 'perf', 'scribe', 'pipeline', 'figma', 'launchpad',
     'accessibility-auditor', 'ci-cd-generator', 'release-notes-generator',
     'security-scanner', 'store-listing-writer',
   ],
   rn: [
     'bridge', 'performance-optimizer',
     // cross-platform bundled for rn
-    'crasher', 'sentinel', 'mrecall', 'perf', 'scribe', 'pipeline', 'figma', 'launchpad',
+    'appforge', 'crasher', 'sentinel', 'mrecall', 'perf', 'scribe', 'pipeline', 'figma', 'launchpad',
     'accessibility-auditor', 'ci-cd-generator', 'release-notes-generator',
     'security-scanner', 'store-listing-writer',
   ],
   gaming: [
     'forge', 'unreal', 'shader-generator', 'blueprint-advisor',
     // cross-platform bundled for gaming
-    'mrecall', 'perf',
+    'appforge', 'mrecall', 'perf',
   ],
   cross: [
-    'accessibility-auditor', 'ci-cd-generator', 'crasher', 'figma', 'launchpad', 'mrecall',
+    'accessibility-auditor', 'appforge', 'ci-cd-generator', 'crasher', 'figma', 'launchpad', 'mrecall',
     'perf', 'pipeline', 'release-notes-generator', 'scribe', 'security-scanner',
     'sentinel', 'store-listing-writer',
   ],

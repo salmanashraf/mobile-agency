@@ -7,8 +7,8 @@
 
 ## What This Repo Is
 
-The complete AI dev team for mobile engineers. 14 personality-driven agents, 30 composable
-skills, and 10 end-to-end workflows for Android, iOS, Flutter, React Native, Unity, and Unreal.
+The complete AI dev team for mobile engineers. 15 personality-driven agents, 30 composable
+skills, and 11 end-to-end workflows for Android, iOS, Flutter, React Native, Unity, and Unreal.
 
 Each agent has a name, a personality, a mission, and a real worked example. Drop any agent
 into Claude Code as a system prompt and it works immediately.
@@ -33,7 +33,7 @@ into Claude Code as a system prompt and it works immediately.
 
 ```
 mobile-agency/
-├── agents/                   ← 14 personality-driven agents
+├── agents/                   ← 15 personality-driven agents
 │   ├── android/axiom/        ← AXIOM (Android architect)
 │   ├── ios/swift/            ← SWIFT (iOS engineer)
 │   ├── flutter/dart/         ← DART (Flutter specialist)
@@ -42,6 +42,7 @@ mobile-agency/
 │   │   ├── forge/            ← FORGE (Unity architect)
 │   │   └── unreal/           ← UNREAL (Unreal specialist)
 │   └── cross-platform/
+│       ├── appforge/         ← APPFORGE (idea-to-store)
 │       ├── crasher/          ← CRASHER (crash investigator)
 │       ├── sentinel/         ← SENTINEL (security auditor)
 │       ├── launchpad/        ← LAUNCHPAD (ASO writer)
@@ -57,7 +58,7 @@ mobile-agency/
 │   ├── react-native/         ← rn-tdd, rn-review, new-arch-migrate, ...
 │   ├── gaming/               ← unity-tdd, shader-gen, game-perf, blueprint-to-cpp
 │   └── cross-platform/       ← grill-mobile, crash-triage, perf-audit, ...
-├── workflows/                ← 10 end-to-end process guides
+├── workflows/                ← 11 end-to-end process guides
 ├── mobile-karpathy.md        ← 4 rules that prevent AI mobile mistakes (standalone)
 ├── examples/                 ← Real input/output pairs for each agent
 ├── templates/                ← Scaffold for new agents / skills / workflows
@@ -77,6 +78,7 @@ mobile-agency/
 | **BRIDGE** | `agents/react-native/bridge/` | React Native | Bridge calls + re-renders + New Architecture |
 | **FORGE** | `agents/gaming/forge/` | Unity | C# performance + frame budget + architecture |
 | **UNREAL** | `agents/gaming/unreal/` | Unreal | Blueprint → C++ + performance + GC safety |
+| **APPFORGE** | `agents/cross-platform/appforge/` | All | Rough app idea → PRD → tasks → QA → Play Store |
 | **CRASHER** | `agents/cross-platform/crasher/` | All | Crash log → root cause → fix |
 | **SENTINEL** | `agents/cross-platform/sentinel/` | All | OWASP Mobile Top 10 security audit |
 | **MRECALL** | `agents/cross-platform/mrecall/` | All | Mobile knowledge graph + context preservation |
