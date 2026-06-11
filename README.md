@@ -2,7 +2,7 @@
 
 **The complete AI dev team for mobile engineers.**
 
-15 personality-driven agents · 30 composable skills · 11 end-to-end workflows
+16 personality-driven agents · 31 composable skills · 13 end-to-end workflows
 Android · iOS · Flutter · React Native · Unity · Unreal
 
 [![npm](https://img.shields.io/npm/v/mobile-agency?color=CB3837&label=npm)](https://www.npmjs.com/package/mobile-agency)
@@ -96,6 +96,8 @@ Not sure where to begin? Pick your situation:
 | Review Android code | `@AXIOM` + paste your Kotlin file |
 | Review Flutter code | `/flutter-review` + paste your Dart file |
 | Optimize a slow screen | `/perf-audit` + describe the screen |
+| Test on a device or emulator | `/mobile-mcp-qa` + provide app id and flow |
+| Build, test, and verify a feature | `@MOBILE-HARNESS` + approved PRD/design/tasks |
 | Prepare a release | `/release-prep` |
 | Generate release notes | `@SCRIBE` + paste your git log |
 | Build an app from idea to store | `@APPFORGE` + answer the discovery questions |
@@ -138,12 +140,12 @@ Not sure where to begin? Pick your situation:
 | | Generic AI prompt repos | Mobile Agency |
 |---|---|---|
 | Platform knowledge | Generic | Android · iOS · Flutter · React Native · Unity · Unreal |
-| Agent personalities | None | 15 named specialists with opinions |
-| Real workflows | No | 11 end-to-end processes |
+| Agent personalities | None | 16 named specialists with opinions |
+| Real workflows | No | 13 end-to-end processes |
 | Real examples | Toy pseudocode | Production code input/output pairs |
 | Installable | Copy-paste | `npx mobile-agency install` |
 | Severity levels | None | CRITICAL · WARNING · INFO |
-| Slash commands | No | 30 composable skills |
+| Slash commands | No | 31 composable skills |
 
 ---
 
@@ -167,6 +169,7 @@ Not sure where to begin? Pick your situation:
 | **CRASHER** | Forensic investigator. Nothing escapes. | Crash log → root cause → concrete fix, all platforms |
 | **SENTINEL** | Paranoid by design. Every input is malicious until proven otherwise. | OWASP Mobile Top 10 security audit |
 | **APPFORGE** | End-to-end product lead. Practical, launch-focused, allergic to vague MVPs. | Rough app idea → PRD → tasks → QA → Play Store launch prep |
+| **MOBILE-HARNESS** | Principal delivery lead. Trusts evidence, not vibes. | Autonomous top-level orchestrator for planning, build, memory, tests, UI verification, Mobile MCP QA, and launch |
 | **MRECALL** | The archivist. Never loses anything. | Mobile knowledge graph + context preservation across any AI tool |
 | **LAUNCHPAD** | ASO-obsessed conversion scientist. | Play Store + App Store copy, keywords, screenshot brief |
 | **PIPELINE** | Automation purist. If it's done manually twice, it's a pipeline waiting to exist. | GitHub Actions / Bitrise / Fastlane configuration |
@@ -178,7 +181,7 @@ Not sure where to begin? Pick your situation:
 
 ## Skills Library
 
-30 focused prompt modules — use inline or compose with agents.
+31 focused prompt modules — use inline or compose with agents.
 
 ### Android
 | Skill | What It Does |
@@ -233,6 +236,7 @@ Not sure where to begin? Pick your situation:
 | `/accessibility-audit` | WCAG 2.1 AA + platform accessibility review |
 | `/api-versioning` | API deprecation strategy for mobile clients |
 | `/deeplink-debug` | Diagnoses broken deep links across Android and iOS |
+| `/mobile-mcp-qa` | Run AI-assisted QA on iOS/Android devices, simulators, and emulators |
 | `/mrecall-save` | Checkpoint your session — resume on any AI tool instantly |
 | `/mrecall-graph` | Build a mobile knowledge graph from your codebase files |
 
@@ -240,7 +244,7 @@ Not sure where to begin? Pick your situation:
 
 ## Workflows
 
-11 end-to-end processes that chain agents and skills together.
+13 end-to-end processes that chain agents and skills together.
 
 | Workflow | What It Covers |
 |---|---|
@@ -255,6 +259,8 @@ Not sure where to begin? Pick your situation:
 | `new-project-setup` | /grill-mobile → architecture → CI → security baseline → test infrastructure |
 | `mrecall-workflow` | Restore context → capture decisions → save MRECALL.md → hand off across AI tools |
 | `appforge-workflow` | App idea → PRD → design plan → tasks → implementation gates → QA → Play Store |
+| `mobile-mcp-qa` | Install/launch app → inspect UI → run flows → capture screenshots → QA report |
+| `mobile-harness` | Approved task → implementation → tests → UI match → Mobile MCP QA → report |
 
 ---
 
@@ -277,6 +283,48 @@ APPFORGE turns a rough mobile app idea into a small, shippable MVP plan and Play
 APPFORGE does not write code until the PRD, design plan, and task breakdown are approved. It pairs with AXIOM, SWIFT, DART, and BRIDGE for platform review, then LAUNCHPAD and `/release-prep` for store launch.
 
 Mobile MCP fits the QA stage next: use it for emulator, simulator, or real-device automation once the app is ready for flow testing.
+
+---
+
+## Mobile MCP — Device QA Automation
+
+Mobile MCP gives Mobile Agency a device automation layer for iOS and Android simulators, emulators, and real devices.
+
+```
+/mobile-mcp-qa
+1. List devices
+2. Install or launch app
+3. Capture screenshot + UI elements
+4. Tap, type, swipe, rotate, restart
+5. Verify happy path and edge cases
+6. Produce MOBILE_MCP_QA_REPORT.md
+```
+
+Use it inside APPFORGE Stage 7 Full QA, UI match review, launch readiness checks, and screenshot validation. Full guide: [docs/mobile-mcp.md](docs/mobile-mcp.md)
+
+---
+
+## Mobile Harness — Top-Level Orchestrator
+
+Mobile Harness is the autonomous top-level orchestrator for the whole Mobile Agency system. It can start from a rough idea or existing codebase, then coordinate APPFORGE, MRECALL, platform reviewers, tests, UI verification, Mobile MCP QA, accessibility, performance, and launch prep.
+
+The purpose is near-zero human effort. It creates missing docs, chooses practical MVP defaults, implements one approved task at a time, verifies against PRD/design, runs device QA when available, updates project memory, and stops only for approvals, credentials, paid/destructive actions, legal/store ownership, or major product decisions.
+
+```
+@MOBILE-HARNESS
+1. Load or create MRECALL.md
+2. Run APPFORGE if PRD/design/tasks are missing
+3. Select exactly one approved task
+4. Implement only that task
+5. Run AXIOM / SWIFT / DART / BRIDGE review
+6. Run tests and PRD verification
+7. Compare UI against design
+8. Run /mobile-mcp-qa
+9. Update MRECALL.md
+10. Produce MOBILE_HARNESS_REPORT.md
+```
+
+Use it when you want one agent to manage the complete build, verify, remember, and ship loop with minimal hand-holding. Full guide: [docs/mobile-harness.md](docs/mobile-harness.md)
 
 ---
 

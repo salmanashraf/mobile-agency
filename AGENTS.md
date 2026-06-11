@@ -98,6 +98,13 @@ Use the agent at agents/android/code-reviewer/agent.md to review this file:
 | Release Notes Generator | `agents/cross-platform/release-notes-generator/` | All | Git commits → user-facing release notes |
 | CI/CD Pipeline Generator | `agents/cross-platform/ci-cd-generator/` | All | Generates GitHub Actions / Bitrise / Fastlane configs |
 | Store Listing Writer | `agents/cross-platform/store-listing-writer/` | All | Play Store / App Store descriptions optimised for ASO |
+| Mobile Harness | `agents/cross-platform/mobile-harness/` | All | Build, test, verify UI, and run Mobile MCP QA for approved tasks |
+
+---
+
+## Mobile MCP QA
+
+Use `skills/cross-platform/mobile-mcp-qa.md` and `workflows/mobile-mcp-qa.md` when a user wants device, emulator, or simulator QA through Mobile MCP. This belongs after implementation, during APPFORGE UI match review, full QA, launch readiness, or screenshot validation.
 
 ---
 

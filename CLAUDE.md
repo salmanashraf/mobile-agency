@@ -7,8 +7,8 @@
 
 ## What This Repo Is
 
-The complete AI dev team for mobile engineers. 15 personality-driven agents, 30 composable
-skills, and 11 end-to-end workflows for Android, iOS, Flutter, React Native, Unity, and Unreal.
+The complete AI dev team for mobile engineers. 16 personality-driven agents, 31 composable
+skills, and 13 end-to-end workflows for Android, iOS, Flutter, React Native, Unity, and Unreal.
 
 Each agent has a name, a personality, a mission, and a real worked example. Drop any agent
 into Claude Code as a system prompt and it works immediately.
@@ -33,7 +33,7 @@ into Claude Code as a system prompt and it works immediately.
 
 ```
 mobile-agency/
-├── agents/                   ← 15 personality-driven agents
+├── agents/                   ← 16 personality-driven agents
 │   ├── android/axiom/        ← AXIOM (Android architect)
 │   ├── ios/swift/            ← SWIFT (iOS engineer)
 │   ├── flutter/dart/         ← DART (Flutter specialist)
@@ -46,19 +46,20 @@ mobile-agency/
 │       ├── crasher/          ← CRASHER (crash investigator)
 │       ├── sentinel/         ← SENTINEL (security auditor)
 │       ├── launchpad/        ← LAUNCHPAD (ASO writer)
+│       ├── mobile-harness/   ← MOBILE-HARNESS (build/test/verify)
 │       ├── mrecall/          ← MRECALL (context preservation)
 │       ├── pipeline/         ← PIPELINE (CI/CD)
 │       ├── perf/             ← PERF (performance)
 │       ├── scribe/           ← SCRIBE (release notes)
 │       └── figma/            ← FIGMA (design-to-code)
-├── skills/                   ← 30 composable skill modules
+├── skills/                   ← 31 composable skill modules
 │   ├── android/              ← android-tdd, compose-review, compose-migration, ...
 │   ├── ios/                  ← ios-tdd, swiftui-review, swift-concurrency, ...
 │   ├── flutter/              ← flutter-tdd, flutter-review, widget-extract, ...
 │   ├── react-native/         ← rn-tdd, rn-review, new-arch-migrate, ...
 │   ├── gaming/               ← unity-tdd, shader-gen, game-perf, blueprint-to-cpp
 │   └── cross-platform/       ← grill-mobile, crash-triage, perf-audit, ...
-├── workflows/                ← 11 end-to-end process guides
+├── workflows/                ← 13 end-to-end process guides
 ├── mobile-karpathy.md        ← 4 rules that prevent AI mobile mistakes (standalone)
 ├── examples/                 ← Real input/output pairs for each agent
 ├── templates/                ← Scaffold for new agents / skills / workflows
@@ -79,6 +80,7 @@ mobile-agency/
 | **FORGE** | `agents/gaming/forge/` | Unity | C# performance + frame budget + architecture |
 | **UNREAL** | `agents/gaming/unreal/` | Unreal | Blueprint → C++ + performance + GC safety |
 | **APPFORGE** | `agents/cross-platform/appforge/` | All | Rough app idea → PRD → tasks → QA → Play Store |
+| **MOBILE-HARNESS** | `agents/cross-platform/mobile-harness/` | All | Build, test, verify UI, and run Mobile MCP QA |
 | **CRASHER** | `agents/cross-platform/crasher/` | All | Crash log → root cause → fix |
 | **SENTINEL** | `agents/cross-platform/sentinel/` | All | OWASP Mobile Top 10 security audit |
 | **MRECALL** | `agents/cross-platform/mrecall/` | All | Mobile knowledge graph + context preservation |
