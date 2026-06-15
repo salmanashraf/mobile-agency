@@ -9,6 +9,7 @@ const os = require('os');
 const REPO = 'salmanashraf/mobile-agency';
 const BRANCH = 'main';
 const RAW = `https://raw.githubusercontent.com/${REPO}/${BRANCH}`;
+const PACKAGE_ROOT = path.resolve(__dirname, '..');
 
 const CLAUDE_AGENTS_DIR   = path.join(os.homedir(), '.claude', 'agents');
 const CLAUDE_COMMANDS_DIR = path.join(os.homedir(), '.claude', 'commands');
@@ -263,8 +264,7 @@ function ensureDir(dir) {
 }
 
 async function downloadFile(remotePath, destPaths) {
-  const url = `${RAW}/${remotePath}`;
-  const content = await fetch(url);
+  const content = await fetchRemote(remotePath);
   for (const destPath of destPaths) {
     ensureDir(path.dirname(destPath));
     fs.writeFileSync(destPath, content);
@@ -273,6 +273,10 @@ async function downloadFile(remotePath, destPaths) {
 }
 
 async function fetchRemote(remotePath) {
+  const localPath = path.join(PACKAGE_ROOT, remotePath);
+  if (fs.existsSync(localPath)) {
+    return fs.readFileSync(localPath, 'utf8');
+  }
   return fetch(`${RAW}/${remotePath}`);
 }
 
