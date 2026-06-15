@@ -2,7 +2,7 @@
 
 **The complete AI dev team for mobile engineers.**
 
-16 personality-driven agents · 31 composable skills · 13 end-to-end workflows
+16 personality-driven agents · 33 composable skills · 13 end-to-end workflows
 Android · iOS · Flutter · React Native · Unity · Unreal
 
 [![npm](https://img.shields.io/npm/v/mobile-agency?color=CB3837&label=npm)](https://www.npmjs.com/package/mobile-agency)
@@ -145,7 +145,7 @@ Not sure where to begin? Pick your situation:
 | Real examples | Toy pseudocode | Production code input/output pairs |
 | Installable | Copy-paste | `npx mobile-agency install` |
 | Severity levels | None | CRITICAL · WARNING · INFO |
-| Slash commands | No | 31 composable skills |
+| Slash commands | No | 33 composable skills |
 
 ---
 
@@ -181,7 +181,7 @@ Not sure where to begin? Pick your situation:
 
 ## Skills Library
 
-31 focused prompt modules — use inline or compose with agents.
+33 focused prompt modules — use inline or compose with agents.
 
 ### Android
 | Skill | What It Does |
@@ -230,6 +230,8 @@ Not sure where to begin? Pick your situation:
 | `/grill-mobile` | 20 questions before any mobile code is written |
 | `/crash-triage` | Paste stacktrace → root cause → fix |
 | `/perf-audit` | Slow screen → systematic profiling guide |
+| `/clean-code-audit` | App-wide clean code, model separation, and architecture boundary audit |
+| `/security-audit` | Complete mobile app security audit for release readiness |
 | `/store-listing` | Conversation → ASO-optimized listing copy |
 | `/feature-slice` | Epic → independently shippable tickets |
 | `/release-prep` | Full release checklist from freeze to store |

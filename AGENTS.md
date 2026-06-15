@@ -106,6 +106,12 @@ Use the agent at agents/android/code-reviewer/agent.md to review this file:
 
 Use `skills/cross-platform/mobile-mcp-qa.md` and `workflows/mobile-mcp-qa.md` when a user wants device, emulator, or simulator QA through Mobile MCP. This belongs after implementation, during APPFORGE UI match review, full QA, launch readiness, or screenshot validation.
 
+## Clean Code and Security Gates
+
+Use `skills/cross-platform/clean-code-audit.md` when a user asks for app structure, clean code, model separation, architecture boundary, or maintainability review across a feature or full app.
+
+Use `skills/cross-platform/security-audit.md` for complete app security audits before release, especially when auth, payments, storage, deep links, WebViews, permissions, or sensitive data are involved. Use `skills/shared/security-scan.md` only for quick inline scans.
+
 ---
 
 ## How to Create a New Agent

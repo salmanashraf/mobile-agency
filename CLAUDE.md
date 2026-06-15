@@ -7,7 +7,7 @@
 
 ## What This Repo Is
 
-The complete AI dev team for mobile engineers. 16 personality-driven agents, 31 composable
+The complete AI dev team for mobile engineers. 16 personality-driven agents, 33 composable
 skills, and 13 end-to-end workflows for Android, iOS, Flutter, React Native, Unity, and Unreal.
 
 Each agent has a name, a personality, a mission, and a real worked example. Drop any agent
@@ -52,7 +52,7 @@ mobile-agency/
 │       ├── perf/             ← PERF (performance)
 │       ├── scribe/           ← SCRIBE (release notes)
 │       └── figma/            ← FIGMA (design-to-code)
-├── skills/                   ← 31 composable skill modules
+├── skills/                   ← 33 composable skill modules
 │   ├── android/              ← android-tdd, compose-review, compose-migration, ...
 │   ├── ios/                  ← ios-tdd, swiftui-review, swift-concurrency, ...
 │   ├── flutter/              ← flutter-tdd, flutter-review, widget-extract, ...

@@ -98,6 +98,7 @@ const SKILLS = {
   // Cross-platform
   'accessibility-audit':{ file: 'skills/cross-platform/accessibility-audit.md', platform: 'cross'  },
   'api-versioning':     { file: 'skills/cross-platform/api-versioning.md',     platform: 'cross'   },
+  'clean-code-audit':   { file: 'skills/cross-platform/clean-code-audit.md',   platform: 'cross'   },
   'crash-triage':       { file: 'skills/cross-platform/crash-triage.md',       platform: 'cross'   },
   'deeplink-debug':     { file: 'skills/cross-platform/deeplink-debug.md',     platform: 'cross'   },
   'feature-slice':      { file: 'skills/cross-platform/feature-slice.md',      platform: 'cross'   },
@@ -107,6 +108,7 @@ const SKILLS = {
   'mrecall-save':       { file: 'skills/cross-platform/mrecall-save.md',       platform: 'cross'   },
   'perf-audit':         { file: 'skills/cross-platform/perf-audit.md',         platform: 'cross'   },
   'release-prep':       { file: 'skills/cross-platform/release-prep.md',       platform: 'cross'   },
+  'security-audit':     { file: 'skills/cross-platform/security-audit.md',     platform: 'cross'   },
   'store-listing':      { file: 'skills/cross-platform/store-listing.md',      platform: 'cross'   },
   // Shared
   'crash-analysis':     { file: 'skills/shared/crash-analysis.md',             platform: 'cross'   },
@@ -181,47 +183,48 @@ const PLATFORM_SKILLS = {
     'android-tdd', 'code-review', 'compose-migration', 'compose-review',
     'kotlin-modernize', 'proguard-rules',
     // cross-platform bundled for android
-    'accessibility-audit', 'api-versioning', 'crash-analysis', 'crash-triage',
+    'accessibility-audit', 'api-versioning', 'clean-code-audit', 'crash-analysis', 'crash-triage',
     'deeplink-debug', 'feature-slice', 'grill-mobile', 'mobile-mcp-qa',
     'mrecall-graph', 'mrecall-save', 'perf-audit',
-    'release-prep', 'security-scan', 'store-listing',
+    'release-prep', 'security-audit', 'security-scan', 'store-listing',
   ],
   ios: [
     'data-persistence', 'ios-tdd', 'networking', 'ios-performance',
     'swift-concurrency', 'swift-review', 'swiftui-review', 'swiftui-state',
     'unit-testing', 'xcode-warnings',
     // cross-platform bundled for ios
-    'accessibility-audit', 'api-versioning', 'crash-analysis', 'crash-triage',
+    'accessibility-audit', 'api-versioning', 'clean-code-audit', 'crash-analysis', 'crash-triage',
     'deeplink-debug', 'feature-slice', 'grill-mobile', 'mobile-mcp-qa',
     'mrecall-graph', 'mrecall-save', 'perf-audit',
-    'release-prep', 'security-scan', 'store-listing',
+    'release-prep', 'security-audit', 'security-scan', 'store-listing',
   ],
   flutter: [
     'dart-modernize', 'flutter-review', 'flutter-tdd', 'widget-extract', 'widget-gen',
     // cross-platform bundled for flutter
-    'accessibility-audit', 'api-versioning', 'crash-analysis', 'crash-triage',
+    'accessibility-audit', 'api-versioning', 'clean-code-audit', 'crash-analysis', 'crash-triage',
     'deeplink-debug', 'feature-slice', 'grill-mobile', 'mobile-mcp-qa',
     'mrecall-graph', 'mrecall-save', 'perf-audit',
-    'release-prep', 'security-scan', 'store-listing',
+    'release-prep', 'security-audit', 'security-scan', 'store-listing',
   ],
   rn: [
     'bridge-audit', 'expo-optimize', 'new-arch-migrate', 'rn-performance',
     'rn-review', 'rn-tdd',
     // cross-platform bundled for rn
-    'accessibility-audit', 'api-versioning', 'crash-analysis', 'crash-triage',
+    'accessibility-audit', 'api-versioning', 'clean-code-audit', 'crash-analysis', 'crash-triage',
     'deeplink-debug', 'feature-slice', 'grill-mobile', 'mobile-mcp-qa',
     'mrecall-graph', 'mrecall-save', 'perf-audit',
-    'release-prep', 'security-scan', 'store-listing',
+    'release-prep', 'security-audit', 'security-scan', 'store-listing',
   ],
   gaming: [
-    'blueprint-to-cpp', 'game-perf', 'mobile-mcp-qa', 'mrecall-graph', 'mrecall-save',
-    'shader-gen', 'unity-tdd', 'shader-review',
+    'blueprint-to-cpp', 'clean-code-audit', 'game-perf', 'mobile-mcp-qa',
+    'mrecall-graph', 'mrecall-save', 'security-audit', 'shader-gen',
+    'unity-tdd', 'shader-review',
   ],
   cross: [
-    'accessibility-audit', 'api-versioning', 'crash-analysis', 'crash-triage',
+    'accessibility-audit', 'api-versioning', 'clean-code-audit', 'crash-analysis', 'crash-triage',
     'deeplink-debug', 'feature-slice', 'grill-mobile', 'mobile-mcp-qa',
     'mrecall-graph', 'mrecall-save', 'perf-audit',
-    'release-prep', 'security-scan', 'store-listing',
+    'release-prep', 'security-audit', 'security-scan', 'store-listing',
   ],
 };
 
