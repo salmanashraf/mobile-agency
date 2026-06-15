@@ -224,3 +224,7 @@ Add to your Claude Code config (`~/.claude/settings.json`):
 
 Open a GitHub Discussion or Issue. PRs are always welcome.
 See `CONTRIBUTING.md` for the full guide.
+
+## Release Process
+
+For npm releases, follow `docs/release-process.md`. Do not run `npm publish` manually. Update `package.json`, commit, create a local `vX.Y.Z` tag, push `main`, then push the tag so GitHub Actions publishes npm.

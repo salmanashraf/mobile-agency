@@ -112,6 +112,10 @@ Use `skills/cross-platform/clean-code-audit.md` when a user asks for app structu
 
 Use `skills/cross-platform/security-audit.md` for complete app security audits before release, especially when auth, payments, storage, deep links, WebViews, permissions, or sensitive data are involved. Use `skills/shared/security-scan.md` only for quick inline scans.
 
+## Release Process
+
+For npm releases, follow `docs/release-process.md`. Do not run `npm publish` manually. Update `package.json`, commit, create a local `vX.Y.Z` tag, push `main`, then push the tag so GitHub Actions publishes npm.
+
 ---
 
 ## How to Create a New Agent

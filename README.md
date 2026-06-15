@@ -266,6 +266,25 @@ Not sure where to begin? Pick your situation:
 
 ---
 
+## Release Process
+
+npm publishing is handled by GitHub Actions from git tags. Do not run `npm publish` manually.
+
+```bash
+# 1. bump package.json version, for example 1.0.14
+git add package.json
+git commit -m "Release v1.0.14"
+
+# 2. create and push the release tag
+git tag v1.0.14
+git push origin main
+git push origin v1.0.14
+```
+
+GitHub Actions publishes npm after the tag push. Full guide: [docs/release-process.md](docs/release-process.md)
+
+---
+
 ## APPFORGE — Idea to Store
 
 APPFORGE turns a rough mobile app idea into a small, shippable MVP plan and Play Store launch package.
