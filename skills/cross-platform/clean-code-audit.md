@@ -95,6 +95,13 @@ Severity:
 
 Output exactly:
 
+Table formatting rules:
+- Output normal Markdown. Do not wrap the final report in a fenced code block.
+- Keep every table cell short, ideally under 8 words.
+- Do not put full paragraphs, stack traces, code blocks, or multi-sentence fixes inside table cells.
+- Put long evidence, explanation, and fixes in `Finding Details`.
+- Use stable IDs (`CCA-001`, `CCA-002`) to connect summary rows to detail sections.
+
 CLEAN CODE AUDIT REPORT
 =======================
 Platform:
@@ -105,9 +112,19 @@ Result: PASS | FAIL
 Summary:
 - <short summary>
 
-Findings:
-| Severity | File/Area | Rule | Problem | Fix |
-|---|---|---|---|---|
+Findings Summary:
+| ID | Severity | Area | File | Issue | Fix Summary |
+|---|---|---|---|---|---|
+
+Finding Details:
+### CCA-001 — <short title>
+- Severity:
+- Rule:
+- Location:
+- Problem:
+- Why it matters:
+- Fix:
+- Suggested file move, if any:
 
 Model Separation:
 | Type | Current Location | Expected Location | Result |
@@ -159,12 +176,40 @@ Result: FAIL
 Summary:
 - ProfileViewModel owns API construction, exposes mutable state, and defines a reusable DTO inside the ViewModel.
 
-Findings:
-| Severity | File/Area | Rule | Problem | Fix |
-|---|---|---|---|---|
-| CRITICAL | ProfileViewModel | Layer Boundaries | ViewModel constructs Retrofit and concrete API directly. | Inject a ProfileRepository or FetchProfileUseCase through Hilt. |
-| WARNING | ProfileViewModel | Model Organization | ProfileResponse DTO is nested inside ViewModel. | Move it to data/remote/model/ProfileResponse.kt and map it to a domain Profile. |
-| CRITICAL | ProfileViewModel | State and Mutability | MutableStateFlow is public. | Keep MutableStateFlow private and expose StateFlow. |
+Findings Summary:
+| ID | Severity | Area | File | Issue | Fix Summary |
+|---|---|---|---|---|---|
+| CCA-001 | CRITICAL | Layer Boundaries | ProfileViewModel | Constructs Retrofit directly | Inject repository/use case |
+| CCA-002 | WARNING | Model Organization | ProfileViewModel | Nested reusable DTO | Move DTO to data model file |
+| CCA-003 | CRITICAL | State | ProfileViewModel | Public MutableStateFlow | Expose immutable StateFlow |
+
+Finding Details:
+### CCA-001 — ViewModel constructs networking dependency
+- Severity: CRITICAL
+- Rule: Layer Boundaries
+- Location: ProfileViewModel
+- Problem: The ViewModel constructs Retrofit and creates ProfileApi directly.
+- Why it matters: Presentation is coupled to networking and cannot be tested without real infrastructure.
+- Fix: Inject a ProfileRepository or FetchProfileUseCase through Hilt.
+- Suggested file move, if any: None.
+
+### CCA-002 — Reusable DTO is nested inside ViewModel
+- Severity: WARNING
+- Rule: Model Organization
+- Location: ProfileViewModel.ProfileResponse
+- Problem: ProfileResponse is an API/data model but lives inside a presentation class.
+- Why it matters: The DTO cannot be reused cleanly and mixes API contract with UI state.
+- Fix: Move it to `data/remote/model/ProfileResponse.kt` and map it to a domain `Profile`.
+- Suggested file move, if any: `ProfileViewModel` → `data/remote/model/ProfileResponse.kt`.
+
+### CCA-003 — Mutable state exposed publicly
+- Severity: CRITICAL
+- Rule: State and Mutability
+- Location: ProfileViewModel.state
+- Problem: UI callers can mutate ViewModel state directly.
+- Why it matters: External mutation breaks unidirectional data flow and makes bugs hard to trace.
+- Fix: Keep `MutableStateFlow` private and expose `StateFlow`.
+- Suggested file move, if any: None.
 
 Model Separation:
 | Type | Current Location | Expected Location | Result |

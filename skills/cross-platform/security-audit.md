@@ -116,6 +116,13 @@ Audit these areas:
 
 Output exactly:
 
+Table formatting rules:
+- Output normal Markdown. Do not wrap the final report in a fenced code block.
+- Keep every table cell short, ideally under 8 words.
+- Do not put full paragraphs, logs, stack traces, secrets, or multi-sentence fixes inside table cells.
+- Put long evidence, exploit scenarios, and fixes in `Finding Details`.
+- Use stable IDs (`SEC-001`, `SEC-002`) to connect summary rows to detail sections.
+
 MOBILE SECURITY AUDIT REPORT
 ============================
 Platform:
@@ -126,9 +133,19 @@ Result: PASS | FAIL | BLOCKED
 Executive Summary:
 - <short risk summary>
 
-Findings:
-| Severity | OWASP | Area | Evidence | Exploit Scenario | Fix |
+Findings Summary:
+| ID | Severity | OWASP | Area | Evidence | Fix Summary |
 |---|---|---|---|---|---|
+
+Finding Details:
+### SEC-001 — <short title>
+- Severity:
+- OWASP:
+- Area:
+- Evidence:
+- Exploit Scenario:
+- Fix:
+- Verification:
 
 Security Checklist:
 | Area | Status | Notes |
@@ -187,12 +204,40 @@ Result: FAIL
 Executive Summary:
 - Release is blocked by plaintext token storage, release debugging, and cleartext network policy.
 
-Findings:
-| Severity | OWASP | Area | Evidence | Exploit Scenario | Fix |
+Findings Summary:
+| ID | Severity | OWASP | Area | Evidence | Fix Summary |
 |---|---|---|---|---|---|
-| CRITICAL | M2 Insecure Data Storage | Storage | auth_token stored in SharedPreferences | Device compromise or debug backup can expose session tokens. | Store tokens in EncryptedSharedPreferences backed by Android Keystore. |
-| CRITICAL | M8 Security Misconfiguration | Platform Hardening | android:debuggable="true" | Attackers can attach debugger to release app. | Ensure release build sets debuggable false. |
-| HIGH | M3 Insecure Communication | Network/TLS | cleartextTrafficPermitted="true" | Traffic can be intercepted or modified over hostile networks. | Disable cleartext in release network security config. |
+| SEC-001 | CRITICAL | M2 | Storage | Token in SharedPreferences | Use encrypted token storage |
+| SEC-002 | CRITICAL | M8 | Platform Hardening | Release debuggable true | Disable release debugging |
+| SEC-003 | HIGH | M3 | Network/TLS | Cleartext allowed | Disable cleartext in release |
+
+Finding Details:
+### SEC-001 — Auth token stored in plaintext preferences
+- Severity: CRITICAL
+- OWASP: M2 Insecure Data Storage
+- Area: Storage
+- Evidence: `auth_token` is stored in `SharedPreferences`.
+- Exploit Scenario: Device compromise, root access, or debug backup can expose session tokens.
+- Fix: Store tokens in `EncryptedSharedPreferences` backed by Android Keystore.
+- Verification: Confirm token writes use encrypted storage and logout clears the encrypted value.
+
+### SEC-002 — Release build is debuggable
+- Severity: CRITICAL
+- OWASP: M8 Security Misconfiguration
+- Area: Platform Hardening
+- Evidence: `android:debuggable="true"`.
+- Exploit Scenario: Attackers can attach a debugger to the release app and inspect runtime state.
+- Fix: Ensure release builds set `debuggable false` and remove debug-only menus.
+- Verification: Inspect merged release manifest and release APK flags.
+
+### SEC-003 — Cleartext traffic allowed
+- Severity: HIGH
+- OWASP: M3 Insecure Communication
+- Area: Network/TLS
+- Evidence: `cleartextTrafficPermitted="true"`.
+- Exploit Scenario: Traffic can be intercepted or modified on hostile networks.
+- Fix: Disable cleartext in release network security config.
+- Verification: Confirm release config blocks HTTP endpoints and test API calls over HTTPS only.
 
 Security Checklist:
 | Area | Status | Notes |
