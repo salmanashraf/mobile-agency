@@ -2,7 +2,7 @@
 
 **The complete AI dev team for mobile engineers.**
 
-16 personality-driven agents · 33 composable skills · 13 end-to-end workflows
+17 personality-driven agents · 33 composable skills · 13 end-to-end workflows
 Android · iOS · Flutter · React Native · Unity · Unreal
 
 [![npm](https://img.shields.io/npm/v/mobile-agency?color=CB3837&label=npm)](https://www.npmjs.com/package/mobile-agency)
@@ -94,6 +94,7 @@ Not sure where to begin? Pick your situation:
 |---|---|
 | Debug a crash | `@CRASHER` + paste your stacktrace |
 | Review Android code | `@AXIOM` + paste your Kotlin file |
+| Design Compose navigation | `@NAVIGATOR` + list screens and flows |
 | Review Flutter code | `/flutter-review` + paste your Dart file |
 | Optimize a slow screen | `/perf-audit` + describe the screen |
 | Test on a device or emulator | `/mobile-mcp-qa` + provide app id and flow |
@@ -140,7 +141,7 @@ Not sure where to begin? Pick your situation:
 | | Generic AI prompt repos | Mobile Agency |
 |---|---|---|
 | Platform knowledge | Generic | Android · iOS · Flutter · React Native · Unity · Unreal |
-| Agent personalities | None | 16 named specialists with opinions |
+| Agent personalities | None | 17 named specialists with opinions |
 | Real workflows | No | 13 end-to-end processes |
 | Real examples | Toy pseudocode | Production code input/output pairs |
 | Installable | Copy-paste | `npx mobile-agency install` |
@@ -156,6 +157,7 @@ Not sure where to begin? Pick your situation:
 | Agent | Platform | Personality | Mission |
 |---|---|---|---|
 | **AXIOM** | Android | Battle-scarred architect. Zero tolerance for GlobalScope. Has survived 3 Jetpack migrations. | Reviews Kotlin/Compose for Clean Architecture, leaks, and anti-patterns |
+| **NAVIGATOR** | Android | Back-stack cartographer. Every destination has a type and every pop has a reason. | Generates and reviews type-safe Compose navigation, nested graphs, deep links, and bottom navigation |
 | **SWIFT** | iOS | Elegant, memory-safety obsessed. Will shame your retain cycles. | Reviews Swift/SwiftUI for memory safety, concurrency, and idiomatic patterns |
 | **DART** | Flutter | Pixel-perfect widget obsessive. Counts rebuilds like a miser counts coins. | Reviews Flutter for rebuild efficiency, state management, and performance |
 | **BRIDGE** | React Native | JSI evangelist. Tracks every bridge crossing like a border guard. | Finds bridge bottlenecks, re-renders, and New Architecture migration paths |

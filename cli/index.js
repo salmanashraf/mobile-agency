@@ -21,6 +21,7 @@ const AGENTS = {
   'android-crash-analyzer':  { file: 'agents/android/android-crash-analyzer/agent.md',        platform: 'android' },
   'axiom':                   { file: 'agents/android/axiom/agent.md',                          platform: 'android' },
   'code-reviewer':           { file: 'agents/android/code-reviewer/agent.md',                  platform: 'android' },
+  'compose-navigation':      { file: 'agents/android/compose-navigation/agent.md',             platform: 'android' },
   'compose-screen-builder':  { file: 'agents/android/compose-screen-builder/agent.md',         platform: 'android' },
   'compose-ui-reviewer':     { file: 'agents/android/compose-ui-reviewer/agent.md',            platform: 'android' },
   'crash-analyzer-android':  { file: 'agents/android/crash-analyzer/agent.md',                 platform: 'android' },
@@ -134,8 +135,8 @@ const WORKFLOWS = {
 
 const PLATFORM_AGENTS = {
   android: [
-    'android-crash-analyzer', 'axiom', 'code-reviewer', 'compose-screen-builder',
-    'compose-ui-reviewer', 'crash-analyzer-android',
+    'android-crash-analyzer', 'axiom', 'code-reviewer', 'compose-navigation',
+    'compose-screen-builder', 'compose-ui-reviewer', 'crash-analyzer-android',
     // cross-platform bundled for android
     'appforge', 'crasher', 'sentinel', 'mobile-harness', 'mrecall', 'perf',
     'scribe', 'pipeline', 'figma', 'launchpad',

@@ -199,7 +199,7 @@ Full guide: [`docs/cursor-integration.md`](cursor-integration.md)
 4. Follow with your code using the input format
 
 **Method 2 — Custom GPT (recommended for teams):**
-A ready-made Custom GPT system prompt is in `docs/chatgpt-integration.md`. It routes to the right agent automatically based on what you describe. One GPT covers all 16 agents.
+A ready-made Custom GPT system prompt is in `docs/chatgpt-integration.md`. It routes to the right agent automatically based on what you describe. One GPT covers all 17 agents.
 
 **Method 3 — Assistants API:**
 ```python
@@ -269,6 +269,16 @@ Full guide: [`docs/vscode-copilot-integration.md`](vscode-copilot-integration.md
 **Output:** Three complete Kotlin files — `UiState.kt`, `ViewModel.kt`, `Screen.kt` — plus NavHost registration snippet and Gradle dependencies.
 
 **Design principles enforced:** Single sealed `UiState`, `collectAsStateWithLifecycle`, Material 3 theming, accessible semantics, `@Preview` for light + dark.
+
+---
+
+#### NAVIGATOR — Android Compose Navigation Architect (`agents/android/compose-navigation/`)
+
+**Use it for:** Generating or reviewing type-safe Navigation Compose routes, nested feature graphs, bottom navigation, deep links, authentication redirects, and back-stack behavior.
+
+**Output:** Route types, graph-builder code, explicit back-stack rules, deep-link rules, navigation tests, and severity-ranked findings in review mode.
+
+**Design principles enforced:** `@Serializable` routes on Navigation 2.8+, stable ID arguments, screen callbacks instead of passing `NavController`, saved tab state, and documented `popUpTo` behavior.
 
 ---
 

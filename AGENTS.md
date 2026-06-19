@@ -87,6 +87,7 @@ Use the agent at agents/android/code-reviewer/agent.md to review this file:
 | Agent | Path | Platform | What It Does |
 |---|---|---|---|
 | Android Code Reviewer | `agents/android/code-reviewer/` | Android | Reviews Kotlin/Compose for Clean Architecture, leaks, anti-patterns |
+| Compose Navigation Architect | `agents/android/compose-navigation/` | Android | Generates and reviews type-safe routes, nested graphs, deep links, and back-stack behavior |
 | Crash Log Analyzer | `agents/android/crash-analyzer/` | Android / iOS | Parses crash logs → root cause + fix |
 | Swift Code Reviewer | `agents/ios/swift-reviewer/` | iOS | Reviews Swift/SwiftUI for memory safety and idiomatic patterns |
 | Flutter Widget Generator | `agents/flutter/widget-generator/` | Flutter | Generates Dart widget code from plain English |
