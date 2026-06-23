@@ -110,10 +110,12 @@ _skill_lines() {
     echo "shared-accessibility-audit skills/shared/accessibility-audit.md"
 
     if [[ "$PLATFORM" == "android" || "$PLATFORM" == "all" ]]; then
+        echo "anr-investigation skills/android/anr-investigation.md"
         echo "android-tdd       skills/android/android-tdd.md"
         echo "compose-review    skills/android/compose-review.md"
         echo "compose-migration skills/android/compose-migration.md"
         echo "kotlin-modernize  skills/android/kotlin-modernize.md"
+        echo "memory-leak-investigation skills/android/memory-leak-investigation.md"
         echo "android-code-review skills/android/code-review.md"
         echo "proguard-rules    skills/android/proguard-rules.md"
     fi
@@ -228,7 +230,8 @@ install_claude() {
     echo "   /android-code-reviewer  /compose-navigation"
     echo "   /compose-screen-builder  /compose-ui-reviewer"
     echo "   Android skills:"
-    echo "   /android-tdd  /compose-review  /compose-migration  /kotlin-modernize"
+    echo "   /anr-investigation  /android-tdd  /compose-review  /compose-migration"
+    echo "   /kotlin-modernize  /memory-leak-investigation"
     echo "   /android-code-review  /proguard-rules"
     fi
     if [[ "$PLATFORM" == "ios" || "$PLATFORM" == "all" ]]; then

@@ -2,7 +2,7 @@
 
 **The complete AI dev team for mobile engineers.**
 
-17 personality-driven agents · 33 composable skills · 13 end-to-end workflows
+17 personality-driven agents · 35 composable skills · 13 end-to-end workflows
 Android · iOS · Flutter · React Native · Unity · Unreal
 
 [![npm](https://img.shields.io/npm/v/mobile-agency?color=CB3837&label=npm)](https://www.npmjs.com/package/mobile-agency)
@@ -146,7 +146,7 @@ Not sure where to begin? Pick your situation:
 | Real examples | Toy pseudocode | Production code input/output pairs |
 | Installable | Copy-paste | `npx mobile-agency install` |
 | Severity levels | None | CRITICAL · WARNING · INFO |
-| Slash commands | No | 33 composable skills |
+| Slash commands | No | 35 composable skills |
 
 ---
 
@@ -183,15 +183,17 @@ Not sure where to begin? Pick your situation:
 
 ## Skills Library
 
-33 focused prompt modules — use inline or compose with agents.
+35 focused prompt modules — use inline or compose with agents.
 
 ### Android
 | Skill | What It Does |
 |---|---|
+| `/anr-investigation` | Evidence-first Android ANR classification, root cause, fix, and verification |
 | `/android-tdd` | Red-green-refactor loop for JUnit5 + Compose UI tests |
 | `/compose-review` | Recomposition audit before PR |
 | `/compose-migration` | XML layouts → Jetpack Compose |
 | `/kotlin-modernize` | Old Kotlin → modern idioms |
+| `/memory-leak-investigation` | LeakCanary reference-path and lifecycle ownership analysis |
 | `/proguard-rules` | R8/ProGuard rules from your dependency list |
 
 ### iOS

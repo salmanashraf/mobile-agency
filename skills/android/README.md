@@ -6,7 +6,9 @@ Reusable skill prompt modules for Android (Kotlin / Jetpack Compose) code review
 
 | Skill | File | When to Use |
 |---|---|---|
+| Android ANR Investigation | [anr-investigation.md](anr-investigation.md) | Classify ANRs, trace blocking dependencies, propose a safe fix, and define verification |
 | Android Code Review | [code-review.md](code-review.md) | Quick inline review of Kotlin files — coroutines, Clean Architecture, Compose, DI |
+| Android Memory Leak Investigation | [memory-leak-investigation.md](memory-leak-investigation.md) | Trace GC-root ownership, find lifecycle leaks, propose a focused fix, and verify collection |
 
 ## Usage
 

@@ -107,6 +107,14 @@ Use the agent at agents/android/code-reviewer/agent.md to review this file:
 
 Use `skills/cross-platform/mobile-mcp-qa.md` and `workflows/mobile-mcp-qa.md` when a user wants device, emulator, or simulator QA through Mobile MCP. This belongs after implementation, during APPFORGE UI match review, full QA, launch readiness, or screenshot validation.
 
+## Android ANR Investigation
+
+Use `skills/android/anr-investigation.md` when a user provides an Android ANR trace, Play Console cluster, Crashlytics ANR, `ApplicationExitInfo`, or related source code. The skill requires evidence-based thread, lock, binder, and timeout analysis before recommending a fix.
+
+## Android Memory Leak Investigation
+
+Use `skills/android/memory-leak-investigation.md` when a user provides a LeakCanary trace, heap-retention report, memory-growth reproduction, or lifecycle-related code. Follow the strong-reference path from the GC root and identify the first app-controlled reference with incorrect lifetime.
+
 ## Clean Code and Security Gates
 
 Use `skills/cross-platform/clean-code-audit.md` when a user asks for app structure, clean code, model separation, architecture boundary, or maintainability review across a feature or full app.

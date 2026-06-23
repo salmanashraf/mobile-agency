@@ -61,11 +61,13 @@ const AGENTS = {
 
 const SKILLS = {
   // Android
+  'anr-investigation':  { file: 'skills/android/anr-investigation.md',         platform: 'android' },
   'android-tdd':        { file: 'skills/android/android-tdd.md',               platform: 'android' },
   'code-review':        { file: 'skills/android/code-review.md',               platform: 'android' },
   'compose-migration':  { file: 'skills/android/compose-migration.md',         platform: 'android' },
   'compose-review':     { file: 'skills/android/compose-review.md',            platform: 'android' },
   'kotlin-modernize':   { file: 'skills/android/kotlin-modernize.md',          platform: 'android' },
+  'memory-leak-investigation': { file: 'skills/android/memory-leak-investigation.md', platform: 'android' },
   'proguard-rules':     { file: 'skills/android/proguard-rules.md',            platform: 'android' },
   // iOS
   'data-persistence':   { file: 'skills/ios/data-persistence.md',              platform: 'ios'     },
@@ -182,8 +184,8 @@ const PLATFORM_AGENTS = {
 
 const PLATFORM_SKILLS = {
   android: [
-    'android-tdd', 'code-review', 'compose-migration', 'compose-review',
-    'kotlin-modernize', 'proguard-rules',
+    'anr-investigation', 'android-tdd', 'code-review', 'compose-migration', 'compose-review',
+    'kotlin-modernize', 'memory-leak-investigation', 'proguard-rules',
     // cross-platform bundled for android
     'accessibility-audit', 'api-versioning', 'clean-code-audit', 'crash-analysis', 'crash-triage',
     'deeplink-debug', 'feature-slice', 'grill-mobile', 'mobile-mcp-qa',
