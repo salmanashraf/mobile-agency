@@ -88,6 +88,7 @@ Use the agent at agents/android/code-reviewer/agent.md to review this file:
 |---|---|---|---|
 | Android Code Reviewer | `agents/android/code-reviewer/` | Android | Reviews Kotlin/Compose for Clean Architecture, leaks, anti-patterns |
 | Compose Navigation Architect | `agents/android/compose-navigation/` | Android | Generates and reviews type-safe routes, nested graphs, deep links, and back-stack behavior |
+| Android Memory Leak Analyzer | `agents/android/memory-leak-analyzer/` | Android | LeakCanary traces and heap-retention reports → root cause, fix, and verification |
 | Crash Log Analyzer | `agents/android/crash-analyzer/` | Android / iOS | Parses crash logs → root cause + fix |
 | Swift Code Reviewer | `agents/ios/swift-reviewer/` | iOS | Reviews Swift/SwiftUI for memory safety and idiomatic patterns |
 | Flutter Widget Generator | `agents/flutter/widget-generator/` | Flutter | Generates Dart widget code from plain English |
@@ -114,6 +115,8 @@ Use `skills/android/anr-investigation.md` when a user provides an Android ANR tr
 ## Android Memory Leak Investigation
 
 Use `skills/android/memory-leak-investigation.md` when a user provides a LeakCanary trace, heap-retention report, memory-growth reproduction, or lifecycle-related code. Follow the strong-reference path from the GC root and identify the first app-controlled reference with incorrect lifetime.
+
+Use `agents/android/memory-leak-analyzer/agent.md` when a full Android memory leak investigation is needed, including deterministic report output, corrected code, and verification steps.
 
 ## Clean Code and Security Gates
 

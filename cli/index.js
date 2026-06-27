@@ -25,6 +25,7 @@ const AGENTS = {
   'compose-screen-builder':  { file: 'agents/android/compose-screen-builder/agent.md',         platform: 'android' },
   'compose-ui-reviewer':     { file: 'agents/android/compose-ui-reviewer/agent.md',            platform: 'android' },
   'crash-analyzer-android':  { file: 'agents/android/crash-analyzer/agent.md',                 platform: 'android' },
+  'memory-leak-analyzer':    { file: 'agents/android/memory-leak-analyzer/agent.md',           platform: 'android' },
   // iOS
   'crash-analyzer-ios':      { file: 'agents/ios/crash-analyzer/agent.md',                     platform: 'ios'     },
   'swift-reviewer':          { file: 'agents/ios/swift-reviewer/agent.md',                     platform: 'ios'     },
@@ -139,6 +140,7 @@ const PLATFORM_AGENTS = {
   android: [
     'android-crash-analyzer', 'axiom', 'code-reviewer', 'compose-navigation',
     'compose-screen-builder', 'compose-ui-reviewer', 'crash-analyzer-android',
+    'memory-leak-analyzer',
     // cross-platform bundled for android
     'appforge', 'crasher', 'sentinel', 'mobile-harness', 'mrecall', 'perf',
     'scribe', 'pipeline', 'figma', 'launchpad',

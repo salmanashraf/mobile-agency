@@ -2,7 +2,7 @@
 
 **The complete AI dev team for mobile engineers.**
 
-17 personality-driven agents · 35 composable skills · 13 end-to-end workflows
+18 personality-driven agents · 35 composable skills · 13 end-to-end workflows
 Android · iOS · Flutter · React Native · Unity · Unreal
 
 [![npm](https://img.shields.io/npm/v/mobile-agency?color=CB3837&label=npm)](https://www.npmjs.com/package/mobile-agency)
@@ -141,7 +141,7 @@ Not sure where to begin? Pick your situation:
 | | Generic AI prompt repos | Mobile Agency |
 |---|---|---|
 | Platform knowledge | Generic | Android · iOS · Flutter · React Native · Unity · Unreal |
-| Agent personalities | None | 17 named specialists with opinions |
+| Agent personalities | None | 18 named specialists with opinions |
 | Real workflows | No | 13 end-to-end processes |
 | Real examples | Toy pseudocode | Production code input/output pairs |
 | Installable | Copy-paste | `npx mobile-agency install` |
@@ -158,6 +158,7 @@ Not sure where to begin? Pick your situation:
 |---|---|---|---|
 | **AXIOM** | Android | Battle-scarred architect. Zero tolerance for GlobalScope. Has survived 3 Jetpack migrations. | Reviews Kotlin/Compose for Clean Architecture, leaks, and anti-patterns |
 | **NAVIGATOR** | Android | Back-stack cartographer. Every destination has a type and every pop has a reason. | Generates and reviews type-safe Compose navigation, nested graphs, deep links, and bottom navigation |
+| **RETAINER** | Android | Heap detective. Follows every strong reference until the guilty owner confesses. | LeakCanary and heap-retention reports to exact owner, fix, and verification plan |
 | **SWIFT** | iOS | Elegant, memory-safety obsessed. Will shame your retain cycles. | Reviews Swift/SwiftUI for memory safety, concurrency, and idiomatic patterns |
 | **DART** | Flutter | Pixel-perfect widget obsessive. Counts rebuilds like a miser counts coins. | Reviews Flutter for rebuild efficiency, state management, and performance |
 | **BRIDGE** | React Native | JSI evangelist. Tracks every bridge crossing like a border guard. | Finds bridge bottlenecks, re-renders, and New Architecture migration paths |
@@ -275,14 +276,14 @@ Not sure where to begin? Pick your situation:
 npm publishing is handled by GitHub Actions from git tags. Do not run `npm publish` manually.
 
 ```bash
-# 1. bump package.json version, for example 1.0.15
+# 1. bump package.json version, for example 1.0.16
 git add package.json
-git commit -m "Release v1.0.15"
+git commit -m "Release v1.0.16"
 
 # 2. create and push the release tag
-git tag v1.0.15
+git tag v1.0.16
 git push origin main
-git push origin v1.0.15
+git push origin v1.0.16
 ```
 
 GitHub Actions publishes npm after the tag push. Full guide: [docs/release-process.md](docs/release-process.md)

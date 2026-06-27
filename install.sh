@@ -60,6 +60,7 @@ _agent_lines() {
         echo "compose-screen-builder agents/android/compose-screen-builder/agent.md"
         echo "compose-ui-reviewer    agents/android/compose-ui-reviewer/agent.md"
         echo "android-crash-analyzer-v2 agents/android/crash-analyzer/agent.md"
+        echo "memory-leak-analyzer   agents/android/memory-leak-analyzer/agent.md"
     fi
 
     if [[ "$PLATFORM" == "ios" || "$PLATFORM" == "all" ]]; then
@@ -229,6 +230,7 @@ install_claude() {
     echo "   /axiom  /android-crash-analyzer  /android-crash-analyzer-v2"
     echo "   /android-code-reviewer  /compose-navigation"
     echo "   /compose-screen-builder  /compose-ui-reviewer"
+    echo "   /memory-leak-analyzer"
     echo "   Android skills:"
     echo "   /anr-investigation  /android-tdd  /compose-review  /compose-migration"
     echo "   /kotlin-modernize  /memory-leak-investigation"

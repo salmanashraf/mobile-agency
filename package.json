@@ -1,7 +1,7 @@
 {
   "name": "mobile-agency",
-  "version": "1.0.15",
-  "description": "The complete AI dev team for mobile engineers — 17 agents, 35 skills, 13 workflows for Android, iOS, Flutter, React Native, Unity, and Unreal.",
+  "version": "1.0.16",
+  "description": "The complete AI dev team for mobile engineers — 18 agents, 35 skills, 13 workflows for Android, iOS, Flutter, React Native, Unity, and Unreal.",
   "bin": {
     "mobile-agency": "cli/index.js"
   },

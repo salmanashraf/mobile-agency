@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mobile Agency — AI agents for mobile engineers</title>
-  <meta name="description" content="17 personality-driven AI agents, 35 composable skills, and 13 end-to-end workflows for Android, iOS, Flutter, React Native, Unity, and Unreal." />
+  <meta name="description" content="18 personality-driven AI agents, 35 composable skills, and 13 end-to-end workflows for Android, iOS, Flutter, React Native, Unity, and Unreal." />
   <meta property="og:title" content="Mobile Agency" />
   <meta property="og:description" content="The complete AI dev team for mobile engineers. Specialists who never sleep." />
   <meta property="og:type" content="website" />
@@ -317,7 +317,7 @@
   <div class="container">
     <div class="hero-badge">v1.0 — Open Source</div>
     <h1>The complete AI dev team<br>for <span>mobile engineers</span>.</h1>
-    <p>17 personality-driven agents. 35 composable skills. 13 end-to-end workflows. Android · iOS · Flutter · React Native · Unity · Unreal.</p>
+    <p>18 personality-driven agents. 35 composable skills. 13 end-to-end workflows. Android · iOS · Flutter · React Native · Unity · Unreal.</p>
 
     <div class="hero-install">
       <span class="prompt">$</span>
@@ -334,7 +334,7 @@
 <!-- Stats -->
 <div class="container">
   <div class="stats">
-    <div class="stat"><div class="stat-num">17</div><div class="stat-label">Agents</div></div>
+    <div class="stat"><div class="stat-num">18</div><div class="stat-label">Agents</div></div>
     <div class="stat"><div class="stat-num">35</div><div class="stat-label">Skills</div></div>
     <div class="stat"><div class="stat-num">13</div><div class="stat-label">Workflows</div></div>
     <div class="stat"><div class="stat-num">6</div><div class="stat-label">Platforms</div></div>
@@ -358,6 +358,11 @@
         <div class="agent-name">NAVIGATOR <span class="platform-tag tag-android">Android</span></div>
         <div class="agent-mission">Generates and reviews type-safe Compose navigation, nested graphs, deep links, and bottom navigation.</div>
         <div class="agent-quote">"Every destination has a type and every pop has a reason."</div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-name">RETAINER <span class="platform-tag tag-android">Android</span></div>
+        <div class="agent-mission">Analyzes LeakCanary traces and heap-retention reports into exact owners, lifecycle fixes, and verification steps.</div>
+        <div class="agent-quote">"Follows every strong reference until the guilty owner confesses."</div>
       </div>
       <div class="agent-card">
         <div class="agent-name">SWIFT <span class="platform-tag tag-ios">iOS</span></div>
@@ -599,11 +604,12 @@
       <span class="cmd2">./install.sh</span> <span class="flag">--platform</span> <span class="val">ios</span>
     </div>
     <div class="code-block" id="tab-android" style="display:none">
-      <span class="comment"># Android agents: AXIOM + cross-platform team</span><br>
+      <span class="comment"># Android agents: AXIOM, RETAINER + cross-platform team</span><br>
       <span class="comment"># Android skills: 5 android + cross-platform skills</span><br>
       <span class="cmd2">npx mobile-agency install</span> <span class="flag">--platform</span> <span class="val">android</span><br><br>
-      <span class="comment"># Or just the AXIOM agent</span><br>
-      <span class="cmd2">npx mobile-agency add agent axiom</span>
+      <span class="comment"># Or just one Android agent</span><br>
+      <span class="cmd2">npx mobile-agency add agent axiom</span><br>
+      <span class="cmd2">npx mobile-agency add agent memory-leak-analyzer</span>
     </div>
     <div class="code-block" id="tab-cursor" style="display:none">
       <span class="comment"># Install for Cursor (.cursorrules in current project)</span><br>

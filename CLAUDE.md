@@ -7,7 +7,7 @@
 
 ## What This Repo Is
 
-The complete AI dev team for mobile engineers. 17 personality-driven agents, 35 composable
+The complete AI dev team for mobile engineers. 18 personality-driven agents, 35 composable
 skills, and 13 end-to-end workflows for Android, iOS, Flutter, React Native, Unity, and Unreal.
 
 Each agent has a name, a personality, a mission, and a real worked example. Drop any agent
@@ -33,9 +33,10 @@ into Claude Code as a system prompt and it works immediately.
 
 ```
 mobile-agency/
-├── agents/                   ← 17 personality-driven agents
+├── agents/                   ← 18 personality-driven agents
 │   ├── android/axiom/        ← AXIOM (Android architect)
 │   ├── android/compose-navigation/ ← NAVIGATOR (Compose navigation)
+│   ├── android/memory-leak-analyzer/ ← RETAINER (memory leaks)
 │   ├── ios/swift/            ← SWIFT (iOS engineer)
 │   ├── flutter/dart/         ← DART (Flutter specialist)
 │   ├── react-native/bridge/  ← BRIDGE (RN optimizer)
@@ -76,6 +77,7 @@ mobile-agency/
 |---|---|---|---|
 | **AXIOM** | `agents/android/axiom/` | Android | Clean Architecture + Kotlin + Compose review |
 | **NAVIGATOR** | `agents/android/compose-navigation/` | Android | Type-safe Compose routes, graphs, deep links, and back stack |
+| **RETAINER** | `agents/android/memory-leak-analyzer/` | Android | LeakCanary traces + heap retention + lifecycle leak fixes |
 | **SWIFT** | `agents/ios/swift/` | iOS | Memory safety + SwiftUI + async/await review |
 | **DART** | `agents/flutter/dart/` | Flutter | Widget tree efficiency + state management review |
 | **BRIDGE** | `agents/react-native/bridge/` | React Native | Bridge calls + re-renders + New Architecture |
