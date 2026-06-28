@@ -15,6 +15,20 @@ Android · iOS · Flutter · React Native · Unity · Unreal
 
 > Most AI coding toolkits are generic. Mobile Agency is built specifically for mobile and game development workflows — with agents that know your platform from the inside.
 
+Mobile Agency does not just generate mobile code. It manages the whole app-building loop and verifies the result on a device.
+
+---
+
+## Who It Helps
+
+| Role | How Mobile Agency Helps |
+|---|---|
+| Senior developers | Delegates repeatable review, debugging, release, and QA work while keeping output tied to platform-specific standards and evidence. |
+| Architects and tech leads | Turns product goals into PRDs, tasks, architecture checks, security gates, UI verification, and release readiness reports that teams can review. |
+| Fresh joiners and new AI users | Provides a guided path from idea to implementation, with clear questions, examples, checklists, and safe defaults instead of a blank AI chat. |
+
+The goal is a practical mobile engineering loop: plan the feature, build one task at a time, audit the code, run tests, verify the UI, test on a simulator or device, save context, and continue later without losing project memory.
+
 ---
 
 ## Install
