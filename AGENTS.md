@@ -86,6 +86,7 @@ Use the agent at agents/android/code-reviewer/agent.md to review this file:
 
 | Agent | Path | Platform | What It Does |
 |---|---|---|---|
+| Android ANR Investigation Agent | `agents/android/anr-investigation/` | Android | ANR traces, Play Console clusters, and thread dumps → root cause, fix, and verification |
 | Android Code Reviewer | `agents/android/code-reviewer/` | Android | Reviews Kotlin/Compose for Clean Architecture, leaks, anti-patterns |
 | Compose Navigation Architect | `agents/android/compose-navigation/` | Android | Generates and reviews type-safe routes, nested graphs, deep links, and back-stack behavior |
 | Android Memory Leak Analyzer | `agents/android/memory-leak-analyzer/` | Android | LeakCanary traces and heap-retention reports → root cause, fix, and verification |
@@ -111,6 +112,8 @@ Use `skills/cross-platform/mobile-mcp-qa.md` and `workflows/mobile-mcp-qa.md` wh
 ## Android ANR Investigation
 
 Use `skills/android/anr-investigation.md` when a user provides an Android ANR trace, Play Console cluster, Crashlytics ANR, `ApplicationExitInfo`, or related source code. The skill requires evidence-based thread, lock, binder, and timeout analysis before recommending a fix.
+
+Use `agents/android/anr-investigation/agent.md` when a full Android ANR investigation is needed, including deterministic report output, corrected code, and verification steps.
 
 ## Android Memory Leak Investigation
 

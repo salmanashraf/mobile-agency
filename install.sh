@@ -53,6 +53,7 @@ _agent_lines() {
     done
 
     if [[ "$PLATFORM" == "android" || "$PLATFORM" == "all" ]]; then
+        echo "anr-investigation      agents/android/anr-investigation/agent.md"
         echo "axiom                  agents/android/axiom/agent.md"
         echo "android-crash-analyzer agents/android/android-crash-analyzer/agent.md"
         echo "android-code-reviewer  agents/android/code-reviewer/agent.md"
@@ -227,7 +228,8 @@ install_claude() {
     if [[ "$PLATFORM" == "android" || "$PLATFORM" == "all" ]]; then
     echo ""
     echo "   Android agents:"
-    echo "   /axiom  /android-crash-analyzer  /android-crash-analyzer-v2"
+    echo "   /anr-investigation  /axiom  /android-crash-analyzer"
+    echo "   /android-crash-analyzer-v2"
     echo "   /android-code-reviewer  /compose-navigation"
     echo "   /compose-screen-builder  /compose-ui-reviewer"
     echo "   /memory-leak-analyzer"
