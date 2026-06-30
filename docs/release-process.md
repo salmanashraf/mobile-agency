@@ -16,7 +16,7 @@ Do not run `npm publish` manually. Manual publishing can race with the tag workf
 
 ```json
 {
-  "version": "1.0.17"
+  "version": "1.0.18"
 }
 ```
 
@@ -34,7 +34,7 @@ npm pack --dry-run
 
 ```bash
 git add package.json
-git commit -m "Release v1.0.17"
+git commit -m "Release v1.0.18"
 ```
 
 If the release also changes docs, CLI, agents, skills, or workflows, include those files in the same release commit.
@@ -42,14 +42,14 @@ If the release also changes docs, CLI, agents, skills, or workflows, include tho
 4. Create the tag locally:
 
 ```bash
-git tag v1.0.17
+git tag v1.0.18
 ```
 
 5. Push the branch and tag:
 
 ```bash
 git push origin main
-git push origin v1.0.17
+git push origin v1.0.18
 ```
 
 6. Let GitHub Actions publish npm.
@@ -64,15 +64,15 @@ After the workflow finishes:
 
 ```bash
 npm view mobile-agency version dist-tags.latest
-npm view mobile-agency@1.0.17 version dist.tarball dist.shasum
-git ls-remote origin refs/heads/main refs/tags/v1.0.17
+npm view mobile-agency@1.0.18 version dist.tarball dist.shasum
+git ls-remote origin refs/heads/main refs/tags/v1.0.18
 ```
 
 Expected:
 
 - npm latest equals the released version.
 - GitHub `main` points to the release commit.
-- GitHub tag `v1.0.17` points to the same release commit.
+- GitHub tag `v1.0.18` points to the same release commit.
 - GitHub Actions publish workflow is green.
 
 ---
@@ -81,5 +81,5 @@ Expected:
 
 - Never run `npm publish` manually for normal releases.
 - Never push a tag before `package.json` is updated and committed.
-- The tag must match the package version exactly: `package.json` `1.0.17` uses tag `v1.0.17`.
+- The tag must match the package version exactly: `package.json` `1.0.18` uses tag `v1.0.18`.
 - If a workflow is rerun for an already-published version, it should skip publishing instead of failing.
