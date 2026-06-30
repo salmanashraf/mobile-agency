@@ -4,6 +4,28 @@ This guide walks you through using your first agent from the Mobile Dev Skill Ag
 
 ---
 
+## Choose a Loop First
+
+Mobile Agency works best when you choose the engineering loop before choosing an agent.
+
+| I need to... | Start with this loop | Good first tool |
+|---|---|---|
+| Plan an app or feature | Planning | `@APPFORGE` |
+| Review architecture | Architecture | `@AXIOM` or `/clean-code-audit` |
+| Build a feature | Development | `@MOBILE-HARNESS` |
+| Fix slowness, ANRs, or leaks | Performance | `@PERF`, `@FREEZE`, `@RETAINER` |
+| Audit production risk | Security | `@SENTINEL` or `/security-audit` |
+| Prove the app works | Testing | `/mobile-mcp-qa` |
+| Prepare a store release | Release | `/release-prep` |
+| Improve store conversion | Growth | `@LAUNCHPAD` |
+| Resume work or triage production issues | Maintenance | `@MRECALL` or `@CRASHER` |
+
+Then apply the platform plugin for your app: Android, iOS, Flutter, React Native, Kotlin Multiplatform, Unity, or Unreal.
+
+Full model: [core-loops.md](core-loops.md)
+
+---
+
 ## Prerequisites
 
 You need one of:

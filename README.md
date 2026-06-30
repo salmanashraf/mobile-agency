@@ -3,15 +3,15 @@
 **The complete AI dev team for mobile engineers.**
 
 19 personality-driven agents · 35 composable skills · 13 end-to-end workflows
-Android · iOS · Flutter · React Native · Unity · Unreal
+Android · iOS · Flutter · React Native · Kotlin Multiplatform · Unity · Unreal
 
 [![npm](https://img.shields.io/npm/v/mobile-agency?color=CB3837&label=npm)](https://www.npmjs.com/package/mobile-agency)
 [![npm downloads](https://img.shields.io/npm/dm/mobile-agency?color=CB3837)](https://www.npmjs.com/package/mobile-agency)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![GitHub Stars](https://img.shields.io/github/stars/salmanashraf/mobile-agency?style=social)](https://github.com/salmanashraf/mobile-agency/stargazers)
-[![Platform](https://img.shields.io/badge/platforms-Android%20%7C%20iOS%20%7C%20Flutter%20%7C%20RN%20%7C%20Unity%20%7C%20Unreal-brightgreen)](#agent-roster)
+[![Platform](https://img.shields.io/badge/platforms-Android%20%7C%20iOS%20%7C%20Flutter%20%7C%20RN%20%7C%20KMP%20%7C%20Unity%20%7C%20Unreal-brightgreen)](#core-loops-and-platform-plugins)
 
-[Installation Guide](docs/installation.md) · [Wiki](https://github.com/salmanashraf/mobile-agency/wiki) · [Getting Started](docs/getting-started.md) · [Contributing](CONTRIBUTING.md)
+[Installation Guide](docs/installation.md) · [Core Loops](docs/core-loops.md) · [Wiki](https://github.com/salmanashraf/mobile-agency/wiki) · [Getting Started](docs/getting-started.md) · [Contributing](CONTRIBUTING.md)
 
 > Most AI coding toolkits are generic. Mobile Agency is built specifically for mobile and game development workflows — with agents that know your platform from the inside.
 
@@ -30,6 +30,33 @@ Mobile Agency is built around **Loop Engineering**: define the goal once, then l
 | Fresh joiners and new AI users | Provides a guided path from idea to implementation, with clear questions, examples, checklists, and safe defaults instead of a blank AI chat. |
 
 The goal is a practical mobile engineering loop: plan the feature, build one task at a time, audit the code, run tests, verify the UI, test on a simulator or device, save context, and continue later without losing project memory.
+
+---
+
+## Core Loops and Platform Plugins
+
+Mobile Agency is organized around core engineering loops, then extended with platform-specific plugins. Start with the loop that matches your current problem, then apply the Android, iOS, Flutter, React Native, Kotlin Multiplatform, Unity, or Unreal expertise needed for your app.
+
+```text
+Core Loops: Planning -> Architecture -> Development -> Performance -> Security -> Testing -> Release -> Growth -> Maintenance
+Platform Plugins: Android · iOS · Flutter · React Native · Kotlin Multiplatform · Unity · Unreal
+```
+
+| Core Loop | What It Handles | Best Starting Point |
+|---|---|---|
+| Planning | Idea discovery, PRD, roadmap, task breakdown | `@APPFORGE`, `/grill-mobile`, `/feature-slice` |
+| Architecture | System design, clean code, module boundaries, model separation | `@AXIOM`, `/clean-code-audit`, platform reviewers |
+| Development | Feature implementation, UI build, refactor, code review | `@MOBILE-HARNESS`, `@FIGMA`, platform builders |
+| Performance | Startup, ANR, memory leaks, frame drops, battery, network, app size | `@PERF`, `@FREEZE`, `@RETAINER`, `/perf-audit` |
+| Security | OWASP, secrets, auth, storage, deep links, WebView, permissions | `@SENTINEL`, `/security-audit`, `/security-scan` |
+| Testing | Unit tests, UI tests, accessibility, PRD checks, device QA | `/mobile-mcp-qa`, TDD skills, accessibility audit |
+| Release | CI/CD, signing, release notes, rollout, store checklist | `@PIPELINE`, `@SCRIBE`, `/release-prep` |
+| Growth | ASO, store listing, screenshots, monetization | `@LAUNCHPAD`, `/store-listing` |
+| Maintenance | Crash triage, context memory, issue planning, regression checks | `@CRASHER`, `@MRECALL`, issue-to-agent workflow |
+
+Security and performance are built into the loop before release. They are not optional cleanup steps.
+
+Full guide: [docs/core-loops.md](docs/core-loops.md)
 
 ---
 

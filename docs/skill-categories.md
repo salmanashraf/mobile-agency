@@ -4,6 +4,26 @@ This document describes the taxonomy used across agents, skills, and prompts in 
 
 ---
 
+## Core Loop Taxonomy
+
+Mobile Agency groups skills by the core loop they support:
+
+| Core Loop | What It Covers |
+|---|---|
+| Planning | Discovery, PRD, roadmap, task breakdown |
+| Architecture | Clean code, module boundaries, model separation |
+| Development | Feature implementation, UI build, refactor, code review |
+| Performance | Startup, ANR, memory, frame, battery, network, app size |
+| Security | OWASP, secrets, auth, storage, deep links, WebView, permissions, release hardening |
+| Testing | Unit tests, UI tests, accessibility, device QA, PRD verification |
+| Release | CI/CD, signing, release notes, rollout, store checklist |
+| Growth | ASO, store listing, screenshots, monetization |
+| Maintenance | Crash triage, context memory, issue-to-agent, regression checks |
+
+See [core-loops.md](core-loops.md) for the full product model.
+
+---
+
 ## Categories
 
 ### Code Quality
