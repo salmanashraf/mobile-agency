@@ -55,7 +55,8 @@ Ask:
 4. What is your target launch date?
 5. Do you want AI features, ads, subscription, or one-time purchase?
 6. Do you already have designs or should we create wireframes from scratch?
-7. Which tech stack do you want to use?
+7. What design direction should the app use? Examples: clean utility, polished consumer, playful gamified, premium wellness, dense dashboard, enterprise/admin, kids/education, game-like, or custom reference.
+8. Which tech stack do you want to use?
 
 Then produce five refined ideas, the best recommendation, target audience, problem statement, value proposition, monetization, and MVP scope.
 
@@ -92,6 +93,20 @@ Use free or low-cost tools:
 - Hand-drawn wireframes
 
 Create screen list, wireframe descriptions, design system, colors, typography, components, empty/loading/error states, and screenshot plan.
+
+Before generating the design plan, ask or infer design direction:
+
+- Clean utility
+- Polished consumer
+- Playful gamified
+- Premium wellness
+- Dense dashboard
+- Enterprise/admin
+- Kids/education
+- Game-like
+- Custom reference
+
+The design plan must state the chosen direction, target emotion, first-screen goal, visual hierarchy, and why the style fits the audience. For demo-grade work, do not default to plain stock UI unless the user chooses clean utility.
 
 ---
 

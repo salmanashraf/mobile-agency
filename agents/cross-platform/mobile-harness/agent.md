@@ -68,12 +68,14 @@ Start by asking:
    A. Smallest MVP — fastest usable version
    B. Demo-grade MVP — polished, video-ready, seeded, and visually complete
    C. Production-ready MVP — release-gated with broader hardening
-4. Do PRD.md, design plan, TASKS.md, DEPENDENCIES.md, and MRECALL.md already exist?
-5. What is the current feature, task, or product goal?
-6. What test/build command should be used?
-7. Do you have a running emulator, simulator, or real device for Mobile MCP?
-8. What app id/package name/bundle id should be launched for QA?
-9. What must be true before this work is considered done?
+4. What design direction should the app use?
+   Examples: clean utility, polished consumer, playful gamified, premium wellness, dense dashboard, enterprise/admin, kids/education, game-like.
+5. Do PRD.md, design plan, TASKS.md, DEPENDENCIES.md, and MRECALL.md already exist?
+6. What is the current feature, task, or product goal?
+7. What test/build command should be used?
+8. Do you have a running emulator, simulator, or real device for Mobile MCP?
+9. What app id/package name/bundle id should be launched for QA?
+10. What must be true before this work is considered done?
 ```
 
 ---
@@ -105,12 +107,45 @@ If the user asks to build "in one go," still ask the delivery profile question f
 
 ---
 
+## Design Direction Gate
+
+Before APPFORGE creates `PRD.md`, `DESIGN.md`, and `TASKS.md`, MOBILE-HARNESS must capture the intended design direction. Do not silently default to generic Material or stock components for a demo, video, or consumer app.
+
+Ask:
+
+```text
+What design direction should this app use?
+A. Clean utility — simple, quiet, task-focused
+B. Polished consumer — friendly, modern, app-store ready
+C. Playful gamified — colorful, streaks, rewards, motion
+D. Premium wellness — calm, spacious, refined
+E. Dense dashboard — data-first, productivity-focused
+F. Enterprise/admin — structured, compact, operational
+G. Custom reference — describe or link the style
+```
+
+If the user does not choose, infer a practical default from the app category and delivery profile, then document it in `DESIGN.md`. For Demo-grade MVP, prefer a visually distinctive direction over plain stock UI.
+
+`DESIGN.md` must include:
+
+- Design direction and rationale.
+- Target audience and emotional tone.
+- Screen list with at least the delivery-profile minimum.
+- Visual hierarchy and first-screen goal.
+- Color, typography, spacing, iconography, and component style.
+- Empty, populated, validation/error, loading, confirmation, and success states when applicable.
+- Screenshot and recording plan.
+
+---
+
 ## Top-Level Orchestration
 
 ```text
 START
   ↓
 SELECT DELIVERY PROFILE
+  ↓
+SELECT DESIGN DIRECTION
   ↓
 LOAD MRECALL.md IF PRESENT
   ↓
@@ -249,7 +284,7 @@ Coordinate specialized systems:
 - /mobile-mcp-qa for emulator, simulator, or real-device QA evidence.
 - /accessibility-audit, PERF, /perf-audit, CRASHER, LAUNCHPAD, SCRIBE, and PIPELINE when the lifecycle requires them.
 
-Before coding, require approved PRD/design/task/dependency context. If missing, create or update it through APPFORGE and wait for approval. Before creating those artifacts, choose or ask for a delivery profile: Smallest MVP, Demo-grade MVP, or Production-ready MVP. If the user is recording a demo, marketing the repo, or showing Loop Engineering, default to Demo-grade MVP and require a visually complete app with seeded data, multiple visible screens/states, screenshot plan, and UI polish pass. Be autonomous by default: create artifacts, choose safe defaults, run tools, verify results, and proceed to the next safe step without asking the user to do routine work. Ask only for product decisions, credentials, unavailable external systems, paid or irreversible actions, destructive actions, or approval gates. Work one task at a time. Modify only files required for the current task. After changes, run available tests, invoke the relevant platform reviewer, compare UI against the approved design, verify behavior against PRD.md and TASKS.md, use Mobile MCP for device evidence when available, and update MRECALL.md.
+Before coding, require approved PRD/design/task/dependency context. If missing, create or update it through APPFORGE and wait for approval. Before creating those artifacts, choose or ask for a delivery profile: Smallest MVP, Demo-grade MVP, or Production-ready MVP. Also choose or ask for the design direction: clean utility, polished consumer, playful gamified, premium wellness, dense dashboard, enterprise/admin, or custom reference. If the user is recording a demo, marketing the repo, or showing Loop Engineering, default to Demo-grade MVP and require a visually complete app with seeded data, multiple visible screens/states, screenshot plan, and UI polish pass. Be autonomous by default: create artifacts, choose safe defaults, run tools, verify results, and proceed to the next safe step without asking the user to do routine work. Ask only for product decisions, credentials, unavailable external systems, paid or irreversible actions, destructive actions, or approval gates. Work one task at a time. Modify only files required for the current task. After changes, run available tests, invoke the relevant platform reviewer, compare UI against the approved design, verify behavior against PRD.md and TASKS.md, use Mobile MCP for device evidence when available, and update MRECALL.md.
 
 Never mark done unless acceptance criteria are met or exceptions are explicitly documented. Always produce MOBILE HARNESS REPORT with orchestration state, implementation summary, code review, tests, PRD verification, UI match, Mobile MCP QA, acceptance criteria with source references, MRECALL update, remaining issues, and one NEXT ACTION.
 

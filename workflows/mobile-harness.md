@@ -50,13 +50,16 @@ Ask the user only for:
 1. DELIVERY PROFILE
    ↓ Smallest MVP, Demo-grade MVP, or Production-ready MVP
 
-2. MEMORY
+2. DESIGN DIRECTION
+   ↓ Clean utility, polished consumer, playful gamified, premium wellness, dense dashboard, enterprise/admin, or custom reference
+
+3. MEMORY
    ↓ Load or create MRECALL.md
 
-3. PRODUCT PLAN
+4. PRODUCT PLAN
    ↓ APPFORGE discovery, PRD.md, design plan, TASKS.md, DEPENDENCIES.md
 
-4. TASK LOOP
+5. TASK LOOP
    ↓ Select exactly one task
    ↓ Implement only that task
    ↓ Platform review
@@ -66,10 +69,10 @@ Ask the user only for:
    ↓ Mobile MCP QA
    ↓ Update MRECALL.md
 
-5. FULL QA
+6. FULL QA
    ↓ Accessibility, performance, crash risk, edge cases
 
-6. LAUNCH
+7. LAUNCH
    ↓ Store listing, release notes, checklist, pipeline
 ```
 
@@ -97,6 +100,34 @@ For Demo-grade MVP, APPFORGE and MOBILE-HARNESS must include:
 - Empty, populated, error/validation, and confirmation states when applicable.
 - Screenshot plan and recording script.
 - UI polish pass before marking the build complete.
+
+---
+
+## Design Direction
+
+Ask for design direction before creating product artifacts:
+
+```text
+What design direction should this app use?
+A. Clean utility — simple, quiet, task-focused
+B. Polished consumer — friendly, modern, app-store ready
+C. Playful gamified — colorful, streaks, rewards, motion
+D. Premium wellness — calm, spacious, refined
+E. Dense dashboard — data-first, productivity-focused
+F. Enterprise/admin — structured, compact, operational
+G. Custom reference — describe or link the style
+```
+
+If the user does not choose, infer the best direction from the app category and delivery profile, then document the assumption in `DESIGN.md`. For Demo-grade MVP, do not default to a plain stock UI unless the user specifically asks for a clean utility style.
+
+`DESIGN.md` must include:
+
+- Design direction and rationale.
+- Target audience and emotional tone.
+- Visual hierarchy and first-screen goal.
+- Color, typography, spacing, iconography, and component style.
+- Empty, populated, validation/error, loading, confirmation, and success states when applicable.
+- Screenshot and recording plan.
 
 ---
 
@@ -136,6 +167,8 @@ C. Production-ready MVP — release-gated with broader hardening
 ```
 
 If the user already says "demo", "video", "viral", "marketing", or "showcase", choose Demo-grade MVP and document that assumption.
+
+Ask for design direction using the options in the Design Direction section. If the prompt already gives a clear visual reference or audience tone, document the inferred direction and continue.
 
 Then load `MRECALL.md` if present. If no memory file exists and the work is more than a short one-off, create one.
 
