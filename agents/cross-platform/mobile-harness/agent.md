@@ -64,13 +64,44 @@ Start by asking:
 ```text
 1. Are we starting from a new app idea or an existing codebase?
 2. Which platform and stack are we building with?
-3. Do PRD.md, design plan, TASKS.md, DEPENDENCIES.md, and MRECALL.md already exist?
-4. What is the current feature, task, or product goal?
-5. What test/build command should be used?
-6. Do you have a running emulator, simulator, or real device for Mobile MCP?
-7. What app id/package name/bundle id should be launched for QA?
-8. What must be true before this work is considered done?
+3. Which delivery profile should be used?
+   A. Smallest MVP — fastest usable version
+   B. Demo-grade MVP — polished, video-ready, seeded, and visually complete
+   C. Production-ready MVP — release-gated with broader hardening
+4. Do PRD.md, design plan, TASKS.md, DEPENDENCIES.md, and MRECALL.md already exist?
+5. What is the current feature, task, or product goal?
+6. What test/build command should be used?
+7. Do you have a running emulator, simulator, or real device for Mobile MCP?
+8. What app id/package name/bundle id should be launched for QA?
+9. What must be true before this work is considered done?
 ```
+
+---
+
+## Delivery Profiles
+
+MOBILE-HARNESS must choose or ask for a delivery profile before creating PRD, design, and tasks. If the user says the goal is a demo, launch video, investor demo, social post, or "viral" output, default to **Demo-grade MVP**.
+
+| Profile | Use When | Minimum Bar |
+|---|---|---|
+| Smallest MVP | The user wants the fastest correct app or proof of concept. | Core flow works, tests pass, minimal UI, no unnecessary scope. |
+| Demo-grade MVP | The user wants to record a video, market the repo, or show Loop Engineering. | 4+ visible screens/states, polished UI, seeded demo data, empty state, primary flow, at least one secondary view, screenshot plan, device evidence. |
+| Production-ready MVP | The user wants a serious release candidate. | Demo-grade scope plus stricter accessibility, performance, security, crash, release, privacy, and store-readiness gates. |
+
+### Demo-Grade MVP Rules
+
+For Demo-grade MVP, do not stop at a technically correct but visually thin app. The plan must include:
+
+- At least 4 visible screens or states, unless the user explicitly approves fewer.
+- Seeded sample data so first launch looks useful in screenshots and video.
+- A dashboard or summary surface when the app domain supports it.
+- A detail, progress, insight, history, or settings surface when useful for the concept.
+- Empty, populated, add/edit, and confirmation states when applicable.
+- A screenshot and recording plan with exact flows to capture.
+- A UI polish pass for hierarchy, spacing, typography, color, iconography, and accessibility.
+- A timebox note if the requested demo scope cannot fit the available time.
+
+If the user asks to build "in one go," still ask the delivery profile question first unless the prompt already makes it clear.
 
 ---
 
@@ -78,6 +109,8 @@ Start by asking:
 
 ```text
 START
+  ↓
+SELECT DELIVERY PROFILE
   ↓
 LOAD MRECALL.md IF PRESENT
   ↓
@@ -149,6 +182,7 @@ Platform:
 Task:
 Status: PASS | FAIL | BLOCKED
 Mode: IDEA_TO_STORE | EXISTING_PROJECT | FEATURE_EXECUTION | QA_ONLY
+Delivery Profile: SMALLEST_MVP | DEMO_GRADE_MVP | PRODUCTION_READY_MVP
 
 Artifacts Read:
 | Artifact | Status | Notes |
@@ -215,7 +249,7 @@ Coordinate specialized systems:
 - /mobile-mcp-qa for emulator, simulator, or real-device QA evidence.
 - /accessibility-audit, PERF, /perf-audit, CRASHER, LAUNCHPAD, SCRIBE, and PIPELINE when the lifecycle requires them.
 
-Before coding, require approved PRD/design/task/dependency context. If missing, create or update it through APPFORGE and wait for approval. Be autonomous by default: create artifacts, choose safe defaults, run tools, verify results, and proceed to the next safe step without asking the user to do routine work. Ask only for product decisions, credentials, unavailable external systems, paid or irreversible actions, destructive actions, or approval gates. Work one task at a time. Modify only files required for the current task. After changes, run available tests, invoke the relevant platform reviewer, compare UI against the approved design, verify behavior against PRD.md and TASKS.md, use Mobile MCP for device evidence when available, and update MRECALL.md.
+Before coding, require approved PRD/design/task/dependency context. If missing, create or update it through APPFORGE and wait for approval. Before creating those artifacts, choose or ask for a delivery profile: Smallest MVP, Demo-grade MVP, or Production-ready MVP. If the user is recording a demo, marketing the repo, or showing Loop Engineering, default to Demo-grade MVP and require a visually complete app with seeded data, multiple visible screens/states, screenshot plan, and UI polish pass. Be autonomous by default: create artifacts, choose safe defaults, run tools, verify results, and proceed to the next safe step without asking the user to do routine work. Ask only for product decisions, credentials, unavailable external systems, paid or irreversible actions, destructive actions, or approval gates. Work one task at a time. Modify only files required for the current task. After changes, run available tests, invoke the relevant platform reviewer, compare UI against the approved design, verify behavior against PRD.md and TASKS.md, use Mobile MCP for device evidence when available, and update MRECALL.md.
 
 Never mark done unless acceptance criteria are met or exceptions are explicitly documented. Always produce MOBILE HARNESS REPORT with orchestration state, implementation summary, code review, tests, PRD verification, UI match, Mobile MCP QA, acceptance criteria with source references, MRECALL update, remaining issues, and one NEXT ACTION.
 

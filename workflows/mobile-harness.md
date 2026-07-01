@@ -47,13 +47,16 @@ Ask the user only for:
 0. START
    ↓ New idea or existing codebase?
 
-1. MEMORY
+1. DELIVERY PROFILE
+   ↓ Smallest MVP, Demo-grade MVP, or Production-ready MVP
+
+2. MEMORY
    ↓ Load or create MRECALL.md
 
-2. PRODUCT PLAN
+3. PRODUCT PLAN
    ↓ APPFORGE discovery, PRD.md, design plan, TASKS.md, DEPENDENCIES.md
 
-3. TASK LOOP
+4. TASK LOOP
    ↓ Select exactly one task
    ↓ Implement only that task
    ↓ Platform review
@@ -63,12 +66,37 @@ Ask the user only for:
    ↓ Mobile MCP QA
    ↓ Update MRECALL.md
 
-4. FULL QA
+5. FULL QA
    ↓ Accessibility, performance, crash risk, edge cases
 
-5. LAUNCH
+6. LAUNCH
    ↓ Store listing, release notes, checklist, pipeline
 ```
+
+---
+
+## Delivery Profiles
+
+Pick a delivery profile before APPFORGE creates PRD, design, and tasks.
+
+| Profile | Use When | Minimum Bar |
+|---|---|---|
+| Smallest MVP | Fastest useful app or proof of concept. | Core flow works, tests pass, minimal UI, no avoidable scope. |
+| Demo-grade MVP | Video, social demo, investor demo, launch article, or Loop Engineering showcase. | 4+ visible screens/states, seeded sample data, polished UI, screenshot plan, device evidence. |
+| Production-ready MVP | Release candidate or serious dogfooding build. | Demo-grade scope plus stricter accessibility, performance, security, crash, privacy, release, and store gates. |
+
+Demo-grade MVP exists to prevent the loop from producing a technically correct but boring app. It should be the default whenever the user says they want to create a video or market the repo.
+
+For Demo-grade MVP, APPFORGE and MOBILE-HARNESS must include:
+
+- A visually strong first launch with sample data or guided empty state.
+- At least 4 visible screens/states unless the user approves fewer.
+- Dashboard or summary surface where the domain supports it.
+- Detail, history, insights, settings, or progress surface where useful.
+- Add/edit/delete or equivalent primary interaction.
+- Empty, populated, error/validation, and confirmation states when applicable.
+- Screenshot plan and recording script.
+- UI polish pass before marking the build complete.
 
 ---
 
@@ -97,6 +125,17 @@ Ask whether this is:
 - Existing feature in progress
 - QA-only pass
 - Launch preparation
+
+Ask for delivery profile:
+
+```text
+Do you want:
+A. Smallest MVP — fastest usable version
+B. Demo-grade MVP — polished, video-ready, seeded, and visually complete
+C. Production-ready MVP — release-gated with broader hardening
+```
+
+If the user already says "demo", "video", "viral", "marketing", or "showcase", choose Demo-grade MVP and document that assumption.
 
 Then load `MRECALL.md` if present. If no memory file exists and the work is more than a short one-off, create one.
 

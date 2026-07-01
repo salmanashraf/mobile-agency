@@ -35,7 +35,7 @@ Core loops describe the repeatable work every mobile team has to do. Platform pl
 Most AI coding resources start with prompts. Mobile teams start with outcomes:
 
 - What are we building?
-- Is the architecture sane?
+- Is the architecture same?
 - Does it perform on real devices?
 - Is it secure enough to ship?
 - Does the UI match the design?
