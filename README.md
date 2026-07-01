@@ -28,21 +28,26 @@ Mobile Agency is built around **Loop Engineering** and a **mobile-karpathy** min
 ---
 ## How It Works
 
-```
-1. Install          npx mobile-agency install
-2. Open project     Claude Code · Cursor · Windsurf · Copilot · Codex
-3. Invoke           @mobile-harness · @AXIOM · @CRASHER · /flutter-review · /perf-audit
-4. Get results      Platform-specific findings, ranked by severity, with fixes
-```
+Mobile Agency turns AI coding from one-off prompts into a repeatable mobile engineering loop.
 
-**Examples:**
+| Step | What Happens | Command |
+|---|---|---|
+| 1. Install | Add the agents, skills, and workflows to your AI coding tool. | `npx mobile-agency install` |
+| 2. Open your app | Use it inside an Android, iOS, Flutter, React Native, KMP, Unity, or Unreal project. | Claude Code · Cursor · Windsurf · Copilot · Codex |
+| 3. Start the loop | Tell Mobile Harness the app or feature goal once. It asks clarification questions before building. | `/mobile-harness` |
+| 4. Build with gates | The loop plans, implements, reviews architecture, checks security, audits performance, verifies UI, and runs QA. | `@MOBILE-HARNESS` |
+| 5. Continue later | Project context, decisions, reports, and next tasks are saved so work can continue across sessions. | `@MRECALL` |
 
-```
+For focused work, use a specialist directly:
+
+```text
 @AXIOM review HomeViewModel.kt
 @CRASHER analyze crash.log
 /flutter-review lib/home_screen.dart
 /perf-audit startup
+/security-audit release
 ```
+
 ---
 
 ## Who It Helps
