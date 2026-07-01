@@ -18,6 +18,8 @@ Android · iOS · Flutter · React Native · Kotlin Multiplatform · Unity · Un
 **What is Mobile Agency?**
 <img width="941" height="471" alt="Screenshot 2026-07-01 at 11 54 04 AM" src="https://github.com/user-attachments/assets/3e51426a-d2d9-41d3-b668-48d4c751f20c" />
 
+![Mobile Harness Loop Engineering preview](https://github.com/user-attachments/assets/3e51426a-d2d9-41d3-b668-48d4c751f20c)
+
 Mobile Agency is a ready-to-use AI engineering system for building Android, iOS, Flutter, React Native, Kotlin Multiplatform, Unity, and Unreal projects. Instead of learning every platform from scratch or writing the same prompts again and again, you install the agents, skills, and workflows, then use them to plan, build, review, test, and ship real apps.
 
 Bring the idea. Mobile Agency brings the mobile team: product planning, architecture review, feature development, clean-code audits, security checks, performance analysis, UI verification, device QA, release prep, and store growth.
@@ -105,8 +107,6 @@ cd mobile-agency
 `/mobile-harness` running Loop Engineering — one flow for planning, building, testing, UI verification, and release checks:
 
 https://github.com/user-attachments/assets/848a0427-8b0d-414a-a48e-79df38238674
-
-![Mobile Harness Loop Engineering preview](https://github.com/user-attachments/assets/3e51426a-d2d9-41d3-b668-48d4c751f20c)
 
 `/flutter-review` on a real Flutter project — prioritized findings, zero setup:
 
