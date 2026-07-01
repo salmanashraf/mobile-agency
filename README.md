@@ -97,6 +97,10 @@ cd mobile-agency
 
 ## See It In Action
 
+`/mobile-harness` running Loop Engineering — one flow for planning, building, testing, UI verification, and release checks:
+
+https://github.com/user-attachments/assets/848a0427-8b0d-414a-a48e-79df38238674
+
 `/flutter-review` on a real Flutter project — prioritized findings, zero setup:
 
 https://github.com/user-attachments/assets/427422db-b6b1-4e93-96d0-ad5dd2843f53
@@ -426,6 +430,14 @@ Design direction: Playful gamified, polished consumer, or another clear visual s
 Demo-grade mode requires seeded data, multiple visible screens/states, a screenshot plan, and a UI polish pass. It should not stop at a technically correct but boring two-screen app.
 
 ### Run It
+
+In Claude Code, install Mobile Agency, open your app project, then run:
+
+```
+/mobile-harness
+```
+
+For a full explicit prompt, use:
 
 ```
 @MOBILE-HARNESS
