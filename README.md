@@ -13,9 +13,13 @@ Android · iOS · Flutter · React Native · Kotlin Multiplatform · Unity · Un
 
 [Installation Guide](docs/installation.md) · [Core Loops](docs/core-loops.md) · [mobile-karpathy](mobile-karpathy.md) · [Wiki](https://github.com/salmanashraf/mobile-agency/wiki) · [Getting Started](docs/getting-started.md) · [Contributing](CONTRIBUTING.md)
 
-> Most AI coding toolkits are generic. Mobile Agency is built specifically for mobile and game development workflows — with agents that know your platform from the inside.
+> Most AI coding toolkits are generic. Mobile Agency is built specifically for mobile, hybrid apps, and games — with agents that know your platform from the inside.
 
-Mobile Agency does not just generate mobile code. It manages the whole app-building loop and verifies the result on a device.
+**What is Mobile Agency?**
+
+Mobile Agency is a ready-to-use AI engineering system for building Android, iOS, Flutter, React Native, Kotlin Multiplatform, Unity, and Unreal projects. Instead of learning every platform from scratch or writing the same prompts again and again, you install the agents, skills, and workflows, then use them to plan, build, review, test, and ship real apps.
+
+Bring the idea. Mobile Agency brings the mobile team: product planning, architecture review, feature development, clean-code audits, security checks, performance analysis, UI verification, device QA, release prep, and store growth.
 
 Mobile Agency is built around **Loop Engineering** and a **mobile-karpathy** mindset: define the goal once, then let the system keep moving through planning, implementation, code audit, security review, UI verification, device QA, reporting, and context saving. The aim is to reduce manual work and repeated manual prompting so developers can focus on product decisions, architecture tradeoffs, credentials, and final approval.
 
