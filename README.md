@@ -105,6 +105,8 @@ cd mobile-agency
 
 https://github.com/user-attachments/assets/848a0427-8b0d-414a-a48e-79df38238674
 
+![Mobile Harness Loop Engineering preview](https://github.com/user-attachments/assets/3e51426a-d2d9-41d3-b668-48d4c751f20c)
+
 `/flutter-review` on a real Flutter project — prioritized findings, zero setup:
 
 https://github.com/user-attachments/assets/427422db-b6b1-4e93-96d0-ad5dd2843f53
