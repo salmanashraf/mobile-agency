@@ -376,25 +376,106 @@ Use it inside APPFORGE Stage 7 Full QA, UI match review, launch readiness checks
 
 ## Mobile Harness — Top-Level Orchestrator
 
-Mobile Harness is the autonomous top-level orchestrator for the whole Mobile Agency system. It can start from a rough idea or existing codebase, then coordinate APPFORGE, MRECALL, platform reviewers, tests, UI verification, Mobile MCP QA, accessibility, performance, and launch prep.
+Mobile Harness is the Loop Engineering orchestrator for Mobile Agency. It can start from a rough app idea or an existing codebase, then coordinate APPFORGE, MRECALL, platform reviewers, tests, UI verification, Mobile MCP QA, accessibility, performance, security, release prep, and store/growth work.
 
-The purpose is near-zero human effort. It creates missing docs, chooses practical MVP defaults, implements one approved task at a time, verifies against PRD/design, runs device QA when available, updates project memory, and stops only for approvals, credentials, paid/destructive actions, legal/store ownership, or major product decisions.
+Use it when you want to define the goal once and have the system keep moving through the app-building loop without repeating the same manual prompts at every stage.
+
+### What It Runs
+
+```text
+Goal
+-> clarify delivery profile and design direction
+-> create or read PRD.md, DESIGN.md, TASKS.md, DEPENDENCIES.md, ROADMAP.md
+-> implement one scoped task
+-> run platform review
+-> run tests
+-> verify PRD and UI match
+-> run device QA when available
+-> run performance/security/accessibility checks when relevant
+-> update MRECALL.md
+-> produce MOBILE_HARNESS_REPORT.md
+```
+
+### First Questions It Should Ask
+
+Mobile Harness now asks the questions that prevent thin or wrong output:
+
+```text
+1. New app idea or existing codebase?
+2. Platform and stack?
+3. Delivery profile?
+   A. Smallest MVP
+   B. Demo-grade MVP
+   C. Production-ready MVP
+4. Design direction?
+   Clean utility, polished consumer, playful gamified, premium wellness,
+   dense dashboard, enterprise/admin, kids/education, game-like, or custom reference.
+5. Existing PRD/design/tasks/dependencies/memory?
+6. Build/test command?
+7. Device/emulator/simulator available?
+8. Done criteria?
+```
+
+For video, marketing, or social demos, choose:
+
+```text
+Delivery Profile: Demo-grade MVP
+Design direction: Playful gamified, polished consumer, or another clear visual style.
+```
+
+Demo-grade mode requires seeded data, multiple visible screens/states, a screenshot plan, and a UI polish pass. It should not stop at a technically correct but boring two-screen app.
+
+### Run It
 
 ```
 @MOBILE-HARNESS
-1. Load or create MRECALL.md
-2. Run APPFORGE if PRD/design/tasks are missing
-3. Select exactly one approved task
-4. Implement only that task
-5. Run AXIOM / SWIFT / DART / BRIDGE review
-6. Run tests and PRD verification
-7. Compare UI against design
-8. Run /mobile-mcp-qa
-9. Update MRECALL.md
-10. Produce MOBILE_HARNESS_REPORT.md
+
+Use Mobile Agency Loop Engineering to build this app from idea to verified MVP.
+
+App idea: <your app idea>
+Platform: <Android | iOS | Flutter | React Native>
+Tech stack: <your stack>
+
+Delivery Profile: Demo-grade MVP
+Design direction: <clean utility | polished consumer | playful gamified | premium wellness | dense dashboard | enterprise/admin | custom reference>
+
+Before building, ask only the clarification questions needed to avoid wrong assumptions.
+After clarification, run the full loop:
+1. Planning
+2. Architecture
+3. Development
+4. Performance review
+5. Security audit
+6. Testing plan
+7. UI/device verification
+8. Release checklist
+9. Growth/store listing draft
+10. Save project context
+
+Do not ask me to repeat the idea at each stage.
+Do not skip stages.
+Keep changes scoped.
+Create or update project files as needed.
+At the end, produce MOBILE_HARNESS_REPORT.md with build, tests, PRD verification, UI match, device QA, and next action.
 ```
 
-Use it when you want one agent to manage the complete build, verify, remember, and ship loop with minimal hand-holding. Full guide: [docs/mobile-harness.md](docs/mobile-harness.md)
+### Example Demo Prompt
+
+```text
+@MOBILE-HARNESS
+
+Use Mobile Agency Loop Engineering to build a demo-grade Android app.
+
+App idea: Habit Pulse — an offline habit tracker where users add habits, mark today complete, see streaks, and review progress.
+Platform: Android
+Tech stack: Kotlin + Jetpack Compose + Room
+Delivery Profile: Demo-grade MVP
+Design direction: Playful gamified, polished consumer app. Colorful but clean. Streaks, progress, rewards, cards, dashboard, and screenshot-ready seeded data.
+
+Ask clarification first if needed, then run the full loop without asking me to repeat the idea.
+```
+
+Full guide: [docs/mobile-harness.md](docs/mobile-harness.md)
 
 ---
 
