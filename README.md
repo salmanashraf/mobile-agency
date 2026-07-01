@@ -26,6 +26,24 @@ Bring the idea. Mobile Agency brings the mobile team: product planning, architec
 Mobile Agency is built around **Loop Engineering** and a **mobile-karpathy** mindset: define the goal once, then let the system keep moving through planning, implementation, code audit, security review, UI verification, device QA, reporting, and context saving. The aim is to reduce manual work and repeated manual prompting so developers can focus on product decisions, architecture tradeoffs, credentials, and final approval.
 
 ---
+## How It Works
+
+```
+1. Install          npx mobile-agency install
+2. Open project     Claude Code · Cursor · Windsurf · Copilot · Codex
+3. Invoke           @mobile-harness · @AXIOM · @CRASHER · /flutter-review · /perf-audit
+4. Get results      Platform-specific findings, ranked by severity, with fixes
+```
+
+**Examples:**
+
+```
+@AXIOM review HomeViewModel.kt
+@CRASHER analyze crash.log
+/flutter-review lib/home_screen.dart
+/perf-audit startup
+```
+---
 
 ## Who It Helps
 
@@ -116,26 +134,6 @@ https://github.com/user-attachments/assets/427422db-b6b1-4e93-96d0-ad5dd2843f53
 https://github.com/user-attachments/assets/ee8bbd61-9c64-47bf-a9b3-7812cc12412c
 
 More context: [AXIOM discussion](https://github.com/salmanashraf/mobile-agency/discussions/5)
-
----
-
-## How It Works
-
-```
-1. Install          npx mobile-agency install
-2. Open project     Claude Code · Cursor · Windsurf · Copilot · Codex
-3. Invoke           @AXIOM · @CRASHER · /flutter-review · /perf-audit
-4. Get results      Platform-specific findings, ranked by severity, with fixes
-```
-
-**Examples:**
-
-```
-@AXIOM review HomeViewModel.kt
-@CRASHER analyze crash.log
-/flutter-review lib/home_screen.dart
-/perf-audit startup
-```
 
 ---
 
