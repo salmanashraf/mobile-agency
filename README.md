@@ -16,6 +16,7 @@ Android · iOS · Flutter · React Native · Kotlin Multiplatform · Unity · Un
 > Most AI coding toolkits are generic. Mobile Agency is built specifically for mobile, hybrid apps, and games — with agents that know your platform from the inside.
 
 **What is Mobile Agency?**
+<img width="941" height="471" alt="Screenshot 2026-07-01 at 11 54 04 AM" src="https://github.com/user-attachments/assets/3e51426a-d2d9-41d3-b668-48d4c751f20c" />
 
 Mobile Agency is a ready-to-use AI engineering system for building Android, iOS, Flutter, React Native, Kotlin Multiplatform, Unity, and Unreal projects. Instead of learning every platform from scratch or writing the same prompts again and again, you install the agents, skills, and workflows, then use them to plan, build, review, test, and ship real apps.
 
