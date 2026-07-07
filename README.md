@@ -26,6 +26,40 @@ Bring the idea. Mobile Agency brings the mobile team: product planning, architec
 Mobile Agency is built around **Loop Engineering** and a **mobile-karpathy** mindset: define the goal once, then let the system keep moving through planning, implementation, code audit, security review, UI verification, device QA, reporting, and context saving. The aim is to reduce manual work and repeated manual prompting so developers can focus on product decisions, architecture tradeoffs, credentials, and final approval.
 
 ---
+## Install
+
+New to AI coding tools? Start with the step-by-step [Installation Guide](docs/installation.md).
+
+Fast path:
+
+```bash
+npx mobile-agency install
+```
+
+This installs Mobile Agency for Claude Code. For Cursor, Windsurf, GitHub Copilot, Codex, platform-only installs, and troubleshooting, see [docs/installation.md](docs/installation.md).
+
+Common installs:
+
+| I use... | Run this |
+|---|---|
+| Claude Code | `npx mobile-agency install` |
+| Cursor | `npx mobile-agency install --tool cursor` |
+| Windsurf | `npx mobile-agency install --tool windsurf` |
+| GitHub Copilot | `npx mobile-agency install --tool copilot` |
+| Codex / OpenAI | `npx mobile-agency install --tool codex` |
+| All supported tools | `npx mobile-agency install --tool all` |
+
+Local clone install:
+
+```bash
+git clone https://github.com/salmanashraf/mobile-agency
+cd mobile-agency
+./install.sh --platform android
+./install.sh --platform flutter --tool cursor
+./install.sh --tool all
+```
+
+---
 ## How It Works
 
 Mobile Agency turns AI coding from one-off prompts into a repeatable mobile engineering loop.
@@ -86,41 +120,6 @@ Platform Plugins: Android · iOS · Flutter · React Native · Kotlin Multiplatf
 Security and performance are built into the loop before release. They are not optional cleanup steps.
 
 Full guide: [docs/core-loops.md](docs/core-loops.md)
-
----
-
-## Install
-
-New to AI coding tools? Start with the step-by-step [Installation Guide](docs/installation.md).
-
-Fast path:
-
-```bash
-npx mobile-agency install
-```
-
-This installs Mobile Agency for Claude Code. For Cursor, Windsurf, GitHub Copilot, Codex, platform-only installs, and troubleshooting, see [docs/installation.md](docs/installation.md).
-
-Common installs:
-
-| I use... | Run this |
-|---|---|
-| Claude Code | `npx mobile-agency install` |
-| Cursor | `npx mobile-agency install --tool cursor` |
-| Windsurf | `npx mobile-agency install --tool windsurf` |
-| GitHub Copilot | `npx mobile-agency install --tool copilot` |
-| Codex / OpenAI | `npx mobile-agency install --tool codex` |
-| All supported tools | `npx mobile-agency install --tool all` |
-
-Local clone install:
-
-```bash
-git clone https://github.com/salmanashraf/mobile-agency
-cd mobile-agency
-./install.sh --platform android
-./install.sh --platform flutter --tool cursor
-./install.sh --tool all
-```
 
 ---
 
