@@ -120,6 +120,8 @@ Create:
 
 Each task must include title, goal, dependencies, likely files, acceptance criteria, QA checklist, estimated complexity, and implementation notes.
 
+Add `/prd-verification` as the required post-implementation gate for every task. It must compare the implementation, tests, screenshots, and Mobile MCP evidence against `PRD.md`, `DESIGN.md`, and `TASKS.md` before APPFORGE marks a task complete.
+
 ---
 
 ## Stage 5 — Implementation Loop
@@ -135,7 +137,8 @@ For each subtask:
 7. Confirm acceptance criteria.
 8. Compare output with design.
 9. Run tests if available.
-10. Mark task complete only when it matches PRD and design.
+10. Run `/prd-verification` with PRD/design/tasks, changed files, tests, screenshots, and QA reports.
+11. Mark task complete only when it matches PRD and design.
 
 Use the platform reviewer after implementation:
 

@@ -71,7 +71,7 @@ The user should not have to manually prompt every stage. The system should stop 
 | Development | Implement one feature slice at a time and keep code scoped. | `@MOBILE-HARNESS`, `@FIGMA`, screen builders, code reviewers |
 | Performance | Find and fix startup, ANR, memory, frame, battery, network, and size issues. | `@PERF`, `@FREEZE`, `@RETAINER`, `/perf-audit`, `/anr-investigation` |
 | Security | Audit OWASP risks, secrets, auth, storage, deep links, WebViews, permissions, logs, and release hardening. | `@SENTINEL`, `security-scanner`, `/security-audit`, `/security-scan` |
-| Testing | Add unit/UI tests, run device QA, check accessibility, and verify PRD/design match. | TDD skills, `/mobile-mcp-qa`, `/accessibility-audit` |
+| Testing | Add unit/UI tests, run device QA, check accessibility, and verify PRD/design match. | TDD skills, `/prd-verification`, `/mobile-mcp-qa`, `/accessibility-audit` |
 | Release | Prepare CI/CD, signing, release notes, rollout, and store submission. | `@PIPELINE`, `@SCRIBE`, `/release-prep` |
 | Growth | Improve store listing, ASO, screenshots, conversion, and monetization copy. | `@LAUNCHPAD`, `/store-listing` |
 | Maintenance | Triage crashes, preserve context, plan issue work, and prevent regressions. | `@CRASHER`, `@MRECALL`, crash triage, issue-to-agent workflow |
@@ -135,7 +135,7 @@ Platform Plugins: Android · iOS · Flutter · React Native · Kotlin Multiplatf
 The model is intentionally ahead of the full implementation. The strongest next builds are:
 
 - Loop Engineering automation to reduce manual prompting
-- PRD Verification Engine
+- `/prd-verification` rollout into Mobile Harness and APPFORGE evidence gates
 - Mobile Flight Recorder
 - Device Proof Reports
 - dedicated Performance Loop reports

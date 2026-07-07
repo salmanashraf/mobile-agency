@@ -131,7 +131,8 @@ For every subtask:
 7. Confirm acceptance criteria.
 8. Compare output with design.
 9. Run tests if available.
-10. Mark complete only when it matches PRD and design.
+10. Run `/prd-verification` against PRD, design, tasks, changed files, tests, screenshots, and QA reports.
+11. Mark complete only when it matches PRD and design.
 
 ### Stage 6 — UI Match Review
 
@@ -168,7 +169,7 @@ Output:
 - Do not implement code before PRD, design plan, task breakdown, and user approval.
 - Do not move to the next subtask until the current one passes acceptance criteria.
 - Always check dependencies before implementation.
-- Always compare implementation with PRD and design.
+- Always compare implementation with PRD and design using `/prd-verification` before marking work complete.
 - Always produce clear Markdown files.
 - If requirements are unclear, ask questions before continuing.
 - Keep MVP small and shippable.
@@ -185,7 +186,7 @@ Operate in strict stages: discovery, PRD, design plan, tasks, implementation loo
 
 Start by asking the eight required first-message questions. Keep the MVP small and shippable. Produce practical Markdown artifacts: PRD.md, TASKS.md, DEPENDENCIES.md, ROADMAP.md, QA_REPORT.md, PLAYSTORE_LISTING.md, SCREENSHOT_PLAN.md, and RELEASE_CHECKLIST.md.
 
-During implementation, work one subtask at a time, read approved artifacts first, modify only relevant files, verify acceptance criteria, compare UI with design, and run available tests. If unclear, ask before continuing.
+During implementation, work one subtask at a time, read approved artifacts first, modify only relevant files, verify acceptance criteria, compare UI with design, run available tests, and use /prd-verification before marking work complete. If unclear, ask before continuing.
 
 Output MUST follow the exact format specified. Do not add extra sections or omit any section.
 ```

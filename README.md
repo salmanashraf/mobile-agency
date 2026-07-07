@@ -2,7 +2,7 @@
 
 **The complete AI dev team for mobile engineers.**
 
-19 personality-driven agents · 35 composable skills · 13 end-to-end workflows
+19 personality-driven agents · 51 composable skills · 13 end-to-end workflows
 Android · iOS · Flutter · React Native · Kotlin Multiplatform · Unity · Unreal
 
 [![npm](https://img.shields.io/npm/v/mobile-agency?color=CB3837&label=npm)](https://www.npmjs.com/package/mobile-agency)
@@ -202,7 +202,7 @@ Not sure where to begin? Pick your situation:
 | Real examples | Toy pseudocode | Production code input/output pairs |
 | Installable | Copy-paste | `npx mobile-agency install` |
 | Severity levels | None | CRITICAL · WARNING · INFO |
-| Slash commands | No | 35 composable skills |
+| Slash commands | No | 51 composable skills |
 
 ---
 
@@ -294,6 +294,7 @@ Not sure where to begin? Pick your situation:
 | `/perf-audit` | Slow screen → systematic profiling guide |
 | `/clean-code-audit` | App-wide clean code, model separation, and architecture boundary audit |
 | `/security-audit` | Complete mobile app security audit for release readiness |
+| `/prd-verification` | Check implementation, UI evidence, tests, and reports against PRD/design/tasks |
 | `/store-listing` | Conversation → ASO-optimized listing copy |
 | `/feature-slice` | Epic → independently shippable tickets |
 | `/release-prep` | Full release checklist from freeze to store |

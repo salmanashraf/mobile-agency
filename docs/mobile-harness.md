@@ -135,6 +135,7 @@ A task is done only when:
 - Acceptance criteria pass
 - Tests pass, or skipped tests are explicitly justified
 - PRD verification passes with source references
+- `/prd-verification` proves implementation, UI evidence, tests, and reports match `PRD.md`, `DESIGN.md`, and `TASKS.md`
 - UI match reaches the agreed threshold, default 90%
 - Mobile MCP QA passes, or device QA is explicitly unavailable
 - No CRITICAL platform-review findings remain

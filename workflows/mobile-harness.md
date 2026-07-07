@@ -228,6 +228,8 @@ Every acceptance criterion must reference a source:
 
 Never verify against memory or assumptions.
 
+Run `/prd-verification` with `PRD.md`, `DESIGN.md`, `TASKS.md`, `DEPENDENCIES.md`, `MRECALL.md`, changed files, test output, screenshots, and Mobile MCP reports when available. Treat UNKNOWN as not done unless the user explicitly risk-accepts the missing evidence.
+
 ---
 
 ## Stage 5 — UI Match Review

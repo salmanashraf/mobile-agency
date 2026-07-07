@@ -113,6 +113,7 @@ const SKILLS = {
   'mrecall-graph':      { file: 'skills/cross-platform/mrecall-graph.md',      platform: 'cross'   },
   'mrecall-save':       { file: 'skills/cross-platform/mrecall-save.md',       platform: 'cross'   },
   'perf-audit':         { file: 'skills/cross-platform/perf-audit.md',         platform: 'cross'   },
+  'prd-verification':   { file: 'skills/cross-platform/prd-verification.md',   platform: 'cross'   },
   'release-prep':       { file: 'skills/cross-platform/release-prep.md',       platform: 'cross'   },
   'security-audit':     { file: 'skills/cross-platform/security-audit.md',     platform: 'cross'   },
   'store-listing':      { file: 'skills/cross-platform/store-listing.md',      platform: 'cross'   },
@@ -192,7 +193,7 @@ const PLATFORM_SKILLS = {
     // cross-platform bundled for android
     'accessibility-audit', 'api-versioning', 'clean-code-audit', 'crash-analysis', 'crash-triage',
     'deeplink-debug', 'feature-slice', 'grill-mobile', 'mobile-mcp-qa',
-    'mrecall-graph', 'mrecall-save', 'perf-audit',
+    'mrecall-graph', 'mrecall-save', 'perf-audit', 'prd-verification',
     'release-prep', 'security-audit', 'security-scan', 'store-listing',
   ],
   ios: [
@@ -202,7 +203,7 @@ const PLATFORM_SKILLS = {
     // cross-platform bundled for ios
     'accessibility-audit', 'api-versioning', 'clean-code-audit', 'crash-analysis', 'crash-triage',
     'deeplink-debug', 'feature-slice', 'grill-mobile', 'mobile-mcp-qa',
-    'mrecall-graph', 'mrecall-save', 'perf-audit',
+    'mrecall-graph', 'mrecall-save', 'perf-audit', 'prd-verification',
     'release-prep', 'security-audit', 'security-scan', 'store-listing',
   ],
   flutter: [
@@ -210,7 +211,7 @@ const PLATFORM_SKILLS = {
     // cross-platform bundled for flutter
     'accessibility-audit', 'api-versioning', 'clean-code-audit', 'crash-analysis', 'crash-triage',
     'deeplink-debug', 'feature-slice', 'grill-mobile', 'mobile-mcp-qa',
-    'mrecall-graph', 'mrecall-save', 'perf-audit',
+    'mrecall-graph', 'mrecall-save', 'perf-audit', 'prd-verification',
     'release-prep', 'security-audit', 'security-scan', 'store-listing',
   ],
   rn: [
@@ -219,18 +220,18 @@ const PLATFORM_SKILLS = {
     // cross-platform bundled for rn
     'accessibility-audit', 'api-versioning', 'clean-code-audit', 'crash-analysis', 'crash-triage',
     'deeplink-debug', 'feature-slice', 'grill-mobile', 'mobile-mcp-qa',
-    'mrecall-graph', 'mrecall-save', 'perf-audit',
+    'mrecall-graph', 'mrecall-save', 'perf-audit', 'prd-verification',
     'release-prep', 'security-audit', 'security-scan', 'store-listing',
   ],
   gaming: [
     'blueprint-to-cpp', 'clean-code-audit', 'game-perf', 'mobile-mcp-qa',
-    'mrecall-graph', 'mrecall-save', 'security-audit', 'shader-gen',
+    'mrecall-graph', 'mrecall-save', 'prd-verification', 'security-audit', 'shader-gen',
     'unity-tdd', 'shader-review',
   ],
   cross: [
     'accessibility-audit', 'api-versioning', 'clean-code-audit', 'crash-analysis', 'crash-triage',
     'deeplink-debug', 'feature-slice', 'grill-mobile', 'mobile-mcp-qa',
-    'mrecall-graph', 'mrecall-save', 'perf-audit',
+    'mrecall-graph', 'mrecall-save', 'perf-audit', 'prd-verification',
     'release-prep', 'security-audit', 'security-scan', 'store-listing',
   ],
 };

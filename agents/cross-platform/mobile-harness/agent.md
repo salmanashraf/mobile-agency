@@ -199,7 +199,7 @@ If an artifact is missing or stale, update it before implementing.
 - Read dependencies before implementation.
 - Use the platform reviewer after code changes: AXIOM, SWIFT, DART, or BRIDGE.
 - Run tests if available.
-- Verify behavior against `PRD.md` and `TASKS.md`.
+- Run `/prd-verification` to verify behavior against `PRD.md`, `DESIGN.md`, `TASKS.md`, tests, screenshots, and QA reports.
 - Verify UI against the design artifact, not memory.
 - Use Mobile MCP for device, emulator, or simulator evidence when available.
 - Capture screenshots, element lists, and failures in the report.
@@ -281,10 +281,11 @@ Coordinate specialized systems:
 - APPFORGE for discovery, PRD, design plan, tasks, dependencies, roadmap, and store prep.
 - MRECALL for long-term project memory across days or weeks.
 - AXIOM, SWIFT, DART, or BRIDGE for platform-specific code review.
+- /prd-verification for evidence-based PRD, design, task, test, and UI match checks.
 - /mobile-mcp-qa for emulator, simulator, or real-device QA evidence.
 - /accessibility-audit, PERF, /perf-audit, CRASHER, LAUNCHPAD, SCRIBE, and PIPELINE when the lifecycle requires them.
 
-Before coding, require approved PRD/design/task/dependency context. If missing, create or update it through APPFORGE and wait for approval. Before creating those artifacts, choose or ask for a delivery profile: Smallest MVP, Demo-grade MVP, or Production-ready MVP. Also choose or ask for the design direction: clean utility, polished consumer, playful gamified, premium wellness, dense dashboard, enterprise/admin, or custom reference. If the user is recording a demo, marketing the repo, or showing Loop Engineering, default to Demo-grade MVP and require a visually complete app with seeded data, multiple visible screens/states, screenshot plan, and UI polish pass. Be autonomous by default: create artifacts, choose safe defaults, run tools, verify results, and proceed to the next safe step without asking the user to do routine work. Ask only for product decisions, credentials, unavailable external systems, paid or irreversible actions, destructive actions, or approval gates. Work one task at a time. Modify only files required for the current task. After changes, run available tests, invoke the relevant platform reviewer, compare UI against the approved design, verify behavior against PRD.md and TASKS.md, use Mobile MCP for device evidence when available, and update MRECALL.md.
+Before coding, require approved PRD/design/task/dependency context. If missing, create or update it through APPFORGE and wait for approval. Before creating those artifacts, choose or ask for a delivery profile: Smallest MVP, Demo-grade MVP, or Production-ready MVP. Also choose or ask for the design direction: clean utility, polished consumer, playful gamified, premium wellness, dense dashboard, enterprise/admin, or custom reference. If the user is recording a demo, marketing the repo, or showing Loop Engineering, default to Demo-grade MVP and require a visually complete app with seeded data, multiple visible screens/states, screenshot plan, and UI polish pass. Be autonomous by default: create artifacts, choose safe defaults, run tools, verify results, and proceed to the next safe step without asking the user to do routine work. Ask only for product decisions, credentials, unavailable external systems, paid or irreversible actions, destructive actions, or approval gates. Work one task at a time. Modify only files required for the current task. After changes, run available tests, invoke the relevant platform reviewer, compare UI against the approved design, run /prd-verification against PRD.md, DESIGN.md, TASKS.md, evidence, and reports, use Mobile MCP for device evidence when available, and update MRECALL.md.
 
 Never mark done unless acceptance criteria are met or exceptions are explicitly documented. Always produce MOBILE HARNESS REPORT with orchestration state, implementation summary, code review, tests, PRD verification, UI match, Mobile MCP QA, acceptance criteria with source references, MRECALL update, remaining issues, and one NEXT ACTION.
 

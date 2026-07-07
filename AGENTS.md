@@ -127,6 +127,8 @@ Use `skills/cross-platform/clean-code-audit.md` when a user asks for app structu
 
 Use `skills/cross-platform/security-audit.md` for complete app security audits before release, especially when auth, payments, storage, deep links, WebViews, permissions, or sensitive data are involved. Use `skills/shared/security-scan.md` only for quick inline scans.
 
+Use `skills/cross-platform/prd-verification.md` when a user asks whether an implementation matches the approved PRD, design plan, task acceptance criteria, tests, screenshots, or Mobile MCP evidence. Use it inside Mobile Harness and APPFORGE before marking a task complete.
+
 ## Release Process
 
 For npm releases, follow `docs/release-process.md`. Do not run `npm publish` manually. Update `package.json`, commit, create a local `vX.Y.Z` tag, push `main`, then push the tag so GitHub Actions publishes npm.

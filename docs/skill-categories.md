@@ -56,6 +56,18 @@ Generating, reviewing, and improving UI code — widgets, components, layouts, a
 
 ---
 
+### Testing & Verification
+
+Proving the app matches requirements through tests, device QA, accessibility checks, screenshots, and PRD evidence.
+
+**Platforms:** All
+
+**Examples:** PRD verification, Mobile MCP QA, accessibility checks, restart persistence tests
+
+**Skills:** `/prd-verification`, `/mobile-mcp-qa`, `/accessibility-audit`
+
+---
+
 ### Debugging & Crash Analysis
 
 Parsing and explaining crash logs, stack traces, ANRs, and error states.
@@ -103,7 +115,7 @@ Each agent and skill file uses the following frontmatter tags:
 
 ```
 **Platform:** Android | iOS | Flutter | React Native | Unity | Unreal | Cross-Platform
-**Category:** Code Quality | Performance | UI & Design | Debugging | DevOps | Game Dev | Documentation
+**Category:** Code Quality | Performance | UI & Design | Testing | Debugging | DevOps | Game Dev | Documentation
 **Complexity:** Low | Medium | High
 ```
 
