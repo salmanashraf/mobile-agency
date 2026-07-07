@@ -75,6 +75,7 @@ Mobile Agency turns AI coding from one-off prompts into a repeatable mobile engi
 For focused work, use a specialist directly:
 
 ```text
+//mobile-harness Create Habit Tracker App
 @AXIOM review HomeViewModel.kt
 @CRASHER analyze crash.log
 /flutter-review lib/home_screen.dart
