@@ -2,7 +2,7 @@
 
 **The complete AI dev team for mobile engineers.**
 
-19 personality-driven agents · 51 composable skills · 13 end-to-end workflows
+19 personality-driven agents · 52 composable skills · 13 end-to-end workflows
 Android · iOS · Flutter · React Native · Kotlin Multiplatform · Unity · Unreal
 
 [![npm](https://img.shields.io/npm/v/mobile-agency?color=CB3837&label=npm)](https://www.npmjs.com/package/mobile-agency)
@@ -202,7 +202,7 @@ Not sure where to begin? Pick your situation:
 | Real examples | Toy pseudocode | Production code input/output pairs |
 | Installable | Copy-paste | `npx mobile-agency install` |
 | Severity levels | None | CRITICAL · WARNING · INFO |
-| Slash commands | No | 51 composable skills |
+| Slash commands | No | 52 composable skills |
 
 ---
 
@@ -304,6 +304,7 @@ Not sure where to begin? Pick your situation:
 | `/mobile-mcp-qa` | Run AI-assisted QA on iOS/Android devices, simulators, and emulators |
 | `/mrecall-save` | Checkpoint your session — resume on any AI tool instantly |
 | `/mrecall-graph` | Build a mobile knowledge graph from your codebase files |
+| `/mrecall-search` | Search local Mobile Agency memory and inject relevant context |
 
 ---
 
@@ -509,7 +510,20 @@ When tokens run out or you switch AI tools, your entire session context — arch
 /mrecall save     → produces MRECALL.md (full knowledge graph + session context)
 /mrecall restore  → any AI tool loads it and continues instantly
 /mrecall graph    → builds mobile architecture graph from your code files
+/mrecall-search   → searches local Mobile Agency memory
 ```
+
+For local persistent memory in a project:
+
+```bash
+npx mobile-agency memory init
+npx mobile-agency memory capture --type decision --text "Use Room for offline persistence"
+npx mobile-agency memory search persistence
+npx mobile-agency memory inject
+npx mobile-agency memory checkpoint
+```
+
+This stores raw local memory in `.mobile-agency/memory/`, keeps sensitive event history out of git by default, and generates `MRECALL.md` when you want a portable handoff.
 
 Works across Claude Code, Cursor, Windsurf, ChatGPT, and Gemini. Integrates with every Mobile Agency agent — AXIOM findings, CRASHER analysis, and LAUNCHPAD copy are all preserved in the same file.
 

@@ -64,7 +64,67 @@ Tools like Recallium, mem0, and agentmemory are useful generic memory layers. MR
 | Generic risk | Flags GlobalScope, force unwraps, exposed MutableStateFlow, bridge hot paths, Update() abuse |
 | Session recall | Session recall plus executable NEXT ACTION |
 
-MRecall is not a database. It is a portable, tool-agnostic context file optimized for mobile AI work.
+MRecall has two layers:
+
+| Layer | Storage | Purpose |
+|---|---|---|
+| Local memory | `.mobile-agency/memory/events.jsonl` | Persistent project event history for search, timeline, and context injection |
+| Portable checkpoint | `MRECALL.md` | Tool-agnostic handoff file that any AI can read |
+
+Raw local memory stays out of git by default. Commit `MRECALL.md` only when the context is useful for review, handoff, or long-running work.
+
+---
+
+## Local Memory Store
+
+Initialize memory inside any app project:
+
+```bash
+npx mobile-agency memory init
+```
+
+This creates:
+
+```text
+.mobile-agency/
+├── .gitignore
+└── memory/
+    ├── config.json
+    ├── events.jsonl
+    └── index.md
+```
+
+Capture memory events:
+
+```bash
+npx mobile-agency memory capture --type decision --title "Use Room" --text "Persist habits locally with Room."
+npx mobile-agency memory capture --type finding --title "PRD gap" --text "Restart persistence is missing."
+npx mobile-agency memory capture --type next-action --text "Implement HabitDao and restart persistence test."
+```
+
+You can also pipe content:
+
+```bash
+git diff | npx mobile-agency memory capture --type code-state --title "Current diff"
+```
+
+Search and inject context:
+
+```bash
+npx mobile-agency memory search persistence
+npx mobile-agency memory timeline --limit 20
+npx mobile-agency memory inject
+```
+
+Generate the portable checkpoint:
+
+```bash
+npx mobile-agency memory checkpoint
+```
+
+This writes `MRECALL.md` from the captured memory events. Review it before committing.
+
+Privacy rule: do not capture secrets, customer data, private logs, tokens, credentials, or proprietary crash payloads. Text inside `<private>...</private>` is removed during capture.
 
 ---
 
@@ -196,6 +256,7 @@ Paste full file → /mrecall restore
 | `/mrecall save` | Produce full `MRECALL.md` |
 | `/mrecall restore` | Load a pasted `MRECALL.md` and continue |
 | `/mrecall graph` | Build the knowledge graph from code files |
+| `/mrecall-search` | Search local `.mobile-agency/memory/` output and continue from relevant context |
 | `/mrecall update` | Update an existing checkpoint |
 | `/mrecall status` | Print only progress state |
 | `/mrecall health` | Print CRITICAL and WARNING nodes |
@@ -213,7 +274,7 @@ No. It is a resume layer. Use it to restore context quickly, then read the exact
 
 ### Should MRECALL.md be committed?
 
-Commit it when the context is useful for handoff, review, or long-lived work. Do not commit secrets, private logs, customer data, or proprietary crash payloads.
+Commit `MRECALL.md` when the context is useful for handoff, review, or long-lived work. Do not commit `.mobile-agency/memory/events.jsonl` unless your team explicitly wants raw local event history in source control. Do not commit secrets, private logs, customer data, or proprietary crash payloads.
 
 ### How often should I run `/mrecall save`?
 

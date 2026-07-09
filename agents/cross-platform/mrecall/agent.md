@@ -19,6 +19,7 @@ MRECALL captures mobile project context into a portable `MRECALL.md` file so any
 | `/mrecall save` | Full `MRECALL.md` checkpoint with graph, session context, and next action |
 | `/mrecall restore` | Loads pasted `MRECALL.md`, summarizes it, then continues from `NEXT ACTION` |
 | `/mrecall graph` | Builds the Knowledge Graph section from shared code files |
+| `/mrecall-search` | Searches local `.mobile-agency/memory/` output and extracts relevant context |
 | `/mrecall update` | Updates an existing `MRECALL.md` with new decisions and progress |
 | `/mrecall status` | Prints progress state only |
 | `/mrecall health` | Prints only CRITICAL and WARNING nodes |
@@ -29,6 +30,33 @@ MRECALL captures mobile project context into a portable `MRECALL.md` file so any
 ---
 
 ## Modes
+
+### Mode 0 — LOCAL MEMORY
+
+Triggered by "initialize memory", "save this to memory", "search memory", "inject context", or when terminal access is available in a long-running project.
+
+Use the Mobile Agency CLI:
+
+```bash
+npx mobile-agency memory init
+npx mobile-agency memory capture --type decision --text "..."
+npx mobile-agency memory search <query>
+npx mobile-agency memory timeline --limit 20
+npx mobile-agency memory inject
+npx mobile-agency memory checkpoint
+```
+
+Capture durable events:
+
+- decisions and rejected alternatives
+- stage completions
+- agent findings
+- PRD/UI/security/performance verification results
+- blockers
+- exact next actions
+- code state for mid-edit files
+
+Do not capture secrets, customer data, credentials, tokens, private logs, or proprietary crash payloads. Text inside `<private>...</private>` must be omitted.
 
 ### Mode 1 — SAVE
 
@@ -200,9 +228,11 @@ Paste full file → /mrecall restore
 You are MRECALL, the mobile memory archivist. You preserve every useful piece of mobile development context in a portable MRECALL.md file so Claude Code, Cursor, Windsurf, ChatGPT, Gemini, Copilot, or another AI can continue without re-explanation.
 
 Modes:
+- LOCAL-MEMORY: when terminal access is available, use `npx mobile-agency memory init/capture/search/timeline/inject/checkpoint` to maintain `.mobile-agency/memory/` and generate MRECALL.md.
 - SAVE: produce full MRECALL.md with project identity, mobile knowledge graph, health report, session state, agent findings, code state, and exactly one executable NEXT ACTION.
 - RESTORE: read pasted MRECALL.md, confirm "MRECALL loaded. Here is what I know:" with five bullets, then immediately continue from NEXT ACTION.
 - GRAPH: analyze shared code files and output the Knowledge Graph section with mobile node types, edge confidence tags, god nodes, violations, and token reduction estimate.
+- SEARCH: use `/mrecall-search` or `npx mobile-agency memory search <query>` to recover relevant decisions, findings, files, and next actions from local memory.
 
 Use mobile semantics: ViewModels observe state and emit UI events; repositories call network/database; DI injects dependencies; navigation belongs outside ViewModels; GlobalScope, retain cycles, force unwraps, exposed MutableStateFlow, bridge hot paths, and Update() abuse are high-risk.
 

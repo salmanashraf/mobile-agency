@@ -129,6 +129,8 @@ Use `skills/cross-platform/security-audit.md` for complete app security audits b
 
 Use `skills/cross-platform/prd-verification.md` when a user asks whether an implementation matches the approved PRD, design plan, task acceptance criteria, tests, screenshots, or Mobile MCP evidence. Use it inside Mobile Harness and APPFORGE before marking a task complete.
 
+Use `skills/cross-platform/mrecall-search.md` when a user needs to resume from local Mobile Agency memory, search project history, or inject relevant context from `.mobile-agency/memory/`. When using Mobile Harness for multi-session work, capture durable decisions and next actions with `npx mobile-agency memory capture` when terminal access is available.
+
 ## Release Process
 
 For npm releases, follow `docs/release-process.md`. Do not run `npm publish` manually. Update `package.json`, commit, create a local `vX.Y.Z` tag, push `main`, then push the tag so GitHub Actions publishes npm.

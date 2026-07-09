@@ -111,6 +111,7 @@ const SKILLS = {
   'grill-mobile':       { file: 'skills/cross-platform/grill-mobile.md',       platform: 'cross'   },
   'mobile-mcp-qa':      { file: 'skills/cross-platform/mobile-mcp-qa.md',      platform: 'cross'   },
   'mrecall-graph':      { file: 'skills/cross-platform/mrecall-graph.md',      platform: 'cross'   },
+  'mrecall-search':     { file: 'skills/cross-platform/mrecall-search.md',     platform: 'cross'   },
   'mrecall-save':       { file: 'skills/cross-platform/mrecall-save.md',       platform: 'cross'   },
   'perf-audit':         { file: 'skills/cross-platform/perf-audit.md',         platform: 'cross'   },
   'prd-verification':   { file: 'skills/cross-platform/prd-verification.md',   platform: 'cross'   },
@@ -193,7 +194,7 @@ const PLATFORM_SKILLS = {
     // cross-platform bundled for android
     'accessibility-audit', 'api-versioning', 'clean-code-audit', 'crash-analysis', 'crash-triage',
     'deeplink-debug', 'feature-slice', 'grill-mobile', 'mobile-mcp-qa',
-    'mrecall-graph', 'mrecall-save', 'perf-audit', 'prd-verification',
+    'mrecall-graph', 'mrecall-search', 'mrecall-save', 'perf-audit', 'prd-verification',
     'release-prep', 'security-audit', 'security-scan', 'store-listing',
   ],
   ios: [
@@ -203,7 +204,7 @@ const PLATFORM_SKILLS = {
     // cross-platform bundled for ios
     'accessibility-audit', 'api-versioning', 'clean-code-audit', 'crash-analysis', 'crash-triage',
     'deeplink-debug', 'feature-slice', 'grill-mobile', 'mobile-mcp-qa',
-    'mrecall-graph', 'mrecall-save', 'perf-audit', 'prd-verification',
+    'mrecall-graph', 'mrecall-search', 'mrecall-save', 'perf-audit', 'prd-verification',
     'release-prep', 'security-audit', 'security-scan', 'store-listing',
   ],
   flutter: [
@@ -211,7 +212,7 @@ const PLATFORM_SKILLS = {
     // cross-platform bundled for flutter
     'accessibility-audit', 'api-versioning', 'clean-code-audit', 'crash-analysis', 'crash-triage',
     'deeplink-debug', 'feature-slice', 'grill-mobile', 'mobile-mcp-qa',
-    'mrecall-graph', 'mrecall-save', 'perf-audit', 'prd-verification',
+    'mrecall-graph', 'mrecall-search', 'mrecall-save', 'perf-audit', 'prd-verification',
     'release-prep', 'security-audit', 'security-scan', 'store-listing',
   ],
   rn: [
@@ -220,24 +221,31 @@ const PLATFORM_SKILLS = {
     // cross-platform bundled for rn
     'accessibility-audit', 'api-versioning', 'clean-code-audit', 'crash-analysis', 'crash-triage',
     'deeplink-debug', 'feature-slice', 'grill-mobile', 'mobile-mcp-qa',
-    'mrecall-graph', 'mrecall-save', 'perf-audit', 'prd-verification',
+    'mrecall-graph', 'mrecall-search', 'mrecall-save', 'perf-audit', 'prd-verification',
     'release-prep', 'security-audit', 'security-scan', 'store-listing',
   ],
   gaming: [
     'blueprint-to-cpp', 'clean-code-audit', 'game-perf', 'mobile-mcp-qa',
-    'mrecall-graph', 'mrecall-save', 'prd-verification', 'security-audit', 'shader-gen',
+    'mrecall-graph', 'mrecall-search', 'mrecall-save', 'prd-verification', 'security-audit', 'shader-gen',
     'unity-tdd', 'shader-review',
   ],
   cross: [
     'accessibility-audit', 'api-versioning', 'clean-code-audit', 'crash-analysis', 'crash-triage',
     'deeplink-debug', 'feature-slice', 'grill-mobile', 'mobile-mcp-qa',
-    'mrecall-graph', 'mrecall-save', 'perf-audit', 'prd-verification',
+    'mrecall-graph', 'mrecall-search', 'mrecall-save', 'perf-audit', 'prd-verification',
     'release-prep', 'security-audit', 'security-scan', 'store-listing',
   ],
 };
 
 // Workflows are always installed regardless of platform selection
 const ALL_WORKFLOWS = Object.keys(WORKFLOWS);
+
+const MEMORY_DIR = '.mobile-agency';
+const MEMORY_SUBDIR = path.join(MEMORY_DIR, 'memory');
+const MEMORY_EVENTS_FILE = path.join(MEMORY_SUBDIR, 'events.jsonl');
+const MEMORY_INDEX_FILE = path.join(MEMORY_SUBDIR, 'index.md');
+const MEMORY_CONFIG_FILE = path.join(MEMORY_SUBDIR, 'config.json');
+const MRECALL_FILE = 'MRECALL.md';
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -248,6 +256,190 @@ function bold(s)   { return `\x1b[1m${s}\x1b[0m`; }
 function dim(s)    { return `\x1b[2m${s}\x1b[0m`; }
 function green(s)  { return `\x1b[32m${s}\x1b[0m`; }
 function yellow(s) { return `\x1b[33m${s}\x1b[0m`; }
+
+function nowIso() {
+  return new Date().toISOString();
+}
+
+function slugify(s) {
+  return String(s || 'memory')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 80) || 'memory';
+}
+
+function parseOptions(args) {
+  const out = { _: [] };
+  for (let i = 0; i < args.length; i++) {
+    const arg = args[i];
+    if (!arg.startsWith('--')) {
+      out._.push(arg);
+      continue;
+    }
+    const key = arg.slice(2);
+    const next = args[i + 1];
+    if (!next || next.startsWith('--')) {
+      out[key] = true;
+    } else {
+      out[key] = next;
+      i++;
+    }
+  }
+  return out;
+}
+
+function readStdinIfPiped() {
+  if (process.stdin.isTTY) return '';
+  try {
+    return fs.readFileSync(0, 'utf8').trim();
+  } catch {
+    return '';
+  }
+}
+
+function readJsonl(file) {
+  if (!fs.existsSync(file)) return [];
+  return fs.readFileSync(file, 'utf8')
+    .split(/\r?\n/)
+    .filter(Boolean)
+    .map((line) => {
+      try { return JSON.parse(line); }
+      catch { return null; }
+    })
+    .filter(Boolean);
+}
+
+function appendJsonl(file, value) {
+  ensureDir(path.dirname(file));
+  fs.appendFileSync(file, `${JSON.stringify(value)}\n`);
+}
+
+function detectProjectName() {
+  try {
+    const pkgPath = path.join(process.cwd(), 'package.json');
+    if (fs.existsSync(pkgPath)) {
+      const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
+      if (pkg.name) return pkg.name;
+    }
+  } catch {}
+  return path.basename(process.cwd());
+}
+
+function detectPlatform() {
+  const cwd = process.cwd();
+  if (fs.existsSync(path.join(cwd, 'pubspec.yaml'))) return 'Flutter';
+  if (fs.existsSync(path.join(cwd, 'Package.swift'))) return 'iOS / Swift';
+  if (fs.existsSync(path.join(cwd, 'android')) && fs.existsSync(path.join(cwd, 'ios'))) return 'React Native / Flutter';
+  if (fs.existsSync(path.join(cwd, 'build.gradle')) || fs.existsSync(path.join(cwd, 'settings.gradle')) || fs.existsSync(path.join(cwd, 'settings.gradle.kts'))) return 'Android';
+  if (fs.existsSync(path.join(cwd, 'project.pbxproj')) || fs.readdirSync(cwd).some(f => f.endsWith('.xcodeproj'))) return 'iOS';
+  if (fs.existsSync(path.join(cwd, 'Assets')) && fs.existsSync(path.join(cwd, 'ProjectSettings'))) return 'Unity';
+  if (fs.readdirSync(cwd).some(f => f.endsWith('.uproject'))) return 'Unreal';
+  return 'Unknown';
+}
+
+function ensureMemory() {
+  ensureDir(path.join(process.cwd(), MEMORY_SUBDIR));
+  if (!fs.existsSync(path.join(process.cwd(), MEMORY_CONFIG_FILE))) {
+    const config = {
+      project: detectProjectName(),
+      platform: detectPlatform(),
+      createdAt: nowIso(),
+      version: 1,
+      privacy: {
+        privateTag: '<private>...</private>',
+        note: 'Do not capture secrets, customer data, private logs, tokens, or credentials.'
+      }
+    };
+    fs.writeFileSync(path.join(process.cwd(), MEMORY_CONFIG_FILE), `${JSON.stringify(config, null, 2)}\n`);
+  }
+  if (!fs.existsSync(path.join(process.cwd(), MEMORY_EVENTS_FILE))) {
+    fs.writeFileSync(path.join(process.cwd(), MEMORY_EVENTS_FILE), '');
+  }
+  if (!fs.existsSync(path.join(process.cwd(), MEMORY_INDEX_FILE))) {
+    fs.writeFileSync(path.join(process.cwd(), MEMORY_INDEX_FILE), '# Mobile Agency Memory Index\n\nNo memories captured yet.\n');
+  }
+}
+
+function loadMemoryConfig() {
+  ensureMemory();
+  return JSON.parse(fs.readFileSync(path.join(process.cwd(), MEMORY_CONFIG_FILE), 'utf8'));
+}
+
+function stripPrivateTags(text) {
+  return String(text || '').replace(/<private>[\s\S]*?<\/private>/gi, '[private omitted]');
+}
+
+function memoryEventFromOptions(opts) {
+  const piped = readStdinIfPiped();
+  let text = opts.text || piped || opts._.join(' ');
+  if (opts.file) {
+    const filePath = path.resolve(process.cwd(), opts.file);
+    text = fs.existsSync(filePath) ? fs.readFileSync(filePath, 'utf8') : text;
+  }
+  text = stripPrivateTags(text).trim();
+  if (!text) {
+    throw new Error('Memory capture needs --text, --file, positional text, or piped stdin.');
+  }
+  const title = opts.title || text.split(/\r?\n/)[0].slice(0, 90);
+  return {
+    id: `${Date.now()}-${slugify(title)}`,
+    createdAt: nowIso(),
+    type: opts.type || 'note',
+    title,
+    tags: opts.tags ? String(opts.tags).split(',').map(s => s.trim()).filter(Boolean) : [],
+    files: opts.files ? String(opts.files).split(',').map(s => s.trim()).filter(Boolean) : [],
+    text,
+  };
+}
+
+function updateMemoryIndex(events) {
+  const recent = events.slice(-50).reverse();
+  const lines = [
+    '# Mobile Agency Memory Index',
+    '',
+    `Updated: ${nowIso()}`,
+    `Events: ${events.length}`,
+    '',
+    '| Time | Type | Title | Tags |',
+    '|---|---|---|---|',
+  ];
+  for (const e of recent) {
+    lines.push(`| ${e.createdAt || ''} | ${e.type || ''} | ${String(e.title || '').replace(/\|/g, '/')} | ${(e.tags || []).join(', ')} |`);
+  }
+  lines.push('');
+  fs.writeFileSync(path.join(process.cwd(), MEMORY_INDEX_FILE), lines.join('\n'));
+}
+
+function formatMemoryEvent(e, includeText = false) {
+  const tags = e.tags && e.tags.length ? ` [${e.tags.join(', ')}]` : '';
+  const files = e.files && e.files.length ? ` files: ${e.files.join(', ')}` : '';
+  const head = `${e.createdAt} · ${e.type} · ${e.title}${tags}${files}`;
+  if (!includeText) return head;
+  return `${head}\n${e.text}`;
+}
+
+function buildMRecallFromEvents(config, events) {
+  const recent = events.slice(-20);
+  const decisions = events.filter(e => e.type === 'decision').slice(-10);
+  const findings = events.filter(e => ['finding', 'audit', 'qa', 'bug'].includes(e.type)).slice(-10);
+  const progress = events.filter(e => ['progress', 'stage', 'task', 'checkpoint'].includes(e.type)).slice(-10);
+  const next = [...events].reverse().find(e => e.type === 'next-action') || [...events].reverse()[0];
+
+  const decisionRows = decisions.length
+    ? decisions.map(e => `| ${e.title.replace(/\|/g, '/')} | ${e.text.replace(/\r?\n/g, ' ').replace(/\|/g, '/').slice(0, 120)} | Not captured |`).join('\n')
+    : '| None captured | - | - |';
+
+  const findingRows = findings.length
+    ? findings.map(e => `| ${e.type.toUpperCase()} | ${e.title.replace(/\|/g, '/')} | ${e.text.replace(/\r?\n/g, ' ').replace(/\|/g, '/').slice(0, 120)} | Review |`).join('\n')
+    : '| None | None captured | - | - |';
+
+  const done = progress.length
+    ? progress.map(e => `${e.type}: ${e.title}`).join('; ')
+    : 'No progress events captured yet.';
+
+  return `---\n# 🔁 MRECALL\n**Project:** ${config.project || detectProjectName()}\n**Platform:** ${config.platform || detectPlatform()}\n**Stack:** Unknown\n**Architecture:** Unknown\n**Saved:** ${nowIso()}\n**Compatible:** Claude Code · Cursor · Windsurf · ChatGPT · Gemini · Copilot\n**Token reduction:** Generated from ${events.length} memory events\n\n---\n\n## ⚡ INSTANT RESUME\n${config.project || detectProjectName()} has ${events.length} captured Mobile Agency memory events. Recent work: ${recent.slice(-3).map(e => e.title).join('; ') || 'No events yet'}. Continue from NEXT ACTION below and read exact files before editing.\n\n---\n\n## 🗺️ Knowledge Graph\n\n### Nodes\n| Node | Type | Layer | Health |\n|---|---|---|---|\n| Memory Index | CONTEXT | Project | OK |\n\n### Key Edges\n| From | Edge | To | Note |\n|---|---|---|---|\n| Memory Index | SUMMARIZES | Session Events | Generated by mobile-agency memory checkpoint |\n\n### God Nodes\n| Node | Connections | Platform Risk | Recommendation |\n|---|---|---|---|\n| Unknown | 0 | Unknown | Run /mrecall-graph with code files |\n\n### Architecture Violations\n- None captured. Run platform reviewer and /mrecall-graph for code-level risks.\n\n---\n\n## 🏥 Health Report\n### 🚨 CRITICAL\n- None captured.\n\n### ⚠️ WARNING\n- Unknown architecture health until code graph is generated.\n\n### 🏦 Tech Debt\n- Convert important memory events into richer graph nodes when the feature stabilizes.\n\n---\n\n## 🎯 Session Context\n\n### Current Task\n${next ? next.text : 'No active task captured.'}\n\n### Decisions Made\n| Decision | Reason | Rejected |\n|---|---|---|\n${decisionRows}\n\n### Progress\n✅ Done: ${done}\n🔄 In Progress: ${next ? next.title : 'Nothing captured'}\n⏭️ NEXT ACTION: ${next ? next.text.replace(/\r?\n/g, ' ').slice(0, 240) : 'Capture a next action with mobile-agency memory capture --type next-action --text \"...\".'}\n🚧 Blocked: Nothing captured\n\n### Open Questions\n- None captured.\n\n---\n\n## 🤖 Agent State\n| Agent | Last Action | Finding | Pending |\n|---|---|---|---|\n${findingRows}\n\n---\n\n## 📄 Code State\nSee ${MEMORY_EVENTS_FILE} for raw event history. Capture mid-edit files with mobile-agency memory capture --type code-state --file <path>.\n\n---\n\n## 🔄 Resume Instructions\n\n**Claude Code:**\nStart new session → paste INSTANT RESUME → paste full MRECALL.md → say "Continue"\n\n**Cursor/Windsurf:**\nSave as MRECALL.md in project root → next prompt: "Read MRECALL.md and continue"\n\n**ChatGPT/Gemini:**\nPaste full file as first message → "Resume from NEXT ACTION"\n\n**Same tool, new session:**\nPaste full file → /mrecall restore\n---\n`;
+}
 
 function fetch(url) {
   return new Promise((resolve, reject) => {
@@ -617,6 +809,155 @@ async function cmdAdd(args) {
   console.log('');
 }
 
+function cmdMemory(args) {
+  const sub = args[0];
+  const opts = parseOptions(args.slice(1));
+
+  if (!sub || sub === 'help' || sub === '--help' || sub === '-h') {
+    console.log('');
+    console.log(bold('  npx mobile-agency memory <command> [options]'));
+    console.log('');
+    console.log('  Commands:');
+    console.log(`    ${bold('init')}                 Create .mobile-agency/memory store`);
+    console.log(`    ${bold('capture')}              Append a memory event`);
+    console.log(`    ${bold('status')}               Show memory store status`);
+    console.log(`    ${bold('search')} <query>        Search captured memory`);
+    console.log(`    ${bold('timeline')}             Show recent memory events`);
+    console.log(`    ${bold('inject')}               Print compact context for a new AI session`);
+    console.log(`    ${bold('checkpoint')}           Generate MRECALL.md from memory events`);
+    console.log('');
+    console.log('  Capture options:');
+    console.log('    --type    note | decision | progress | finding | qa | stage | next-action | code-state');
+    console.log('    --title   Short title');
+    console.log('    --text    Memory text');
+    console.log('    --file    Read text from a file');
+    console.log('    --tags    Comma-separated tags');
+    console.log('    --files   Comma-separated related files');
+    console.log('');
+    console.log('  Examples:');
+    console.log(dim('    npx mobile-agency memory init'));
+    console.log(dim('    npx mobile-agency memory capture --type decision --title "Use Room" --text "Persist habits locally with Room."'));
+    console.log(dim('    git diff | npx mobile-agency memory capture --type code-state --title "Current diff"'));
+    console.log(dim('    npx mobile-agency memory search persistence'));
+    console.log(dim('    npx mobile-agency memory checkpoint'));
+    console.log('');
+    return;
+  }
+
+  if (sub === 'init') {
+    ensureMemory();
+    const gitignorePath = path.join(process.cwd(), MEMORY_DIR, '.gitignore');
+    if (!fs.existsSync(gitignorePath)) {
+      fs.writeFileSync(gitignorePath, [
+        '# Mobile Agency local memory',
+        '# Keep raw event history local by default. Commit MRECALL.md when a handoff is useful.',
+        'memory/events.jsonl',
+        ''
+      ].join('\n'));
+    }
+    console.log('');
+    ok(`${MEMORY_SUBDIR}/`);
+    ok(MEMORY_CONFIG_FILE);
+    ok(MEMORY_INDEX_FILE);
+    log(`Capture with ${bold('npx mobile-agency memory capture --type decision --text "..."')}`);
+    console.log('');
+    return;
+  }
+
+  ensureMemory();
+  const config = loadMemoryConfig();
+  const eventsPath = path.join(process.cwd(), MEMORY_EVENTS_FILE);
+  const events = readJsonl(eventsPath);
+
+  if (sub === 'capture') {
+    const event = memoryEventFromOptions(opts);
+    appendJsonl(eventsPath, event);
+    const nextEvents = events.concat(event);
+    updateMemoryIndex(nextEvents);
+    console.log('');
+    ok(`Captured ${event.type}: ${event.title}`);
+    log(`Events: ${nextEvents.length}`);
+    console.log('');
+    return;
+  }
+
+  if (sub === 'status') {
+    console.log('');
+    console.log(bold('Mobile Agency Memory'));
+    console.log(`  Project : ${bold(config.project || detectProjectName())}`);
+    console.log(`  Platform: ${bold(config.platform || detectPlatform())}`);
+    console.log(`  Events  : ${bold(String(events.length))}`);
+    console.log(`  Store   : ${dim(path.join(process.cwd(), MEMORY_SUBDIR))}`);
+    if (events.length) {
+      console.log('');
+      console.log(bold('Recent'));
+      events.slice(-5).reverse().forEach(e => console.log(`  - ${formatMemoryEvent(e)}`));
+    }
+    console.log('');
+    return;
+  }
+
+  if (sub === 'search') {
+    const query = opts._.join(' ').toLowerCase();
+    if (!query) throw new Error('memory search needs a query.');
+    const results = events.filter(e => JSON.stringify(e).toLowerCase().includes(query)).slice(-20).reverse();
+    console.log('');
+    console.log(bold(`Memory search: ${query}`));
+    if (!results.length) {
+      log('No matching memory events.');
+    } else {
+      results.forEach(e => {
+        console.log(`\n${bold(e.id)}`);
+        console.log(formatMemoryEvent(e, true));
+      });
+    }
+    console.log('');
+    return;
+  }
+
+  if (sub === 'timeline') {
+    const limit = Number(opts.limit || 20);
+    console.log('');
+    console.log(bold(`Memory timeline (${Math.min(limit, events.length)} of ${events.length})`));
+    events.slice(-limit).forEach(e => console.log(`  - ${formatMemoryEvent(e)}`));
+    console.log('');
+    return;
+  }
+
+  if (sub === 'inject') {
+    const limit = Number(opts.limit || 8);
+    const recent = events.slice(-limit);
+    console.log(`# Mobile Agency Memory Context\n`);
+    console.log(`Project: ${config.project || detectProjectName()}`);
+    console.log(`Platform: ${config.platform || detectPlatform()}`);
+    console.log(`Events: ${events.length}\n`);
+    console.log('## Recent Memory');
+    if (!recent.length) {
+      console.log('- No memory events captured yet.');
+    } else {
+      recent.forEach(e => console.log(`- ${formatMemoryEvent(e)} — ${String(e.text || '').replace(/\r?\n/g, ' ').slice(0, 180)}`));
+    }
+    const next = [...events].reverse().find(e => e.type === 'next-action');
+    console.log('\n## Next Action');
+    console.log(next ? `- ${next.text}` : '- Not captured yet.');
+    console.log('\nUse this as context, then read exact files before editing.');
+    return;
+  }
+
+  if (sub === 'checkpoint') {
+    const out = buildMRecallFromEvents(config, events);
+    fs.writeFileSync(path.join(process.cwd(), MRECALL_FILE), out);
+    updateMemoryIndex(events);
+    console.log('');
+    ok(`${MRECALL_FILE} generated from ${events.length} memory events`);
+    log(`Review before committing. Raw events stay local in ${MEMORY_EVENTS_FILE}.`);
+    console.log('');
+    return;
+  }
+
+  throw new Error(`Unknown memory command: ${sub}`);
+}
+
 function cmdList() {
   const agentCount    = Object.keys(AGENTS).length;
   const skillCount    = Object.keys(SKILLS).length;
@@ -664,6 +1005,7 @@ function cmdList() {
   console.log(dim('    npx mobile-agency add agent crasher               # one agent'));
   console.log(dim('    npx mobile-agency add skill grill-mobile          # one skill'));
   console.log(dim('    npx mobile-agency add workflow feature-ship       # one workflow'));
+  console.log(dim('    npx mobile-agency memory init                     # local MRecall memory'));
   console.log('');
 }
 
@@ -674,6 +1016,7 @@ function cmdHelp() {
   console.log('  Commands:');
   console.log(`    ${bold('install')}                         Install agents, skills, and workflows`);
   console.log(`    ${bold('add')} agent|skill|workflow <name>  Install a single item`);
+  console.log(`    ${bold('memory')} init|capture|search|...    Local MRecall memory store`);
   console.log(`    ${bold('list')}                            List all available agents, skills, and workflows`);
   console.log(`    ${bold('help')}                            Show this help`);
   console.log('');
@@ -704,6 +1047,8 @@ function cmdHelp() {
   console.log(dim('    npx mobile-agency add agent crasher'));
   console.log(dim('    npx mobile-agency add skill grill-mobile'));
   console.log(dim('    npx mobile-agency add workflow feature-ship'));
+  console.log(dim('    npx mobile-agency memory init'));
+  console.log(dim('    npx mobile-agency memory capture --type decision --text "Use Room for offline persistence"'));
   console.log('');
   console.log(dim(`  github.com/${REPO}`));
   console.log('');
@@ -718,6 +1063,7 @@ async function main() {
     switch (cmd) {
       case 'install': await cmdInstall(args); break;
       case 'add':     await cmdAdd(args);     break;
+      case 'memory':  cmdMemory(args);        break;
       case 'list':    cmdList();              break;
       case 'help':
       case '--help':
