@@ -11,7 +11,7 @@ Use it when you want one AI system to manage the full mobile delivery loop with 
 ```text
 MOBILE-HARNESS
 ├── APPFORGE      → idea, PRD, design, tasks, roadmap
-├── MRECALL       → long-term memory across days/weeks
+├── Mobile Memory → long-term memory across days/weeks
 ├── AXIOM/SWIFT/DART/BRIDGE → platform code review
 ├── /mobile-mcp-qa → emulator/device UI verification
 ├── /accessibility-audit → accessibility verification
@@ -22,7 +22,7 @@ MOBILE-HARNESS
 └── PIPELINE      → CI/CD and build/release automation
 ```
 
-APPFORGE plans. MRECALL remembers. Mobile Harness orchestrates execution and evidence.
+APPFORGE plans. Mobile Memory remembers. Mobile Harness orchestrates execution and evidence.
 
 ---
 
@@ -71,7 +71,7 @@ Start a new app:
 
 ```text
 Use MOBILE-HARNESS.
-Start from a new app idea and orchestrate APPFORGE, MRECALL, implementation, QA, and launch prep.
+Start from a new app idea and orchestrate APPFORGE, Mobile Memory, implementation, QA, and launch prep.
 ```
 
 Resume a long-running project:
@@ -121,7 +121,7 @@ PRD Verification:
 UI Match:
 Mobile MCP QA:
 Acceptance Criteria:
-MRECALL Update:
+Memory Update:
 Remaining Issues:
 NEXT ACTION:
 ```

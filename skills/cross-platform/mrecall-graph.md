@@ -2,7 +2,7 @@
 
 **Platform:** Cross-Platform  
 **Slash Command:** `/mrecall-graph`  
-**Composable With:** MRECALL, AXIOM, SWIFT, DART, BRIDGE, FORGE, UNREAL
+**Composable With:** Mobile Memory, AXIOM, SWIFT, DART, BRIDGE, FORGE, UNREAL
 
 ---
 

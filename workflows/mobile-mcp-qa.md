@@ -1,7 +1,7 @@
 # Workflow — Mobile MCP QA
 
 **Type:** Device automation QA  
-**Agents Used:** APPFORGE, AXIOM / SWIFT / DART / BRIDGE, CRASHER, PERF, MRECALL  
+**Agents Used:** APPFORGE, AXIOM / SWIFT / DART / BRIDGE, CRASHER, PERF, Mobile Memory
 **Skills Used:** /mobile-mcp-qa, /accessibility-audit, /perf-audit, /mrecall-save
 
 ---
@@ -211,7 +211,7 @@ Do not use device automation to expand MVP scope. Use it to prove the approved P
 
 ---
 
-## MRecall Integration
+## Mobile Memory Integration
 
 After each QA pass, run:
 

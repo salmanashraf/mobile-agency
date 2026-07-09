@@ -1,7 +1,7 @@
 # Workflow — APPFORGE Idea to Store
 
 **Type:** Idea to production launch  
-**Agents Used:** APPFORGE, AXIOM / SWIFT / DART / BRIDGE, SENTINEL, PERF, LAUNCHPAD, PIPELINE, SCRIBE, MRECALL  
+**Agents Used:** APPFORGE, AXIOM / SWIFT / DART / BRIDGE, SENTINEL, PERF, LAUNCHPAD, PIPELINE, SCRIBE, Mobile Memory
 **Skills Used:** /grill-mobile, /feature-slice, /perf-audit, /accessibility-audit, /release-prep, /store-listing, /mrecall-save
 
 ---

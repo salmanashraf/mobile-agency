@@ -2,7 +2,7 @@
 
 **Platform:** Android / iOS / Flutter / React Native  
 **Slash Command:** `/mobile-mcp-qa`  
-**Composable With:** APPFORGE, AXIOM, SWIFT, DART, BRIDGE, CRASHER, PERF, MRECALL
+**Composable With:** APPFORGE, AXIOM, SWIFT, DART, BRIDGE, CRASHER, PERF, Mobile Memory
 
 ---
 

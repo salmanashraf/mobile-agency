@@ -1,7 +1,7 @@
-# Workflow — MRecall Context Loop
+# Workflow — Mobile Memory Context Loop
 
 **Type:** AI session continuity  
-**Agents Used:** MRECALL, AXIOM, CRASHER, SWIFT, DART, BRIDGE, SENTINEL, PERF  
+**Agents Used:** Mobile Memory, AXIOM, CRASHER, SWIFT, DART, BRIDGE, SENTINEL, PERF
 **Skills Used:** /mrecall-save, /mrecall-graph, /mrecall-search, /grill-mobile, /crash-triage, /release-prep
 
 ---
@@ -74,12 +74,12 @@ Then run:
 /mrecall restore
 ```
 
-Then paste the existing `MRECALL.md`. MRECALL summarizes the project in five bullets, briefs the active agent state, and continues from `NEXT ACTION`.
+Then paste the existing `MRECALL.md`. Mobile Memory summarizes the project in five bullets, briefs the active agent state, and continues from `NEXT ACTION`.
 
 Output to expect:
 
 ```text
-MRECALL loaded. Here is what I know:
+Mobile Memory loaded. Here is what I know:
 - Platform, stack, and architecture
 - Current task
 - Decisions already made
@@ -95,7 +95,7 @@ Run:
 /grill-mobile
 ```
 
-Capture requirements and decisions directly into the next MRECALL update:
+Capture requirements and decisions directly into the next Mobile Memory update:
 
 - Target platform and OS constraints
 - Architecture decisions
@@ -140,7 +140,7 @@ Run:
 @CRASHER analyze crash.log
 ```
 
-MRECALL stores:
+Mobile Memory stores:
 
 - Crash type and severity
 - Failure path
@@ -209,7 +209,7 @@ No re-explanation required. The teammate's AI sees the architecture, graph, deci
 
 ## Integration Points
 
-| Moment | Tool | MRECALL Section Updated |
+| Moment | Tool | Memory Section Updated |
 |---|---|---|
 | Memory setup | `mobile-agency memory init` | Local event store |
 | Session start | `mobile-agency memory inject`, `/mrecall restore` | Instant Resume, Progress |

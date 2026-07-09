@@ -2,7 +2,7 @@
 
 **Platform:** Cross-Platform  
 **Slash Command:** `/mrecall-save`  
-**Composable With:** MRECALL, AXIOM, CRASHER, SWIFT, DART, BRIDGE, PERF
+**Composable With:** Mobile Memory, AXIOM, CRASHER, SWIFT, DART, BRIDGE, PERF
 
 ---
 
@@ -10,7 +10,7 @@
 
 Create a compact `MRECALL.md` checkpoint fast. Use this when the session is getting long, a major decision was made, or you need to switch AI tools without losing progress.
 
-This skill does not require activating the full MRECALL agent. It produces a smaller file with only:
+This skill does not require activating the full Mobile Memory agent. It produces a smaller file with only:
 
 - `INSTANT RESUME`
 - `Progress`
@@ -57,7 +57,7 @@ Rules:
 Compact MRECALL.md format:
 
 ---
-# 🔁 MRECALL
+# Mobile Memory
 **Project:** [name]
 **Platform:** [Android/iOS/Flutter/RN/Unity/Unreal]
 **Stack:** [language, framework, key libraries]
@@ -149,7 +149,7 @@ NEXT ACTION: Replace _submitting bool with ref.watch(checkoutControllerProvider)
 
 ```markdown
 ---
-# 🔁 MRECALL
+# Mobile Memory
 **Project:** PayTrack
 **Platform:** Flutter
 **Stack:** Dart, Flutter, Riverpod

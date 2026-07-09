@@ -70,7 +70,7 @@ Mobile Agency turns AI coding from one-off prompts into a repeatable mobile engi
 | 2. Open your app | Use it inside an Android, iOS, Flutter, React Native, KMP, Unity, or Unreal project. | Claude Code · Cursor · Windsurf · Copilot · Codex |
 | 3. Start the loop | Tell Mobile Harness the app or feature goal once. It asks clarification questions before building. | `/mobile-harness` |
 | 4. Build with gates | The loop plans, implements, reviews architecture, checks security, audits performance, verifies UI, and runs QA. | `@MOBILE-HARNESS` |
-| 5. Continue later | Project context, decisions, reports, and next tasks are saved so work can continue across sessions. | `@MRECALL` |
+| 5. Continue later | Project context, decisions, reports, and next tasks are saved so work can continue across sessions. | Mobile Memory |
 
 For focused work, use a specialist directly:
 
@@ -116,7 +116,7 @@ Platform Plugins: Android · iOS · Flutter · React Native · Kotlin Multiplatf
 | Testing | Unit tests, UI tests, accessibility, PRD checks, device QA | `/mobile-mcp-qa`, TDD skills, accessibility audit |
 | Release | CI/CD, signing, release notes, rollout, store checklist | `@PIPELINE`, `@SCRIBE`, `/release-prep` |
 | Growth | ASO, store listing, screenshots, monetization | `@LAUNCHPAD`, `/store-listing` |
-| Maintenance | Crash triage, context memory, issue planning, regression checks | `@CRASHER`, `@MRECALL`, issue-to-agent workflow |
+| Maintenance | Crash triage, context memory, issue planning, regression checks | `@CRASHER`, Mobile Memory, issue-to-agent workflow |
 
 Security and performance are built into the loop before release. They are not optional cleanup steps.
 
@@ -230,7 +230,7 @@ Not sure where to begin? Pick your situation:
 | **SENTINEL** | Paranoid by design. Every input is malicious until proven otherwise. | OWASP Mobile Top 10 security audit |
 | **APPFORGE** | End-to-end product lead. Practical, launch-focused, allergic to vague MVPs. | Rough app idea → PRD → tasks → QA → Play Store launch prep |
 | **MOBILE-HARNESS** | Principal delivery lead. Trusts evidence, not vibes. | Autonomous top-level orchestrator for planning, build, memory, tests, UI verification, Mobile MCP QA, and launch |
-| **MRECALL** | The archivist. Never loses anything. | Mobile knowledge graph + context preservation across any AI tool |
+| **MOBILE MEMORY** | Project memory that survives sessions. | Mobile knowledge graph + context preservation across any AI tool |
 | **LAUNCHPAD** | ASO-obsessed conversion scientist. | Play Store + App Store copy, keywords, screenshot brief |
 | **PIPELINE** | Automation purist. If it's done manually twice, it's a pipeline waiting to exist. | GitHub Actions / Bitrise / Fastlane configuration |
 | **PERF** | Frame-rate zealot. Carries a stopwatch everywhere. | Profile slow screens → concrete optimization plan |
@@ -323,7 +323,7 @@ Not sure where to begin? Pick your situation:
 | `perf-sprint` | Baseline → /perf-audit → fix → re-measure → document |
 | `game-level` | Design doc → FORGE/UNREAL → /shader-gen → /game-perf → /unity-tdd → playtest |
 | `new-project-setup` | /grill-mobile → architecture → CI → security baseline → test infrastructure |
-| `mrecall-workflow` | Restore context → capture decisions → save MRECALL.md → hand off across AI tools |
+| `mrecall-workflow` | Mobile Memory: restore context → capture decisions → generate `MRECALL.md` → hand off across AI tools |
 | `appforge-workflow` | App idea → PRD → design plan → tasks → implementation gates → QA → Play Store |
 | `mobile-mcp-qa` | Install/launch app → inspect UI → run flows → capture screenshots → QA report |
 | `mobile-harness` | Approved task → implementation → tests → UI match → Mobile MCP QA → report |
@@ -391,7 +391,7 @@ Use it inside APPFORGE Stage 7 Full QA, UI match review, launch readiness checks
 
 ## Mobile Harness — Top-Level Orchestrator
 
-Mobile Harness is the Loop Engineering orchestrator for Mobile Agency. It can start from a rough app idea or an existing codebase, then coordinate APPFORGE, MRECALL, platform reviewers, tests, UI verification, Mobile MCP QA, accessibility, performance, security, release prep, and store/growth work.
+Mobile Harness is the Loop Engineering orchestrator for Mobile Agency. It can start from a rough app idea or an existing codebase, then coordinate APPFORGE, Mobile Memory, platform reviewers, tests, UI verification, Mobile MCP QA, accessibility, performance, security, release prep, and store/growth work.
 
 Use it when you want to define the goal once and have the system keep moving through the app-building loop without repeating the same manual prompts at every stage.
 
@@ -502,15 +502,15 @@ Full guide: [docs/mobile-harness.md](docs/mobile-harness.md)
 
 ---
 
-## MRecall — Never Lose Context
+## Mobile Memory — Never Lose Context
 
-When tokens run out or you switch AI tools, your entire session context — architectural decisions, agent findings, code in progress — vanishes. MRecall captures everything into a single portable `MRECALL.md` file.
+When tokens run out or you switch AI tools, your entire session context — architectural decisions, agent findings, code in progress — vanishes. Mobile Memory captures durable project context locally and can generate a portable `MRECALL.md` handoff file.
 
 ```
-/mrecall save     → produces MRECALL.md (full knowledge graph + session context)
-/mrecall restore  → any AI tool loads it and continues instantly
-/mrecall graph    → builds mobile architecture graph from your code files
-/mrecall-search   → searches local Mobile Agency memory
+mobile-agency memory init        → creates local project memory
+mobile-agency memory capture     → saves decisions, findings, progress, and next actions
+mobile-agency memory search      → searches project memory
+mobile-agency memory checkpoint  → generates MRECALL.md for handoff
 ```
 
 For local persistent memory in a project:
@@ -528,6 +528,8 @@ This stores raw local memory in `.mobile-agency/memory/`, keeps sensitive event 
 Works across Claude Code, Cursor, Windsurf, ChatGPT, and Gemini. Integrates with every Mobile Agency agent — AXIOM findings, CRASHER analysis, and LAUNCHPAD copy are all preserved in the same file.
 
 Inspired by Graphify's token reduction approach, built for mobile architecture. Up to 80× token reduction on large mobile projects vs reading raw files.
+
+Legacy slash commands like `/mrecall-save`, `/mrecall-graph`, and `/mrecall-search` still work for existing installs.
 
 Full guide: [docs/mrecall.md](docs/mrecall.md)
 

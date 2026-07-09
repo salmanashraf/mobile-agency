@@ -2,7 +2,7 @@
 
 **Platform:** Android / iOS / Flutter / React Native / Kotlin Multiplatform / Unity / Unreal  
 **Slash Command:** `/prd-verification`  
-**Composable With:** MOBILE-HARNESS, APPFORGE, MRECALL, `/mobile-mcp-qa`, `/clean-code-audit`, `/security-audit`, `/accessibility-audit`
+**Composable With:** MOBILE-HARNESS, APPFORGE, Mobile Memory, `/mobile-mcp-qa`, `/clean-code-audit`, `/security-audit`, `/accessibility-audit`
 
 ---
 

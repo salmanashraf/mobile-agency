@@ -18,7 +18,7 @@ Mobile Agency works best when you choose the engineering loop before choosing an
 | Prove the app works | Testing | `/mobile-mcp-qa` |
 | Prepare a store release | Release | `/release-prep` |
 | Improve store conversion | Growth | `@LAUNCHPAD` |
-| Resume work or triage production issues | Maintenance | `@MRECALL` or `@CRASHER` |
+| Resume work or triage production issues | Maintenance | Mobile Memory or `@CRASHER` |
 
 Then apply the platform plugin for your app: Android, iOS, Flutter, React Native, Kotlin Multiplatform, Unity, or Unreal.
 

@@ -1,6 +1,6 @@
-# MRecall
+# Mobile Memory
 
-MRecall is a mobile-specific AI memory and knowledge graph system for Mobile Agency. It captures project architecture, session decisions, agent findings, health risks, code state, and the next executable action into one portable `MRECALL.md` file.
+Mobile Memory is a mobile-specific AI memory and knowledge graph system for Mobile Agency. It captures project architecture, session decisions, agent findings, health risks, code state, and the next executable action into local project memory and a portable `MRECALL.md` handoff file.
 
 The goal is simple: when tokens run out or a developer switches tools, the next AI session can continue without asking for the same explanation again.
 
@@ -15,7 +15,7 @@ Generic AI coding sessions lose context:
 - Mid-edit files become risky because the next AI cannot see what was already decided.
 - Large codebases cost too many tokens to reload from scratch.
 
-MRecall preserves the mobile-specific parts of context that matter most:
+Mobile Memory preserves the mobile-specific parts of context that matter most:
 
 - ViewModels, repositories, use cases, widgets, screens, services, APIs, databases, tests
 - Edges like `OBSERVES`, `CALLS`, `INJECTS`, `EMITS`, `NAVIGATES_TO`, and `VIOLATES`
@@ -26,7 +26,7 @@ MRecall preserves the mobile-specific parts of context that matter most:
 
 ## Token Reduction Math
 
-MRecall reduces tokens by replacing raw files with a graph and a session state summary.
+Mobile Memory reduces tokens by replacing raw files with a graph and a session state summary.
 
 Typical Android feature:
 
@@ -41,7 +41,7 @@ Typical Android feature:
 | Prior chat context | 1 | 18,000 | 18,000 |
 | Total raw context | 36 | - | 59,700 |
 
-A high-quality `MRECALL.md` for the same feature is usually 700-1,200 tokens:
+A high-quality Mobile Memory checkpoint for the same feature is usually 700-1,200 tokens:
 
 ```text
 59,700 raw tokens / 750 MRECALL tokens = 79.6x reduction
@@ -53,9 +53,9 @@ That is where the "up to 80x" claim comes from. Smaller snippets reduce less. La
 
 ## How It Differs From Generic Memory Tools
 
-Tools like Recallium, mem0, and agentmemory are useful generic memory layers. MRecall is different because it understands mobile architecture.
+Tools like Recallium, mem0, and agentmemory are useful generic memory layers. Mobile Memory is different because it understands mobile architecture.
 
-| Generic memory tools | MRecall |
+| Generic memory tools | Mobile Memory |
 |---|---|
 | Store arbitrary facts | Stores mobile architecture state |
 | Remember text snippets | Builds UI/VM/Domain/Data/Net/DB graphs |
@@ -64,7 +64,7 @@ Tools like Recallium, mem0, and agentmemory are useful generic memory layers. MR
 | Generic risk | Flags GlobalScope, force unwraps, exposed MutableStateFlow, bridge hot paths, Update() abuse |
 | Session recall | Session recall plus executable NEXT ACTION |
 
-MRecall has two layers:
+Mobile Memory has two layers:
 
 | Layer | Storage | Purpose |
 |---|---|---|
@@ -130,14 +130,14 @@ Privacy rule: do not capture secrets, customer data, private logs, tokens, crede
 
 ## Graphify Integration
 
-Graphify can be used first to create a general graph of a project. MRecall enhances that output with mobile semantics:
+Graphify can be used first to create a general graph of a project. Mobile Memory enhances that output with mobile semantics:
 
 1. Run Graphify to discover broad dependency structure.
 2. Run `/mrecall graph` on the relevant mobile files.
-3. Merge Graphify's broad nodes with MRecall's mobile-specific node types and health labels.
+3. Merge Graphify's broad nodes with Mobile Memory's mobile-specific node types and health labels.
 4. Save the result in `MRECALL.md`.
 
-MRecall uses confidence tags similar to graph-first tools:
+Mobile Memory uses confidence tags similar to graph-first tools:
 
 - `EXTRACTED`: direct code evidence exists
 - `INFERRED`: relationship is strongly implied
@@ -145,11 +145,11 @@ MRecall uses confidence tags similar to graph-first tools:
 
 ---
 
-## Full MRECALL.md Format
+## Portable Checkpoint Format
 
 ```markdown
 ---
-# 🔁 MRECALL
+# Mobile Memory
 **Project:** [name]
 **Platform:** [Android/iOS/Flutter/RN/Unity/Unreal]
 **Stack:** [language, framework, key libraries]
@@ -251,6 +251,19 @@ Paste full file → /mrecall restore
 
 ## Commands
 
+Preferred CLI:
+
+| Command | Use |
+|---|---|
+| `mobile-agency memory init` | Create local project memory |
+| `mobile-agency memory capture` | Save decisions, findings, progress, and next actions |
+| `mobile-agency memory search` | Search local project memory |
+| `mobile-agency memory timeline` | Show recent memory events |
+| `mobile-agency memory inject` | Print compact context for a new AI session |
+| `mobile-agency memory checkpoint` | Generate `MRECALL.md` |
+
+Legacy slash aliases:
+
 | Command | Use |
 |---|---|
 | `/mrecall save` | Produce full `MRECALL.md` |
@@ -268,7 +281,7 @@ Paste full file → /mrecall restore
 
 ## FAQ
 
-### Is MRecall a replacement for reading code?
+### Is Mobile Memory a replacement for reading code?
 
 No. It is a resume layer. Use it to restore context quickly, then read the exact files needed for the next action.
 
@@ -276,9 +289,9 @@ No. It is a resume layer. Use it to restore context quickly, then read the exact
 
 Commit `MRECALL.md` when the context is useful for handoff, review, or long-lived work. Do not commit `.mobile-agency/memory/events.jsonl` unless your team explicitly wants raw local event history in source control. Do not commit secrets, private logs, customer data, or proprietary crash payloads.
 
-### How often should I run `/mrecall save`?
+### How often should I capture memory?
 
-Run it after major architectural decisions, after agent findings, before switching tools, and when the session is long enough that re-explaining would be expensive.
+Capture memory after major architectural decisions, after agent findings, before switching tools, and when the session is long enough that re-explaining would be expensive.
 
 ### Why does it include health nodes?
 
@@ -286,4 +299,4 @@ Mobile projects fail at boundaries: lifecycle, state ownership, navigation, thre
 
 ### Can ChatGPT or Gemini use it?
 
-Yes. Paste the full file as the first message and say: "Resume from NEXT ACTION." MRecall is plain Markdown and does not depend on a specific AI tool.
+Yes. Paste the full file as the first message and say: "Resume from NEXT ACTION." Mobile Memory checkpoints are plain Markdown and do not depend on a specific AI tool.

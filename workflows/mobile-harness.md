@@ -1,7 +1,7 @@
 # Workflow — Mobile Harness
 
 **Type:** Top-level mobile delivery orchestration  
-**Agents Used:** MOBILE-HARNESS, APPFORGE, MRECALL, AXIOM / SWIFT / DART / BRIDGE, CRASHER, PERF, LAUNCHPAD, SCRIBE, PIPELINE  
+**Agents Used:** MOBILE-HARNESS, APPFORGE, Mobile Memory, AXIOM / SWIFT / DART / BRIDGE, CRASHER, PERF, LAUNCHPAD, SCRIBE, PIPELINE
 **Skills Used:** /mobile-mcp-qa, /accessibility-audit, /perf-audit, /mrecall-save, /release-prep, /store-listing
 
 ---
@@ -135,7 +135,7 @@ If the user does not choose, infer the best direction from the app category and 
 
 | Artifact | Required | Owner | Purpose |
 |---|---|---|---|
-| `MRECALL.md` | Required for multi-session work | MRECALL | Context, decisions, current task, next action |
+| `MRECALL.md` | Required for multi-session work | Mobile Memory | Context, decisions, current task, next action |
 | `PRD.md` | Required before implementation | APPFORGE | Product behavior and requirements |
 | Design plan / `DESIGN.md` | Required before UI implementation | APPFORGE | Visual target and UI states |
 | `TASKS.md` | Required before implementation | APPFORGE | Task scope and acceptance criteria |
@@ -303,7 +303,7 @@ A task can be marked done only when:
 Start from scratch:
 
 ```text
-Use MOBILE-HARNESS. Start from a new app idea and orchestrate APPFORGE, MRECALL, implementation, QA, and launch prep.
+Use MOBILE-HARNESS. Start from a new app idea and orchestrate APPFORGE, Mobile Memory, implementation, QA, and launch prep.
 ```
 
 Resume multi-day feature:

@@ -74,7 +74,7 @@ The user should not have to manually prompt every stage. The system should stop 
 | Testing | Add unit/UI tests, run device QA, check accessibility, and verify PRD/design match. | TDD skills, `/prd-verification`, `/mobile-mcp-qa`, `/accessibility-audit` |
 | Release | Prepare CI/CD, signing, release notes, rollout, and store submission. | `@PIPELINE`, `@SCRIBE`, `/release-prep` |
 | Growth | Improve store listing, ASO, screenshots, conversion, and monetization copy. | `@LAUNCHPAD`, `/store-listing` |
-| Maintenance | Triage crashes, preserve context, plan issue work, and prevent regressions. | `@CRASHER`, `@MRECALL`, crash triage, issue-to-agent workflow |
+| Maintenance | Triage crashes, preserve context, plan issue work, and prevent regressions. | `@CRASHER`, Mobile Memory, crash triage, issue-to-agent workflow |
 
 ## Platform Plugins
 

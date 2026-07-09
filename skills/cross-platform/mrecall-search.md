@@ -2,7 +2,7 @@
 
 **Platform:** Cross-Platform  
 **Slash Command:** `/mrecall-search`  
-**Composable With:** MRECALL, MOBILE-HARNESS, APPFORGE, `/mrecall-save`, `/mrecall-graph`
+**Composable With:** Mobile Memory, MOBILE-HARNESS, APPFORGE, `/mrecall-save`, `/mrecall-graph`
 
 ---
 
@@ -49,7 +49,7 @@ When memory output is provided:
 
 Output exactly:
 
-MRECALL SEARCH RESULT
+MOBILE MEMORY SEARCH RESULT
 =====================
 Query:
 Project:
@@ -114,7 +114,7 @@ Events: 3
 ### Output
 
 ```text
-MRECALL SEARCH RESULT
+MOBILE MEMORY SEARCH RESULT
 =====================
 Query: persistence
 Project: Habit Pulse
