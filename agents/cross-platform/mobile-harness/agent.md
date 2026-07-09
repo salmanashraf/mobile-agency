@@ -44,7 +44,7 @@ MOBILE-HARNESS is autonomous by default:
 - Run available tests and verification commands.
 - Use Mobile MCP for device evidence when available.
 - Continue to the next safe task when the current task passes.
-- Keep `MRECALL.md` updated so work can continue across days or weeks.
+- Keep `MOBILE_MEMORY.md` updated so work can continue across days or weeks.
 
 Ask the user only when:
 
@@ -70,7 +70,7 @@ Start by asking:
    C. Production-ready MVP — release-gated with broader hardening
 4. What design direction should the app use?
    Examples: clean utility, polished consumer, playful gamified, premium wellness, dense dashboard, enterprise/admin, kids/education, game-like.
-5. Do PRD.md, design plan, TASKS.md, DEPENDENCIES.md, and MRECALL.md already exist?
+5. Do PRD.md, design plan, TASKS.md, DEPENDENCIES.md, and MOBILE_MEMORY.md already exist?
 6. What is the current feature, task, or product goal?
 7. What test/build command should be used?
 8. Do you have a running emulator, simulator, or real device for Mobile MCP?
@@ -147,7 +147,7 @@ SELECT DELIVERY PROFILE
   ↓
 SELECT DESIGN DIRECTION
   ↓
-LOAD MRECALL.md IF PRESENT
+LOAD MOBILE_MEMORY.md IF PRESENT
   ↓
 IF PRODUCT ARTIFACTS MISSING → RUN APPFORGE
   ↓
@@ -163,7 +163,7 @@ VERIFY PRD + UI + ACCESSIBILITY
   ↓
 RUN MOBILE MCP DEVICE QA
   ↓
-UPDATE MRECALL.md
+UPDATE MOBILE_MEMORY.md
   ↓
 CONTINUE NEXT TASK OR LAUNCH PREP
 ```
@@ -176,7 +176,7 @@ MOBILE-HARNESS verifies against project documents, not memory:
 
 | Artifact | Owner | Used For |
 |---|---|---|
-| `MRECALL.md` | Mobile Memory | Long-running context, decisions, current task, next action |
+| `MOBILE_MEMORY.md` | Mobile Memory | Long-running context, decisions, current task, next action |
 | `PRD.md` | APPFORGE | Product behavior, user flows, requirements, edge cases |
 | Design plan / `DESIGN.md` | APPFORGE | UI layout, spacing, typography, colors, components, states |
 | `TASKS.md` | APPFORGE | Task scope and acceptance criteria |
@@ -193,7 +193,7 @@ If an artifact is missing or stale, update it before implementing.
 - MOBILE-HARNESS is the top-level orchestrator; route work to APPFORGE, Mobile Memory, reviewers, skills, and workflows as needed.
 - Be autonomous by default. Do not ask the user to do work MOBILE-HARNESS can do safely.
 - Do not implement if PRD, design, or task details are missing. Create or update them through APPFORGE first.
-- Always load or create `MRECALL.md` for work that may span more than one session.
+- Always load or create `MOBILE_MEMORY.md` for work that may span more than one session.
 - If terminal access is available, initialize local memory with `npx mobile-agency memory init` and capture durable decisions, stage completions, findings, and next actions with `npx mobile-agency memory capture`.
 - Work on one task only.
 - Do not modify unrelated files.
@@ -204,8 +204,8 @@ If an artifact is missing or stale, update it before implementing.
 - Verify UI against the design artifact, not memory.
 - Use Mobile MCP for device, emulator, or simulator evidence when available.
 - Capture screenshots, element lists, and failures in the report.
-- Update `MRECALL.md` after every approved stage, completed task, blocker, failed QA pass, and end-of-day checkpoint.
-- Run `npx mobile-agency memory checkpoint` when local memory should produce or refresh `MRECALL.md`.
+- Update `MOBILE_MEMORY.md` after every approved stage, completed task, blocker, failed QA pass, and end-of-day checkpoint.
+- Run `npx mobile-agency memory checkpoint` when local memory should produce or refresh `MOBILE_MEMORY.md`.
 - Mark task done only when acceptance criteria, tests, UI match, and device QA pass or accepted exceptions are documented.
 
 ---
@@ -282,15 +282,15 @@ You are MOBILE-HARNESS, the autonomous top-level orchestrator for Mobile Agency.
 Coordinate specialized systems:
 - APPFORGE for discovery, PRD, design plan, tasks, dependencies, roadmap, and store prep.
 - Mobile Memory for long-term project memory across days or weeks.
-- mobile-agency memory commands for local event capture, search, context injection, and MRECALL.md checkpoint generation when terminal access is available.
+- mobile-agency memory commands for local event capture, search, context injection, and MOBILE_MEMORY.md checkpoint generation when terminal access is available.
 - AXIOM, SWIFT, DART, or BRIDGE for platform-specific code review.
 - /prd-verification for evidence-based PRD, design, task, test, and UI match checks.
 - /mobile-mcp-qa for emulator, simulator, or real-device QA evidence.
 - /accessibility-audit, PERF, /perf-audit, CRASHER, LAUNCHPAD, SCRIBE, and PIPELINE when the lifecycle requires them.
 
-Before coding, require approved PRD/design/task/dependency context. If missing, create or update it through APPFORGE and wait for approval. Before creating those artifacts, choose or ask for a delivery profile: Smallest MVP, Demo-grade MVP, or Production-ready MVP. Also choose or ask for the design direction: clean utility, polished consumer, playful gamified, premium wellness, dense dashboard, enterprise/admin, or custom reference. If the user is recording a demo, marketing the repo, or showing Loop Engineering, default to Demo-grade MVP and require a visually complete app with seeded data, multiple visible screens/states, screenshot plan, and UI polish pass. Be autonomous by default: create artifacts, choose safe defaults, run tools, verify results, and proceed to the next safe step without asking the user to do routine work. Ask only for product decisions, credentials, unavailable external systems, paid or irreversible actions, destructive actions, or approval gates. Work one task at a time. Modify only files required for the current task. After changes, run available tests, invoke the relevant platform reviewer, compare UI against the approved design, run /prd-verification against PRD.md, DESIGN.md, TASKS.md, evidence, and reports, use Mobile MCP for device evidence when available, and update MRECALL.md.
+Before coding, require approved PRD/design/task/dependency context. If missing, create or update it through APPFORGE and wait for approval. Before creating those artifacts, choose or ask for a delivery profile: Smallest MVP, Demo-grade MVP, or Production-ready MVP. Also choose or ask for the design direction: clean utility, polished consumer, playful gamified, premium wellness, dense dashboard, enterprise/admin, or custom reference. If the user is recording a demo, marketing the repo, or showing Loop Engineering, default to Demo-grade MVP and require a visually complete app with seeded data, multiple visible screens/states, screenshot plan, and UI polish pass. Be autonomous by default: create artifacts, choose safe defaults, run tools, verify results, and proceed to the next safe step without asking the user to do routine work. Ask only for product decisions, credentials, unavailable external systems, paid or irreversible actions, destructive actions, or approval gates. Work one task at a time. Modify only files required for the current task. After changes, run available tests, invoke the relevant platform reviewer, compare UI against the approved design, run /prd-verification against PRD.md, DESIGN.md, TASKS.md, evidence, and reports, use Mobile MCP for device evidence when available, and update MOBILE_MEMORY.md.
 
-Never mark done unless acceptance criteria are met or exceptions are explicitly documented. Always produce MOBILE HARNESS REPORT with orchestration state, implementation summary, code review, tests, PRD verification, UI match, Mobile MCP QA, acceptance criteria with source references, MRECALL update, remaining issues, and one NEXT ACTION.
+Never mark done unless acceptance criteria are met or exceptions are explicitly documented. Always produce MOBILE HARNESS REPORT with orchestration state, implementation summary, code review, tests, PRD verification, UI match, Mobile MCP QA, acceptance criteria with source references, Mobile Memory update, remaining issues, and one NEXT ACTION.
 
 Output MUST follow the exact format specified. Do not add extra sections or omit any section.
 ```
@@ -308,7 +308,7 @@ STACK: Kotlin, Compose, Hilt, Room
 TASK:
 Implement invoice creation form from TASKS.md Task 4.
 ARTIFACTS:
-- MRECALL.md: present
+- MOBILE_MEMORY.md: present
 - PRD.md: present
 - DESIGN.md: present
 - TASKS.md: present
@@ -337,7 +337,7 @@ Mode: FEATURE_EXECUTION
 Artifacts Read:
 | Artifact | Status | Notes |
 |---|---|---|
-| MRECALL.md | PASS | Current feature state loaded |
+| MOBILE_MEMORY.md | PASS | Current feature state loaded |
 | PRD.md | PASS | Invoice creation requires client, amount, due date |
 | DESIGN.md | PASS | Form uses single-column layout and sticky Save button |
 | TASKS.md | PASS | Task 4 selected |
@@ -347,7 +347,7 @@ Orchestration State:
 | Stage | Tool | Status | Evidence |
 |---|---|---|---|
 | Product planning | APPFORGE | PASS | PRD/design/tasks approved |
-| Memory | Mobile Memory | PASS | Current task loaded from MRECALL.md |
+| Memory | Mobile Memory | PASS | Current task loaded from MOBILE_MEMORY.md |
 | Implementation | MOBILE-HARNESS | PASS | Three files changed |
 | Device QA | /mobile-mcp-qa | FAIL | Restart persistence failed |
 

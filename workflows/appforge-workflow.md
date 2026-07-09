@@ -2,7 +2,7 @@
 
 **Type:** Idea to production launch  
 **Agents Used:** APPFORGE, AXIOM / SWIFT / DART / BRIDGE, SENTINEL, PERF, LAUNCHPAD, PIPELINE, SCRIBE, Mobile Memory
-**Skills Used:** /grill-mobile, /feature-slice, /perf-audit, /accessibility-audit, /release-prep, /store-listing, /mrecall-save
+**Skills Used:** /grill-mobile, /feature-slice, /perf-audit, /accessibility-audit, /release-prep, /store-listing, /mobile-memory-save
 
 ---
 
@@ -227,6 +227,6 @@ Include app names, short description, full description, keywords, screenshot cap
 
 - Keep MVP small enough to ship.
 - Ask questions when requirements are unclear.
-- Preserve context with `/mrecall-save` after every approved stage.
+- Preserve context with `/mobile-memory-save` after every approved stage.
 - Do not implement code until the PRD, design, and task breakdown are approved.
 - Do not mark a task complete until acceptance criteria and design match are verified.

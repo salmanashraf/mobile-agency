@@ -2,7 +2,7 @@
 
 **Type:** Device automation QA  
 **Agents Used:** APPFORGE, AXIOM / SWIFT / DART / BRIDGE, CRASHER, PERF, Mobile Memory
-**Skills Used:** /mobile-mcp-qa, /accessibility-audit, /perf-audit, /mrecall-save
+**Skills Used:** /mobile-mcp-qa, /accessibility-audit, /perf-audit, /mobile-memory-save
 
 ---
 
@@ -71,7 +71,7 @@ Run accessibility and performance checks
   ↓
 Write QA report
   ↓
-Save context with /mrecall-save
+Save context with /mobile-memory-save
 ```
 
 ---
@@ -216,7 +216,7 @@ Do not use device automation to expand MVP scope. Use it to prove the approved P
 After each QA pass, run:
 
 ```text
-/mrecall-save
+/mobile-memory-save
 ```
 
 Capture:

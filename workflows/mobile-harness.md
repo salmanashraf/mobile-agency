@@ -2,7 +2,7 @@
 
 **Type:** Top-level mobile delivery orchestration  
 **Agents Used:** MOBILE-HARNESS, APPFORGE, Mobile Memory, AXIOM / SWIFT / DART / BRIDGE, CRASHER, PERF, LAUNCHPAD, SCRIBE, PIPELINE
-**Skills Used:** /mobile-mcp-qa, /accessibility-audit, /perf-audit, /mrecall-save, /release-prep, /store-listing
+**Skills Used:** /mobile-mcp-qa, /accessibility-audit, /perf-audit, /mobile-memory-save, /release-prep, /store-listing
 
 ---
 
@@ -28,7 +28,7 @@ MOBILE-HARNESS is autonomous by default:
 - Run available tests, linters, builds, reviewers, and Mobile MCP QA.
 - Compare behavior against `PRD.md` and UI against the design artifact.
 - Fix failures that are inside the current task scope.
-- Update `MRECALL.md` so work can resume days or weeks later.
+- Update `MOBILE_MEMORY.md` so work can resume days or weeks later.
 
 Ask the user only for:
 
@@ -54,7 +54,7 @@ Ask the user only for:
    ↓ Clean utility, polished consumer, playful gamified, premium wellness, dense dashboard, enterprise/admin, or custom reference
 
 3. MEMORY
-   ↓ Load or create MRECALL.md
+   ↓ Load or create MOBILE_MEMORY.md
 
 4. PRODUCT PLAN
    ↓ APPFORGE discovery, PRD.md, design plan, TASKS.md, DEPENDENCIES.md
@@ -67,7 +67,7 @@ Ask the user only for:
    ↓ PRD verification
    ↓ UI match review
    ↓ Mobile MCP QA
-   ↓ Update MRECALL.md
+   ↓ Update MOBILE_MEMORY.md
 
 6. FULL QA
    ↓ Accessibility, performance, crash risk, edge cases
@@ -135,7 +135,7 @@ If the user does not choose, infer the best direction from the app category and 
 
 | Artifact | Required | Owner | Purpose |
 |---|---|---|---|
-| `MRECALL.md` | Required for multi-session work | Mobile Memory | Context, decisions, current task, next action |
+| `MOBILE_MEMORY.md` | Required for multi-session work | Mobile Memory | Context, decisions, current task, next action |
 | `PRD.md` | Required before implementation | APPFORGE | Product behavior and requirements |
 | Design plan / `DESIGN.md` | Required before UI implementation | APPFORGE | Visual target and UI states |
 | `TASKS.md` | Required before implementation | APPFORGE | Task scope and acceptance criteria |
@@ -170,9 +170,9 @@ If the user already says "demo", "video", "viral", "marketing", or "showcase", c
 
 Ask for design direction using the options in the Design Direction section. If the prompt already gives a clear visual reference or audience tone, document the inferred direction and continue.
 
-Then load `MRECALL.md` if present. If no memory file exists and the work is more than a short one-off, create one.
+Then load `MOBILE_MEMORY.md` if present. If no memory file exists and the work is more than a short one-off, create one.
 
-If the user already gave enough context to infer the mode, do not stop for this question. Pick the mode, document the assumption in `MRECALL.md`, and continue.
+If the user already gave enough context to infer the mode, do not stop for this question. Pick the mode, document the assumption in `MOBILE_MEMORY.md`, and continue.
 
 ---
 
@@ -197,7 +197,7 @@ Do not ask the user to draft these files. MOBILE-HARNESS owns the first complete
 
 For each task:
 
-1. Read `MRECALL.md`.
+1. Read `MOBILE_MEMORY.md`.
 2. Read `PRD.md`.
 3. Read design plan.
 4. Read `TASKS.md`.
@@ -210,7 +210,7 @@ For each task:
 11. Verify UI against design.
 12. Run `/mobile-mcp-qa` if device automation is available.
 13. Write `MOBILE_HARNESS_REPORT.md`.
-14. Update `MRECALL.md`.
+14. Update `MOBILE_MEMORY.md`.
 
 After a task passes, continue to the next safe task automatically when the user has approved autonomous execution for the project. Stop only at human gates defined in the Autonomy Contract.
 
@@ -228,7 +228,7 @@ Every acceptance criterion must reference a source:
 
 Never verify against memory or assumptions.
 
-Run `/prd-verification` with `PRD.md`, `DESIGN.md`, `TASKS.md`, `DEPENDENCIES.md`, `MRECALL.md`, changed files, test output, screenshots, and Mobile MCP reports when available. Treat UNKNOWN as not done unless the user explicitly risk-accepts the missing evidence.
+Run `/prd-verification` with `PRD.md`, `DESIGN.md`, `TASKS.md`, `DEPENDENCIES.md`, `MOBILE_MEMORY.md`, changed files, test output, screenshots, and Mobile MCP reports when available. Treat UNKNOWN as not done unless the user explicitly risk-accepts the missing evidence.
 
 ---
 
@@ -293,7 +293,7 @@ A task can be marked done only when:
 - UI match is at or above threshold
 - Mobile MCP QA passes or accepted skip is documented
 - No CRITICAL platform-review findings remain
-- `MRECALL.md` is updated
+- `MOBILE_MEMORY.md` is updated
 - NEXT ACTION is either the next task or a concrete fix
 
 ---
@@ -309,7 +309,7 @@ Use MOBILE-HARNESS. Start from a new app idea and orchestrate APPFORGE, Mobile M
 Resume multi-day feature:
 
 ```text
-Use MOBILE-HARNESS. Read MRECALL.md, PRD.md, DESIGN.md, TASKS.md, and DEPENDENCIES.md. Continue from NEXT ACTION.
+Use MOBILE-HARNESS. Read MOBILE_MEMORY.md, PRD.md, DESIGN.md, TASKS.md, and DEPENDENCIES.md. Continue from NEXT ACTION.
 ```
 
 QA-only:

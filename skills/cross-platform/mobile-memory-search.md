@@ -1,8 +1,8 @@
-# Skill — /mrecall-search
+# Skill — /mobile-memory-search
 
 **Platform:** Cross-Platform  
-**Slash Command:** `/mrecall-search`  
-**Composable With:** Mobile Memory, MOBILE-HARNESS, APPFORGE, `/mrecall-save`, `/mrecall-graph`
+**Slash Command:** `/mobile-memory-search`  
+**Composable With:** Mobile Memory, MOBILE-HARNESS, APPFORGE, `/mobile-memory-save`, `/mobile-memory-graph`
 
 ---
 
@@ -17,7 +17,7 @@ Use this when a project has been worked on across multiple days, tools, agents, 
 ## Input Format
 
 ```text
-COMMAND: /mrecall-search
+COMMAND: /mobile-memory-search
 QUERY:
 <decision, feature, bug, file name, agent finding, release step, or task>
 MEMORY_SOURCE:
@@ -98,7 +98,7 @@ npx mobile-agency memory checkpoint
 ### Input
 
 ```text
-COMMAND: /mrecall-search
+COMMAND: /mobile-memory-search
 QUERY: persistence
 MEMORY_SOURCE:
 Project: Habit Pulse

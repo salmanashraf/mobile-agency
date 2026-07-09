@@ -51,7 +51,7 @@ const AGENTS = {
   'figma':                   { file: 'agents/cross-platform/figma/agent.md',                   platform: 'cross'   },
   'launchpad':               { file: 'agents/cross-platform/launchpad/agent.md',               platform: 'cross'   },
   'mobile-harness':          { file: 'agents/cross-platform/mobile-harness/agent.md',          platform: 'cross'   },
-  'mrecall':                 { file: 'agents/cross-platform/mrecall/agent.md',                 platform: 'cross'   },
+  'mobile-memory':                 { file: 'agents/cross-platform/mobile-memory/agent.md',                 platform: 'cross'   },
   'perf':                    { file: 'agents/cross-platform/perf/agent.md',                    platform: 'cross'   },
   'pipeline':                { file: 'agents/cross-platform/pipeline/agent.md',                platform: 'cross'   },
   'release-notes-generator': { file: 'agents/cross-platform/release-notes-generator/agent.md', platform: 'cross'   },
@@ -110,9 +110,9 @@ const SKILLS = {
   'feature-slice':      { file: 'skills/cross-platform/feature-slice.md',      platform: 'cross'   },
   'grill-mobile':       { file: 'skills/cross-platform/grill-mobile.md',       platform: 'cross'   },
   'mobile-mcp-qa':      { file: 'skills/cross-platform/mobile-mcp-qa.md',      platform: 'cross'   },
-  'mrecall-graph':      { file: 'skills/cross-platform/mrecall-graph.md',      platform: 'cross'   },
-  'mrecall-search':     { file: 'skills/cross-platform/mrecall-search.md',     platform: 'cross'   },
-  'mrecall-save':       { file: 'skills/cross-platform/mrecall-save.md',       platform: 'cross'   },
+  'mobile-memory-graph':      { file: 'skills/cross-platform/mobile-memory-graph.md',      platform: 'cross'   },
+  'mobile-memory-search':     { file: 'skills/cross-platform/mobile-memory-search.md',     platform: 'cross'   },
+  'mobile-memory-save':       { file: 'skills/cross-platform/mobile-memory-save.md',       platform: 'cross'   },
   'perf-audit':         { file: 'skills/cross-platform/perf-audit.md',         platform: 'cross'   },
   'prd-verification':   { file: 'skills/cross-platform/prd-verification.md',   platform: 'cross'   },
   'release-prep':       { file: 'skills/cross-platform/release-prep.md',       platform: 'cross'   },
@@ -133,7 +133,7 @@ const WORKFLOWS = {
   'new-project-setup': { file: 'workflows/new-project-setup.md' },
   'app-launch':        { file: 'workflows/app-launch.md'        },
   'perf-sprint':       { file: 'workflows/perf-sprint.md'       },
-  'mrecall-workflow':  { file: 'workflows/mrecall-workflow.md'  },
+  'mobile-memory-workflow':  { file: 'workflows/mobile-memory-workflow.md'  },
   'appforge-workflow': { file: 'workflows/appforge-workflow.md' },
   'mobile-mcp-qa':     { file: 'workflows/mobile-mcp-qa.md'     },
   'mobile-harness':    { file: 'workflows/mobile-harness.md'    },
@@ -145,7 +145,7 @@ const PLATFORM_AGENTS = {
     'compose-screen-builder', 'compose-ui-reviewer', 'crash-analyzer-android',
     'memory-leak-analyzer',
     // cross-platform bundled for android
-    'appforge', 'crasher', 'sentinel', 'mobile-harness', 'mrecall', 'perf',
+    'appforge', 'crasher', 'sentinel', 'mobile-harness', 'mobile-memory', 'perf',
     'scribe', 'pipeline', 'figma', 'launchpad',
     'accessibility-auditor', 'ci-cd-generator', 'release-notes-generator',
     'security-scanner', 'store-listing-writer',
@@ -153,7 +153,7 @@ const PLATFORM_AGENTS = {
   ios: [
     'crash-analyzer-ios', 'swift-reviewer', 'swift',
     // cross-platform bundled for ios
-    'appforge', 'crasher', 'sentinel', 'mobile-harness', 'mrecall', 'perf',
+    'appforge', 'crasher', 'sentinel', 'mobile-harness', 'mobile-memory', 'perf',
     'scribe', 'pipeline', 'figma', 'launchpad',
     'accessibility-auditor', 'ci-cd-generator', 'release-notes-generator',
     'security-scanner', 'store-listing-writer',
@@ -161,7 +161,7 @@ const PLATFORM_AGENTS = {
   flutter: [
     'bloc-feature-builder', 'dart', 'widget-generator',
     // cross-platform bundled for flutter
-    'appforge', 'crasher', 'sentinel', 'mobile-harness', 'mrecall', 'perf',
+    'appforge', 'crasher', 'sentinel', 'mobile-harness', 'mobile-memory', 'perf',
     'scribe', 'pipeline', 'figma', 'launchpad',
     'accessibility-auditor', 'ci-cd-generator', 'release-notes-generator',
     'security-scanner', 'store-listing-writer',
@@ -169,7 +169,7 @@ const PLATFORM_AGENTS = {
   rn: [
     'bridge', 'performance-optimizer',
     // cross-platform bundled for rn
-    'appforge', 'crasher', 'sentinel', 'mobile-harness', 'mrecall', 'perf',
+    'appforge', 'crasher', 'sentinel', 'mobile-harness', 'mobile-memory', 'perf',
     'scribe', 'pipeline', 'figma', 'launchpad',
     'accessibility-auditor', 'ci-cd-generator', 'release-notes-generator',
     'security-scanner', 'store-listing-writer',
@@ -177,11 +177,11 @@ const PLATFORM_AGENTS = {
   gaming: [
     'forge', 'unreal', 'shader-generator', 'blueprint-advisor',
     // cross-platform bundled for gaming
-    'appforge', 'mobile-harness', 'mrecall', 'perf',
+    'appforge', 'mobile-harness', 'mobile-memory', 'perf',
   ],
   cross: [
     'accessibility-auditor', 'appforge', 'ci-cd-generator', 'crasher', 'figma',
-    'launchpad', 'mobile-harness', 'mrecall',
+    'launchpad', 'mobile-harness', 'mobile-memory',
     'perf', 'pipeline', 'release-notes-generator', 'scribe', 'security-scanner',
     'sentinel', 'store-listing-writer',
   ],
@@ -194,7 +194,7 @@ const PLATFORM_SKILLS = {
     // cross-platform bundled for android
     'accessibility-audit', 'api-versioning', 'clean-code-audit', 'crash-analysis', 'crash-triage',
     'deeplink-debug', 'feature-slice', 'grill-mobile', 'mobile-mcp-qa',
-    'mrecall-graph', 'mrecall-search', 'mrecall-save', 'perf-audit', 'prd-verification',
+    'mobile-memory-graph', 'mobile-memory-search', 'mobile-memory-save', 'perf-audit', 'prd-verification',
     'release-prep', 'security-audit', 'security-scan', 'store-listing',
   ],
   ios: [
@@ -204,7 +204,7 @@ const PLATFORM_SKILLS = {
     // cross-platform bundled for ios
     'accessibility-audit', 'api-versioning', 'clean-code-audit', 'crash-analysis', 'crash-triage',
     'deeplink-debug', 'feature-slice', 'grill-mobile', 'mobile-mcp-qa',
-    'mrecall-graph', 'mrecall-search', 'mrecall-save', 'perf-audit', 'prd-verification',
+    'mobile-memory-graph', 'mobile-memory-search', 'mobile-memory-save', 'perf-audit', 'prd-verification',
     'release-prep', 'security-audit', 'security-scan', 'store-listing',
   ],
   flutter: [
@@ -212,7 +212,7 @@ const PLATFORM_SKILLS = {
     // cross-platform bundled for flutter
     'accessibility-audit', 'api-versioning', 'clean-code-audit', 'crash-analysis', 'crash-triage',
     'deeplink-debug', 'feature-slice', 'grill-mobile', 'mobile-mcp-qa',
-    'mrecall-graph', 'mrecall-search', 'mrecall-save', 'perf-audit', 'prd-verification',
+    'mobile-memory-graph', 'mobile-memory-search', 'mobile-memory-save', 'perf-audit', 'prd-verification',
     'release-prep', 'security-audit', 'security-scan', 'store-listing',
   ],
   rn: [
@@ -221,18 +221,18 @@ const PLATFORM_SKILLS = {
     // cross-platform bundled for rn
     'accessibility-audit', 'api-versioning', 'clean-code-audit', 'crash-analysis', 'crash-triage',
     'deeplink-debug', 'feature-slice', 'grill-mobile', 'mobile-mcp-qa',
-    'mrecall-graph', 'mrecall-search', 'mrecall-save', 'perf-audit', 'prd-verification',
+    'mobile-memory-graph', 'mobile-memory-search', 'mobile-memory-save', 'perf-audit', 'prd-verification',
     'release-prep', 'security-audit', 'security-scan', 'store-listing',
   ],
   gaming: [
     'blueprint-to-cpp', 'clean-code-audit', 'game-perf', 'mobile-mcp-qa',
-    'mrecall-graph', 'mrecall-search', 'mrecall-save', 'prd-verification', 'security-audit', 'shader-gen',
+    'mobile-memory-graph', 'mobile-memory-search', 'mobile-memory-save', 'prd-verification', 'security-audit', 'shader-gen',
     'unity-tdd', 'shader-review',
   ],
   cross: [
     'accessibility-audit', 'api-versioning', 'clean-code-audit', 'crash-analysis', 'crash-triage',
     'deeplink-debug', 'feature-slice', 'grill-mobile', 'mobile-mcp-qa',
-    'mrecall-graph', 'mrecall-search', 'mrecall-save', 'perf-audit', 'prd-verification',
+    'mobile-memory-graph', 'mobile-memory-search', 'mobile-memory-save', 'perf-audit', 'prd-verification',
     'release-prep', 'security-audit', 'security-scan', 'store-listing',
   ],
 };
@@ -245,7 +245,7 @@ const MEMORY_SUBDIR = path.join(MEMORY_DIR, 'memory');
 const MEMORY_EVENTS_FILE = path.join(MEMORY_SUBDIR, 'events.jsonl');
 const MEMORY_INDEX_FILE = path.join(MEMORY_SUBDIR, 'index.md');
 const MEMORY_CONFIG_FILE = path.join(MEMORY_SUBDIR, 'config.json');
-const MRECALL_FILE = 'MRECALL.md';
+const MOBILE_MEMORY_FILE = 'MOBILE_MEMORY.md';
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -438,7 +438,7 @@ function buildMobileMemoryFromEvents(config, events) {
     ? progress.map(e => `${e.type}: ${e.title}`).join('; ')
     : 'No progress events captured yet.';
 
-  return `---\n# Mobile Memory\n**Project:** ${config.project || detectProjectName()}\n**Platform:** ${config.platform || detectPlatform()}\n**Stack:** Unknown\n**Architecture:** Unknown\n**Saved:** ${nowIso()}\n**Compatible:** Claude Code · Cursor · Windsurf · ChatGPT · Gemini · Copilot\n**Token reduction:** Generated from ${events.length} memory events\n\n---\n\n## ⚡ INSTANT RESUME\n${config.project || detectProjectName()} has ${events.length} captured Mobile Agency memory events. Recent work: ${recent.slice(-3).map(e => e.title).join('; ') || 'No events yet'}. Continue from NEXT ACTION below and read exact files before editing.\n\n---\n\n## 🗺️ Knowledge Graph\n\n### Nodes\n| Node | Type | Layer | Health |\n|---|---|---|---|\n| Memory Index | CONTEXT | Project | OK |\n\n### Key Edges\n| From | Edge | To | Note |\n|---|---|---|---|\n| Memory Index | SUMMARIZES | Session Events | Generated by mobile-agency memory checkpoint |\n\n### God Nodes\n| Node | Connections | Platform Risk | Recommendation |\n|---|---|---|---|\n| Unknown | 0 | Unknown | Run /mrecall-graph with code files |\n\n### Architecture Violations\n- None captured. Run platform reviewer and /mrecall-graph for code-level risks.\n\n---\n\n## 🏥 Health Report\n### 🚨 CRITICAL\n- None captured.\n\n### ⚠️ WARNING\n- Unknown architecture health until code graph is generated.\n\n### 🏦 Tech Debt\n- Convert important memory events into richer graph nodes when the feature stabilizes.\n\n---\n\n## 🎯 Session Context\n\n### Current Task\n${next ? next.text : 'No active task captured.'}\n\n### Decisions Made\n| Decision | Reason | Rejected |\n|---|---|---|\n${decisionRows}\n\n### Progress\n✅ Done: ${done}\n🔄 In Progress: ${next ? next.title : 'Nothing captured'}\n⏭️ NEXT ACTION: ${next ? next.text.replace(/\r?\n/g, ' ').slice(0, 240) : 'Capture a next action with mobile-agency memory capture --type next-action --text \"...\".'}\n🚧 Blocked: Nothing captured\n\n### Open Questions\n- None captured.\n\n---\n\n## 🤖 Agent State\n| Agent | Last Action | Finding | Pending |\n|---|---|---|---|\n${findingRows}\n\n---\n\n## 📄 Code State\nSee ${MEMORY_EVENTS_FILE} for raw event history. Capture mid-edit files with mobile-agency memory capture --type code-state --file <path>.\n\n---\n\n## 🔄 Resume Instructions\n\n**Claude Code:**\nStart new session → paste INSTANT RESUME → paste full MRECALL.md → say "Continue"\n\n**Cursor/Windsurf:**\nSave as MRECALL.md in project root → next prompt: "Read MRECALL.md and continue"\n\n**ChatGPT/Gemini:**\nPaste full file as first message → "Resume from NEXT ACTION"\n\n**Same tool, new session:**\nPaste full file → /mrecall restore\n---\n`;
+  return `---\n# Mobile Memory\n**Project:** ${config.project || detectProjectName()}\n**Platform:** ${config.platform || detectPlatform()}\n**Stack:** Unknown\n**Architecture:** Unknown\n**Saved:** ${nowIso()}\n**Compatible:** Claude Code · Cursor · Windsurf · ChatGPT · Gemini · Copilot\n**Token reduction:** Generated from ${events.length} memory events\n\n---\n\n## ⚡ INSTANT RESUME\n${config.project || detectProjectName()} has ${events.length} captured Mobile Agency memory events. Recent work: ${recent.slice(-3).map(e => e.title).join('; ') || 'No events yet'}. Continue from NEXT ACTION below and read exact files before editing.\n\n---\n\n## 🗺️ Knowledge Graph\n\n### Nodes\n| Node | Type | Layer | Health |\n|---|---|---|---|\n| Memory Index | CONTEXT | Project | OK |\n\n### Key Edges\n| From | Edge | To | Note |\n|---|---|---|---|\n| Memory Index | SUMMARIZES | Session Events | Generated by mobile-agency memory checkpoint |\n\n### God Nodes\n| Node | Connections | Platform Risk | Recommendation |\n|---|---|---|---|\n| Unknown | 0 | Unknown | Run /mobile-memory-graph with code files |\n\n### Architecture Violations\n- None captured. Run platform reviewer and /mobile-memory-graph for code-level risks.\n\n---\n\n## 🏥 Health Report\n### 🚨 CRITICAL\n- None captured.\n\n### ⚠️ WARNING\n- Unknown architecture health until code graph is generated.\n\n### 🏦 Tech Debt\n- Convert important memory events into richer graph nodes when the feature stabilizes.\n\n---\n\n## 🎯 Session Context\n\n### Current Task\n${next ? next.text : 'No active task captured.'}\n\n### Decisions Made\n| Decision | Reason | Rejected |\n|---|---|---|\n${decisionRows}\n\n### Progress\n✅ Done: ${done}\n🔄 In Progress: ${next ? next.title : 'Nothing captured'}\n⏭️ NEXT ACTION: ${next ? next.text.replace(/\r?\n/g, ' ').slice(0, 240) : 'Capture a next action with mobile-agency memory capture --type next-action --text \"...\".'}\n🚧 Blocked: Nothing captured\n\n### Open Questions\n- None captured.\n\n---\n\n## 🤖 Agent State\n| Agent | Last Action | Finding | Pending |\n|---|---|---|---|\n${findingRows}\n\n---\n\n## 📄 Code State\nSee ${MEMORY_EVENTS_FILE} for raw event history. Capture mid-edit files with mobile-agency memory capture --type code-state --file <path>.\n\n---\n\n## 🔄 Resume Instructions\n\n**Claude Code:**\nStart new session → paste INSTANT RESUME → paste full MOBILE_MEMORY.md → say "Continue"\n\n**Cursor/Windsurf:**\nSave as MOBILE_MEMORY.md in project root → next prompt: "Read MOBILE_MEMORY.md and continue"\n\n**ChatGPT/Gemini:**\nPaste full file as first message → "Resume from NEXT ACTION"\n\n**Same tool, new session:**\nPaste full file → /mobile-memory restore\n---\n`;
 }
 
 function fetch(url) {
@@ -824,7 +824,7 @@ function cmdMemory(args) {
     console.log(`    ${bold('search')} <query>        Search captured memory`);
     console.log(`    ${bold('timeline')}             Show recent memory events`);
     console.log(`    ${bold('inject')}               Print compact context for a new AI session`);
-    console.log(`    ${bold('checkpoint')}           Generate MRECALL.md from memory events`);
+    console.log(`    ${bold('checkpoint')}           Generate MOBILE_MEMORY.md from memory events`);
     console.log('');
     console.log('  Capture options:');
     console.log('    --type    note | decision | progress | finding | qa | stage | next-action | code-state');
@@ -850,7 +850,7 @@ function cmdMemory(args) {
     if (!fs.existsSync(gitignorePath)) {
       fs.writeFileSync(gitignorePath, [
         '# Mobile Agency local memory',
-        '# Keep raw event history local by default. Commit MRECALL.md when a handoff is useful.',
+        '# Keep raw event history local by default. Commit MOBILE_MEMORY.md when a handoff is useful.',
         'memory/events.jsonl',
         ''
       ].join('\n'));
@@ -946,10 +946,10 @@ function cmdMemory(args) {
 
   if (sub === 'checkpoint') {
     const out = buildMobileMemoryFromEvents(config, events);
-    fs.writeFileSync(path.join(process.cwd(), MRECALL_FILE), out);
+    fs.writeFileSync(path.join(process.cwd(), MOBILE_MEMORY_FILE), out);
     updateMemoryIndex(events);
     console.log('');
-    ok(`${MRECALL_FILE} generated from ${events.length} memory events`);
+    ok(`${MOBILE_MEMORY_FILE} generated from ${events.length} memory events`);
     log(`Review before committing. Raw events stay local in ${MEMORY_EVENTS_FILE}.`);
     console.log('');
     return;

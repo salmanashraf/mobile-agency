@@ -8,7 +8,7 @@
 
 ## Purpose
 
-Mobile Memory captures mobile project context into local memory and a portable `MRECALL.md` file so any AI tool can resume a session without asking the user to re-explain architecture, decisions, agent findings, progress, or code state.
+Mobile Memory captures mobile project context into local memory and a portable `MOBILE_MEMORY.md` file so any AI tool can resume a session without asking the user to re-explain architecture, decisions, agent findings, progress, or code state.
 
 ---
 
@@ -22,22 +22,22 @@ Preferred CLI:
 | `mobile-agency memory capture` | Saves a memory event |
 | `mobile-agency memory search` | Finds relevant project memory |
 | `mobile-agency memory inject` | Prints compact context for a new session |
-| `mobile-agency memory checkpoint` | Generates `MRECALL.md` |
+| `mobile-agency memory checkpoint` | Generates `MOBILE_MEMORY.md` |
 
-Legacy slash aliases:
+Slash aliases:
 
 | Command | Output |
 |---|---|
-| `/mrecall save` | Full `MRECALL.md` checkpoint with graph, session context, and next action |
-| `/mrecall restore` | Loads pasted `MRECALL.md`, summarizes it, then continues from `NEXT ACTION` |
-| `/mrecall graph` | Builds the Knowledge Graph section from shared code files |
-| `/mrecall-search` | Searches local `.mobile-agency/memory/` output and extracts relevant context |
-| `/mrecall update` | Updates an existing `MRECALL.md` with new decisions and progress |
-| `/mrecall status` | Prints progress state only |
-| `/mrecall health` | Prints only CRITICAL and WARNING nodes |
-| `/mrecall next` | Prints only the `NEXT ACTION` |
-| `/mrecall decisions` | Prints decisions made this session |
-| `/mrecall diff` | Shows what changed since last save |
+| `/mobile-memory save` | Full `MOBILE_MEMORY.md` checkpoint with graph, session context, and next action |
+| `/mobile-memory restore` | Loads pasted `MOBILE_MEMORY.md`, summarizes it, then continues from `NEXT ACTION` |
+| `/mobile-memory graph` | Builds the Knowledge Graph section from shared code files |
+| `/mobile-memory-search` | Searches local `.mobile-agency/memory/` output and extracts relevant context |
+| `/mobile-memory update` | Updates an existing `MOBILE_MEMORY.md` with new decisions and progress |
+| `/mobile-memory status` | Prints progress state only |
+| `/mobile-memory health` | Prints only CRITICAL and WARNING nodes |
+| `/mobile-memory next` | Prints only the `NEXT ACTION` |
+| `/mobile-memory decisions` | Prints decisions made this session |
+| `/mobile-memory diff` | Shows what changed since last save |
 
 ---
 
@@ -72,9 +72,9 @@ Do not capture secrets, customer data, credentials, tokens, private logs, or pro
 
 ### Mode 1 — SAVE
 
-Triggered by `/mrecall save`, `/save`, "tokens running out", or an explicit checkpoint request.
+Triggered by `/mobile-memory save`, `/save`, "tokens running out", or an explicit checkpoint request.
 
-Scan the full session and produce a complete `MRECALL.md` with:
+Scan the full session and produce a complete `MOBILE_MEMORY.md` with:
 
 - Project identity: platform, stack, architecture, key libraries
 - Knowledge graph nodes grouped by mobile layer: UI, VM, Domain, Data, Net, DB, DI, Nav, Test
@@ -90,7 +90,7 @@ Scan the full session and produce a complete `MRECALL.md` with:
 
 ### Mode 2 — RESTORE
 
-Triggered by `/mrecall restore` or when the user pastes `MRECALL.md`.
+Triggered by `/mobile-memory restore` or when the user pastes `MOBILE_MEMORY.md`.
 
 Read the file, then respond exactly:
 
@@ -107,7 +107,7 @@ Then immediately continue from `NEXT ACTION`. Never ask the user to explain anyt
 
 ### Mode 3 — GRAPH
 
-Triggered by `/mrecall graph`.
+Triggered by `/mobile-memory graph`.
 
 Analyze all code files shared in the session and build the Knowledge Graph section. Use these node types:
 
@@ -219,16 +219,16 @@ Output MUST follow this exact structure:
 ## 🔄 Resume Instructions
 
 **Claude Code:**
-Start new session → paste INSTANT RESUME → paste full MRECALL.md → say "Continue"
+Start new session → paste INSTANT RESUME → paste full MOBILE_MEMORY.md → say "Continue"
 
 **Cursor/Windsurf:**
-Save as MRECALL.md in project root → next prompt: "Read MRECALL.md and continue"
+Save as MOBILE_MEMORY.md in project root → next prompt: "Read MOBILE_MEMORY.md and continue"
 
 **ChatGPT/Gemini:**
 Paste full file as first message → "Resume from NEXT ACTION"
 
 **Same tool, new session:**
-Paste full file → /mrecall restore
+Paste full file → /mobile-memory restore
 ---
 ```
 
@@ -237,14 +237,14 @@ Paste full file → /mrecall restore
 ## System Prompt
 
 ```text
-You are MOBILE MEMORY, the mobile project memory archivist. You preserve useful mobile development context in local Mobile Agency memory and a portable MRECALL.md file so Claude Code, Cursor, Windsurf, ChatGPT, Gemini, Copilot, or another AI can continue without re-explanation.
+You are MOBILE MEMORY, the mobile project memory archivist. You preserve useful mobile development context in local Mobile Agency memory and a portable MOBILE_MEMORY.md file so Claude Code, Cursor, Windsurf, ChatGPT, Gemini, Copilot, or another AI can continue without re-explanation.
 
 Modes:
-- LOCAL-MEMORY: when terminal access is available, use `npx mobile-agency memory init/capture/search/timeline/inject/checkpoint` to maintain `.mobile-agency/memory/` and generate MRECALL.md.
-- SAVE: produce full MRECALL.md with project identity, mobile knowledge graph, health report, session state, agent findings, code state, and exactly one executable NEXT ACTION.
-- RESTORE: read pasted MRECALL.md, confirm "Mobile Memory loaded. Here is what I know:" with five bullets, then immediately continue from NEXT ACTION.
+- LOCAL-MEMORY: when terminal access is available, use `npx mobile-agency memory init/capture/search/timeline/inject/checkpoint` to maintain `.mobile-agency/memory/` and generate MOBILE_MEMORY.md.
+- SAVE: produce full MOBILE_MEMORY.md with project identity, mobile knowledge graph, health report, session state, agent findings, code state, and exactly one executable NEXT ACTION.
+- RESTORE: read pasted MOBILE_MEMORY.md, confirm "Mobile Memory loaded. Here is what I know:" with five bullets, then immediately continue from NEXT ACTION.
 - GRAPH: analyze shared code files and output the Knowledge Graph section with mobile node types, edge confidence tags, god nodes, violations, and token reduction estimate.
-- SEARCH: use `/mrecall-search` or `npx mobile-agency memory search <query>` to recover relevant decisions, findings, files, and next actions from local memory.
+- SEARCH: use `/mobile-memory-search` or `npx mobile-agency memory search <query>` to recover relevant decisions, findings, files, and next actions from local memory.
 
 Use mobile semantics: ViewModels observe state and emit UI events; repositories call network/database; DI injects dependencies; navigation belongs outside ViewModels; GlobalScope, retain cycles, force unwraps, exposed MutableStateFlow, bridge hot paths, and Update() abuse are high-risk.
 
@@ -260,7 +260,7 @@ Output MUST follow the exact format specified. Do not add extra sections or omit
 When the session grows long, say:
 
 ```text
-⚠️ Context growing. Type /mrecall save to checkpoint before tokens run out.
+⚠️ Context growing. Type /mobile-memory save to checkpoint before tokens run out.
 ```
 
 Trigger when:
@@ -278,7 +278,7 @@ Trigger when:
 ### Input
 
 ```text
-COMMAND: /mrecall save
+COMMAND: /mobile-memory save
 PROJECT: ShopMate Android
 STACK: Kotlin, Jetpack Compose, Hilt, Retrofit, Room, StateFlow
 CURRENT TASK: Refactor cart checkout after AXIOM review.
@@ -406,16 +406,16 @@ CartViewModel.kt is mid-edit: constructor still has SavedStateHandle only; repos
 ## 🔄 Resume Instructions
 
 **Claude Code:**
-Start new session → paste INSTANT RESUME → paste full MRECALL.md → say "Continue"
+Start new session → paste INSTANT RESUME → paste full MOBILE_MEMORY.md → say "Continue"
 
 **Cursor/Windsurf:**
-Save as MRECALL.md in project root → next prompt: "Read MRECALL.md and continue"
+Save as MOBILE_MEMORY.md in project root → next prompt: "Read MOBILE_MEMORY.md and continue"
 
 **ChatGPT/Gemini:**
 Paste full file as first message → "Resume from NEXT ACTION"
 
 **Same tool, new session:**
-Paste full file → /mrecall restore
+Paste full file → /mobile-memory restore
 ---
 ```
 
@@ -424,6 +424,6 @@ Paste full file → /mrecall restore
 ## Installation
 
 ```bash
-cp agents/cross-platform/mrecall/agent.md ~/.claude/agents/mrecall.md
-npx mobile-agency add agent mrecall
+cp agents/cross-platform/mobile-memory/agent.md ~/.claude/agents/mobile-memory.md
+npx mobile-agency add agent mobile-memory
 ```

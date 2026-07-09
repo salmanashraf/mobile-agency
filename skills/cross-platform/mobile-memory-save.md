@@ -1,14 +1,14 @@
-# Skill — /mrecall-save
+# Skill — /mobile-memory-save
 
 **Platform:** Cross-Platform  
-**Slash Command:** `/mrecall-save`  
+**Slash Command:** `/mobile-memory-save`  
 **Composable With:** Mobile Memory, AXIOM, CRASHER, SWIFT, DART, BRIDGE, PERF
 
 ---
 
 ## Purpose
 
-Create a compact `MRECALL.md` checkpoint fast. Use this when the session is getting long, a major decision was made, or you need to switch AI tools without losing progress.
+Create a compact `MOBILE_MEMORY.md` checkpoint fast. Use this when the session is getting long, a major decision was made, or you need to switch AI tools without losing progress.
 
 This skill does not require activating the full Mobile Memory agent. It produces a smaller file with only:
 
@@ -23,7 +23,7 @@ This skill does not require activating the full Mobile Memory agent. It produces
 ## Input Format
 
 ```text
-COMMAND: /mrecall-save
+COMMAND: /mobile-memory-save
 PROJECT: <project name>
 PLATFORM: <Android/iOS/Flutter/RN/Unity/Unreal>
 CURRENT TASK:
@@ -45,16 +45,16 @@ If the user does not provide fields, infer them from the conversation and mark u
 ## Skill Prompt
 
 ```text
-Create a compact MRECALL.md checkpoint from the current session.
+Create a compact MOBILE_MEMORY.md checkpoint from the current session.
 
 Rules:
 1. Capture only what a future AI needs to continue without asking the user to repeat context.
 2. Do not summarize away decisions, blockers, or file names.
 3. Produce exactly one NEXT ACTION. It must be executable, concrete, and free of assumed context.
 4. Include code state for any file mid-edit or any snippet that would be lost between sessions.
-5. Use the compact MRECALL.md format below. Do not add extra sections.
+5. Use the compact MOBILE_MEMORY.md format below. Do not add extra sections.
 
-Compact MRECALL.md format:
+Compact MOBILE_MEMORY.md format:
 
 ---
 # Mobile Memory
@@ -102,16 +102,16 @@ Compact MRECALL.md format:
 ## 🔄 Resume Instructions
 
 **Claude Code:**
-Start new session → paste INSTANT RESUME → paste full MRECALL.md → say "Continue"
+Start new session → paste INSTANT RESUME → paste full MOBILE_MEMORY.md → say "Continue"
 
 **Cursor/Windsurf:**
-Save as MRECALL.md in project root → next prompt: "Read MRECALL.md and continue"
+Save as MOBILE_MEMORY.md in project root → next prompt: "Read MOBILE_MEMORY.md and continue"
 
 **ChatGPT/Gemini:**
 Paste full file as first message → "Resume from NEXT ACTION"
 
 **Same tool, new session:**
-Paste full file → /mrecall restore
+Paste full file → /mobile-memory restore
 ---
 ```
 
@@ -119,7 +119,7 @@ Paste full file → /mrecall restore
 
 ## Output Format
 
-Return a single Markdown document named `MRECALL.md` using the compact format in the prompt.
+Return a single Markdown document named `MOBILE_MEMORY.md` using the compact format in the prompt.
 
 ---
 
@@ -128,7 +128,7 @@ Return a single Markdown document named `MRECALL.md` using the compact format in
 ### Input
 
 ```text
-COMMAND: /mrecall-save
+COMMAND: /mobile-memory-save
 PROJECT: PayTrack
 PLATFORM: Flutter
 CURRENT TASK: Replace setState checkout form with Riverpod StateNotifier.
@@ -196,15 +196,15 @@ lib/checkout/checkout_page.dart still has a private `_submitting` bool and `_sub
 ## 🔄 Resume Instructions
 
 **Claude Code:**
-Start new session → paste INSTANT RESUME → paste full MRECALL.md → say "Continue"
+Start new session → paste INSTANT RESUME → paste full MOBILE_MEMORY.md → say "Continue"
 
 **Cursor/Windsurf:**
-Save as MRECALL.md in project root → next prompt: "Read MRECALL.md and continue"
+Save as MOBILE_MEMORY.md in project root → next prompt: "Read MOBILE_MEMORY.md and continue"
 
 **ChatGPT/Gemini:**
 Paste full file as first message → "Resume from NEXT ACTION"
 
 **Same tool, new session:**
-Paste full file → /mrecall restore
+Paste full file → /mobile-memory restore
 ---
 ```

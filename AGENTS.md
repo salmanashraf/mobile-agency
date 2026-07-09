@@ -97,7 +97,7 @@ Use the agent at agents/android/code-reviewer/agent.md to review this file:
 | Unity Shader Generator | `agents/unity/shader-generator/` | Unity | Produces HLSL/ShaderLab shaders from a visual description |
 | Unreal Blueprint Advisor | `agents/unreal/blueprint-advisor/` | Unreal | Blueprint → C++ migration and logic advice |
 | AppForge | `agents/cross-platform/appforge/` | All | Rough app idea → PRD → tasks → QA → Play Store launch prep |
-| Mobile Memory | `agents/cross-platform/mrecall/` | All | Mobile knowledge graph + context preservation across AI tools |
+| Mobile Memory | `agents/cross-platform/mobile-memory/` | All | Mobile knowledge graph + context preservation across AI tools |
 | Release Notes Generator | `agents/cross-platform/release-notes-generator/` | All | Git commits → user-facing release notes |
 | CI/CD Pipeline Generator | `agents/cross-platform/ci-cd-generator/` | All | Generates GitHub Actions / Bitrise / Fastlane configs |
 | Store Listing Writer | `agents/cross-platform/store-listing-writer/` | All | Play Store / App Store descriptions optimised for ASO |
@@ -129,7 +129,7 @@ Use `skills/cross-platform/security-audit.md` for complete app security audits b
 
 Use `skills/cross-platform/prd-verification.md` when a user asks whether an implementation matches the approved PRD, design plan, task acceptance criteria, tests, screenshots, or Mobile MCP evidence. Use it inside Mobile Harness and APPFORGE before marking a task complete.
 
-Use `skills/cross-platform/mrecall-search.md` when a user needs to resume from local Mobile Agency memory, search project history, or inject relevant context from `.mobile-agency/memory/`. When using Mobile Harness for multi-session work, capture durable decisions and next actions with `npx mobile-agency memory capture` when terminal access is available.
+Use `skills/cross-platform/mobile-memory-search.md` when a user needs to resume from local Mobile Agency memory, search project history, or inject relevant context from `.mobile-agency/memory/`. When using Mobile Harness for multi-session work, capture durable decisions and next actions with `npx mobile-agency memory capture` when terminal access is available.
 
 ## Release Process
 

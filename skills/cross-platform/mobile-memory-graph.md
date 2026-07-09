@@ -1,21 +1,21 @@
-# Skill — /mrecall-graph
+# Skill — /mobile-memory-graph
 
 **Platform:** Cross-Platform  
-**Slash Command:** `/mrecall-graph`  
+**Slash Command:** `/mobile-memory-graph`  
 **Composable With:** Mobile Memory, AXIOM, SWIFT, DART, BRIDGE, FORGE, UNREAL
 
 ---
 
 ## Purpose
 
-Build the Knowledge Graph section of `MRECALL.md` from pasted mobile code files. Use it when the user wants architecture context, dependency flow, god node detection, or a token-reduced map of a codebase.
+Build the Knowledge Graph section of `MOBILE_MEMORY.md` from pasted mobile code files. Use it when the user wants architecture context, dependency flow, god node detection, or a token-reduced map of a codebase.
 
 ---
 
 ## Input Format
 
 ````text
-COMMAND: /mrecall-graph
+COMMAND: /mobile-memory-graph
 FILES:
 FILE: <relative/path/File.kt>
 ```kotlin
@@ -46,7 +46,7 @@ Accept Kotlin, Java, Swift, Dart, TypeScript, TSX, JavaScript, JSX, C#, and Blue
 ## Skill Prompt
 
 ```text
-Build the Knowledge Graph section of MRECALL.md from the provided code files.
+Build the Knowledge Graph section of MOBILE_MEMORY.md from the provided code files.
 
 Output only:
 ## 🗺️ Knowledge Graph
@@ -121,7 +121,7 @@ Estimate raw file tokens from code volume and compare to graph token count. Use 
 ### Input
 
 ````text
-COMMAND: /mrecall-graph
+COMMAND: /mobile-memory-graph
 FILE: app/cart/CartViewModel.kt
 ```kotlin
 @HiltViewModel

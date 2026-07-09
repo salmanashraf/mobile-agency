@@ -1,7 +1,7 @@
-# MRecall Android Example Input
+# Mobile Memory Android Example Input
 
 ```text
-COMMAND: /mrecall save
+COMMAND: /mobile-memory save
 PROJECT: CartPilot
 PLATFORM: Android
 STACK: Kotlin, Jetpack Compose, Hilt, Retrofit, Room, Coroutines, StateFlow, Turbine

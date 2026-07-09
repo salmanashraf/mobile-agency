@@ -45,7 +45,7 @@ _cp() {
 _agent_lines() {
     # Cross-platform (always)
     for agent in appforge crasher launchpad sentinel pipeline scribe perf figma \
-                 mobile-harness mrecall \
+                 mobile-harness mobile-memory \
                  accessibility-auditor ci-cd-generator release-notes-generator \
                  security-scanner store-listing-writer; do
         src="agents/cross-platform/$agent/agent.md"
@@ -102,8 +102,9 @@ _skill_lines() {
     echo "release-prep        skills/cross-platform/release-prep.md"
     echo "feature-slice       skills/cross-platform/feature-slice.md"
     echo "mobile-mcp-qa       skills/cross-platform/mobile-mcp-qa.md"
-    echo "mrecall-save        skills/cross-platform/mrecall-save.md"
-    echo "mrecall-graph       skills/cross-platform/mrecall-graph.md"
+    echo "mobile-memory-save        skills/cross-platform/mobile-memory-save.md"
+    echo "mobile-memory-graph       skills/cross-platform/mobile-memory-graph.md"
+    echo "mobile-memory-search      skills/cross-platform/mobile-memory-search.md"
     echo "accessibility-audit skills/cross-platform/accessibility-audit.md"
     echo "api-versioning      skills/cross-platform/api-versioning.md"
     echo "deeplink-debug      skills/cross-platform/deeplink-debug.md"
@@ -165,7 +166,7 @@ _skill_lines() {
 # Outputs: "<name> <src_path>" lines
 _workflow_lines() {
     for wf in feature-ship release-cycle game-level crash-to-fix ci-setup \
-               new-screen new-project-setup app-launch perf-sprint mrecall-workflow \
+               new-screen new-project-setup app-launch perf-sprint mobile-memory-workflow \
                appforge-workflow mobile-mcp-qa mobile-harness; do
         echo "$wf workflows/$wf.md"
     done
@@ -208,7 +209,7 @@ install_claude() {
     echo "   Slash commands available:"
     echo ""
     echo "   Cross-platform agents:"
-    echo "   /appforge  /crasher  /sentinel  /mobile-harness  /mrecall"
+    echo "   /appforge  /crasher  /sentinel  /mobile-harness  /mobile-memory"
     echo "   /scribe  /pipeline  /perf  /launchpad  /figma"
     echo "   /accessibility-auditor  /ci-cd-generator  /release-notes-generator"
     echo "   /security-scanner  /store-listing-writer"
@@ -216,7 +217,8 @@ install_claude() {
     echo "   Cross-platform skills:"
     echo "   /grill-mobile  /clean-code-audit  /security-audit  /crash-triage"
     echo "   /perf-audit  /store-listing  /release-prep"
-    echo "   /feature-slice  /mobile-mcp-qa  /mrecall-save  /mrecall-graph"
+    echo "   /feature-slice  /mobile-mcp-qa  /mobile-memory-save  /mobile-memory-graph"
+    echo "   /mobile-memory-search"
     echo "   /accessibility-audit"
     echo "   /api-versioning  /deeplink-debug"
     echo "   /crash-analysis  /security-scan  /shared-accessibility-audit"
@@ -224,7 +226,7 @@ install_claude() {
     echo "   Workflows:"
     echo "   /feature-ship  /release-cycle  /crash-to-fix  /ci-setup  /new-screen"
     echo "   /new-project-setup  /app-launch  /perf-sprint  /game-level"
-    echo "   /mrecall-workflow  /appforge-workflow  /mobile-mcp-qa  /mobile-harness"
+    echo "   /mobile-memory-workflow  /appforge-workflow  /mobile-mcp-qa  /mobile-harness"
     if [[ "$PLATFORM" == "android" || "$PLATFORM" == "all" ]]; then
     echo ""
     echo "   Android agents:"

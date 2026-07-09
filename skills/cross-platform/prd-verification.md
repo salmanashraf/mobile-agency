@@ -22,7 +22,7 @@ PLATFORM: <Android | iOS | Flutter | React Native | KMP | Unity | Unreal>
 FEATURE_OR_SCOPE:
 <feature name, task id, release scope, or app area>
 DOCUMENTS:
-<PRD.md, DESIGN.md, TASKS.md, DEPENDENCIES.md, ROADMAP.md, MRECALL.md excerpts or paths>
+<PRD.md, DESIGN.md, TASKS.md, DEPENDENCIES.md, ROADMAP.md, MOBILE_MEMORY.md excerpts or paths>
 IMPLEMENTATION:
 <changed files, relevant source code, repo tree, or diff>
 EVIDENCE:
@@ -46,7 +46,7 @@ Read these inputs in order:
 2. TASKS.md acceptance criteria
 3. DESIGN.md or design plan
 4. DEPENDENCIES.md and ROADMAP.md when provided
-5. MRECALL.md or project context when provided
+5. MOBILE_MEMORY.md or project context when provided
 6. Relevant source code, diff, and file tree
 7. Test/build output
 8. Screenshots, videos, accessibility reports, security reports, or Mobile MCP QA reports
@@ -92,7 +92,7 @@ Check these areas:
 - Performance blockers that affect launch readiness.
 
 6. CONTEXT CONTINUITY
-- MRECALL.md or project context reflects the current state.
+- MOBILE_MEMORY.md or project context reflects the current state.
 - Remaining gaps and next action are captured for future sessions.
 
 Output exactly:
@@ -305,9 +305,9 @@ Next Action:
 Inside MOBILE-HARNESS:
 1. Implement the current task.
 2. Run tests and collect screenshots or Mobile MCP QA.
-3. Run /prd-verification with PRD.md, DESIGN.md, TASKS.md, MRECALL.md, code diff, and evidence.
+3. Run /prd-verification with PRD.md, DESIGN.md, TASKS.md, MOBILE_MEMORY.md, code diff, and evidence.
 4. Mark the task complete only if /prd-verification returns PASS or accepted PARTIAL with documented exceptions.
-5. Save the report summary into MRECALL.md.
+5. Save the report summary into MOBILE_MEMORY.md.
 ```
 
 ```text

@@ -302,9 +302,9 @@ Not sure where to begin? Pick your situation:
 | `/api-versioning` | API deprecation strategy for mobile clients |
 | `/deeplink-debug` | Diagnoses broken deep links across Android and iOS |
 | `/mobile-mcp-qa` | Run AI-assisted QA on iOS/Android devices, simulators, and emulators |
-| `/mrecall-save` | Checkpoint your session — resume on any AI tool instantly |
-| `/mrecall-graph` | Build a mobile knowledge graph from your codebase files |
-| `/mrecall-search` | Search local Mobile Agency memory and inject relevant context |
+| `/mobile-memory-save` | Checkpoint your session — resume on any AI tool instantly |
+| `/mobile-memory-graph` | Build a mobile knowledge graph from your codebase files |
+| `/mobile-memory-search` | Search local Mobile Agency memory and inject relevant context |
 
 ---
 
@@ -323,7 +323,7 @@ Not sure where to begin? Pick your situation:
 | `perf-sprint` | Baseline → /perf-audit → fix → re-measure → document |
 | `game-level` | Design doc → FORGE/UNREAL → /shader-gen → /game-perf → /unity-tdd → playtest |
 | `new-project-setup` | /grill-mobile → architecture → CI → security baseline → test infrastructure |
-| `mrecall-workflow` | Mobile Memory: restore context → capture decisions → generate `MRECALL.md` → hand off across AI tools |
+| `mobile-memory-workflow` | Mobile Memory: restore context → capture decisions → generate `MOBILE_MEMORY.md` → hand off across AI tools |
 | `appforge-workflow` | App idea → PRD → design plan → tasks → implementation gates → QA → Play Store |
 | `mobile-mcp-qa` | Install/launch app → inspect UI → run flows → capture screenshots → QA report |
 | `mobile-harness` | Approved task → implementation → tests → UI match → Mobile MCP QA → report |
@@ -407,7 +407,7 @@ Goal
 -> verify PRD and UI match
 -> run device QA when available
 -> run performance/security/accessibility checks when relevant
--> update MRECALL.md
+-> update MOBILE_MEMORY.md
 -> produce MOBILE_HARNESS_REPORT.md
 ```
 
@@ -504,13 +504,13 @@ Full guide: [docs/mobile-harness.md](docs/mobile-harness.md)
 
 ## Mobile Memory — Never Lose Context
 
-When tokens run out or you switch AI tools, your entire session context — architectural decisions, agent findings, code in progress — vanishes. Mobile Memory captures durable project context locally and can generate a portable `MRECALL.md` handoff file.
+When tokens run out or you switch AI tools, your entire session context — architectural decisions, agent findings, code in progress — vanishes. Mobile Memory captures durable project context locally and can generate a portable `MOBILE_MEMORY.md` handoff file.
 
 ```
 mobile-agency memory init        → creates local project memory
 mobile-agency memory capture     → saves decisions, findings, progress, and next actions
 mobile-agency memory search      → searches project memory
-mobile-agency memory checkpoint  → generates MRECALL.md for handoff
+mobile-agency memory checkpoint  → generates MOBILE_MEMORY.md for handoff
 ```
 
 For local persistent memory in a project:
@@ -523,15 +523,15 @@ npx mobile-agency memory inject
 npx mobile-agency memory checkpoint
 ```
 
-This stores raw local memory in `.mobile-agency/memory/`, keeps sensitive event history out of git by default, and generates `MRECALL.md` when you want a portable handoff.
+This stores raw local memory in `.mobile-agency/memory/`, keeps sensitive event history out of git by default, and generates `MOBILE_MEMORY.md` when you want a portable handoff.
 
 Works across Claude Code, Cursor, Windsurf, ChatGPT, and Gemini. Integrates with every Mobile Agency agent — AXIOM findings, CRASHER analysis, and LAUNCHPAD copy are all preserved in the same file.
 
 Inspired by Graphify's token reduction approach, built for mobile architecture. Up to 80× token reduction on large mobile projects vs reading raw files.
 
-Legacy slash commands like `/mrecall-save`, `/mrecall-graph`, and `/mrecall-search` still work for existing installs.
+Claude slash commands are now named `/mobile-memory`, `/mobile-memory-save`, `/mobile-memory-graph`, and `/mobile-memory-search`.
 
-Full guide: [docs/mrecall.md](docs/mrecall.md)
+Full guide: [docs/mobile-memory.md](docs/mobile-memory.md)
 
 ---
 

@@ -32,7 +32,7 @@ Mobile Harness should do the work, not assign work back to the user.
 
 It should autonomously:
 
-- Create missing `PRD.md`, `DESIGN.md`, `TASKS.md`, `DEPENDENCIES.md`, `ROADMAP.md`, `MRECALL.md`, QA reports, and launch docs.
+- Create missing `PRD.md`, `DESIGN.md`, `TASKS.md`, `DEPENDENCIES.md`, `ROADMAP.md`, `MOBILE_MEMORY.md`, QA reports, and launch docs.
 - Pick practical MVP defaults when the user gives a rough idea.
 - Implement one approved task at a time.
 - Run tests, builds, platform review, PRD checks, UI checks, and Mobile MCP QA when available.
@@ -54,7 +54,7 @@ Mobile Harness verifies against docs, not memory:
 
 | Artifact | Required | Used For |
 |---|---|---|
-| `MRECALL.md` | Required for multi-session work | Current context, decisions, next action |
+| `MOBILE_MEMORY.md` | Required for multi-session work | Current context, decisions, next action |
 | `PRD.md` | Required before implementation | Behavior and requirements |
 | `DESIGN.md` or design plan | Required before UI work | Layout, states, visual target |
 | `TASKS.md` | Required before implementation | Task scope and acceptance criteria |
@@ -78,7 +78,7 @@ Resume a long-running project:
 
 ```text
 Use MOBILE-HARNESS.
-Read MRECALL.md, PRD.md, DESIGN.md, TASKS.md, and DEPENDENCIES.md.
+Read MOBILE_MEMORY.md, PRD.md, DESIGN.md, TASKS.md, and DEPENDENCIES.md.
 Continue from NEXT ACTION.
 ```
 
@@ -139,7 +139,7 @@ A task is done only when:
 - UI match reaches the agreed threshold, default 90%
 - Mobile MCP QA passes, or device QA is explicitly unavailable
 - No CRITICAL platform-review findings remain
-- `MRECALL.md` is updated
+- `MOBILE_MEMORY.md` is updated
 - The report contains one concrete `NEXT ACTION`
 
 ---
@@ -148,7 +148,7 @@ A task is done only when:
 
 1. Show `MOBILE-HARNESS` in the README.
 2. Start with: `Use MOBILE-HARNESS. Build this app idea end to end with autonomous execution.`
-3. Show the harness creating or loading `MRECALL.md`.
+3. Show the harness creating or loading `MOBILE_MEMORY.md`.
 4. Show it creating `PRD.md`, `DESIGN.md`, `TASKS.md`, and `DEPENDENCIES.md` instead of asking the user to write them.
 5. Approve the plan once.
 6. Show the harness selecting one task.
@@ -157,4 +157,4 @@ A task is done only when:
 9. Show tests running.
 10. Show PRD verification and UI match review.
 11. Show `/mobile-mcp-qa` device flow.
-12. End on `MOBILE HARNESS REPORT` and updated `MRECALL.md`.
+12. End on `MOBILE HARNESS REPORT` and updated `MOBILE_MEMORY.md`.

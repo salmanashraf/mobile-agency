@@ -1,5 +1,5 @@
 ---
-# 🔁 MRECALL
+# 🔁 MOBILE MEMORY
 **Project:** CartPilot
 **Platform:** Android
 **Stack:** Kotlin, Jetpack Compose, Hilt, Retrofit, Room, Coroutines, StateFlow, Turbine
@@ -103,7 +103,7 @@ Refactor CartPilot's checkout cart flow so CartViewModel follows MVVM + Clean Ar
 | Agent | Last Action | Finding | Pending |
 |---|---|---|---|
 | AXIOM | Reviewed CartViewModel checkout flow | 3 CRITICAL issues: direct repository construction, public MutableStateFlow, ViewModel-owned navigation | Re-run after CartViewModel refactor and test update |
-| MRECALL | Saved session checkpoint | Knowledge graph and NEXT ACTION created | Update after DI and SharedFlow changes land |
+| MOBILE MEMORY | Saved session checkpoint | Knowledge graph and NEXT ACTION created | Update after DI and SharedFlow changes land |
 
 ---
 
@@ -117,14 +117,14 @@ app/cart/CheckoutNavigator.kt is new but not connected. It should be called only
 ## 🔄 Resume Instructions
 
 **Claude Code:**
-Start new session → paste INSTANT RESUME → paste full MRECALL.md → say "Continue"
+Start new session → paste INSTANT RESUME → paste full MOBILE_MEMORY.md → say "Continue"
 
 **Cursor/Windsurf:**
-Save as MRECALL.md in project root → next prompt: "Read MRECALL.md and continue"
+Save as MOBILE_MEMORY.md in project root → next prompt: "Read MOBILE_MEMORY.md and continue"
 
 **ChatGPT/Gemini:**
 Paste full file as first message → "Resume from NEXT ACTION"
 
 **Same tool, new session:**
-Paste full file → /mrecall restore
+Paste full file → /mobile-memory restore
 ---

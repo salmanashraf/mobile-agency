@@ -1,6 +1,6 @@
 # Mobile Memory
 
-Mobile Memory is a mobile-specific AI memory and knowledge graph system for Mobile Agency. It captures project architecture, session decisions, agent findings, health risks, code state, and the next executable action into local project memory and a portable `MRECALL.md` handoff file.
+Mobile Memory is a mobile-specific AI memory and knowledge graph system for Mobile Agency. It captures project architecture, session decisions, agent findings, health risks, code state, and the next executable action into local project memory and a portable `MOBILE_MEMORY.md` handoff file.
 
 The goal is simple: when tokens run out or a developer switches tools, the next AI session can continue without asking for the same explanation again.
 
@@ -44,7 +44,7 @@ Typical Android feature:
 A high-quality Mobile Memory checkpoint for the same feature is usually 700-1,200 tokens:
 
 ```text
-59,700 raw tokens / 750 MRECALL tokens = 79.6x reduction
+59,700 raw tokens / 750 Mobile Memory tokens = 79.6x reduction
 ```
 
 That is where the "up to 80x" claim comes from. Smaller snippets reduce less. Large mobile features reduce more because repeated code bodies collapse into graph nodes, edges, health findings, and decisions.
@@ -69,9 +69,9 @@ Mobile Memory has two layers:
 | Layer | Storage | Purpose |
 |---|---|---|
 | Local memory | `.mobile-agency/memory/events.jsonl` | Persistent project event history for search, timeline, and context injection |
-| Portable checkpoint | `MRECALL.md` | Tool-agnostic handoff file that any AI can read |
+| Portable checkpoint | `MOBILE_MEMORY.md` | Tool-agnostic handoff file that any AI can read |
 
-Raw local memory stays out of git by default. Commit `MRECALL.md` only when the context is useful for review, handoff, or long-running work.
+Raw local memory stays out of git by default. Commit `MOBILE_MEMORY.md` only when the context is useful for review, handoff, or long-running work.
 
 ---
 
@@ -122,7 +122,7 @@ Generate the portable checkpoint:
 npx mobile-agency memory checkpoint
 ```
 
-This writes `MRECALL.md` from the captured memory events. Review it before committing.
+This writes `MOBILE_MEMORY.md` from the captured memory events. Review it before committing.
 
 Privacy rule: do not capture secrets, customer data, private logs, tokens, credentials, or proprietary crash payloads. Text inside `<private>...</private>` is removed during capture.
 
@@ -133,9 +133,9 @@ Privacy rule: do not capture secrets, customer data, private logs, tokens, crede
 Graphify can be used first to create a general graph of a project. Mobile Memory enhances that output with mobile semantics:
 
 1. Run Graphify to discover broad dependency structure.
-2. Run `/mrecall graph` on the relevant mobile files.
+2. Run `/mobile-memory graph` on the relevant mobile files.
 3. Merge Graphify's broad nodes with Mobile Memory's mobile-specific node types and health labels.
-4. Save the result in `MRECALL.md`.
+4. Save the result in `MOBILE_MEMORY.md`.
 
 Mobile Memory uses confidence tags similar to graph-first tools:
 
@@ -234,16 +234,16 @@ Mobile Memory uses confidence tags similar to graph-first tools:
 ## 🔄 Resume Instructions
 
 **Claude Code:**
-Start new session → paste INSTANT RESUME → paste full MRECALL.md → say "Continue"
+Start new session → paste INSTANT RESUME → paste full MOBILE_MEMORY.md → say "Continue"
 
 **Cursor/Windsurf:**
-Save as MRECALL.md in project root → next prompt: "Read MRECALL.md and continue"
+Save as MOBILE_MEMORY.md in project root → next prompt: "Read MOBILE_MEMORY.md and continue"
 
 **ChatGPT/Gemini:**
 Paste full file as first message → "Resume from NEXT ACTION"
 
 **Same tool, new session:**
-Paste full file → /mrecall restore
+Paste full file → /mobile-memory restore
 ---
 ```
 
@@ -260,22 +260,22 @@ Preferred CLI:
 | `mobile-agency memory search` | Search local project memory |
 | `mobile-agency memory timeline` | Show recent memory events |
 | `mobile-agency memory inject` | Print compact context for a new AI session |
-| `mobile-agency memory checkpoint` | Generate `MRECALL.md` |
+| `mobile-agency memory checkpoint` | Generate `MOBILE_MEMORY.md` |
 
 Legacy slash aliases:
 
 | Command | Use |
 |---|---|
-| `/mrecall save` | Produce full `MRECALL.md` |
-| `/mrecall restore` | Load a pasted `MRECALL.md` and continue |
-| `/mrecall graph` | Build the knowledge graph from code files |
-| `/mrecall-search` | Search local `.mobile-agency/memory/` output and continue from relevant context |
-| `/mrecall update` | Update an existing checkpoint |
-| `/mrecall status` | Print only progress state |
-| `/mrecall health` | Print CRITICAL and WARNING nodes |
-| `/mrecall next` | Print only NEXT ACTION |
-| `/mrecall decisions` | Print decisions from the session |
-| `/mrecall diff` | Show changes since last save |
+| `/mobile-memory save` | Produce full `MOBILE_MEMORY.md` |
+| `/mobile-memory restore` | Load a pasted `MOBILE_MEMORY.md` and continue |
+| `/mobile-memory graph` | Build the knowledge graph from code files |
+| `/mobile-memory-search` | Search local `.mobile-agency/memory/` output and continue from relevant context |
+| `/mobile-memory update` | Update an existing checkpoint |
+| `/mobile-memory status` | Print only progress state |
+| `/mobile-memory health` | Print CRITICAL and WARNING nodes |
+| `/mobile-memory next` | Print only NEXT ACTION |
+| `/mobile-memory decisions` | Print decisions from the session |
+| `/mobile-memory diff` | Show changes since last save |
 
 ---
 
@@ -285,9 +285,9 @@ Legacy slash aliases:
 
 No. It is a resume layer. Use it to restore context quickly, then read the exact files needed for the next action.
 
-### Should MRECALL.md be committed?
+### Should MOBILE_MEMORY.md be committed?
 
-Commit `MRECALL.md` when the context is useful for handoff, review, or long-lived work. Do not commit `.mobile-agency/memory/events.jsonl` unless your team explicitly wants raw local event history in source control. Do not commit secrets, private logs, customer data, or proprietary crash payloads.
+Commit `MOBILE_MEMORY.md` when the context is useful for handoff, review, or long-lived work. Do not commit `.mobile-agency/memory/events.jsonl` unless your team explicitly wants raw local event history in source control. Do not commit secrets, private logs, customer data, or proprietary crash payloads.
 
 ### How often should I capture memory?
 

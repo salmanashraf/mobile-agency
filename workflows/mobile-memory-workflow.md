@@ -2,7 +2,7 @@
 
 **Type:** AI session continuity  
 **Agents Used:** Mobile Memory, AXIOM, CRASHER, SWIFT, DART, BRIDGE, SENTINEL, PERF
-**Skills Used:** /mrecall-save, /mrecall-graph, /mrecall-search, /grill-mobile, /crash-triage, /release-prep
+**Skills Used:** /mobile-memory-save, /mobile-memory-graph, /mobile-memory-search, /grill-mobile, /crash-triage, /release-prep
 
 ---
 
@@ -19,7 +19,7 @@ Session Start
     ↓
 mobile-agency memory inject
     ↓
-/mrecall restore
+/mobile-memory restore
     ↓
 /grill-mobile → decisions captured
     ↓
@@ -29,11 +29,11 @@ AXIOM / CRASHER / DART / SWIFT findings captured
     ↓
 mobile-agency memory capture
     ↓
-/mrecall save before context runs out
+/mobile-memory save before context runs out
     ↓
-Commit MRECALL.md for handoff
+Commit MOBILE_MEMORY.md for handoff
     ↓
-Next AI tool reads MRECALL.md and continues from NEXT ACTION
+Next AI tool reads MOBILE_MEMORY.md and continues from NEXT ACTION
 ```
 
 ---
@@ -71,10 +71,10 @@ Paste the output into the new AI session, or ask the AI to run it when the tool 
 Then run:
 
 ```text
-/mrecall restore
+/mobile-memory restore
 ```
 
-Then paste the existing `MRECALL.md`. Mobile Memory summarizes the project in five bullets, briefs the active agent state, and continues from `NEXT ACTION`.
+Then paste the existing `MOBILE_MEMORY.md`. Mobile Memory summarizes the project in five bullets, briefs the active agent state, and continues from `NEXT ACTION`.
 
 Output to expect:
 
@@ -159,19 +159,19 @@ npx mobile-agency memory search persistence
 npx mobile-agency memory timeline --limit 20
 ```
 
-Use `/mrecall-search` to turn search output into confirmed context, assumptions, files to read next, and one `NEXT ACTION`.
+Use `/mobile-memory-search` to turn search output into confirmed context, assumptions, files to read next, and one `NEXT ACTION`.
 
 ### 7. Token Warning
 
 When the session covers several topics, writes large code, or produces agent findings, run:
 
 ```text
-/mrecall save
+/mobile-memory save
 ```
 
-This creates the full `MRECALL.md` checkpoint. A new session can load it and continue without reading the entire codebase again.
+This creates the full `MOBILE_MEMORY.md` checkpoint. A new session can load it and continue without reading the entire codebase again.
 
-You can also generate `MRECALL.md` from local memory:
+You can also generate `MOBILE_MEMORY.md` from local memory:
 
 ```bash
 npx mobile-agency memory checkpoint
@@ -182,10 +182,10 @@ npx mobile-agency memory checkpoint
 Run:
 
 ```text
-/mrecall update
+/mobile-memory update
 ```
 
-Update `MRECALL.md` with:
+Update `MOBILE_MEMORY.md` with:
 
 - Completed files
 - Final decisions
@@ -193,14 +193,14 @@ Update `MRECALL.md` with:
 - Remaining tech debt
 - Next release or review action
 
-Commit `MRECALL.md` with the feature branch when the session context is valuable for review or handoff.
+Commit `MOBILE_MEMORY.md` with the feature branch when the session context is valuable for review or handoff.
 
 ### 9. Team Handoff
 
-Commit or send `MRECALL.md`. The teammate opens any AI tool and says:
+Commit or send `MOBILE_MEMORY.md`. The teammate opens any AI tool and says:
 
 ```text
-Read MRECALL.md and continue from NEXT ACTION.
+Read MOBILE_MEMORY.md and continue from NEXT ACTION.
 ```
 
 No re-explanation required. The teammate's AI sees the architecture, graph, decisions, health report, and exact next step.
@@ -212,22 +212,22 @@ No re-explanation required. The teammate's AI sees the architecture, graph, deci
 | Moment | Tool | Memory Section Updated |
 |---|---|---|
 | Memory setup | `mobile-agency memory init` | Local event store |
-| Session start | `mobile-agency memory inject`, `/mrecall restore` | Instant Resume, Progress |
+| Session start | `mobile-agency memory inject`, `/mobile-memory restore` | Instant Resume, Progress |
 | Requirements | `/grill-mobile` | Decisions Made, Open Questions |
 | Durable decision | `mobile-agency memory capture` | `.mobile-agency/memory/events.jsonl` |
-| Memory search | `mobile-agency memory search`, `/mrecall-search` | Relevant context |
-| Architecture map | `/mrecall graph` | Knowledge Graph |
+| Memory search | `mobile-agency memory search`, `/mobile-memory-search` | Relevant context |
+| Architecture map | `/mobile-memory graph` | Knowledge Graph |
 | Android review | `AXIOM` | Agent State, Health Report |
 | Crash debug | `CRASHER` | Health Report, Current Task |
-| Token warning | `/mrecall save` | Full checkpoint |
-| Feature complete | `/mrecall update` | Progress, NEXT ACTION |
-| Team handoff | Committed `MRECALL.md` | Resume Instructions |
+| Token warning | `/mobile-memory save` | Full checkpoint |
+| Feature complete | `/mobile-memory update` | Progress, NEXT ACTION |
+| Team handoff | Committed `MOBILE_MEMORY.md` | Resume Instructions |
 
 ---
 
 ## Output
 
-- A portable `MRECALL.md`
+- A portable `MOBILE_MEMORY.md`
 - A mobile architecture knowledge graph
 - A preserved list of decisions and rejected alternatives
 - Agent findings that survive session resets

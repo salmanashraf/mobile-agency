@@ -50,7 +50,7 @@ mobile-agency/
 │       ├── sentinel/         ← SENTINEL (security auditor)
 │       ├── launchpad/        ← LAUNCHPAD (ASO writer)
 │       ├── mobile-harness/   ← MOBILE-HARNESS (build/test/verify)
-│       ├── mrecall/          ← MRECALL (context preservation)
+│       ├── mobile-memory/          ← Mobile Memory (context preservation)
 │       ├── pipeline/         ← PIPELINE (CI/CD)
 │       ├── perf/             ← PERF (performance)
 │       ├── scribe/           ← SCRIBE (release notes)
@@ -89,7 +89,7 @@ mobile-agency/
 | **MOBILE-HARNESS** | `agents/cross-platform/mobile-harness/` | All | Build, test, verify UI, and run Mobile MCP QA |
 | **CRASHER** | `agents/cross-platform/crasher/` | All | Crash log → root cause → fix |
 | **SENTINEL** | `agents/cross-platform/sentinel/` | All | OWASP Mobile Top 10 security audit |
-| **MRECALL** | `agents/cross-platform/mrecall/` | All | Mobile knowledge graph + context preservation |
+| **Mobile Memory** | `agents/cross-platform/mobile-memory/` | All | Mobile knowledge graph + context preservation |
 | **LAUNCHPAD** | `agents/cross-platform/launchpad/` | All | Play Store + App Store ASO-optimized copy |
 | **PIPELINE** | `agents/cross-platform/pipeline/` | All | GitHub Actions / Bitrise / Fastlane generation |
 | **PERF** | `agents/cross-platform/perf/` | All | Frame budget + profiling + optimization |
