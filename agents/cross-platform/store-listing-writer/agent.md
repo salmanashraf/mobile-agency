@@ -8,7 +8,7 @@
 
 ## Purpose
 
-Writes optimized App Store and Google Play Store listings from a brief product description. Output is ASO-optimized (App Store Optimization), character-count compliant, and ready to paste directly into App Store Connect or the Play Console. Includes title, subtitle, description, keywords, and what's new copy.
+Writes optimized App Store and Google Play Store listings from a product brief or existing listing. Output is ASO-optimized, character-count compliant, and ready to paste into App Store Connect or Play Console. Includes metadata, keyword strategy, screenshot/video brief, A/B test ideas, and off-store growth recommendations.
 
 ---
 
@@ -18,12 +18,16 @@ Writes optimized App Store and Google Play Store listings from a brief product d
 APP_NAME: <e.g. Taskly>
 STORE: <app-store | play-store | both>
 CATEGORY: <App category, e.g. Productivity, Games, Health & Fitness>
+TARGET_MARKET: <region/language, e.g. US English>
 TARGET_AUDIENCE: <Who uses this app, e.g. remote workers, indie game players>
+CORE_VALUE_PROPOSITION: <What problem the app solves in one sentence>
 CORE_FEATURES:
 <List 3–7 key features or benefits, one per line>
 COMPETITORS: <optional: comma-separated competitor app names for keyword gap analysis>
 KEYWORDS_TO_HIT: <optional: comma-separated keywords you want to rank for>
 EXISTING_DESCRIPTION: <optional: paste your current listing for rewriting>
+CURRENT_STAGE: <idea | pre-launch | newly launched | scaling | optimization>
+MONETIZATION: <free | ads | subscription | one-time | IAP | mixed>
 TONE: <professional | friendly | playful | minimal>
 ```
 
@@ -34,11 +38,15 @@ TONE: <professional | friendly | playful | minimal>
 | `APP_NAME` | Yes | The app's display name |
 | `STORE` | Yes | Which store(s) to write for |
 | `CATEGORY` | Yes | Store category |
+| `TARGET_MARKET` | Yes | Region/language for keyword intent |
 | `TARGET_AUDIENCE` | Yes | Who the app is for |
+| `CORE_VALUE_PROPOSITION` | Yes | One-sentence positioning |
 | `CORE_FEATURES` | Yes | Key features to highlight |
 | `COMPETITORS` | No | For keyword gap context |
 | `KEYWORDS_TO_HIT` | No | Priority ASO keywords |
 | `EXISTING_DESCRIPTION` | No | Current listing for improvement |
+| `CURRENT_STAGE` | Yes | Idea, pre-launch, launched, scaling, or optimization |
+| `MONETIZATION` | Yes | Revenue model and trust constraints |
 | `TONE` | Yes | Copy tone |
 
 ---
@@ -48,6 +56,15 @@ TONE: <professional | friendly | playful | minimal>
 ```
 STORE LISTING — <APP_NAME>
 ===========================
+
+INTAKE DIAGNOSTIC
+-----------------
+Market: <region/language>
+Stage: <current stage>
+Audience: <target user + pain point>
+Core Value Proposition: <one sentence>
+Competitors: <provided competitors or "Not provided">
+Monetization: <model>
 
 [APP STORE (iOS)]
 Character limits: Title 30 | Subtitle 30 | Description 4000 | Keywords 100
@@ -64,8 +81,20 @@ Description (<count>/4000):
 Keywords (<count>/100 chars):
 <comma-separated keyword string>
 
+Promotional Text (<count>/170):
+<timely update, offer, social proof, or launch hook>
+
 What's New (<count>/4000):
 <what's new copy>
+
+Product Page Optimization:
+<2–3 icon, screenshot, video, subtitle, or copy tests>
+
+Custom Product Page:
+<one campaign/keyword-specific page angle>
+
+In-App Event:
+<event idea or "Not applicable">
 
 ---
 
@@ -80,6 +109,27 @@ Short Description (<count>/80):
 
 Full Description (<count>/4000):
 <full description>
+
+Store Listing Experiments:
+<2–3 title, short description, screenshot, feature graphic, or description tests>
+
+Promotional Content:
+<Play Store live ops / major update / offer idea or "Not applicable">
+
+---
+
+VISUAL + VIDEO BRIEF
+--------------------
+Screenshots: <5 caption + visual notes>
+App Preview / Promo Video: <first 3 seconds + flow>
+YouTube SEO: <title/description/chapter angle>
+Short-Form Video: <TikTok/Reels/Shorts concept>
+
+OFF-STORE GROWTH SEO
+--------------------
+Landing Page SEO: <search angle + smart banner/deep link recommendation>
+Backlink / PR Targets: <safe channels and contextual anchors>
+Directory / Community Placements: <relevant placements>
 
 ---
 
@@ -99,16 +149,20 @@ Recommendations: <suggestions to improve ranking further>
 You are a senior App Store Optimization (ASO) specialist and mobile app copywriter. Your job is to write store listings that rank well and convert browsers into installs.
 
 Rules:
-1. App Store title: max 30 characters. Include the primary keyword if it fits naturally.
-2. App Store subtitle: max 30 characters. One clear value proposition.
-3. App Store keywords field: max 100 characters total. Comma-separated. Do NOT repeat words already in the title/subtitle. Include high-volume, low-competition keywords relevant to the category.
-4. Play Store short description: max 80 characters. Must be a compelling hook that makes the user want to read more.
-5. Full descriptions (both stores): max 4000 characters. Structure with line breaks and short paragraphs. Lead with the strongest benefit. Include a bullet-list of features. End with a call-to-action.
-6. Use the specified TONE throughout. Friendly = conversational, second person ("You can..."). Professional = third person or neutral. Playful = punchy, emoji-friendly (but don't use emoji unless tone is playful). Minimal = short sentences, no fluff.
-7. Keyword placement strategy: primary keyword in title (if possible), secondary keyword in subtitle/short description, natural integration of keywords in description body.
-8. Do NOT use superlatives like "best", "#1", "world's leading" — Apple and Google flag these.
-9. Count characters accurately and report the count for each field.
-10. Output MUST follow the exact format specified.
+1. Ask for missing intake first: store URL or app name/category, target market, value proposition, audience, competitors, stage, platform, monetization, and tone.
+2. App Store title: max 30 characters. Use brand + highest-value keyword only if natural.
+3. App Store subtitle: max 30 characters. Use a secondary keyword phrase and do not repeat words from the title.
+4. App Store keywords field: max 100 characters total. Comma-separated, no spaces. Do NOT repeat words already in the title/subtitle. Split phrases into reusable words. Do not include competitor names.
+5. App Store promotional text: max 170 characters. Use for launches, social proof, events, or offers.
+6. Play Store title: max 30 characters. Brand + primary keyword, natural and policy-safe.
+7. Play Store short description: max 80 characters. Must be a compelling hook with 1-2 important keywords.
+8. Play Store full description: max 4000 characters. Put the primary keyword in the first 167 characters, structure with benefit headers and bullets, and keep primary keyword density around 2-3% without stuffing.
+9. Full descriptions must lead with the strongest benefit, include a bullet-list of features, and end with a call-to-action.
+10. Include screenshot/video concepts, product page/store listing experiments, off-store SEO, safe backlink/PR targets, and landing page/deep-link recommendations.
+11. Use the specified TONE throughout. Friendly = conversational, second person ("You can..."). Professional = third person or neutral. Playful = punchy, emoji-friendly (but don't use emoji unless tone is playful). Minimal = short sentences, no fluff.
+12. Do NOT use misleading superlatives like "best", "#1", "world's leading" unless independently verifiable and policy-safe.
+13. Count characters accurately and report the count for each field.
+14. Output MUST follow the exact format specified.
 ```
 
 ---
@@ -121,7 +175,9 @@ Rules:
 APP_NAME: Taskly
 STORE: both
 CATEGORY: Productivity
+TARGET_MARKET: US English
 TARGET_AUDIENCE: Remote workers, freelancers, and students who manage multiple projects
+CORE_VALUE_PROPOSITION: Capture tasks fast, focus on today, and stay organized offline.
 CORE_FEATURES:
 - Create tasks in seconds with natural language input
 - Recurring tasks with custom intervals
@@ -131,6 +187,8 @@ CORE_FEATURES:
 - Sync across iPhone, iPad, and Mac
 COMPETITORS: Todoist, Things 3, TickTick
 KEYWORDS_TO_HIT: task manager, to-do list, productivity, daily planner, focus
+CURRENT_STAGE: newly launched
+MONETIZATION: subscription
 TONE: friendly
 ```
 
@@ -140,10 +198,19 @@ TONE: friendly
 STORE LISTING — Taskly
 ===========================
 
+INTAKE DIAGNOSTIC
+-----------------
+Market: US English
+Stage: newly launched
+Audience: Remote workers, freelancers, and students who need a fast daily task workflow.
+Core Value Proposition: Capture tasks fast, focus on today, and stay organized offline.
+Competitors: Todoist, Things 3, TickTick
+Monetization: subscription
+
 [APP STORE (iOS)]
 Character limits: Title 30 | Subtitle 30 | Description 4000 | Keywords 100
 
-Title (20/30):
+Title (28/30):
 Taskly: To-Do & Task Manager
 
 Subtitle (28/30):
@@ -185,8 +252,11 @@ getting in your way.
 Download Taskly and see why thousands of freelancers, remote workers, and
 students trust it to run their day.
 
-Keywords (98/100 chars):
-daily planner,to do list,habit tracker,reminder,notes,agenda,gtd,work planner,schedule
+Keywords (78/100 chars):
+daily,planner,to,do,list,habit,tracker,reminder,notes,agenda,gtd,work,schedule
+
+Promotional Text (88/170):
+New: recurring tasks, offline planning, and widgets that keep today's work one tap away.
 
 What's New (312/4000):
 This update brings recurring tasks with full custom intervals — set any task to
@@ -194,15 +264,26 @@ repeat on whatever schedule works for you. We also added dark mode to the task
 detail screen, fixed a widget due date bug, and made the app noticeably faster
 to open. Thanks for all your reviews and feedback — keep it coming!
 
+Product Page Optimization:
+1. Test a calm checklist icon against a widget-focused icon.
+2. Test screenshot 1 as "Plan today fast" vs. "Never miss a task".
+3. Test subtitle "Focus on what matters today." vs. "Tasks, reminders & focus mode."
+
+Custom Product Page:
+Create a freelancer page targeting "client task manager" and "project to-do list" traffic.
+
+In-App Event:
+Not applicable until Taskly has a seasonal challenge or major productivity update.
+
 ---
 
 [PLAY STORE (Android)]
 Character limits: Title 30 | Short Description 80 | Full Description 4000
 
-Title (20/30):
+Title (28/30):
 Taskly: To-Do & Task Manager
 
-Short Description (64/80):
+Short Description (74/80):
 Capture tasks instantly, focus on today, and sync across all your devices.
 
 Full Description (1,892/4000):
@@ -212,30 +293,53 @@ Taskly is the task manager built for real people — remote workers, freelancers
 and students who need to stay on top of multiple projects without drowning in
 complexity.
 
-✏️ CAPTURE IN SECONDS
+CAPTURE IN SECONDS
 Type a task in plain English. No forms, no dropdowns, no friction.
 
-🔁 RECURRING TASKS
+RECURRING TASKS
 Set any task to repeat daily, weekly, monthly, or on a custom schedule. Your
 routines take care of themselves.
 
-🎯 FOCUS MODE
+FOCUS MODE
 Feeling scattered? Focus Mode hides everything except what's due today.
 One clear list. Zero noise.
 
-📱 HOME & LOCK SCREEN WIDGETS
+HOME & LOCK SCREEN WIDGETS
 Your most important tasks, always visible. No need to open the app.
 
-🌐 WORKS OFFLINE
+WORKS OFFLINE
 Taskly works fully without internet and syncs automatically when you're back online.
 
-🔄 SYNC EVERYWHERE
+SYNC EVERYWHERE
 Keep your tasks in sync across Android phone, tablet, and the web.
 
 Whether you're managing a freelance project, planning your week, or just trying
 to stay on top of your inbox — Taskly fits how you actually work.
 
 Download free. Get more done.
+
+Store Listing Experiments:
+1. Test title "Taskly: To-Do & Tasks" vs. "Taskly Daily Planner".
+2. Test short description with "offline" included vs. focus-only messaging.
+3. Test feature graphic showing widgets vs. natural language capture.
+
+Promotional Content:
+Run a "New recurring tasks" update card for launched users.
+
+---
+
+VISUAL + VIDEO BRIEF
+--------------------
+Screenshots: 1. "Plan today in seconds" — natural language input; 2. "Repeat anything" — recurring setup; 3. "Focus on today" — focus mode; 4. "See tasks anywhere" — widget; 5. "Works offline" — offline state syncing later.
+App Preview / Promo Video: First 3 seconds show a messy task list becoming a clean today view, then capture, recurring task, widget, and sync.
+YouTube SEO: "How to organize daily tasks with widgets and offline planning" with chapters for capture, focus mode, recurring tasks, widgets.
+Short-Form Video: Before/after desk setup: scattered notes become one Taskly today list.
+
+OFF-STORE GROWTH SEO
+--------------------
+Landing Page SEO: Target "offline task manager" and "daily planner app" with smart app banners and store deep links.
+Backlink / PR Targets: Productivity blogs, student planning newsletters, and freelancer communities with anchors like "daily planner app" and "offline task manager".
+Directory / Community Placements: Product Hunt, AlternativeTo, freelancer forums, student productivity communities.
 
 ---
 
