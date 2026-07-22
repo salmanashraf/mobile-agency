@@ -1,6 +1,6 @@
 # Mobile Memory
 
-Mobile Memory is a mobile-specific AI memory and knowledge graph system for Mobile Agency. It captures project architecture, session decisions, agent findings, health risks, code state, and the next executable action into local project memory and a portable `MOBILE_MEMORY.md` handoff file.
+Mobile Memory is a mobile-specific AI memory and knowledge graph system for Mobile AI Agents. It captures project architecture, session decisions, agent findings, health risks, code state, and the next executable action into local project memory and a portable `MOBILE_MEMORY.md` handoff file.
 
 The goal is simple: when tokens run out or a developer switches tools, the next AI session can continue without asking for the same explanation again.
 
@@ -68,7 +68,7 @@ Mobile Memory has two layers:
 
 | Layer | Storage | Purpose |
 |---|---|---|
-| Local memory | `.mobile-agency/memory/events.jsonl` | Persistent project event history for search, timeline, and context injection |
+| Local memory | `.mobile-ai-agents/memory/events.jsonl` | Persistent project event history for search, timeline, and context injection |
 | Portable checkpoint | `MOBILE_MEMORY.md` | Tool-agnostic handoff file that any AI can read |
 
 Raw local memory stays out of git by default. Commit `MOBILE_MEMORY.md` only when the context is useful for review, handoff, or long-running work.
@@ -80,13 +80,13 @@ Raw local memory stays out of git by default. Commit `MOBILE_MEMORY.md` only whe
 Initialize memory inside any app project:
 
 ```bash
-npx mobile-agency memory init
+npx mobile-ai-agents memory init
 ```
 
 This creates:
 
 ```text
-.mobile-agency/
+.mobile-ai-agents/
 ├── .gitignore
 └── memory/
     ├── config.json
@@ -97,34 +97,81 @@ This creates:
 Capture memory events:
 
 ```bash
-npx mobile-agency memory capture --type decision --title "Use Room" --text "Persist habits locally with Room."
-npx mobile-agency memory capture --type finding --title "PRD gap" --text "Restart persistence is missing."
-npx mobile-agency memory capture --type next-action --text "Implement HabitDao and restart persistence test."
+npx mobile-ai-agents memory capture --type decision --title "Use Room" --text "Persist habits locally with Room."
+npx mobile-ai-agents memory capture --type finding --title "PRD gap" --text "Restart persistence is missing."
+npx mobile-ai-agents memory capture --type next-action --text "Implement HabitDao and restart persistence test."
 ```
 
 You can also pipe content:
 
 ```bash
-git diff | npx mobile-agency memory capture --type code-state --title "Current diff"
+git diff | npx mobile-ai-agents memory capture --type code-state --title "Current diff"
 ```
 
 Search and inject context:
 
 ```bash
-npx mobile-agency memory search persistence
-npx mobile-agency memory timeline --limit 20
-npx mobile-agency memory inject
+npx mobile-ai-agents memory search persistence
+npx mobile-ai-agents memory timeline --limit 20
+npx mobile-ai-agents memory inject
 ```
 
 Generate the portable checkpoint:
 
 ```bash
-npx mobile-agency memory checkpoint
+npx mobile-ai-agents memory checkpoint
 ```
 
 This writes `MOBILE_MEMORY.md` from the captured memory events. Review it before committing.
 
 Privacy rule: do not capture secrets, customer data, private logs, tokens, credentials, or proprietary crash payloads. Text inside `<private>...</private>` is removed during capture.
+
+---
+
+## Quick Save Slash Command
+
+Use `/mobile-memory-save` when you are inside Claude Code and need a fast checkpoint without setting up the full local memory store.
+
+```text
+/mobile-memory-save
+```
+
+Recommended input:
+
+```text
+PROJECT: Habit Pulse
+PLATFORM: Android
+CURRENT TASK:
+Building habit tracker MVP with list, add habit, streak tracking.
+
+DECISIONS:
+- Use Room for offline storage.
+- Use MVVM with StateFlow.
+- Keep UI simple for demo.
+
+PROGRESS:
+- Done: habit list screen and add habit dialog.
+- In progress: persistence and restart test.
+- Blocked: none.
+
+CODE STATE:
+MainActivity.kt has current UI. Habit data is still in memory.
+
+NEXT ACTION:
+Add Room HabitEntity, HabitDao, and repository, then persist created habits across app restart.
+```
+
+The skill returns a compact `MOBILE_MEMORY.md`. Save it in the project root when the handoff should travel with the app. A future session can continue with:
+
+```text
+Read MOBILE_MEMORY.md and continue from NEXT ACTION.
+```
+
+| Need | Use |
+|---|---|
+| Fast one-time checkpoint inside chat | `/mobile-memory-save` |
+| Searchable project memory over days/weeks | `npx mobile-ai-agents memory init/capture/search/checkpoint` |
+| Resume a new session from saved context | `/mobile-memory` or `Read MOBILE_MEMORY.md and continue` |
 
 ---
 
@@ -255,12 +302,12 @@ Preferred CLI:
 
 | Command | Use |
 |---|---|
-| `mobile-agency memory init` | Create local project memory |
-| `mobile-agency memory capture` | Save decisions, findings, progress, and next actions |
-| `mobile-agency memory search` | Search local project memory |
-| `mobile-agency memory timeline` | Show recent memory events |
-| `mobile-agency memory inject` | Print compact context for a new AI session |
-| `mobile-agency memory checkpoint` | Generate `MOBILE_MEMORY.md` |
+| `mobile-ai-agents memory init` | Create local project memory |
+| `mobile-ai-agents memory capture` | Save decisions, findings, progress, and next actions |
+| `mobile-ai-agents memory search` | Search local project memory |
+| `mobile-ai-agents memory timeline` | Show recent memory events |
+| `mobile-ai-agents memory inject` | Print compact context for a new AI session |
+| `mobile-ai-agents memory checkpoint` | Generate `MOBILE_MEMORY.md` |
 
 Legacy slash aliases:
 
@@ -269,7 +316,7 @@ Legacy slash aliases:
 | `/mobile-memory save` | Produce full `MOBILE_MEMORY.md` |
 | `/mobile-memory restore` | Load a pasted `MOBILE_MEMORY.md` and continue |
 | `/mobile-memory graph` | Build the knowledge graph from code files |
-| `/mobile-memory-search` | Search local `.mobile-agency/memory/` output and continue from relevant context |
+| `/mobile-memory-search` | Search local `.mobile-ai-agents/memory/` output and continue from relevant context |
 | `/mobile-memory update` | Update an existing checkpoint |
 | `/mobile-memory status` | Print only progress state |
 | `/mobile-memory health` | Print CRITICAL and WARNING nodes |
@@ -287,7 +334,7 @@ No. It is a resume layer. Use it to restore context quickly, then read the exact
 
 ### Should MOBILE_MEMORY.md be committed?
 
-Commit `MOBILE_MEMORY.md` when the context is useful for handoff, review, or long-lived work. Do not commit `.mobile-agency/memory/events.jsonl` unless your team explicitly wants raw local event history in source control. Do not commit secrets, private logs, customer data, or proprietary crash payloads.
+Commit `MOBILE_MEMORY.md` when the context is useful for handoff, review, or long-lived work. Do not commit `.mobile-ai-agents/memory/events.jsonl` unless your team explicitly wants raw local event history in source control. Do not commit secrets, private logs, customer data, or proprietary crash payloads.
 
 ### How often should I capture memory?
 

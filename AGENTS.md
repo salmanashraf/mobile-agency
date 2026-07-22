@@ -1,4 +1,4 @@
-# AGENTS.md — Mobile Agency
+# AGENTS.md — Mobile AI Agents
 
 > This file is read automatically by Codex when the repo is opened.
 > It tells Codex how to navigate, use, and contribute to this toolkit.
@@ -19,7 +19,7 @@ system prompt and it works immediately.
 ## Repo Map
 
 ```
-mobile-agency/
+mobile-ai-agents/
 ├── agents/          ← Self-contained AI agents (start here)
 │   ├── android/
 │   ├── ios/
@@ -129,7 +129,7 @@ Use `skills/cross-platform/security-audit.md` for complete app security audits b
 
 Use `skills/cross-platform/prd-verification.md` when a user asks whether an implementation matches the approved PRD, design plan, task acceptance criteria, tests, screenshots, or Mobile MCP evidence. Use it inside Mobile Harness and APPFORGE before marking a task complete.
 
-Use `skills/cross-platform/mobile-memory-search.md` when a user needs to resume from local Mobile Agency memory, search project history, or inject relevant context from `.mobile-agency/memory/`. When using Mobile Harness for multi-session work, capture durable decisions and next actions with `npx mobile-agency memory capture` when terminal access is available.
+Use `skills/cross-platform/mobile-memory-search.md` when a user needs to resume from local Mobile AI Agents memory, search project history, or inject relevant context from `.mobile-ai-agents/memory/`. When using Mobile Harness for multi-session work, capture durable decisions and next actions with `npx mobile-ai-agents memory capture` when terminal access is available.
 
 ## Release Process
 

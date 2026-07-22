@@ -18,7 +18,9 @@ jobs:
 
       - name: Read package version
         id: package
-        run: echo "version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
+        run: |
+          echo "name=$(node -p "require('./package.json').name")" >> "$GITHUB_OUTPUT"
+          echo "version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
 
       - name: Verify tag matches package version
         run: |
@@ -32,10 +34,11 @@ jobs:
       - name: Check whether version already exists
         id: npm
         run: |
+          NAME="${{ steps.package.outputs.name }}"
           VERSION="${{ steps.package.outputs.version }}"
-          if npm view "mobile-agency@$VERSION" version >/dev/null 2>&1; then
+          if npm view "$NAME@$VERSION" version >/dev/null 2>&1; then
             echo "exists=true" >> "$GITHUB_OUTPUT"
-            echo "mobile-agency@$VERSION already exists on npm; skipping publish."
+            echo "$NAME@$VERSION already exists on npm; skipping publish."
           else
             echo "exists=false" >> "$GITHUB_OUTPUT"
           fi

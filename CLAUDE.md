@@ -1,4 +1,4 @@
-# CLAUDE.md — Mobile Agency
+# CLAUDE.md — Mobile AI Agents
 
 > This file is read automatically by Claude Code when the repo is opened.
 > It tells Claude how to navigate, use, and contribute to this toolkit.
@@ -32,7 +32,7 @@ into Claude Code as a system prompt and it works immediately.
 ## Repo Map
 
 ```
-mobile-agency/
+mobile-ai-agents/
 ├── agents/                   ← 19 personality-driven agents
 │   ├── android/axiom/        ← AXIOM (Android architect)
 │   ├── android/anr-investigation/ ← FREEZE (ANR investigator)

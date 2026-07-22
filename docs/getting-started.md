@@ -6,7 +6,7 @@ This guide walks you through using your first agent from the Mobile Dev Skill Ag
 
 ## Choose a Loop First
 
-Mobile Agency works best when you choose the engineering loop before choosing an agent.
+Mobile AI Agents works best when you choose the engineering loop before choosing an agent.
 
 | I need to... | Start with this loop | Good first tool |
 |---|---|---|

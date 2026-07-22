@@ -47,7 +47,7 @@ RELATED_CODE:
 Install only this agent:
 
 ```bash
-npx mobile-agency add agent anr-investigation
+npx mobile-ai-agents add agent anr-investigation
 ```
 
 ---

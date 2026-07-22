@@ -1,6 +1,6 @@
 # Installation Guide
 
-This guide is for first-time users who want Mobile Agency installed in their AI coding tool without needing to understand the repo structure first.
+This guide is for first-time users who want Mobile AI Agents installed in their AI coding tool without needing to understand the repo structure first.
 
 ---
 
@@ -9,10 +9,10 @@ This guide is for first-time users who want Mobile Agency installed in their AI 
 If you are not sure what to choose, use the default install:
 
 ```bash
-npx mobile-agency install
+npx mobile-ai-agents install
 ```
 
-This installs Mobile Agency for Claude Code. It adds agents, skills, and workflows as slash commands in:
+This installs Mobile AI Agents for Claude Code. It adds agents, skills, and workflows as slash commands in:
 
 ```text
 ~/.claude/commands/
@@ -53,12 +53,12 @@ Choose the tool you use most often:
 
 | I use... | Run this |
 |---|---|
-| Claude Code | `npx mobile-agency install` |
-| Cursor | `npx mobile-agency install --tool cursor` |
-| Windsurf | `npx mobile-agency install --tool windsurf` |
-| GitHub Copilot | `npx mobile-agency install --tool copilot` |
-| Codex / OpenAI | `npx mobile-agency install --tool codex` |
-| More than one tool | `npx mobile-agency install --tool all` |
+| Claude Code | `npx mobile-ai-agents install` |
+| Cursor | `npx mobile-ai-agents install --tool cursor` |
+| Windsurf | `npx mobile-ai-agents install --tool windsurf` |
+| GitHub Copilot | `npx mobile-ai-agents install --tool copilot` |
+| Codex / OpenAI | `npx mobile-ai-agents install --tool codex` |
+| More than one tool | `npx mobile-ai-agents install --tool all` |
 
 If you do not know which one to pick, start with the command for your editor. For example, Cursor users should use `--tool cursor`.
 
@@ -66,13 +66,13 @@ If you do not know which one to pick, start with the command for your editor. Fo
 
 ## Step 2: Run the Command From Your App Project
 
-Open a terminal inside your mobile app project, not inside Mobile Agency.
+Open a terminal inside your mobile app project, not inside Mobile AI Agents.
 
 Example:
 
 ```bash
 cd ~/Code/my-flutter-app
-npx mobile-agency install --tool cursor
+npx mobile-ai-agents install --tool cursor
 ```
 
 Why this matters:
@@ -87,7 +87,7 @@ Why this matters:
 
 ## Step 3: Optionally Limit by Platform
 
-By default, Mobile Agency installs all platforms:
+By default, Mobile AI Agents installs all platforms:
 
 - Android
 - iOS
@@ -99,19 +99,19 @@ By default, Mobile Agency installs all platforms:
 For a smaller install, choose one platform:
 
 ```bash
-npx mobile-agency install --platform android
-npx mobile-agency install --platform ios
-npx mobile-agency install --platform flutter
-npx mobile-agency install --platform rn
-npx mobile-agency install --platform gaming
+npx mobile-ai-agents install --platform android
+npx mobile-ai-agents install --platform ios
+npx mobile-ai-agents install --platform flutter
+npx mobile-ai-agents install --platform rn
+npx mobile-ai-agents install --platform gaming
 ```
 
 You can combine platform and tool:
 
 ```bash
-npx mobile-agency install --platform flutter --tool cursor
-npx mobile-agency install --platform android --tool codex
-npx mobile-agency install --platform rn --tool all
+npx mobile-ai-agents install --platform flutter --tool cursor
+npx mobile-ai-agents install --platform android --tool codex
+npx mobile-ai-agents install --platform rn --tool all
 ```
 
 ---
@@ -135,7 +135,7 @@ The install command does not change your application source code. It only adds i
 ### Claude Code
 
 ```bash
-npx mobile-agency install
+npx mobile-ai-agents install
 ```
 
 Then open Claude Code and run a slash command:
@@ -149,7 +149,7 @@ Paste a crash log and ask for the root cause.
 ### Cursor
 
 ```bash
-npx mobile-agency install --tool cursor
+npx mobile-ai-agents install --tool cursor
 ```
 
 Then use Cursor Chat:
@@ -162,15 +162,15 @@ Then use Cursor Chat:
 ### Windsurf
 
 ```bash
-npx mobile-agency install --tool windsurf
+npx mobile-ai-agents install --tool windsurf
 ```
 
-Windsurf reads `.windsurfrules` from your project. After install, ask Windsurf to use the relevant Mobile Agency agent or skill.
+Windsurf reads `.windsurfrules` from your project. After install, ask Windsurf to use the relevant Mobile AI Agents agent or skill.
 
 ### GitHub Copilot
 
 ```bash
-npx mobile-agency install --tool copilot
+npx mobile-ai-agents install --tool copilot
 ```
 
 Then use Copilot Chat with workspace context:
@@ -182,7 +182,7 @@ Then use Copilot Chat with workspace context:
 ### Codex / OpenAI
 
 ```bash
-npx mobile-agency install --tool codex
+npx mobile-ai-agents install --tool codex
 ```
 
 This creates `AGENTS.md` in your project. Codex reads that file as project instructions when working in the repo.
@@ -191,7 +191,7 @@ This creates `AGENTS.md` in your project. Codex reads that file as project instr
 
 ## Local Clone Install
 
-Use this if you cloned the Mobile Agency repo and want to install from local files instead of npm:
+Use this if you cloned the Mobile AI Agents repo and want to install from local files instead of npm:
 
 ```bash
 git clone https://github.com/salmanashraf/mobile-agency
@@ -201,7 +201,7 @@ cd mobile-agency
 ./install.sh --tool all
 ```
 
-For most users, `npx mobile-agency install` is simpler.
+For most users, `npx mobile-ai-agents install` is simpler.
 
 ---
 
@@ -211,12 +211,12 @@ For most users, `npx mobile-agency install` is simpler.
 
 Install Node.js from [nodejs.org](https://nodejs.org/) and reopen your terminal.
 
-### `mobile-agency: command not found`
+### `mobile-ai-agents: command not found`
 
 Use the full `npx` command:
 
 ```bash
-npx mobile-agency install
+npx mobile-ai-agents install
 ```
 
 ### Cursor does not see the rules
@@ -238,7 +238,7 @@ Make sure `AGENTS.md` exists at the root of the project you opened in Codex.
 Run the install command again with the platform you want:
 
 ```bash
-npx mobile-agency install --platform flutter --tool cursor
+npx mobile-ai-agents install --platform flutter --tool cursor
 ```
 
 ---

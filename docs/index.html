@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mobile Agency — AI agents for mobile engineers</title>
+  <title>Mobile AI Agents — AI agents for mobile engineers</title>
   <meta name="description" content="Core mobile engineering loops with platform plugins for Android, iOS, Flutter, React Native, Kotlin Multiplatform, Unity, and Unreal." />
-  <meta property="og:title" content="Mobile Agency" />
+  <meta property="og:title" content="Mobile AI Agents" />
   <meta property="og:description" content="Plan, build, audit, test, release, and maintain mobile apps with platform-specific AI engineering loops." />
   <meta property="og:type" content="website" />
   <style>
@@ -302,7 +302,7 @@
 <!-- Nav -->
 <nav>
   <div class="container">
-    <span class="nav-brand">mobile-agency</span>
+    <span class="nav-brand">mobile-ai-agents</span>
     <div class="nav-links">
       <a href="#loops">Loops</a>
       <a href="#agents">Agents</a>
@@ -322,7 +322,7 @@
 
     <div class="hero-install">
       <span class="prompt">$</span>
-      <span class="cmd" id="install-cmd">npx mobile-agency install</span>
+      <span class="cmd" id="install-cmd">npx mobile-ai-agents install</span>
       <button class="copy-btn" onclick="copyInstall()">copy</button>
     </div>
     <br>
@@ -347,7 +347,7 @@
   <div class="container">
     <div class="section-label">Loop Engineering</div>
     <h2>Choose the loop. Add the platform.</h2>
-    <p class="section-sub">Mobile Agency is organized around repeatable engineering loops, then extended with platform-specific expertise. Security and performance are built in before release, not left as cleanup.</p>
+    <p class="section-sub">Mobile AI Agents is organized around repeatable engineering loops, then extended with platform-specific expertise. Security and performance are built in before release, not left as cleanup.</p>
 
     <div class="agent-grid">
       <div class="agent-card">
@@ -641,14 +641,14 @@
 
     <div class="code-block" id="tab-npx">
       <span class="comment"># Install everything for Claude Code (runs from GitHub, no npm needed)</span><br>
-      <span class="cmd2">npx mobile-agency install</span><br><br>
+      <span class="cmd2">npx mobile-ai-agents install</span><br><br>
       <span class="comment"># Install by platform</span><br>
-      <span class="cmd2">npx mobile-agency install</span> <span class="flag">--platform</span> <span class="val">android</span><br>
-      <span class="cmd2">npx mobile-agency install</span> <span class="flag">--platform</span> <span class="val">ios</span><br>
-      <span class="cmd2">npx mobile-agency install</span> <span class="flag">--platform</span> <span class="val">flutter</span><br><br>
+      <span class="cmd2">npx mobile-ai-agents install</span> <span class="flag">--platform</span> <span class="val">android</span><br>
+      <span class="cmd2">npx mobile-ai-agents install</span> <span class="flag">--platform</span> <span class="val">ios</span><br>
+      <span class="cmd2">npx mobile-ai-agents install</span> <span class="flag">--platform</span> <span class="val">flutter</span><br><br>
       <span class="comment"># Install a single agent or skill</span><br>
-      <span class="cmd2">npx mobile-agency add agent crasher</span><br>
-      <span class="cmd2">npx mobile-agency add skill grill-mobile</span>
+      <span class="cmd2">npx mobile-ai-agents add agent crasher</span><br>
+      <span class="cmd2">npx mobile-ai-agents add skill grill-mobile</span>
     </div>
     <div class="code-block" id="tab-bash" style="display:none">
       <span class="comment"># Clone and install</span><br>
@@ -662,19 +662,19 @@
     <div class="code-block" id="tab-android" style="display:none">
       <span class="comment"># Android agents: AXIOM, RETAINER, FREEZE + cross-platform team</span><br>
       <span class="comment"># Android skills: 5 android + cross-platform skills</span><br>
-      <span class="cmd2">npx mobile-agency install</span> <span class="flag">--platform</span> <span class="val">android</span><br><br>
+      <span class="cmd2">npx mobile-ai-agents install</span> <span class="flag">--platform</span> <span class="val">android</span><br><br>
       <span class="comment"># Or just one Android agent</span><br>
-      <span class="cmd2">npx mobile-agency add agent axiom</span><br>
-      <span class="cmd2">npx mobile-agency add agent anr-investigation</span><br>
-      <span class="cmd2">npx mobile-agency add agent memory-leak-analyzer</span>
+      <span class="cmd2">npx mobile-ai-agents add agent axiom</span><br>
+      <span class="cmd2">npx mobile-ai-agents add agent anr-investigation</span><br>
+      <span class="cmd2">npx mobile-ai-agents add agent memory-leak-analyzer</span>
     </div>
     <div class="code-block" id="tab-cursor" style="display:none">
       <span class="comment"># Install for Cursor (.cursorrules in current project)</span><br>
-      <span class="cmd2">npx mobile-agency install</span> <span class="flag">--tool</span> <span class="val">cursor</span><br><br>
+      <span class="cmd2">npx mobile-ai-agents install</span> <span class="flag">--tool</span> <span class="val">cursor</span><br><br>
       <span class="comment"># Or for Windsurf</span><br>
-      <span class="cmd2">npx mobile-agency install</span> <span class="flag">--tool</span> <span class="val">windsurf</span><br><br>
+      <span class="cmd2">npx mobile-ai-agents install</span> <span class="flag">--tool</span> <span class="val">windsurf</span><br><br>
       <span class="comment"># Both tools, all platforms</span><br>
-      <span class="cmd2">npx mobile-agency install</span> <span class="flag">--tool</span> <span class="val">all</span>
+      <span class="cmd2">npx mobile-ai-agents install</span> <span class="flag">--tool</span> <span class="val">all</span>
     </div>
   </div>
 </section>
@@ -692,7 +692,7 @@
 
 <script>
   function copyInstall() {
-    navigator.clipboard.writeText('npx mobile-agency install').then(() => {
+    navigator.clipboard.writeText('npx mobile-ai-agents install').then(() => {
       const btn = document.querySelector('.copy-btn');
       btn.textContent = 'copied!';
       setTimeout(() => btn.textContent = 'copy', 2000);

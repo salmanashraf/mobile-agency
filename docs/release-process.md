@@ -1,6 +1,6 @@
 # Release Process
 
-Mobile Agency npm releases are published by GitHub Actions from git tags.
+Mobile AI Agents npm releases are published by GitHub Actions from git tags.
 
 Do not run `npm publish` manually. Manual publishing can race with the tag workflow and cause npm to reject the workflow with:
 
@@ -63,8 +63,8 @@ The workflow is `.github/workflows/publish.yml`. It runs on tags matching `v*`, 
 After the workflow finishes:
 
 ```bash
-npm view mobile-agency version dist-tags.latest
-npm view mobile-agency@1.0.19 version dist.tarball dist.shasum
+npm view mobile-ai-agents version dist-tags.latest
+npm view mobile-ai-agents@1.0.19 version dist.tarball dist.shasum
 git ls-remote origin refs/heads/main refs/tags/v1.0.19
 ```
 

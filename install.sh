@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Mobile Agency — One-command installer
+# Mobile AI Agents — One-command installer
 # Usage: ./install.sh [--platform android|ios|flutter|rn|gaming|all] [--tool claude|cursor|windsurf|copilot|codex|all]
 
 set -e
@@ -22,7 +22,7 @@ while [[ "$#" -gt 0 ]]; do
 done
 
 echo ""
-echo "Mobile Agency Installer"
+echo "Mobile AI Agents Installer"
 echo "Platform: $PLATFORM | Tool: $TOOL"
 echo ""
 
@@ -316,7 +316,7 @@ install_cursor() {
 install_windsurf() {
     echo "→ Installing for Windsurf (.windsurfrules)..."
     {
-        echo "# Mobile Agency — AI dev team for mobile engineers"
+        echo "# Mobile AI Agents — AI dev team for mobile engineers"
         echo ""
 
         while IFS=" " read -r name src; do
@@ -372,7 +372,7 @@ install_copilot() {
     mkdir -p "$out_dir"
     echo "→ Installing for GitHub Copilot ($out_file)..."
     {
-        echo "# Mobile Agency — AI dev team for mobile engineers"
+        echo "# Mobile AI Agents — AI dev team for mobile engineers"
         echo ""
         echo "Use the agent and skill definitions below to guide code generation, review, and"
         echo "refactoring across Android, iOS, Flutter, React Native, and gaming platforms."
@@ -429,7 +429,7 @@ install_codex() {
     local out_file="AGENTS.md"
     echo "→ Installing for Codex/OpenAI ($out_file)..."
     {
-        echo "# Mobile Agency — AI dev team for mobile engineers"
+        echo "# Mobile AI Agents — AI dev team for mobile engineers"
         echo ""
         echo "Full system prompts, skills, and workflows for Android, iOS, Flutter,"
         echo "React Native, Unity, and Unreal development."
@@ -502,6 +502,6 @@ if [[ "$TOOL" == "codex" || "$TOOL" == "all" ]]; then
     install_codex
 fi
 
-echo "Mobile Agency installed. Happy shipping."
+echo "Mobile AI Agents installed. Happy shipping."
 echo "   → github.com/salmanashraf/mobile-agency"
 echo ""

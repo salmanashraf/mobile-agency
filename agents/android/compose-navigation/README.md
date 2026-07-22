@@ -43,7 +43,7 @@ KOTLIN_VERSION: 2.0
 Install only this agent:
 
 ```bash
-npx mobile-agency add agent compose-navigation
+npx mobile-ai-agents add agent compose-navigation
 ```
 
 ---

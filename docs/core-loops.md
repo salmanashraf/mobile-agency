@@ -1,11 +1,11 @@
 # Core Loops and Platform Plugins
 
-Mobile Agency is organized as a mobile engineering system, not a prompt list.
+Mobile AI Agents is organized as a mobile engineering system, not a prompt list.
 
 The simple model:
 
 ```text
-Mobile Agency
+Mobile AI Agents
 
 Core Loops
 - Planning
@@ -42,7 +42,7 @@ Most AI coding resources start with prompts. Mobile teams start with outcomes:
 - Did tests and device QA prove it works?
 - Can another session continue the work later?
 
-Mobile Agency turns those questions into loops that can be run, audited, and repeated.
+Mobile AI Agents turns those questions into loops that can be run, audited, and repeated.
 
 ## Loop Engineering
 
@@ -121,7 +121,7 @@ Output: root cause, fix, verification plan, regression check
 
 Use this sentence when explaining the repo:
 
-> Mobile Agency gives every mobile team a repeatable loop for planning, building, auditing, testing, releasing, and maintaining apps, with security and performance checks built in.
+> Mobile AI Agents gives every mobile team a repeatable loop for planning, building, auditing, testing, releasing, and maintaining apps, with security and performance checks built in.
 
 Short version:
 

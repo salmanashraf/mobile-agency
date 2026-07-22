@@ -17,7 +17,7 @@ Use this workflow when a mobile project will span multiple AI sessions, multiple
 ```text
 Session Start
     ↓
-mobile-agency memory inject
+mobile-ai-agents memory inject
     ↓
 /mobile-memory restore
     ↓
@@ -27,7 +27,7 @@ Build / refactor / debug
     ↓
 AXIOM / CRASHER / DART / SWIFT findings captured
     ↓
-mobile-agency memory capture
+mobile-ai-agents memory capture
     ↓
 /mobile-memory save before context runs out
     ↓
@@ -45,25 +45,25 @@ Next AI tool reads MOBILE_MEMORY.md and continues from NEXT ACTION
 Run once per project:
 
 ```bash
-npx mobile-agency memory init
+npx mobile-ai-agents memory init
 ```
 
 Capture durable events during the project:
 
 ```bash
-npx mobile-agency memory capture --type decision --text "Use Room for offline persistence."
-npx mobile-agency memory capture --type finding --text "PRD verification failed because restart persistence is missing."
-npx mobile-agency memory capture --type next-action --text "Implement HabitDao and restart persistence test."
+npx mobile-ai-agents memory capture --type decision --text "Use Room for offline persistence."
+npx mobile-ai-agents memory capture --type finding --text "PRD verification failed because restart persistence is missing."
+npx mobile-ai-agents memory capture --type next-action --text "Implement HabitDao and restart persistence test."
 ```
 
-Raw events are stored in `.mobile-agency/memory/events.jsonl` and ignored by git by default.
+Raw events are stored in `.mobile-ai-agents/memory/events.jsonl` and ignored by git by default.
 
 ### 2. Session Start
 
 Run:
 
 ```bash
-npx mobile-agency memory inject
+npx mobile-ai-agents memory inject
 ```
 
 Paste the output into the new AI session, or ask the AI to run it when the tool has terminal access.
@@ -106,7 +106,7 @@ Capture requirements and decisions directly into the next Mobile Memory update:
 Also capture durable decisions into local memory:
 
 ```bash
-npx mobile-agency memory capture --type decision --title "State management" --text "Use StateFlow in ViewModels and collectAsStateWithLifecycle in Compose."
+npx mobile-ai-agents memory capture --type decision --title "State management" --text "Use StateFlow in ViewModels and collectAsStateWithLifecycle in Compose."
 ```
 
 ### 4. Code Review
@@ -128,7 +128,7 @@ AXIOM → CartViewModel → CRITICAL: direct repository construction → pending
 Capture the finding:
 
 ```bash
-npx mobile-agency memory capture --type finding --title "AXIOM CartViewModel" --text "CRITICAL: direct repository construction; pending DI refactor."
+npx mobile-ai-agents memory capture --type finding --title "AXIOM CartViewModel" --text "CRITICAL: direct repository construction; pending DI refactor."
 ```
 
 ### 5. Crash Analysis
@@ -155,8 +155,8 @@ Critical crash findings belong in `Health Report > CRITICAL`.
 When returning to a project after days or weeks, search local memory before re-reading the full codebase:
 
 ```bash
-npx mobile-agency memory search persistence
-npx mobile-agency memory timeline --limit 20
+npx mobile-ai-agents memory search persistence
+npx mobile-ai-agents memory timeline --limit 20
 ```
 
 Use `/mobile-memory-search` to turn search output into confirmed context, assumptions, files to read next, and one `NEXT ACTION`.
@@ -174,7 +174,7 @@ This creates the full `MOBILE_MEMORY.md` checkpoint. A new session can load it a
 You can also generate `MOBILE_MEMORY.md` from local memory:
 
 ```bash
-npx mobile-agency memory checkpoint
+npx mobile-ai-agents memory checkpoint
 ```
 
 ### 8. Feature Complete
@@ -211,11 +211,11 @@ No re-explanation required. The teammate's AI sees the architecture, graph, deci
 
 | Moment | Tool | Memory Section Updated |
 |---|---|---|
-| Memory setup | `mobile-agency memory init` | Local event store |
-| Session start | `mobile-agency memory inject`, `/mobile-memory restore` | Instant Resume, Progress |
+| Memory setup | `mobile-ai-agents memory init` | Local event store |
+| Session start | `mobile-ai-agents memory inject`, `/mobile-memory restore` | Instant Resume, Progress |
 | Requirements | `/grill-mobile` | Decisions Made, Open Questions |
-| Durable decision | `mobile-agency memory capture` | `.mobile-agency/memory/events.jsonl` |
-| Memory search | `mobile-agency memory search`, `/mobile-memory-search` | Relevant context |
+| Durable decision | `mobile-ai-agents memory capture` | `.mobile-ai-agents/memory/events.jsonl` |
+| Memory search | `mobile-ai-agents memory search`, `/mobile-memory-search` | Relevant context |
 | Architecture map | `/mobile-memory graph` | Knowledge Graph |
 | Android review | `AXIOM` | Agent State, Health Report |
 | Crash debug | `CRASHER` | Health Report, Current Task |

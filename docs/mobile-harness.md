@@ -1,6 +1,6 @@
 # Mobile Harness
 
-Mobile Harness is the top-level orchestrator for Mobile Agency. It can start from a rough idea or an existing codebase, then coordinate planning, implementation, tests, UI verification, device QA, memory, and launch preparation.
+Mobile Harness is the top-level orchestrator for Mobile AI Agents. It can start from a rough idea or an existing codebase, then coordinate planning, implementation, tests, UI verification, device QA, memory, and launch preparation.
 
 Use it when you want one AI system to manage the full mobile delivery loop with as little human effort as safely possible, while still using specialized agents and skills underneath.
 

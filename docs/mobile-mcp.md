@@ -2,7 +2,7 @@
 
 Mobile MCP is an MCP server for mobile automation across iOS and Android simulators, emulators, and real devices. It gives AI agents a platform-agnostic way to inspect screens, interact with apps, and run scripted QA flows.
 
-Use it in Mobile Agency as the device automation layer for APPFORGE, QA, accessibility checks, and launch readiness.
+Use it in Mobile AI Agents as the device automation layer for APPFORGE, QA, accessibility checks, and launch readiness.
 
 ---
 
@@ -76,7 +76,7 @@ npx @mobilenext/mobile-mcp@latest
 
 ---
 
-## Mobile Agency Usage
+## Mobile AI Agents Usage
 
 ### APPFORGE
 

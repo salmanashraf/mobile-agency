@@ -48,7 +48,7 @@ RELATED_CODE:
 Install only this agent:
 
 ```bash
-npx mobile-agency add agent memory-leak-analyzer
+npx mobile-ai-agents add agent memory-leak-analyzer
 ```
 
 ---

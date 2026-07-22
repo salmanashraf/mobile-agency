@@ -299,5 +299,5 @@ Use Instant or Long epoch millis consistently; avoid floating-point currency.
 
 ```bash
 cp agents/cross-platform/appforge/agent.md ~/.claude/agents/appforge.md
-npx mobile-agency add agent appforge
+npx mobile-ai-agents add agent appforge
 ```

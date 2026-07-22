@@ -8,7 +8,7 @@
 
 ## Purpose
 
-Search and inject local Mobile Agency memory captured in `.mobile-agency/memory/` so an AI session can resume with the right project context without reading every file or asking the user to repeat decisions.
+Search and inject local Mobile AI Agents memory captured in `.mobile-ai-agents/memory/` so an AI session can resume with the right project context without reading every file or asking the user to repeat decisions.
 
 Use this when a project has been worked on across multiple days, tools, agents, or tasks.
 
@@ -21,7 +21,7 @@ COMMAND: /mobile-memory-search
 QUERY:
 <decision, feature, bug, file name, agent finding, release step, or task>
 MEMORY_SOURCE:
-<optional output from `mobile-agency memory search`, `timeline`, or `inject`>
+<optional output from `mobile-ai-agents memory search`, `timeline`, or `inject`>
 NEXT_STEP:
 <optional current task>
 ```
@@ -31,13 +31,13 @@ NEXT_STEP:
 ## Skill Prompt
 
 ```text
-Use local Mobile Agency memory to restore relevant context.
+Use local Mobile AI Agents memory to restore relevant context.
 
 If the user has not provided memory output, ask them to run one of:
 
-- `npx mobile-agency memory inject`
-- `npx mobile-agency memory search <query>`
-- `npx mobile-agency memory timeline --limit 20`
+- `npx mobile-ai-agents memory inject`
+- `npx mobile-ai-agents memory search <query>`
+- `npx mobile-ai-agents memory timeline --limit 20`
 
 When memory output is provided:
 
@@ -83,12 +83,12 @@ NEXT ACTION:
 ## CLI Workflow
 
 ```bash
-npx mobile-agency memory init
-npx mobile-agency memory capture --type decision --title "Use Room" --text "Persist habits locally with Room."
-npx mobile-agency memory capture --type next-action --text "Implement HabitDao and restart persistence test."
-npx mobile-agency memory search persistence
-npx mobile-agency memory inject
-npx mobile-agency memory checkpoint
+npx mobile-ai-agents memory init
+npx mobile-ai-agents memory capture --type decision --title "Use Room" --text "Persist habits locally with Room."
+npx mobile-ai-agents memory capture --type next-action --text "Implement HabitDao and restart persistence test."
+npx mobile-ai-agents memory search persistence
+npx mobile-ai-agents memory inject
+npx mobile-ai-agents memory checkpoint
 ```
 
 ---

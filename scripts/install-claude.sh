@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Install mobile-agency agents and skills for Claude Code
+# Install mobile-ai-agents agents and skills for Claude Code
 # Usage: ./scripts/install-claude.sh --platform android
 set -euo pipefail
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"

@@ -6,7 +6,7 @@ This document describes the taxonomy used across agents, skills, and prompts in 
 
 ## Core Loop Taxonomy
 
-Mobile Agency groups skills by the core loop they support:
+Mobile AI Agents groups skills by the core loop they support:
 
 | Core Loop | What It Covers |
 |---|---|

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Install mobile-agency agents and skills for Cursor
+# Install mobile-ai-agents agents and skills for Cursor
 # Writes agent system prompts to .cursorrules in the current project directory
 set -euo pipefail
 
@@ -7,7 +7,7 @@ REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 PLATFORM="${1:-all}"
 OUTPUT=".cursorrules"
 
-echo "# mobile-agency — AI agents for mobile development" > "${OUTPUT}"
+echo "# mobile-ai-agents — AI agents for mobile development" > "${OUTPUT}"
 echo "# https://github.com/salmanashraf/mobile-dev-skills" >> "${OUTPUT}"
 echo "" >> "${OUTPUT}"
 
@@ -37,5 +37,5 @@ case "${PLATFORM}" in
 esac
 
 echo ""
-echo "[mobile-agency] Written to .cursorrules"
+echo "[mobile-ai-agents] Written to .cursorrules"
 echo "Restart Cursor to activate."

@@ -18,11 +18,11 @@ Preferred CLI:
 
 | Command | Output |
 |---|---|
-| `mobile-agency memory init` | Creates `.mobile-agency/memory/` |
-| `mobile-agency memory capture` | Saves a memory event |
-| `mobile-agency memory search` | Finds relevant project memory |
-| `mobile-agency memory inject` | Prints compact context for a new session |
-| `mobile-agency memory checkpoint` | Generates `MOBILE_MEMORY.md` |
+| `mobile-ai-agents memory init` | Creates `.mobile-ai-agents/memory/` |
+| `mobile-ai-agents memory capture` | Saves a memory event |
+| `mobile-ai-agents memory search` | Finds relevant project memory |
+| `mobile-ai-agents memory inject` | Prints compact context for a new session |
+| `mobile-ai-agents memory checkpoint` | Generates `MOBILE_MEMORY.md` |
 
 Slash aliases:
 
@@ -31,7 +31,7 @@ Slash aliases:
 | `/mobile-memory save` | Full `MOBILE_MEMORY.md` checkpoint with graph, session context, and next action |
 | `/mobile-memory restore` | Loads pasted `MOBILE_MEMORY.md`, summarizes it, then continues from `NEXT ACTION` |
 | `/mobile-memory graph` | Builds the Knowledge Graph section from shared code files |
-| `/mobile-memory-search` | Searches local `.mobile-agency/memory/` output and extracts relevant context |
+| `/mobile-memory-search` | Searches local `.mobile-ai-agents/memory/` output and extracts relevant context |
 | `/mobile-memory update` | Updates an existing `MOBILE_MEMORY.md` with new decisions and progress |
 | `/mobile-memory status` | Prints progress state only |
 | `/mobile-memory health` | Prints only CRITICAL and WARNING nodes |
@@ -47,15 +47,15 @@ Slash aliases:
 
 Triggered by "initialize memory", "save this to memory", "search memory", "inject context", or when terminal access is available in a long-running project.
 
-Use the Mobile Agency CLI:
+Use the Mobile AI Agents CLI:
 
 ```bash
-npx mobile-agency memory init
-npx mobile-agency memory capture --type decision --text "..."
-npx mobile-agency memory search <query>
-npx mobile-agency memory timeline --limit 20
-npx mobile-agency memory inject
-npx mobile-agency memory checkpoint
+npx mobile-ai-agents memory init
+npx mobile-ai-agents memory capture --type decision --text "..."
+npx mobile-ai-agents memory search <query>
+npx mobile-ai-agents memory timeline --limit 20
+npx mobile-ai-agents memory inject
+npx mobile-ai-agents memory checkpoint
 ```
 
 Capture durable events:
@@ -83,7 +83,7 @@ Scan the full session and produce a complete `MOBILE_MEMORY.md` with:
 - Architecture violations and fixes
 - Health report with `CRITICAL`, `WARNING`, and `DEBT`
 - Current task, decisions, progress, blockers, and open questions
-- Active Mobile Agency agent state
+- Active Mobile AI Agents agent state
 - Code state for files mid-edit
 - A single executable `NEXT ACTION`
 - Resume instructions for Claude Code, Cursor, Windsurf, ChatGPT, Gemini, and Copilot
@@ -237,18 +237,18 @@ Paste full file → /mobile-memory restore
 ## System Prompt
 
 ```text
-You are MOBILE MEMORY, the mobile project memory archivist. You preserve useful mobile development context in local Mobile Agency memory and a portable MOBILE_MEMORY.md file so Claude Code, Cursor, Windsurf, ChatGPT, Gemini, Copilot, or another AI can continue without re-explanation.
+You are MOBILE MEMORY, the mobile project memory archivist. You preserve useful mobile development context in local Mobile AI Agents memory and a portable MOBILE_MEMORY.md file so Claude Code, Cursor, Windsurf, ChatGPT, Gemini, Copilot, or another AI can continue without re-explanation.
 
 Modes:
-- LOCAL-MEMORY: when terminal access is available, use `npx mobile-agency memory init/capture/search/timeline/inject/checkpoint` to maintain `.mobile-agency/memory/` and generate MOBILE_MEMORY.md.
+- LOCAL-MEMORY: when terminal access is available, use `npx mobile-ai-agents memory init/capture/search/timeline/inject/checkpoint` to maintain `.mobile-ai-agents/memory/` and generate MOBILE_MEMORY.md.
 - SAVE: produce full MOBILE_MEMORY.md with project identity, mobile knowledge graph, health report, session state, agent findings, code state, and exactly one executable NEXT ACTION.
 - RESTORE: read pasted MOBILE_MEMORY.md, confirm "Mobile Memory loaded. Here is what I know:" with five bullets, then immediately continue from NEXT ACTION.
 - GRAPH: analyze shared code files and output the Knowledge Graph section with mobile node types, edge confidence tags, god nodes, violations, and token reduction estimate.
-- SEARCH: use `/mobile-memory-search` or `npx mobile-agency memory search <query>` to recover relevant decisions, findings, files, and next actions from local memory.
+- SEARCH: use `/mobile-memory-search` or `npx mobile-ai-agents memory search <query>` to recover relevant decisions, findings, files, and next actions from local memory.
 
 Use mobile semantics: ViewModels observe state and emit UI events; repositories call network/database; DI injects dependencies; navigation belongs outside ViewModels; GlobalScope, retain cycles, force unwraps, exposed MutableStateFlow, bridge hot paths, and Update() abuse are high-risk.
 
-Warn proactively when context grows after major decisions, large code blocks, repeated follow-ups, or other Mobile Agency findings.
+Warn proactively when context grows after major decisions, large code blocks, repeated follow-ups, or other Mobile AI Agents findings.
 
 Output MUST follow the exact format specified. Do not add extra sections or omit any section.
 ```
@@ -269,7 +269,7 @@ Trigger when:
 - A major architectural decision was made
 - A large code block was written
 - The user says "one more thing" for the third time
-- AXIOM, CRASHER, SWIFT, DART, BRIDGE, SENTINEL, PERF, or another Mobile Agency agent produces findings
+- AXIOM, CRASHER, SWIFT, DART, BRIDGE, SENTINEL, PERF, or another Mobile AI Agents agent produces findings
 
 ---
 
@@ -425,5 +425,5 @@ Paste full file → /mobile-memory restore
 
 ```bash
 cp agents/cross-platform/mobile-memory/agent.md ~/.claude/agents/mobile-memory.md
-npx mobile-agency add agent mobile-memory
+npx mobile-ai-agents add agent mobile-memory
 ```

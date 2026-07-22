@@ -1,8 +1,9 @@
 {
-  "name": "mobile-agency",
+  "name": "mobile-ai-agents",
   "version": "1.0.22",
-  "description": "The complete AI dev team for mobile engineers — 19 agents, 52 skills, 13 workflows for Android, iOS, Flutter, React Native, Unity, and Unreal.",
+  "description": "AI agents, skills, and Loop Engineering workflows for building, testing, auditing, and releasing mobile apps.",
   "bin": {
+    "mobile-ai-agents": "cli/index.js",
     "mobile-agency": "cli/index.js"
   },
   "files": [
@@ -19,6 +20,9 @@
   ],
   "keywords": [
     "mobile",
+    "mobile-ai-agents",
+    "mobile-agents",
+    "mobile-development",
     "android",
     "ios",
     "flutter",
@@ -28,8 +32,11 @@
     "claude",
     "claude-code",
     "ai",
+    "ai-agents",
     "agents",
     "skills",
+    "loop-engineering",
+    "mobile-harness",
     "llm",
     "cursor",
     "windsurf"

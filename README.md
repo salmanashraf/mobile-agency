@@ -1,12 +1,12 @@
-# Mobile Agency
+# Mobile AI Agents
 
 **The complete AI dev team for mobile engineers.**
 
 19 personality-driven agents · 52 composable skills · 13 end-to-end workflows
 Android · iOS · Flutter · React Native · Kotlin Multiplatform · Unity · Unreal
 
-[![npm](https://img.shields.io/npm/v/mobile-agency?color=CB3837&label=npm)](https://www.npmjs.com/package/mobile-agency)
-[![npm downloads](https://img.shields.io/npm/dm/mobile-agency?color=CB3837)](https://www.npmjs.com/package/mobile-agency)
+[![npm](https://img.shields.io/npm/v/mobile-ai-agents?color=CB3837&label=npm)](https://www.npmjs.com/package/mobile-ai-agents)
+[![npm downloads](https://img.shields.io/npm/dm/mobile-ai-agents?color=CB3837)](https://www.npmjs.com/package/mobile-ai-agents)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![GitHub Stars](https://img.shields.io/github/stars/salmanashraf/mobile-agency?style=social)](https://github.com/salmanashraf/mobile-agency/stargazers)
 [![Platform](https://img.shields.io/badge/platforms-Android%20%7C%20iOS%20%7C%20Flutter%20%7C%20RN%20%7C%20KMP%20%7C%20Unity%20%7C%20Unreal-brightgreen)](#core-loops-and-platform-plugins)
@@ -15,15 +15,15 @@ Android · iOS · Flutter · React Native · Kotlin Multiplatform · Unity · Un
 
 > AI agents, skills, and Loop Engineering workflows for building, testing, reviewing, and shipping Android, iOS, Flutter, React Native, Unity, and Unreal apps.
 
-**What is Mobile Agency?**
+**What Are Mobile AI Agents?**
 
 ![Mobile Harness Loop Engineering preview](https://github.com/user-attachments/assets/3e51426a-d2d9-41d3-b668-48d4c751f20c)
 
-Mobile Agency is a ready-to-use AI engineering system for mobile apps, hybrid apps, and games. Instead of learning every platform from scratch or writing the same prompts again and again, you install the agents, skills, and workflows, then use them to plan, build, review, test, and ship real Android, iOS, Flutter, React Native, Kotlin Multiplatform, Unity, and Unreal projects.
+Mobile AI Agents is a ready-to-use AI engineering system for mobile apps, hybrid apps, and games. Instead of learning every platform from scratch or writing the same prompts again and again, you install the agents, skills, and workflows, then use them to plan, build, review, test, and ship real Android, iOS, Flutter, React Native, Kotlin Multiplatform, Unity, and Unreal projects.
 
-Bring the idea. Mobile Agency brings the mobile team: product planning, architecture review, feature development, clean-code audits, security checks, performance analysis, UI verification, device QA, release prep, and store growth.
+Bring the idea. Mobile AI Agents brings the mobile team: product planning, architecture review, feature development, clean-code audits, security checks, performance analysis, UI verification, device QA, release prep, and store growth.
 
-Mobile Agency is built around **Loop Engineering** and a **mobile-karpathy** mindset: define the goal once, then let the system keep moving through planning, implementation, code audit, security review, UI verification, device QA, reporting, and context saving. The aim is to reduce manual work and repeated manual prompting so developers can focus on product decisions, architecture tradeoffs, credentials, and final approval.
+Mobile AI Agents is built around **Loop Engineering** and a **mobile-karpathy** mindset: define the goal once, then let the system keep moving through planning, implementation, code audit, security review, UI verification, device QA, reporting, and context saving. The aim is to reduce manual work and repeated manual prompting so developers can focus on product decisions, architecture tradeoffs, credentials, and final approval.
 
 ---
 ## Install
@@ -33,21 +33,21 @@ New to AI coding tools? Start with the step-by-step [Installation Guide](docs/in
 Fast path:
 
 ```bash
-npx mobile-agency install
+npx mobile-ai-agents install
 ```
 
-This installs Mobile Agency for Claude Code. For Cursor, Windsurf, GitHub Copilot, Codex, platform-only installs, and troubleshooting, see [docs/installation.md](docs/installation.md).
+This installs Mobile AI Agents for Claude Code. For Cursor, Windsurf, GitHub Copilot, Codex, platform-only installs, and troubleshooting, see [docs/installation.md](docs/installation.md).
 
 Common installs:
 
 | I use... | Run this |
 |---|---|
-| Claude Code | `npx mobile-agency install` |
-| Cursor | `npx mobile-agency install --tool cursor` |
-| Windsurf | `npx mobile-agency install --tool windsurf` |
-| GitHub Copilot | `npx mobile-agency install --tool copilot` |
-| Codex / OpenAI | `npx mobile-agency install --tool codex` |
-| All supported tools | `npx mobile-agency install --tool all` |
+| Claude Code | `npx mobile-ai-agents install` |
+| Cursor | `npx mobile-ai-agents install --tool cursor` |
+| Windsurf | `npx mobile-ai-agents install --tool windsurf` |
+| GitHub Copilot | `npx mobile-ai-agents install --tool copilot` |
+| Codex / OpenAI | `npx mobile-ai-agents install --tool codex` |
+| All supported tools | `npx mobile-ai-agents install --tool all` |
 
 Local clone install:
 
@@ -59,14 +59,20 @@ cd mobile-agency
 ./install.sh --tool all
 ```
 
+Existing users can still run the legacy binary name after install:
+
+```bash
+npx mobile-agency install
+```
+
 ---
 ## How It Works
 
-Mobile Agency turns AI coding from one-off prompts into a repeatable mobile engineering loop.
+Mobile AI Agents turns AI coding from one-off prompts into a repeatable mobile engineering loop.
 
 | Step | What Happens | Command |
 |---|---|---|
-| 1. Install | Add the agents, skills, and workflows to your AI coding tool. | `npx mobile-agency install` |
+| 1. Install | Add the agents, skills, and workflows to your AI coding tool. | `npx mobile-ai-agents install` |
 | 2. Open your app | Use it inside an Android, iOS, Flutter, React Native, KMP, Unity, or Unreal project. | Claude Code · Cursor · Windsurf · Copilot · Codex |
 | 3. Start the loop | Tell Mobile Harness the app or feature goal once. It asks clarification questions before building. | `/mobile-harness` |
 | 4. Build with gates | The loop plans, implements, reviews architecture, checks security, audits performance, verifies UI, and runs QA. | `@MOBILE-HARNESS` |
@@ -87,7 +93,7 @@ For focused work, use a specialist directly:
 
 ## Who It Helps
 
-| Role | How Mobile Agency Helps |
+| Role | How Mobile AI Agents Helps |
 |---|---|
 | Senior developers | Delegates repeatable review, debugging, release, and QA work while keeping output tied to platform-specific standards and evidence. |
 | Architects and tech leads | Turns product goals into PRDs, tasks, architecture checks, security gates, UI verification, and release readiness reports that teams can review. |
@@ -99,7 +105,7 @@ The goal is a practical mobile engineering loop: plan the feature, build one tas
 
 ## Core Loops and Platform Plugins
 
-Mobile Agency is organized around core engineering loops, then extended with platform-specific plugins. Start with the loop that matches your current problem, then apply the Android, iOS, Flutter, React Native, Kotlin Multiplatform, Unity, or Unreal expertise needed for your app.
+Mobile AI Agents is organized around core engineering loops, then extended with platform-specific plugins. Start with the loop that matches your current problem, then apply the Android, iOS, Flutter, React Native, Kotlin Multiplatform, Unity, or Unreal expertise needed for your app.
 
 ```text
 Core Loops: Planning -> Architecture -> Development -> Performance -> Security -> Testing -> Release -> Growth -> Maintenance
@@ -192,15 +198,15 @@ Not sure where to begin? Pick your situation:
 
 ---
 
-## Why Mobile Agency?
+## Why Mobile AI Agents?
 
-| | Generic AI prompt repos | Mobile Agency |
+| | Generic AI prompt repos | Mobile AI Agents |
 |---|---|---|
 | Platform knowledge | Generic | Android · iOS · Flutter · React Native · Unity · Unreal |
 | Agent personalities | None | 19 named specialists with opinions |
 | Real workflows | No | 13 end-to-end processes |
 | Real examples | Toy pseudocode | Production code input/output pairs |
-| Installable | Copy-paste | `npx mobile-agency install` |
+| Installable | Copy-paste | `npx mobile-ai-agents install` |
 | Severity levels | None | CRITICAL · WARNING · INFO |
 | Slash commands | No | 52 composable skills |
 
@@ -304,7 +310,7 @@ Not sure where to begin? Pick your situation:
 | `/mobile-mcp-qa` | Run AI-assisted QA on iOS/Android devices, simulators, and emulators |
 | `/mobile-memory-save` | Checkpoint your session — resume on any AI tool instantly |
 | `/mobile-memory-graph` | Build a mobile knowledge graph from your codebase files |
-| `/mobile-memory-search` | Search local Mobile Agency memory and inject relevant context |
+| `/mobile-memory-search` | Search local Mobile AI Agents memory and inject relevant context |
 
 ---
 
@@ -373,7 +379,7 @@ Mobile MCP fits the QA stage next: use it for emulator, simulator, or real-devic
 
 ## Mobile MCP — Device QA Automation
 
-Mobile MCP gives Mobile Agency a device automation layer for iOS and Android simulators, emulators, and real devices.
+Mobile MCP gives Mobile AI Agents a device automation layer for iOS and Android simulators, emulators, and real devices.
 
 ```
 /mobile-mcp-qa
@@ -391,7 +397,7 @@ Use it inside APPFORGE Stage 7 Full QA, UI match review, launch readiness checks
 
 ## Mobile Harness — Top-Level Orchestrator
 
-Mobile Harness is the Loop Engineering orchestrator for Mobile Agency. It can start from a rough app idea or an existing codebase, then coordinate APPFORGE, Mobile Memory, platform reviewers, tests, UI verification, Mobile MCP QA, accessibility, performance, security, release prep, and store/growth work.
+Mobile Harness is the Loop Engineering orchestrator for Mobile AI Agents. It can start from a rough app idea or an existing codebase, then coordinate APPFORGE, Mobile Memory, platform reviewers, tests, UI verification, Mobile MCP QA, accessibility, performance, security, release prep, and store/growth work.
 
 Use it when you want to define the goal once and have the system keep moving through the app-building loop without repeating the same manual prompts at every stage.
 
@@ -442,7 +448,7 @@ Demo-grade mode requires seeded data, multiple visible screens/states, a screens
 
 ### Run It
 
-In Claude Code, install Mobile Agency, open your app project, then run:
+In Claude Code, install Mobile AI Agents, open your app project, then run:
 
 ```
 /mobile-harness
@@ -453,7 +459,7 @@ For a full explicit prompt, use:
 ```
 @MOBILE-HARNESS
 
-Use Mobile Agency Loop Engineering to build this app from idea to verified MVP.
+Use Mobile AI Agents Loop Engineering to build this app from idea to verified MVP.
 
 App idea: <your app idea>
 Platform: <Android | iOS | Flutter | React Native>
@@ -487,7 +493,7 @@ At the end, produce MOBILE_HARNESS_REPORT.md with build, tests, PRD verification
 ```text
 @MOBILE-HARNESS
 
-Use Mobile Agency Loop Engineering to build a demo-grade Android app.
+Use Mobile AI Agents Loop Engineering to build a demo-grade Android app.
 
 App idea: Habit Pulse — an offline habit tracker where users add habits, mark today complete, see streaks, and review progress.
 Platform: Android
@@ -507,29 +513,72 @@ Full guide: [docs/mobile-harness.md](docs/mobile-harness.md)
 When tokens run out or you switch AI tools, your entire session context — architectural decisions, agent findings, code in progress — vanishes. Mobile Memory captures durable project context locally and can generate a portable `MOBILE_MEMORY.md` handoff file.
 
 ```
-mobile-agency memory init        → creates local project memory
-mobile-agency memory capture     → saves decisions, findings, progress, and next actions
-mobile-agency memory search      → searches project memory
-mobile-agency memory checkpoint  → generates MOBILE_MEMORY.md for handoff
+mobile-ai-agents memory init        → creates local project memory
+mobile-ai-agents memory capture     → saves decisions, findings, progress, and next actions
+mobile-ai-agents memory search      → searches project memory
+mobile-ai-agents memory checkpoint  → generates MOBILE_MEMORY.md for handoff
 ```
 
 For local persistent memory in a project:
 
 ```bash
-npx mobile-agency memory init
-npx mobile-agency memory capture --type decision --text "Use Room for offline persistence"
-npx mobile-agency memory search persistence
-npx mobile-agency memory inject
-npx mobile-agency memory checkpoint
+npx mobile-ai-agents memory init
+npx mobile-ai-agents memory capture --type decision --text "Use Room for offline persistence"
+npx mobile-ai-agents memory search persistence
+npx mobile-ai-agents memory inject
+npx mobile-ai-agents memory checkpoint
 ```
 
-This stores raw local memory in `.mobile-agency/memory/`, keeps sensitive event history out of git by default, and generates `MOBILE_MEMORY.md` when you want a portable handoff.
+This stores raw local memory in `.mobile-ai-agents/memory/`, keeps sensitive event history out of git by default, and generates `MOBILE_MEMORY.md` when you want a portable handoff.
 
-Works across Claude Code, Cursor, Windsurf, ChatGPT, and Gemini. Integrates with every Mobile Agency agent — AXIOM findings, CRASHER analysis, and LAUNCHPAD copy are all preserved in the same file.
+Works across Claude Code, Cursor, Windsurf, ChatGPT, and Gemini. Integrates with every Mobile AI Agents agent — AXIOM findings, CRASHER analysis, and LAUNCHPAD copy are all preserved in the same file.
 
 Inspired by Graphify's token reduction approach, built for mobile architecture. Up to 80× token reduction on large mobile projects vs reading raw files.
 
 Claude slash commands are now named `/mobile-memory`, `/mobile-memory-save`, `/mobile-memory-graph`, and `/mobile-memory-search`.
+
+### Quick Save With Claude Code
+
+Use `/mobile-memory-save` when you are inside a long AI session and want a fast handoff file without setting up the full local memory store.
+
+```text
+/mobile-memory-save
+```
+
+Then provide the current project state:
+
+```text
+PROJECT: Habit Pulse
+PLATFORM: Android
+CURRENT TASK:
+Building habit tracker MVP with list, add habit, streak tracking.
+
+DECISIONS:
+- Use Room for offline storage.
+- Use MVVM with StateFlow.
+- Keep UI simple for demo.
+
+PROGRESS:
+- Done: habit list screen and add habit dialog.
+- In progress: persistence and restart test.
+- Blocked: none.
+
+CODE STATE:
+MainActivity.kt has current UI. Habit data is still in memory.
+
+NEXT ACTION:
+Add Room HabitEntity, HabitDao, and repository, then persist created habits across app restart.
+```
+
+The skill returns a compact `MOBILE_MEMORY.md` document. Save it in the app project root, then a future AI session can read it and continue from `NEXT ACTION`.
+
+Use this rule of thumb:
+
+| Need | Use |
+|---|---|
+| Fast one-time checkpoint inside chat | `/mobile-memory-save` |
+| Searchable project memory over days/weeks | `npx mobile-ai-agents memory init/capture/search/checkpoint` |
+| Resume a new session from saved context | `/mobile-memory` or `Read MOBILE_MEMORY.md and continue` |
 
 Full guide: [docs/mobile-memory.md](docs/mobile-memory.md)
 
@@ -569,9 +618,9 @@ Every agent ships with a real worked example — production code in, structured 
 
 | Tool | How to Use |
 |---|---|
-| Claude Code | `npx mobile-agency install` |
-| Cursor | `npx mobile-agency install --tool cursor` |
-| Windsurf | `npx mobile-agency install --tool windsurf` |
+| Claude Code | `npx mobile-ai-agents install` |
+| Cursor | `npx mobile-ai-agents install --tool cursor` |
+| Windsurf | `npx mobile-ai-agents install --tool windsurf` |
 | GitHub Copilot | Paste agent system prompt into Copilot instructions |
 | Codex / OpenAI | Use agents as system prompts via API or CLI |
 | Local repo | `git clone` + `./install.sh` |
@@ -595,7 +644,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the full guide.
 - [GitHub Discussions](https://github.com/salmanashraf/mobile-agency/discussions) — share your output, ask questions, show and tell
 - [Issues](https://github.com/salmanashraf/mobile-agency/issues) — bug reports, new agent requests
 
-If Mobile Agency saved you time, a star helps others find it.  
+If Mobile AI Agents saved you time, a star helps others find it.
 [![GitHub Stars](https://img.shields.io/github/stars/salmanashraf/mobile-agency?style=social)](https://github.com/salmanashraf/mobile-agency/stargazers)
 
 ---

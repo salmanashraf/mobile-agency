@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Install mobile-agency SWIFT agent for Xcode Claude integration (2026)
+# Install mobile-ai-agents SWIFT agent for Xcode Claude integration (2026)
 # Copies the SWIFT agent system prompt to ~/Library/Application Support/Xcode/Claude/
 set -euo pipefail
 

@@ -42,18 +42,18 @@ For first-time setup, use the dedicated [Installation Guide](installation.md). I
 Fast path:
 
 ```bash
-npx mobile-agency install
+npx mobile-ai-agents install
 ```
 
 Common installs:
 
 | I use... | Run this |
 |---|---|
-| Claude Code | `npx mobile-agency install` |
-| Cursor | `npx mobile-agency install --tool cursor` |
-| Windsurf | `npx mobile-agency install --tool windsurf` |
-| GitHub Copilot | `npx mobile-agency install --tool copilot` |
-| Codex / OpenAI | `npx mobile-agency install --tool codex` |
+| Claude Code | `npx mobile-ai-agents install` |
+| Cursor | `npx mobile-ai-agents install --tool cursor` |
+| Windsurf | `npx mobile-ai-agents install --tool windsurf` |
+| GitHub Copilot | `npx mobile-ai-agents install --tool copilot` |
+| Codex / OpenAI | `npx mobile-ai-agents install --tool codex` |
 
 ---
 
