@@ -30,7 +30,15 @@ Mobile AI Agents is built around **Loop Engineering** and a **mobile-karpathy** 
 
 New to AI coding tools? Start with the step-by-step [Installation Guide](docs/installation.md).
 
-Fast path:
+Starting from a fresh app idea? Generate the starter docs first:
+
+```bash
+npx mobile-ai-agents start
+```
+
+This asks a few beginner-friendly questions and creates `PRD.md`, `DESIGN.md`, `TASKS.md`, `ROADMAP.md`, and `MOBILE_MEMORY.md` in your project.
+
+Fast install path:
 
 ```bash
 npx mobile-ai-agents install
@@ -72,11 +80,12 @@ Mobile AI Agents turns AI coding from one-off prompts into a repeatable mobile e
 
 | Step | What Happens | Command |
 |---|---|---|
-| 1. Install | Add the agents, skills, and workflows to your AI coding tool. | `npx mobile-ai-agents install` |
-| 2. Open your app | Use it inside an Android, iOS, Flutter, React Native, KMP, Unity, or Unreal project. | Claude Code · Cursor · Windsurf · Copilot · Codex |
-| 3. Start the loop | Tell Mobile Harness the app or feature goal once. It asks clarification questions before building. | `/mobile-harness` |
-| 4. Build with gates | The loop plans, implements, reviews architecture, checks security, audits performance, verifies UI, and runs QA. | `@MOBILE-HARNESS` |
-| 5. Continue later | Project context, decisions, reports, and next tasks are saved so work can continue across sessions. | Mobile Memory |
+| 1. Start | Turn a raw idea into starter PRD, design, task, roadmap, and memory docs. | `npx mobile-ai-agents start` |
+| 2. Install | Add the agents, skills, and workflows to your AI coding tool. | `npx mobile-ai-agents install` |
+| 3. Open your app | Use it inside an Android, iOS, Flutter, React Native, KMP, Unity, or Unreal project. | Claude Code · Cursor · Windsurf · Copilot · Codex |
+| 4. Run the loop | Tell Mobile Harness to continue from the generated docs. It asks clarification questions before building. | `/mobile-harness` |
+| 5. Build with gates | The loop plans, implements, reviews architecture, checks security, audits performance, verifies UI, and runs QA. | `@MOBILE-HARNESS` |
+| 6. Continue later | Project context, decisions, reports, and next tasks are saved so work can continue across sessions. | Mobile Memory |
 
 For focused work, use a specialist directly:
 

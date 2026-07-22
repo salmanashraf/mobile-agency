@@ -1,12 +1,20 @@
 # Getting Started
 
-This guide walks you through using your first agent from the Mobile Dev Skill Agents toolkit.
+This guide walks you through using Mobile AI Agents for the first time.
 
 ---
 
 ## Choose a Loop First
 
 Mobile AI Agents works best when you choose the engineering loop before choosing an agent.
+
+If you are starting from a raw app idea, run this inside your project folder first:
+
+```bash
+npx mobile-ai-agents start
+```
+
+This creates `PRD.md`, `DESIGN.md`, `TASKS.md`, `ROADMAP.md`, and `MOBILE_MEMORY.md`. After reviewing those files, install the agents and run `/mobile-harness` to continue from the approved plan.
 
 | I need to... | Start with this loop | Good first tool |
 |---|---|---|

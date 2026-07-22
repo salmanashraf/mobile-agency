@@ -5,6 +5,7 @@ const https = require('https');
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
+const readline = require('readline');
 
 const REPO = 'salmanashraf/mobile-agency';
 const BRANCH = 'main';
@@ -484,6 +485,352 @@ async function fetchRemote(remotePath) {
   return fetch(`${RAW}/${remotePath}`);
 }
 
+function normalizePlatform(input) {
+  const value = String(input || '').trim().toLowerCase();
+  if (['android', 'kotlin', 'compose', 'jetpack compose'].includes(value)) return 'Android';
+  if (['ios', 'swift', 'swiftui'].includes(value)) return 'iOS';
+  if (['flutter', 'dart'].includes(value)) return 'Flutter';
+  if (['rn', 'react native', 'react-native'].includes(value)) return 'React Native';
+  return input ? String(input).trim() : detectPlatform();
+}
+
+function defaultStackForPlatform(platform) {
+  const value = String(platform || '').toLowerCase();
+  if (value.includes('android')) return 'Kotlin + Jetpack Compose + ViewModel + local persistence';
+  if (value.includes('ios')) return 'Swift + SwiftUI + SwiftData or local persistence';
+  if (value.includes('flutter')) return 'Dart + Flutter + state management + local persistence';
+  if (value.includes('react')) return 'React Native + TypeScript + local persistence';
+  return 'Platform-native mobile stack';
+}
+
+function safeDocValue(value, fallback) {
+  const text = String(value || '').trim();
+  return text || fallback;
+}
+
+function askQuestion(rl, label, fallback) {
+  const suffix = fallback ? ` (${fallback})` : '';
+  return new Promise((resolve) => {
+    rl.question(`${label}${suffix}: `, (answer) => {
+      resolve(safeDocValue(answer, fallback));
+    });
+  });
+}
+
+async function collectStartProfile(args) {
+  const opts = parseOptions(args);
+  const interactive = process.stdin.isTTY && process.stdout.isTTY && !opts.yes && !opts['non-interactive'];
+
+  const defaults = {
+    idea: safeDocValue(opts.idea || opts._.join(' '), 'Untitled mobile app'),
+    platform: normalizePlatform(opts.platform || detectPlatform()),
+    team: safeDocValue(opts.team, 'Solo developer'),
+    designs: safeDocValue(opts.designs, 'Create wireframes from scratch'),
+    monetization: safeDocValue(opts.monetization, 'Decide during PRD review'),
+    stack: safeDocValue(opts.stack, ''),
+  };
+  defaults.stack = safeDocValue(defaults.stack, defaultStackForPlatform(defaults.platform));
+
+  if (!interactive) {
+    return {
+      ...defaults,
+      force: Boolean(opts.force),
+      createdAt: nowIso(),
+      projectName: detectProjectName(),
+    };
+  }
+
+  const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+  console.log('');
+  console.log(bold('Mobile AI Agents Start'));
+  console.log(dim('Answer a few questions. Press Enter to accept the default.'));
+  console.log('');
+
+  try {
+    const idea = await askQuestion(rl, '1. What app idea do you have?', defaults.idea);
+    const platform = normalizePlatform(await askQuestion(rl, '2. Which platform are you building for?', defaults.platform));
+    const team = await askQuestion(rl, '3. Are you building solo or with a team?', defaults.team);
+    const monetization = await askQuestion(rl, '4. AI features, ads, subscription, or one-time purchase?', defaults.monetization);
+    const designs = await askQuestion(rl, '5. Do you already have designs?', defaults.designs);
+    const stack = await askQuestion(rl, '6. Which tech stack do you want to use?', defaultStackForPlatform(platform));
+    return {
+      idea,
+      platform,
+      team,
+      designs,
+      monetization,
+      stack,
+      force: Boolean(opts.force),
+      createdAt: nowIso(),
+      projectName: detectProjectName(),
+    };
+  } finally {
+    rl.close();
+  }
+}
+
+function renderStarterDocs(profile) {
+  const productName = profile.projectName || 'Mobile App';
+  const appIdea = profile.idea;
+  const platform = profile.platform;
+  const stack = profile.stack;
+
+  return {
+    'PRD.md': `# PRD: ${productName}
+
+## Product Overview
+${appIdea}
+
+## Target Audience
+- Primary users: To be refined during idea discovery.
+- Buyer or decision maker: To be confirmed.
+- First launch market: To be confirmed.
+
+## Problem Statement
+Users need a simple, reliable mobile experience for the problem described in the app idea. The MVP should prove the core value before adding advanced features.
+
+## Unique Value Proposition
+Deliver the smallest useful version on ${platform}, with clear flows, reliable local behavior, and enough instrumentation to learn from real usage.
+
+## Platform And Stack
+- Platform: ${platform}
+- Stack: ${stack}
+- Team: ${profile.team}
+- Designs: ${profile.designs}
+- Monetization: ${profile.monetization}
+
+## MVP Scope
+- One primary user flow that demonstrates the app value.
+- Home or dashboard screen.
+- Create or edit flow for the core object.
+- Detail or confirmation screen where useful.
+- Empty, loading, error, and success states.
+- Local persistence if the app needs state after restart.
+
+## Non-Goals
+- Complex social features.
+- Payments before the MVP value is validated.
+- Advanced AI automation before the base workflow is usable.
+- Large admin dashboards unless required for launch.
+
+## Core Features
+| Feature | Goal | MVP Acceptance |
+|---|---|---|
+| App shell | Provide navigation and baseline theme | App opens to the main flow without dead ends |
+| Core item flow | Let users create or complete the main action | User can finish the primary job in under 60 seconds |
+| Persistence | Keep important user state | App restart does not lose MVP data |
+| Feedback states | Make failures understandable | Empty, loading, and error states are visible and actionable |
+| Basic analytics plan | Know whether the MVP works | Events are documented before release |
+
+## User Flow
+1. User opens the app.
+2. User understands the main action from the first screen.
+3. User creates, tracks, or completes the core item.
+4. App saves state.
+5. User can return later and continue.
+
+## Functional Requirements
+- The app must support the MVP flow on ${platform}.
+- The app must keep UI state predictable across navigation.
+- The app must avoid placeholder-only screens in the finished MVP.
+- The app must include validation for required user input.
+
+## Non-Functional Requirements
+- Fast cold start for a small MVP.
+- Accessible labels for tappable controls.
+- Responsive layout for common phone sizes.
+- No secrets committed to source control.
+- Clear release build configuration.
+
+## Analytics Events
+| Event | When It Fires | Properties |
+|---|---|---|
+| app_opened | App becomes usable | platform, version |
+| primary_action_started | User starts the main MVP flow | source_screen |
+| primary_action_completed | User completes the main MVP flow | duration_bucket |
+| error_seen | User sees a blocking error | screen, error_type |
+
+## Risks
+- Scope grows before the MVP proves value.
+- Design decisions are too generic for the target audience.
+- Persistence or API choices are made before constraints are clear.
+- Release work is delayed until the end.
+
+## Open Questions
+- Who is the exact first user?
+- What is the one action they must complete?
+- Does the MVP need login?
+- Does the MVP need offline support?
+- What must be true before publishing a test build?
+
+## Next Step
+Review this PRD, answer the open questions, then run /mobile-harness and ask it to build only the first approved task.
+`,
+
+    'DESIGN.md': `# Design Plan: ${productName}
+
+## Design Direction
+Design should be chosen before implementation. Pick one direction and keep the MVP consistent:
+
+| Direction | Best For | Notes |
+|---|---|---|
+| Clean utility | Productivity, finance, habit, tracker, internal tools | Dense, calm, easy to scan |
+| Consumer friendly | Wellness, education, lifestyle | Warmer copy, clearer onboarding |
+| Premium minimal | Paid tools, pro users | Strong typography, restrained color, polished empty states |
+| Game-like | Games, learning loops, motivation | More motion, stronger feedback, richer assets |
+
+Selected direction: To be confirmed.
+
+## Screen List
+| Screen | Purpose | Required States |
+|---|---|---|
+| Home | Show the primary object or action | Empty, populated, loading, error |
+| Create/Edit | Capture required input | Default, validation error, saving |
+| Detail/Result | Show saved item or completion | Success, missing data |
+| Settings/About | Basic app controls if needed | Default |
+
+## Wireframe Notes
+- Put the primary action in the first viewport.
+- Avoid marketing copy inside the app experience.
+- Keep the MVP flow reachable in one or two taps.
+- Use platform-native navigation patterns unless the product has a strong reason not to.
+
+## Design System
+- Color: choose one primary action color, one surface color, one danger color, and neutral text colors.
+- Typography: use system fonts unless brand requirements exist.
+- Spacing: use an 8-point spacing rhythm.
+- Components: buttons, text fields, list rows/cards, dialogs, snackbars/toasts, empty state, loading state, error state.
+
+## Accessibility
+- Every tappable control needs a clear label.
+- Text should pass contrast checks against its background.
+- Important actions should not rely on color alone.
+- Screens must remain usable with larger text settings.
+
+## Screenshot Plan
+Capture these once the MVP exists:
+
+| Screenshot | What To Prove |
+|---|---|
+| Home populated | The app value is visible |
+| Create/Edit flow | The main action works |
+| Empty state | New users are guided |
+| Error or validation state | Failure is understandable |
+`,
+
+    'TASKS.md': `# Tasks: ${productName}
+
+## Implementation Rules
+- Do not implement before PRD and design direction are reviewed.
+- Build one task at a time.
+- Compare each task against PRD.md and DESIGN.md before marking complete.
+- Run available tests after each implementation task.
+- Save important decisions with Mobile Memory.
+
+## MVP Tasks
+| ID | Title | Goal | Dependencies | Acceptance Criteria | QA Checklist | Complexity |
+|---|---|---|---|---|---|---|
+| T1 | Confirm MVP scope | Lock the first shippable flow | PRD.md | Open questions answered and one primary flow selected | PRD reviewed | S |
+| T2 | Create design direction | Choose visual style and screen states | DESIGN.md | Direction selected and screen list finalized | Layout can be compared later | S |
+| T3 | Build app shell | Create baseline navigation/theme | T1, T2 | App opens to Home with no placeholder dead ends | Launch app, rotate if supported | M |
+| T4 | Build core flow | Implement the main user action | T3 | User can complete primary action | Manual flow test, restart test | M |
+| T5 | Add persistence | Keep MVP data after restart | T4 | Data survives app restart | Create data, kill app, reopen | M |
+| T6 | Add states and validation | Handle empty/loading/error/input errors | T4 | States match DESIGN.md | Trigger each state | M |
+| T7 | Audit and verify | Run clean code, security, performance, UI, and PRD checks | T3-T6 | Findings are fixed or documented | Tests and screenshots captured | M |
+
+## Current Task
+T1 - Confirm MVP scope.
+`,
+
+    'ROADMAP.md': `# Roadmap: ${productName}
+
+## Phase 0 - Product Clarity
+- Review PRD.md.
+- Answer open questions.
+- Select design direction in DESIGN.md.
+- Confirm the first MVP flow.
+
+## Phase 1 - MVP Build
+- App shell.
+- Core flow.
+- Persistence.
+- Empty/loading/error states.
+- Basic accessibility.
+
+## Phase 2 - Verification Loop
+- PRD verification.
+- Clean-code audit.
+- Security audit.
+- Performance audit.
+- UI match review.
+- Device or simulator QA.
+
+## Phase 3 - Release Prep
+- Store listing draft.
+- Screenshot plan.
+- Privacy/data safety checklist.
+- Release notes.
+- Internal test build.
+
+## Later
+- Monetization experiments: ${profile.monetization}
+- AI/API features only after MVP workflow is stable.
+- Growth and ASO iteration.
+`,
+
+    [MOBILE_MEMORY_FILE]: `# Mobile Memory
+
+## Instant Resume
+Project: ${productName}
+Idea: ${appIdea}
+Platform: ${platform}
+Stack: ${stack}
+Team: ${profile.team}
+Created: ${profile.createdAt}
+
+## Current State
+Starter planning docs were generated by:
+
+\`\`\`bash
+npx mobile-ai-agents start
+\`\`\`
+
+Generated files:
+- PRD.md
+- DESIGN.md
+- TASKS.md
+- ROADMAP.md
+- MOBILE_MEMORY.md
+
+## Decisions
+| Decision | Reason |
+|---|---|
+| Use ${platform} | User selected or project detection inferred this platform |
+| Start with docs before code | Mobile Harness should verify work against PRD and design |
+
+## Next Action
+Review PRD.md and DESIGN.md, answer open questions, then run /mobile-harness to implement T1/T2 before code work starts.
+
+## Resume Prompt
+Read MOBILE_MEMORY.md, PRD.md, DESIGN.md, TASKS.md, and ROADMAP.md. Continue from the Next Action and do not implement code until PRD and design direction are approved.
+`,
+  };
+}
+
+function writeStarterDocs(files, force) {
+  const results = [];
+  for (const [filename, content] of Object.entries(files)) {
+    const dest = path.join(process.cwd(), filename);
+    if (fs.existsSync(dest) && !force) {
+      results.push({ filename, status: 'skipped' });
+      continue;
+    }
+    fs.writeFileSync(dest, content);
+    results.push({ filename, status: 'created' });
+  }
+  return results;
+}
+
 // Collect all agent/skill/workflow names and their remote paths for a platform set
 function collectItems(platforms) {
   const agentNames = new Set();
@@ -721,6 +1068,34 @@ async function installForCodex(platforms) {
 }
 
 // ─── Commands ────────────────────────────────────────────────────────────────
+
+async function cmdStart(args) {
+  const profile = await collectStartProfile(args);
+  const files = renderStarterDocs(profile);
+  const results = writeStarterDocs(files, profile.force);
+
+  console.log('');
+  console.log(bold('Mobile AI Agents Start'));
+  console.log(dim(`   Project : ${profile.projectName}`));
+  console.log(dim(`   Platform: ${profile.platform}`));
+  console.log('');
+
+  for (const result of results) {
+    if (result.status === 'created') {
+      ok(`${result.filename} created`);
+    } else {
+      log(`${yellow('skipped')} ${result.filename} already exists (use --force to overwrite)`);
+    }
+  }
+
+  console.log('');
+  console.log(bold('Next'));
+  console.log('  1. Review PRD.md and answer the open questions.');
+  console.log('  2. Choose one design direction in DESIGN.md.');
+  console.log('  3. Run /mobile-harness and ask it to continue from TASKS.md.');
+  console.log('  4. Save important decisions with npx mobile-ai-agents memory capture.');
+  console.log('');
+}
 
 async function cmdInstall(args) {
   let platform = 'all';
@@ -1003,6 +1378,7 @@ function cmdList() {
 
   console.log('');
   console.log(bold('  INSTALL'));
+  console.log(dim('    npx mobile-ai-agents start                           # guided starter docs'));
   console.log(dim('    npx mobile-ai-agents install                         # everything (claude)'));
   console.log(dim('    npx mobile-ai-agents install --platform android      # android only'));
   console.log(dim('    npx mobile-ai-agents install --tool cursor           # cursor only'));
@@ -1022,6 +1398,7 @@ function cmdHelp() {
   console.log(bold('  npx mobile-ai-agents <command> [options]'));
   console.log('');
   console.log('  Commands:');
+  console.log(`    ${bold('start')}                           Guided setup that creates PRD/design/tasks/roadmap`);
   console.log(`    ${bold('install')}                         Install agents, skills, and workflows`);
   console.log(`    ${bold('add')} agent|skill|workflow <name>  Install a single item`);
   console.log(`    ${bold('memory')} init|capture|search|...    Local Mobile Memory store`);
@@ -1048,6 +1425,8 @@ function cmdHelp() {
   console.log('    codex     All agents/skills/workflows → AGENTS.md');
   console.log('');
   console.log('  Examples:');
+  console.log(dim('    npx mobile-ai-agents start'));
+  console.log(dim('    npx mobile-ai-agents start --platform flutter --idea "Habit tracker"'));
   console.log(dim('    npx mobile-ai-agents install'));
   console.log(dim('    npx mobile-ai-agents install --platform android'));
   console.log(dim('    npx mobile-ai-agents install --platform ios --tool cursor'));
@@ -1069,6 +1448,7 @@ async function main() {
 
   try {
     switch (cmd) {
+      case 'start':   await cmdStart(args);   break;
       case 'install': await cmdInstall(args); break;
       case 'add':     await cmdAdd(args);     break;
       case 'memory':  cmdMemory(args);        break;

@@ -6,7 +6,21 @@ This guide is for first-time users who want Mobile AI Agents installed in their 
 
 ## Quick Start
 
-If you are not sure what to choose, use the default install:
+If you are starting from only an app idea, create the starter project docs first:
+
+```bash
+npx mobile-ai-agents start
+```
+
+It asks for your idea, platform, team, design status, monetization plan, and stack. Then it creates:
+
+- `PRD.md`
+- `DESIGN.md`
+- `TASKS.md`
+- `ROADMAP.md`
+- `MOBILE_MEMORY.md`
+
+If you already have a project and just want the AI tools installed, use the default install:
 
 ```bash
 npx mobile-ai-agents install
@@ -22,6 +36,7 @@ This installs Mobile AI Agents for Claude Code. It adds agents, skills, and work
 After install, open Claude Code in your app project and try:
 
 ```text
+/mobile-harness
 /flutter-review
 /android-tdd
 /crasher
