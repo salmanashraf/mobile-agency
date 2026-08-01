@@ -17,7 +17,7 @@ Android · iOS · Flutter · React Native · Kotlin Multiplatform · Unity · Un
 
 **What Are Mobile AI Agents?**
 
-![Mobile Harness Loop Engineering preview](https://github.com/user-attachments/assets/82f510b3-d1aa-4c26-997f-fa5f3fa7a269)
+![Mobile Harness Loop Engineering preview](https://github.com/user-attachments/assets/3e51426a-d2d9-41d3-b668-48d4c751f20c)
 
 Mobile AI Agents is a ready-to-use AI engineering system for mobile apps, hybrid apps, and games. Instead of learning every platform from scratch or writing the same prompts again and again, you install the agents, skills, and workflows, then use them to plan, build, review, test, and ship real Android, iOS, Flutter, React Native, Kotlin Multiplatform, Unity, and Unreal projects.
 
@@ -143,7 +143,7 @@ Full guide: [docs/core-loops.md](docs/core-loops.md)
 
 `/mobile-harness` running Loop Engineering — one flow for planning, building, testing, UI verification, and release checks:
 
-https://github.com/user-attachments/assets/848a0427-8b0d-414a-a48e-79df38238674
+https://github.com/user-attachments/assets/c98d4468-d56d-41ce-b545-7d9fdc43e9d2
 
 `/flutter-review` on a real Flutter project — prioritized findings, zero setup:
 
