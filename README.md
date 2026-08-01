@@ -2,7 +2,7 @@
 
 **The complete AI dev team for mobile engineers.**
 
-19 personality-driven agents · 52 composable skills · 13 end-to-end workflows
+19 personality-driven agents · 52 composable skills · 14 end-to-end workflows
 Android · iOS · Flutter · React Native · Kotlin Multiplatform · Unity · Unreal
 
 [![npm](https://img.shields.io/npm/v/mobile-ai-agents?color=CB3837&label=npm)](https://www.npmjs.com/package/mobile-ai-agents)
@@ -213,7 +213,7 @@ Not sure where to begin? Pick your situation:
 |---|---|---|
 | Platform knowledge | Generic | Android · iOS · Flutter · React Native · Unity · Unreal |
 | Agent personalities | None | 19 named specialists with opinions |
-| Real workflows | No | 13 end-to-end processes |
+| Real workflows | No | 14 end-to-end processes |
 | Real examples | Toy pseudocode | Production code input/output pairs |
 | Installable | Copy-paste | `npx mobile-ai-agents install` |
 | Severity levels | None | CRITICAL · WARNING · INFO |
@@ -325,7 +325,7 @@ Not sure where to begin? Pick your situation:
 
 ## Workflows
 
-13 end-to-end processes that chain agents and skills together.
+14 end-to-end processes that chain agents and skills together.
 
 | Workflow | What It Covers |
 |---|---|
@@ -339,6 +339,7 @@ Not sure where to begin? Pick your situation:
 | `game-level` | Design doc → FORGE/UNREAL → /shader-gen → /game-perf → /unity-tdd → playtest |
 | `new-project-setup` | /grill-mobile → architecture → CI → security baseline → test infrastructure |
 | `mobile-memory-workflow` | Mobile Memory: restore context → capture decisions → generate `MOBILE_MEMORY.md` → hand off across AI tools |
+| `issue-to-agent` | GitHub issue → classify → route to agents/skills → implementation and verification plan |
 | `appforge-workflow` | App idea → PRD → design plan → tasks → implementation gates → QA → Play Store |
 | `mobile-mcp-qa` | Install/launch app → inspect UI → run flows → capture screenshots → QA report |
 | `mobile-harness` | Approved task → implementation → tests → UI match → Mobile MCP QA → report |
