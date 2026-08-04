@@ -155,6 +155,8 @@ For every important flow, save:
 - Accessibility element list
 - Bugs with exact repro steps
 
+For auditable handoff, run the `device-proof-report` workflow after `/mobile-mcp-qa`. It produces `DEVICE_QA_REPORT.md` with build/install proof, screenshots, actions, assertions, crashes/logs, accessibility notes, pass/fail summary, and next fixes.
+
 ---
 
 ## Safety Rules

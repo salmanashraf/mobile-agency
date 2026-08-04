@@ -209,8 +209,9 @@ For each task:
 10. Verify behavior against `PRD.md`.
 11. Verify UI against design.
 12. Run `/mobile-mcp-qa` if device automation is available.
-13. Write `MOBILE_HARNESS_REPORT.md`.
-14. Update `MOBILE_MEMORY.md`.
+13. Produce `DEVICE_QA_REPORT.md` with the `device-proof-report` workflow when screenshots or device proof are required.
+14. Write `MOBILE_HARNESS_REPORT.md`.
+15. Update `MOBILE_MEMORY.md`.
 
 After a task passes, continue to the next safe task automatically when the user has approved autonomous execution for the project. Stop only at human gates defined in the Autonomy Contract.
 
