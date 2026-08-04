@@ -164,6 +164,8 @@ Create:
 MOBILE_MCP_QA_REPORT.md
 ```
 
+For release gates, PR handoff, or Mobile Harness evidence, follow this with the `device-proof-report` workflow to produce `DEVICE_QA_REPORT.md`.
+
 Format:
 
 ```markdown

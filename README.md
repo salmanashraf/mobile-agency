@@ -2,7 +2,7 @@
 
 **The complete AI dev team for mobile engineers.**
 
-19 personality-driven agents · 52 composable skills · 14 end-to-end workflows
+19 personality-driven agents · 52 composable skills · 15 end-to-end workflows
 Android · iOS · Flutter · React Native · Kotlin Multiplatform · Unity · Unreal
 
 [![npm](https://img.shields.io/npm/v/mobile-ai-agents?color=CB3837&label=npm)](https://www.npmjs.com/package/mobile-ai-agents)
@@ -213,7 +213,7 @@ Not sure where to begin? Pick your situation:
 |---|---|---|
 | Platform knowledge | Generic | Android · iOS · Flutter · React Native · Unity · Unreal |
 | Agent personalities | None | 19 named specialists with opinions |
-| Real workflows | No | 14 end-to-end processes |
+| Real workflows | No | 15 end-to-end processes |
 | Real examples | Toy pseudocode | Production code input/output pairs |
 | Installable | Copy-paste | `npx mobile-ai-agents install` |
 | Severity levels | None | CRITICAL · WARNING · INFO |
@@ -325,7 +325,7 @@ Not sure where to begin? Pick your situation:
 
 ## Workflows
 
-14 end-to-end processes that chain agents and skills together.
+15 end-to-end processes that chain agents and skills together.
 
 | Workflow | What It Covers |
 |---|---|
@@ -340,6 +340,7 @@ Not sure where to begin? Pick your situation:
 | `new-project-setup` | /grill-mobile → architecture → CI → security baseline → test infrastructure |
 | `mobile-memory-workflow` | Mobile Memory: restore context → capture decisions → generate `MOBILE_MEMORY.md` → hand off across AI tools |
 | `issue-to-agent` | GitHub issue → classify → route to agents/skills → implementation and verification plan |
+| `device-proof-report` | Mobile MCP evidence → screenshots, assertions, bugs, and pass/fail proof |
 | `appforge-workflow` | App idea → PRD → design plan → tasks → implementation gates → QA → Play Store |
 | `mobile-mcp-qa` | Install/launch app → inspect UI → run flows → capture screenshots → QA report |
 | `mobile-harness` | Approved task → implementation → tests → UI match → Mobile MCP QA → report |
@@ -402,6 +403,21 @@ Mobile MCP gives Mobile AI Agents a device automation layer for iOS and Android 
 ```
 
 Use it inside APPFORGE Stage 7 Full QA, UI match review, launch readiness checks, and screenshot validation. Full guide: [docs/mobile-mcp.md](docs/mobile-mcp.md)
+
+### Device Proof Reports
+
+Use `device-proof-report` after `/mobile-mcp-qa` when you need evidence that survives beyond the chat. It turns Mobile MCP actions, screenshots, element snapshots, crashes/logs, accessibility notes, and assertions into `DEVICE_QA_REPORT.md`.
+
+This helps teams prove that a build was installed, launched, tested on a named device, and checked against expected behavior. Use it for PR handoff, release gates, Mobile Harness reports, screenshot validation, and any bug fix where "works on my machine" is not enough.
+
+```text
+device-proof-report
+1. Read Mobile MCP screenshots and actions
+2. Record device, OS, app id, build, commit, and orientation
+3. Map each PASS/FAIL/BLOCKED result to evidence
+4. List crashes, accessibility notes, performance notes, and bugs
+5. Produce DEVICE_QA_REPORT.md with next fixes
+```
 
 ---
 

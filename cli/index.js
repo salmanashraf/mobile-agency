@@ -136,6 +136,7 @@ const WORKFLOWS = {
   'perf-sprint':       { file: 'workflows/perf-sprint.md'       },
   'mobile-memory-workflow':  { file: 'workflows/mobile-memory-workflow.md'  },
   'issue-to-agent':    { file: 'workflows/issue-to-agent.md'    },
+  'device-proof-report': { file: 'workflows/device-proof-report.md' },
   'appforge-workflow': { file: 'workflows/appforge-workflow.md' },
   'mobile-mcp-qa':     { file: 'workflows/mobile-mcp-qa.md'     },
   'mobile-harness':    { file: 'workflows/mobile-harness.md'    },
