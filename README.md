@@ -404,6 +404,21 @@ Mobile MCP gives Mobile AI Agents a device automation layer for iOS and Android 
 
 Use it inside APPFORGE Stage 7 Full QA, UI match review, launch readiness checks, and screenshot validation. Full guide: [docs/mobile-mcp.md](docs/mobile-mcp.md)
 
+### Device Proof Reports
+
+Use `device-proof-report` after `/mobile-mcp-qa` when you need evidence that survives beyond the chat. It turns Mobile MCP actions, screenshots, element snapshots, crashes/logs, accessibility notes, and assertions into `DEVICE_QA_REPORT.md`.
+
+This helps teams prove that a build was installed, launched, tested on a named device, and checked against expected behavior. Use it for PR handoff, release gates, Mobile Harness reports, screenshot validation, and any bug fix where "works on my machine" is not enough.
+
+```text
+device-proof-report
+1. Read Mobile MCP screenshots and actions
+2. Record device, OS, app id, build, commit, and orientation
+3. Map each PASS/FAIL/BLOCKED result to evidence
+4. List crashes, accessibility notes, performance notes, and bugs
+5. Produce DEVICE_QA_REPORT.md with next fixes
+```
+
 ---
 
 ## Mobile Harness — Top-Level Orchestrator

@@ -14,10 +14,11 @@
 6. [Platform-by-Platform Agent Guide](#6-platform-by-platform-agent-guide)
 7. [How Skills Work](#7-how-skills-work)
 8. [How Prompts Work](#8-how-prompts-work)
-9. [Input Format Reference](#9-input-format-reference)
-10. [Output Format Reference](#10-output-format-reference)
-11. [Contributing a New Agent](#11-contributing-a-new-agent)
-12. [FAQ](#12-faq)
+9. [Device Proof Reports](#9-device-proof-reports)
+10. [Input Format Reference](#10-input-format-reference)
+11. [Output Format Reference](#11-output-format-reference)
+12. [Contributing a New Agent](#12-contributing-a-new-agent)
+13. [FAQ](#13-faq)
 
 ---
 
@@ -438,7 +439,61 @@ Prompts are one-shot — they don't require a system prompt, don't require a str
 
 ---
 
-## 9. Input Format Reference
+## 9. Device Proof Reports
+
+Device Proof Reports turn Mobile MCP QA evidence into a durable `DEVICE_QA_REPORT.md` file. Use them after `/mobile-mcp-qa` when you need to prove that a mobile build was installed, launched, tested, screenshotted, and verified on a named device, emulator, or simulator.
+
+### What it helps with
+
+- PR handoff: reviewers can see exact screenshots, actions, assertions, and failures.
+- Release gates: teams can verify launch, core flows, restart, rotation, and edge cases before store submission.
+- Bug fixes: every PASS or FAIL references evidence instead of relying on memory.
+- Mobile Harness: `DEVICE_QA_REPORT.md` can be attached to `MOBILE_HARNESS_REPORT.md`.
+- Future AI sessions: Mobile Memory can preserve device, build, screenshots, result, and next action.
+
+### When to run it
+
+Run `/mobile-mcp-qa` first to interact with the app and capture screenshots. Then run `device-proof-report` to package the evidence into a structured report.
+
+```text
+/mobile-mcp-qa
+PLATFORM: Android
+APP_ID: com.example.invoice
+BUILD_PATH: app/build/outputs/apk/debug/app-debug.apk
+FLOW:
+1. Launch app.
+2. Create invoice.
+3. Restart app.
+4. Confirm invoice persists.
+
+device-proof-report
+Use the Mobile MCP evidence from this QA pass and produce DEVICE_QA_REPORT.md.
+```
+
+### What the report proves
+
+`DEVICE_QA_REPORT.md` records:
+
+- Device, OS version, orientation, app id, build, and commit
+- Whether the build installed and launched
+- Every action performed and the target used
+- Assertions mapped to screenshot or UI evidence
+- Screenshots and what each screenshot proves
+- Crashes, logs, accessibility notes, and performance notes
+- Issues found with severity, repro steps, and suggested fixes
+- Pass/fail/blocked summary and next fixes
+
+### Best practices
+
+- Use stable screenshot filenames such as `01-home.png` and `04-after-restart.png`.
+- Do not mark a result PASS unless it references evidence.
+- For sensitive apps, use sandbox accounts and redact tokens, PII, payment data, and health data.
+- For failed flows, include the exact repro step and expected behavior.
+- After the report is created, save the result with `/mobile-memory-save`.
+
+---
+
+## 10. Input Format Reference
 
 Most agents use a consistent key-value input format:
 
@@ -463,7 +518,7 @@ MULTI_LINE_FIELD:
 
 ---
 
-## 10. Output Format Reference
+## 11. Output Format Reference
 
 ### Code Review Agents (Android, iOS)
 
@@ -537,7 +592,46 @@ OVERALL VERDICT: PASS / NEEDS WORK / INACCESSIBLE
 
 ---
 
-## 11. Contributing a New Agent
+### Device Proof Report
+
+```
+# Device QA Report
+
+## Summary
+Result: PASS | FAIL | BLOCKED
+Platform:
+Device:
+OS Version:
+Orientation:
+App ID:
+Build:
+Commit:
+Flow:
+
+## Build And Launch
+| Check | Evidence | Result |
+|---|---|---|
+
+## Actions Performed
+| Step | Action | Target | Evidence | Result |
+|---|---|---|---|---|
+
+## Assertions
+| ID | Expected Behavior | Evidence | Result |
+|---|---|---|---|
+
+## Screenshots
+| Screenshot | Screen | Proves |
+|---|---|---|
+
+## Issues Found
+| ID | Severity | Screen | Issue | Repro Step | Suggested Fix |
+|---|---|---|---|---|---|
+```
+
+---
+
+## 12. Contributing a New Agent
 
 ### Before you start
 
@@ -584,7 +678,7 @@ An agent is accepted if:
 
 ---
 
-## 12. FAQ
+## 13. FAQ
 
 **Q: Which LLM works best?**  
 A: Claude Sonnet 4.6 and GPT-4o both produce high-quality structured output for all agents. Smaller models (GPT-4o-mini, Claude Haiku) work for simpler agents (prompts, skills) but may produce less consistent structured output for complex agents (BLoC Feature Builder, CI/CD Generator).
@@ -612,4 +706,4 @@ A: Yes. The repo is MIT licensed — free to use, modify, and incorporate into c
 
 ---
 
-*Last updated: v1.0.0 — May 2026*
+*Last updated: v1.0.25 — August 2026*
