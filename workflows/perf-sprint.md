@@ -44,6 +44,7 @@ When users are reporting slow performance, or before a major release as a perfor
    ↓ Document: before numbers, after numbers, what changed.
 
 6. DOCUMENT
+   ↓ Write PERFORMANCE_AUDIT_REPORT.md.
    ↓ Add before/after screenshots to PR description.
    ↓ Link to profiler traces in the PR.
    ↓ Add a performance test or threshold to CI so it doesn't regress.
@@ -75,4 +76,5 @@ When users are reporting slow performance, or before a major release as a perfor
 
 - Measured baseline vs. improved numbers
 - Code changes with documented performance rationale
+- `PERFORMANCE_AUDIT_REPORT.md`
 - Performance CI gate to prevent regression
