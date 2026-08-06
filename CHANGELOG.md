@@ -12,6 +12,7 @@ Versions follow [Semantic Versioning](https://semver.org/).
 ### Added
 
 - `device-proof-report` workflow announcement and wiki guidance so users know how to turn Mobile MCP screenshots, actions, assertions, logs, and accessibility notes into `DEVICE_QA_REPORT.md`.
+- Performance Loop guide for startup, ANR, memory leaks, frame drops, battery, network, app size, slow screens, and regression monitoring, including a deterministic `PERFORMANCE_AUDIT_REPORT.md` format.
 
 ---
 
