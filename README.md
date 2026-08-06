@@ -126,7 +126,7 @@ Platform Plugins: Android · iOS · Flutter · React Native · Kotlin Multiplatf
 | Planning | Idea discovery, PRD, roadmap, task breakdown | `@APPFORGE`, `/grill-mobile`, `/feature-slice` |
 | Architecture | System design, clean code, module boundaries, model separation | `@AXIOM`, `/clean-code-audit`, platform reviewers |
 | Development | Feature implementation, UI build, refactor, code review | `@MOBILE-HARNESS`, `@FIGMA`, platform builders |
-| Performance | Startup, ANR, memory leaks, frame drops, battery, network, app size | `@PERF`, `@FREEZE`, `@RETAINER`, `/perf-audit` |
+| Performance | Startup, ANR, memory leaks, frame drops, battery, network, app size | `@PERF`, `@FREEZE`, `@RETAINER`, `/perf-audit`, [Performance Loop](docs/performance-loop.md) |
 | Security | OWASP, secrets, auth, storage, deep links, WebView, permissions | `@SENTINEL`, `/security-audit`, `/security-scan` |
 | Testing | Unit tests, UI tests, accessibility, PRD checks, device QA | `/mobile-mcp-qa`, TDD skills, accessibility audit |
 | Release | CI/CD, signing, release notes, rollout, store checklist | `@PIPELINE`, `@SCRIBE`, `/release-prep` |
@@ -136,6 +136,8 @@ Platform Plugins: Android · iOS · Flutter · React Native · Kotlin Multiplatf
 Security and performance are built into the loop before release. They are not optional cleanup steps.
 
 Full guide: [docs/core-loops.md](docs/core-loops.md)
+
+Performance guide: [docs/performance-loop.md](docs/performance-loop.md)
 
 ---
 
