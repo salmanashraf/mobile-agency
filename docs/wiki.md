@@ -15,10 +15,11 @@
 7. [How Skills Work](#7-how-skills-work)
 8. [How Prompts Work](#8-how-prompts-work)
 9. [Device Proof Reports](#9-device-proof-reports)
-10. [Input Format Reference](#10-input-format-reference)
-11. [Output Format Reference](#11-output-format-reference)
-12. [Contributing a New Agent](#12-contributing-a-new-agent)
-13. [FAQ](#13-faq)
+10. [Mobile Flight Recorder](#10-mobile-flight-recorder)
+11. [Input Format Reference](#11-input-format-reference)
+12. [Output Format Reference](#12-output-format-reference)
+13. [Contributing a New Agent](#13-contributing-a-new-agent)
+14. [FAQ](#14-faq)
 
 ---
 
@@ -493,7 +494,46 @@ Use the Mobile MCP evidence from this QA pass and produce DEVICE_QA_REPORT.md.
 
 ---
 
-## 10. Input Format Reference
+## 10. Mobile Flight Recorder
+
+Mobile Flight Recorder is the end-of-session workflow for preserving project context across AI tools, teammates, and long-running mobile work. It creates or updates `MOBILE_AGENCY_CONTEXT.md`, a stable project flight recorder that sits beside `MOBILE_MEMORY.md`.
+
+Run it at the end of every meaningful session, before switching tools, before tokens run out, after device QA, or before opening a PR.
+
+```text
+Run Mobile Flight Recorder. Update MOBILE_AGENCY_CONTEXT.md and MOBILE_MEMORY.md if useful. Capture decisions, files changed, tests run, known bugs, device setup, links, and exactly one Next Recommended Action. Do not include secrets.
+```
+
+### What it captures
+
+- App goal, platform, stack, repo, and active branch
+- Architecture and implemented features
+- Current task, pending tasks, known bugs, and risks
+- Test/build commands that actually ran
+- Design source and Mobile MCP/device setup
+- Agent findings, decisions, changed files, evidence, and links
+- Exactly one next recommended action
+
+### Resume prompt
+
+Use this in any AI tool:
+
+```text
+Read MOBILE_AGENCY_CONTEXT.md and MOBILE_MEMORY.md if present. Continue from Next Recommended Action. Inspect changed files before editing and update the flight recorder before stopping.
+```
+
+### How it works with Mobile Memory and MRECALL
+
+- Read `MOBILE_AGENCY_CONTEXT.md`, `MOBILE_MEMORY.md`, `MRECALL.md`, and `.mobile-ai-agents/memory/index.md` when present.
+- Use `npx mobile-ai-agents memory capture` for decisions, findings, code state, and next actions when terminal access is available.
+- Use `npx mobile-ai-agents memory checkpoint` or `/mobile-memory-save` to generate the compact `MOBILE_MEMORY.md` handoff.
+- Use `MOBILE_AGENCY_CONTEXT.md` for the broader project state and `MOBILE_MEMORY.md` for compact session continuity.
+
+See [Mobile Memory](mobile-memory.md) for the complete guide.
+
+---
+
+## 11. Input Format Reference
 
 Most agents use a consistent key-value input format:
 
@@ -518,7 +558,7 @@ MULTI_LINE_FIELD:
 
 ---
 
-## 11. Output Format Reference
+## 12. Output Format Reference
 
 ### Code Review Agents (Android, iOS)
 
@@ -631,7 +671,7 @@ Flow:
 
 ---
 
-## 12. Contributing a New Agent
+## 13. Contributing a New Agent
 
 ### Before you start
 
@@ -678,7 +718,7 @@ An agent is accepted if:
 
 ---
 
-## 13. FAQ
+## 14. FAQ
 
 **Q: Which LLM works best?**  
 A: Claude Sonnet 4.6 and GPT-4o both produce high-quality structured output for all agents. Smaller models (GPT-4o-mini, Claude Haiku) work for simpler agents (prompts, skills) but may produce less consistent structured output for complex agents (BLoC Feature Builder, CI/CD Generator).

@@ -11,6 +11,7 @@ Versions follow [Semantic Versioning](https://semver.org/).
 
 ### Added
 
+- `mobile-flight-recorder` workflow for end-of-session handoffs, including `MOBILE_AGENCY_CONTEXT.md` schema, MRECALL/Mobile Memory integration, tool-agnostic resume prompt, docs, and wiki guidance.
 - `device-proof-report` workflow announcement and wiki guidance so users know how to turn Mobile MCP screenshots, actions, assertions, logs, and accessibility notes into `DEVICE_QA_REPORT.md`.
 - Performance Loop guide for startup, ANR, memory leaks, frame drops, battery, network, app size, slow screens, and regression monitoring, including a deterministic `PERFORMANCE_AUDIT_REPORT.md` format.
 

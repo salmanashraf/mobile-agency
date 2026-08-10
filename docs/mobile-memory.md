@@ -175,6 +175,37 @@ Read MOBILE_MEMORY.md and continue from NEXT ACTION.
 
 ---
 
+## Mobile Flight Recorder
+
+Mobile Flight Recorder is the end-of-session workflow for turning Mobile Memory into a project-level handoff file named `MOBILE_AGENCY_CONTEXT.md`.
+
+Use it when a session produced decisions, fixes, bugs, device proof, PR links, or a next task that must survive across AI tools. It records:
+
+- App goal, platform, stack, repo, and active branch
+- Architecture and implemented features
+- Current task and pending tasks
+- Known bugs, risks, and evidence
+- Test/build commands that actually ran
+- Device, emulator, simulator, or Mobile MCP setup
+- Agent findings, decisions, changed files, and links
+- Exactly one next recommended action
+
+Run it with:
+
+```text
+Run Mobile Flight Recorder. Update MOBILE_AGENCY_CONTEXT.md and MOBILE_MEMORY.md if useful. Capture decisions, files changed, tests run, known bugs, device setup, links, and exactly one Next Recommended Action. Do not include secrets.
+```
+
+Resume any AI tool with:
+
+```text
+Read MOBILE_AGENCY_CONTEXT.md and MOBILE_MEMORY.md if present. Continue from Next Recommended Action. Inspect changed files before editing and update the flight recorder before stopping.
+```
+
+Use `MOBILE_MEMORY.md` for compact memory and `MOBILE_AGENCY_CONTEXT.md` for the broader project flight recorder.
+
+---
+
 ## Graphify Integration
 
 Graphify can be used first to create a general graph of a project. Mobile Memory enhances that output with mobile semantics:

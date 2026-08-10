@@ -2,7 +2,7 @@
 
 **The complete AI dev team for mobile engineers.**
 
-19 personality-driven agents · 52 composable skills · 15 end-to-end workflows
+19 personality-driven agents · 52 composable skills · 16 end-to-end workflows
 Android · iOS · Flutter · React Native · Kotlin Multiplatform · Unity · Unreal
 
 [![npm](https://img.shields.io/npm/v/mobile-ai-agents?color=CB3837&label=npm)](https://www.npmjs.com/package/mobile-ai-agents)
@@ -131,7 +131,7 @@ Platform Plugins: Android · iOS · Flutter · React Native · Kotlin Multiplatf
 | Testing | Unit tests, UI tests, accessibility, PRD checks, device QA | `/mobile-mcp-qa`, TDD skills, accessibility audit |
 | Release | CI/CD, signing, release notes, rollout, store checklist | `@PIPELINE`, `@SCRIBE`, `/release-prep` |
 | Growth | ASO, store listing, screenshots, monetization | `@LAUNCHPAD`, `/store-listing` |
-| Maintenance | Crash triage, context memory, issue planning, regression checks | `@CRASHER`, Mobile Memory, issue-to-agent workflow |
+| Maintenance | Crash triage, context memory, issue planning, regression checks | `@CRASHER`, Mobile Memory, Mobile Flight Recorder, issue-to-agent workflow |
 
 Security and performance are built into the loop before release. They are not optional cleanup steps.
 
@@ -215,7 +215,7 @@ Not sure where to begin? Pick your situation:
 |---|---|---|
 | Platform knowledge | Generic | Android · iOS · Flutter · React Native · Unity · Unreal |
 | Agent personalities | None | 19 named specialists with opinions |
-| Real workflows | No | 15 end-to-end processes |
+| Real workflows | No | 16 end-to-end processes |
 | Real examples | Toy pseudocode | Production code input/output pairs |
 | Installable | Copy-paste | `npx mobile-ai-agents install` |
 | Severity levels | None | CRITICAL · WARNING · INFO |
@@ -327,7 +327,7 @@ Not sure where to begin? Pick your situation:
 
 ## Workflows
 
-15 end-to-end processes that chain agents and skills together.
+16 end-to-end processes that chain agents and skills together.
 
 | Workflow | What It Covers |
 |---|---|
@@ -340,6 +340,7 @@ Not sure where to begin? Pick your situation:
 | `perf-sprint` | Baseline → /perf-audit → fix → re-measure → document |
 | `game-level` | Design doc → FORGE/UNREAL → /shader-gen → /game-perf → /unity-tdd → playtest |
 | `new-project-setup` | /grill-mobile → architecture → CI → security baseline → test infrastructure |
+| `mobile-flight-recorder` | End-of-session context → update `MOBILE_AGENCY_CONTEXT.md` → capture bugs, device setup, decisions, and next action |
 | `mobile-memory-workflow` | Mobile Memory: restore context → capture decisions → generate `MOBILE_MEMORY.md` → hand off across AI tools |
 | `issue-to-agent` | GitHub issue → classify → route to agents/skills → implementation and verification plan |
 | `device-proof-report` | Mobile MCP evidence → screenshots, assertions, bugs, and pass/fail proof |

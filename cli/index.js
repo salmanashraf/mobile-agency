@@ -134,6 +134,7 @@ const WORKFLOWS = {
   'new-project-setup': { file: 'workflows/new-project-setup.md' },
   'app-launch':        { file: 'workflows/app-launch.md'        },
   'perf-sprint':       { file: 'workflows/perf-sprint.md'       },
+  'mobile-flight-recorder': { file: 'workflows/mobile-flight-recorder.md' },
   'mobile-memory-workflow':  { file: 'workflows/mobile-memory-workflow.md'  },
   'issue-to-agent':    { file: 'workflows/issue-to-agent.md'    },
   'device-proof-report': { file: 'workflows/device-proof-report.md' },
