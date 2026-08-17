@@ -51,8 +51,9 @@ Identifying and fixing performance bottlenecks — frame drops, excessive memory
 Generating, reviewing, and improving UI code — widgets, components, layouts, animations.
 
 **Platforms:** Flutter, Android (Compose), iOS (SwiftUI), React Native  
-**Examples:** Widget generation, layout from description, animation code, dark mode audit  
-**Agents:** Flutter Widget Generator, Unity Shader Generator
+**Examples:** Widget generation, layout from description, Lovable/Stitch-style mobile screen design, full app reskins, tab reordering, animation code, dark mode audit  
+**Agents:** Flutter Widget Generator, Unity Shader Generator  
+**Skills:** `/mobile-app-design`
 
 ---
 
