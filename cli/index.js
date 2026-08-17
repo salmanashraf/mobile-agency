@@ -110,6 +110,7 @@ const SKILLS = {
   'deeplink-debug':     { file: 'skills/cross-platform/deeplink-debug.md',     platform: 'cross'   },
   'feature-slice':      { file: 'skills/cross-platform/feature-slice.md',      platform: 'cross'   },
   'grill-mobile':       { file: 'skills/cross-platform/grill-mobile.md',       platform: 'cross'   },
+  'mobile-app-design':  { file: 'skills/cross-platform/mobile-app-design.md',  platform: 'cross'   },
   'mobile-mcp-qa':      { file: 'skills/cross-platform/mobile-mcp-qa.md',      platform: 'cross'   },
   'mobile-memory-graph':      { file: 'skills/cross-platform/mobile-memory-graph.md',      platform: 'cross'   },
   'mobile-memory-search':     { file: 'skills/cross-platform/mobile-memory-search.md',     platform: 'cross'   },
@@ -197,7 +198,7 @@ const PLATFORM_SKILLS = {
     'kotlin-modernize', 'memory-leak-investigation', 'proguard-rules',
     // cross-platform bundled for android
     'accessibility-audit', 'api-versioning', 'clean-code-audit', 'crash-analysis', 'crash-triage',
-    'deeplink-debug', 'feature-slice', 'grill-mobile', 'mobile-mcp-qa',
+    'deeplink-debug', 'feature-slice', 'grill-mobile', 'mobile-app-design', 'mobile-mcp-qa',
     'mobile-memory-graph', 'mobile-memory-search', 'mobile-memory-save', 'perf-audit', 'prd-verification',
     'release-prep', 'security-audit', 'security-scan', 'store-listing',
   ],
@@ -207,7 +208,7 @@ const PLATFORM_SKILLS = {
     'unit-testing', 'xcode-warnings',
     // cross-platform bundled for ios
     'accessibility-audit', 'api-versioning', 'clean-code-audit', 'crash-analysis', 'crash-triage',
-    'deeplink-debug', 'feature-slice', 'grill-mobile', 'mobile-mcp-qa',
+    'deeplink-debug', 'feature-slice', 'grill-mobile', 'mobile-app-design', 'mobile-mcp-qa',
     'mobile-memory-graph', 'mobile-memory-search', 'mobile-memory-save', 'perf-audit', 'prd-verification',
     'release-prep', 'security-audit', 'security-scan', 'store-listing',
   ],
@@ -215,7 +216,7 @@ const PLATFORM_SKILLS = {
     'dart-modernize', 'flutter-review', 'flutter-tdd', 'widget-extract', 'widget-gen',
     // cross-platform bundled for flutter
     'accessibility-audit', 'api-versioning', 'clean-code-audit', 'crash-analysis', 'crash-triage',
-    'deeplink-debug', 'feature-slice', 'grill-mobile', 'mobile-mcp-qa',
+    'deeplink-debug', 'feature-slice', 'grill-mobile', 'mobile-app-design', 'mobile-mcp-qa',
     'mobile-memory-graph', 'mobile-memory-search', 'mobile-memory-save', 'perf-audit', 'prd-verification',
     'release-prep', 'security-audit', 'security-scan', 'store-listing',
   ],
@@ -224,18 +225,18 @@ const PLATFORM_SKILLS = {
     'rn-review', 'rn-tdd',
     // cross-platform bundled for rn
     'accessibility-audit', 'api-versioning', 'clean-code-audit', 'crash-analysis', 'crash-triage',
-    'deeplink-debug', 'feature-slice', 'grill-mobile', 'mobile-mcp-qa',
+    'deeplink-debug', 'feature-slice', 'grill-mobile', 'mobile-app-design', 'mobile-mcp-qa',
     'mobile-memory-graph', 'mobile-memory-search', 'mobile-memory-save', 'perf-audit', 'prd-verification',
     'release-prep', 'security-audit', 'security-scan', 'store-listing',
   ],
   gaming: [
-    'blueprint-to-cpp', 'clean-code-audit', 'game-perf', 'mobile-mcp-qa',
+    'blueprint-to-cpp', 'clean-code-audit', 'game-perf', 'mobile-app-design', 'mobile-mcp-qa',
     'mobile-memory-graph', 'mobile-memory-search', 'mobile-memory-save', 'prd-verification', 'security-audit', 'shader-gen',
     'unity-tdd', 'shader-review',
   ],
   cross: [
     'accessibility-audit', 'api-versioning', 'clean-code-audit', 'crash-analysis', 'crash-triage',
-    'deeplink-debug', 'feature-slice', 'grill-mobile', 'mobile-mcp-qa',
+    'deeplink-debug', 'feature-slice', 'grill-mobile', 'mobile-app-design', 'mobile-mcp-qa',
     'mobile-memory-graph', 'mobile-memory-search', 'mobile-memory-save', 'perf-audit', 'prd-verification',
     'release-prep', 'security-audit', 'security-scan', 'store-listing',
   ],

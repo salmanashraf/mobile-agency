@@ -2,7 +2,7 @@
 
 **The complete AI dev team for mobile engineers.**
 
-19 personality-driven agents · 52 composable skills · 16 end-to-end workflows
+19 personality-driven agents · 53 composable skills · 16 end-to-end workflows
 Android · iOS · Flutter · React Native · Kotlin Multiplatform · Unity · Unreal
 
 [![npm](https://img.shields.io/npm/v/mobile-ai-agents?color=CB3837&label=npm)](https://www.npmjs.com/package/mobile-ai-agents)
@@ -219,7 +219,7 @@ Not sure where to begin? Pick your situation:
 | Real examples | Toy pseudocode | Production code input/output pairs |
 | Installable | Copy-paste | `npx mobile-ai-agents install` |
 | Severity levels | None | CRITICAL · WARNING · INFO |
-| Slash commands | No | 52 composable skills |
+| Slash commands | No | 53 composable skills |
 
 ---
 
