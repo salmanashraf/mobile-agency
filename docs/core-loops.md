@@ -68,7 +68,7 @@ The user should not have to manually prompt every stage. The system should stop 
 |---|---|---|
 | Planning | Turn rough ideas into PRDs, roadmaps, and task slices. | `@APPFORGE`, `/grill-mobile`, `/feature-slice` |
 | Architecture | Review system design, module boundaries, model separation, and clean code. | `@AXIOM`, `/clean-code-audit`, platform reviewers |
-| Development | Implement one feature slice at a time and keep code scoped. | `@MOBILE-HARNESS`, `@FIGMA`, screen builders, code reviewers |
+| Development | Implement one feature slice at a time and keep code scoped. | `@MOBILE-HARNESS`, `@FIGMA`, `/mobile-app-design`, screen builders, code reviewers |
 | Performance | Find and fix startup, ANR, memory, frame, battery, network, and size issues. | `@PERF`, `@FREEZE`, `@RETAINER`, `/perf-audit`, `/anr-investigation`, [Performance Loop](performance-loop.md) |
 | Security | Audit OWASP risks, secrets, auth, storage, deep links, WebViews, permissions, logs, and release hardening. | `@SENTINEL`, `security-scanner`, `/security-audit`, `/security-scan` |
 | Testing | Add unit/UI tests, run device QA, check accessibility, and verify PRD/design match. | TDD skills, `/prd-verification`, `/mobile-mcp-qa`, `/accessibility-audit` |

@@ -125,7 +125,7 @@ Platform Plugins: Android · iOS · Flutter · React Native · Kotlin Multiplatf
 |---|---|---|
 | Planning | Idea discovery, PRD, roadmap, task breakdown | `@APPFORGE`, `/grill-mobile`, `/feature-slice` |
 | Architecture | System design, clean code, module boundaries, model separation | `@AXIOM`, `/clean-code-audit`, platform reviewers |
-| Development | Feature implementation, UI build, refactor, code review | `@MOBILE-HARNESS`, `@FIGMA`, platform builders |
+| Development | Feature implementation, UI build, refactor, code review | `@MOBILE-HARNESS`, `@FIGMA`, `/mobile-app-design`, platform builders |
 | Performance | Startup, ANR, memory leaks, frame drops, battery, network, app size | `@PERF`, `@FREEZE`, `@RETAINER`, `/perf-audit`, [Performance Loop](docs/performance-loop.md) |
 | Security | OWASP, secrets, auth, storage, deep links, WebView, permissions | `@SENTINEL`, `/security-audit`, `/security-scan` |
 | Testing | Unit tests, UI tests, accessibility, PRD checks, device QA | `/mobile-mcp-qa`, TDD skills, accessibility audit |
@@ -258,7 +258,7 @@ Not sure where to begin? Pick your situation:
 
 ## Skills Library
 
-35 focused prompt modules — use inline or compose with agents.
+36 focused prompt modules — use inline or compose with agents.
 
 ### Android
 | Skill | What It Does |
@@ -307,6 +307,7 @@ Not sure where to begin? Pick your situation:
 | Skill | What It Does |
 |---|---|
 | `/grill-mobile` | 20 questions before any mobile code is written |
+| `/mobile-app-design` | Lovable/Stitch-style mobile UI generation, redesigns, and full app reskins |
 | `/crash-triage` | Paste stacktrace → root cause → fix |
 | `/perf-audit` | Slow screen → systematic profiling guide |
 | `/clean-code-audit` | App-wide clean code, model separation, and architecture boundary audit |

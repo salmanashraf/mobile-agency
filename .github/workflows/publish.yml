@@ -45,6 +45,12 @@ jobs:
 
       - name: Publish to npm
         if: steps.npm.outputs.exists == 'false'
-        run: npm publish
+        run: |
+          VERSION="${{ steps.package.outputs.version }}"
+          if [[ "$VERSION" == *-* ]]; then
+            npm publish --tag prerelease
+          else
+            npm publish
+          fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
