@@ -1,6 +1,7 @@
 # Workflow — Mobile MCP QA
 
 **Type:** Device automation QA  
+**Slash Command:** `/mobile-mcp-qa-workflow` when installed alongside the `/mobile-mcp-qa` skill
 **Agents Used:** APPFORGE, AXIOM / SWIFT / DART / BRIDGE, CRASHER, PERF, Mobile Memory
 **Skills Used:** /mobile-mcp-qa, /accessibility-audit, /perf-audit, /mobile-memory-save
 

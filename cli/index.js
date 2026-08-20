@@ -245,6 +245,10 @@ const PLATFORM_SKILLS = {
 // Workflows are always installed regardless of platform selection
 const ALL_WORKFLOWS = Object.keys(WORKFLOWS);
 
+function workflowCommandName(name) {
+  return (AGENTS[name] || SKILLS[name]) ? `${name}-workflow` : name;
+}
+
 const PRIMARY_MEMORY_DIR = '.mobile-ai-agents';
 const LEGACY_MEMORY_DIR = '.mobile-agency';
 const MEMORY_DIR = fs.existsSync(path.join(process.cwd(), LEGACY_MEMORY_DIR)) &&
@@ -881,9 +885,10 @@ async function installForClaude(platforms) {
   await Promise.all(ALL_WORKFLOWS.map(async (name) => {
     const meta = WORKFLOWS[name];
     if (!meta) return;
-    const dest = path.join(CLAUDE_COMMANDS_DIR, `${name}.md`);
+    const commandName = workflowCommandName(name);
+    const dest = path.join(CLAUDE_COMMANDS_DIR, `${commandName}.md`);
     await downloadFile(meta.file, [dest]);
-    ok(name);
+    ok(commandName === name ? name : `${name} → ${commandName}`);
   }));
 
   console.log('');
@@ -923,9 +928,10 @@ async function installForCursor(platforms) {
   await Promise.all(ALL_WORKFLOWS.map(async (name) => {
     const meta = WORKFLOWS[name];
     if (!meta) return;
-    const dest = path.join(rulesDir, `${name}.mdc`);
+    const commandName = workflowCommandName(name);
+    const dest = path.join(rulesDir, `${commandName}.mdc`);
     await downloadFile(meta.file, [dest]);
-    ok(name);
+    ok(commandName === name ? name : `${name} → ${commandName}`);
   }));
 
   console.log('');
@@ -1181,10 +1187,11 @@ async function cmdAdd(args) {
       process.exit(1);
     }
     ensureDir(CLAUDE_COMMANDS_DIR);
-    const dest = path.join(CLAUDE_COMMANDS_DIR, `${name}.md`);
+    const commandName = workflowCommandName(name);
+    const dest = path.join(CLAUDE_COMMANDS_DIR, `${commandName}.md`);
     log(`Fetching ${bold(name)} workflow...`);
     await downloadFile(meta.file, [dest]);
-    ok(`${name} → ${dim(dest)}`);
+    ok(`${commandName} → ${dim(dest)}`);
   } else {
     err(`Unknown type: ${type}. Use 'agent', 'skill', or 'workflow'.`);
     process.exit(1);

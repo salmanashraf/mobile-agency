@@ -10,7 +10,7 @@
 
 Use Mobile MCP to run AI-assisted QA on a real device, emulator, or simulator. This skill turns a feature flow into a repeatable device test plan using screenshots, accessibility snapshots, element inspection, taps, typing, swipes, app install, app launch, and device orientation checks.
 
-Mobile MCP is best used after implementation, during APPFORGE Stage 7 Full QA, or before store submission.
+Mobile MCP is best used after implementation, during APPFORGE Stage 7 Full QA, after `/mobile-app-design` reskins, or before store submission.
 
 ---
 
@@ -61,12 +61,38 @@ EDGE_CASES:
 <offline, invalid input, rotation, restart, permissions, api errors>
 ```
 
+### Reskin QA Input
+
+Use this format when verifying a `/mobile-app-design` redesign or reskin:
+
+```text
+COMMAND: /mobile-mcp-qa
+MODE: RESKIN_QA
+PLATFORM: <Android | iOS | Flutter | React Native>
+APP_ID: <Android package name or iOS bundle id>
+BUILD_PATH: <optional apk/ipa/app path>
+DEVICE: <optional target device name>
+SUPPORTED_THEMES: <light | dark | light,dark | custom themes>
+SCREEN_INVENTORY:
+| Screen/State | Decision | Expected Change | Route/Tab |
+|---|---|---|---|
+| <screen + state> | REDESIGN | <layout/hierarchy/state change> | <route/tab> |
+BASELINE_EVIDENCE:
+<before screenshots, screenshot paths, or "capture before from current build">
+EXPECTED_REDESIGN:
+<approved reskin plan, navigation changes, theme changes, and state coverage>
+REGRESSION_RISKS:
+<tab reorder, renamed copy, deep links, dark mode, keyboard, safe area, analytics, etc.>
+```
+
 ---
 
 ## Skill Prompt
 
 ```text
 Run a Mobile MCP QA pass for the provided mobile app flow.
+
+If MODE is RESKIN_QA, run the Reskin QA flow instead of ordinary flow QA.
 
 STEP 1 — VERIFY SETUP
 - List available devices.
@@ -101,7 +127,79 @@ Check:
 - App restart preserves required state
 - Offline/API error behavior is user-safe
 
-STEP 5 — REPORT
+RESKIN QA FLOW
+Use this flow when MODE is RESKIN_QA or when the user provides a `/mobile-app-design` screen inventory.
+
+STEP R1 — VERIFY RESKIN INPUTS
+- Read SCREEN_INVENTORY and EXPECTED_REDESIGN.
+- Preserve each inventory decision exactly: REDESIGN, RESTYLE, or LEAVE.
+- Confirm SUPPORTED_THEMES. If the app supports light and dark, both are required.
+- If baseline screenshots are missing and the current build is already the after build, mark before evidence as missing instead of inventing it.
+
+STEP R2 — CAPTURE OR REGISTER BASELINE
+- For each inventory row, attach the provided before screenshot or capture a before screenshot if the baseline build is available.
+- Name evidence predictably: before-<theme>-<screen>-<state>.
+- A screen/state without before evidence is still testable after the edit, but its before/after comparison status is UNVERIFIED.
+
+STEP R3 — CAPTURE AFTER STATE
+- Launch the after build.
+- Visit every screen/state in SCREEN_INVENTORY.
+- Capture after screenshots for every supported theme.
+- For loading, empty, error, offline, permission-denied, and success states, use controlled test data, network toggles, permissions, or documented setup steps when available.
+- Name evidence predictably: after-<theme>-<screen>-<state>.
+
+STEP R4 — VERIFY STRUCTURAL CHANGE
+For each inventory row:
+- REDESIGN must show layout, hierarchy, grouping, density, information-priority, or state-layout changes. Token-only changes are FAIL.
+- RESTYLE may show token/component updates only, but must have a justification.
+- LEAVE should remain intentionally unchanged except for unavoidable global shell or token updates.
+- Mark missing before or after screenshots as UNVERIFIED.
+
+STEP R5 — VERIFY REGRESSIONS
+Check:
+- clipped or overlapping text
+- safe areas, status bar, navigation bar, and notches
+- keyboard avoidance
+- minimum 44pt/48dp touch targets
+- light/dark contrast and invisible text risk
+- tab order, selected state, route names, deep links, and back behavior
+- renamed screen/tab copy across labels, empty states, prompts, and accessibility text
+- loading, empty, error, offline, disabled, permission-denied, and success states
+- orientation when the app supports it
+
+STEP R6 — REPORT RESKIN QA
+Return:
+MOBILE MCP RESKIN QA REPORT
+===========================
+Platform:
+Device:
+App:
+Themes:
+Result: PASS | FAIL | PARTIAL | BLOCKED
+
+Screen Evidence:
+| Screen/State | Decision | Theme | Before | After | Result |
+|---|---|---|---|---|---|
+
+Structural Verification:
+| Screen/State | Decision | Expected Change | Observed Change | Result |
+|---|---|---|---|---|
+
+Regression Checks:
+| Check | Screen/State | Result | Evidence |
+|---|---|---|---|
+
+Issues:
+| Severity | Screen/State | Issue | Evidence | Fix |
+|---|---|---|---|---|
+
+Evidence For PRD Verification:
+- <compact screenshot list and report summary that can be pasted into /prd-verification>
+
+Recommended Next Action:
+<single concrete fix or next test>
+
+STEP 5 — REPORT ORDINARY FLOW QA
 Return:
 MOBILE MCP QA REPORT
 ====================
@@ -127,6 +225,81 @@ Accessibility Findings:
 
 Recommended Next Action:
 <single concrete fix or next test>
+```
+
+### Reskin QA Example
+
+#### Input
+
+```text
+COMMAND: /mobile-mcp-qa
+MODE: RESKIN_QA
+PLATFORM: React Native
+APP_ID: com.example.habits
+SUPPORTED_THEMES: light,dark
+SCREEN_INVENTORY:
+| Screen/State | Decision | Expected Change | Route/Tab |
+|---|---|---|---|
+| Today/populated | REDESIGN | grouped morning/afternoon/evening sections | Today |
+| Today/empty | REDESIGN | coaching empty state with primary action | Today |
+| Insights/populated | REDESIGN | KPI strip + weekly chart + compact history | Insights |
+| Settings/default | RESTYLE | tokenized surfaces and clearer typography | Settings |
+BASELINE_EVIDENCE:
+before-light-today-populated.png, before-dark-today-populated.png,
+before-light-insights-populated.png, before-dark-insights-populated.png
+EXPECTED_REDESIGN:
+Tabs reordered to Today, Insights, Coach, Settings. Today and Insights require structural layout changes. Settings is restyle only.
+REGRESSION_RISKS:
+dark mode contrast, renamed Strategy copy, tab selected state, safe areas
+```
+
+#### Output
+
+```text
+MOBILE MCP RESKIN QA REPORT
+===========================
+Platform: React Native
+Device: iPhone 15 Simulator
+App: com.example.habits
+Themes: light, dark
+Result: FAIL
+
+Screen Evidence:
+| Screen/State | Decision | Theme | Before | After | Result |
+|---|---|---|---|---|---|
+| Today/populated | REDESIGN | light | before-light-today | after-light-today | PASS |
+| Today/populated | REDESIGN | dark | before-dark-today | after-dark-today | PASS |
+| Insights/populated | REDESIGN | light | before-light-insights | after-light-insights | PASS |
+| Insights/populated | REDESIGN | dark | before-dark-insights | after-dark-insights | FAIL |
+| Settings/default | RESTYLE | dark | missing | after-dark-settings | UNVERIFIED |
+
+Structural Verification:
+| Screen/State | Decision | Expected Change | Observed Change | Result |
+|---|---|---|---|---|
+| Today/populated | REDESIGN | grouped sections | sections visible | PASS |
+| Insights/populated | REDESIGN | KPI + chart + history | chart clipped in dark | FAIL |
+| Settings/default | RESTYLE | token updates | no before evidence | UNVERIFIED |
+
+Regression Checks:
+| Check | Screen/State | Result | Evidence |
+|---|---|---|---|
+| Dark contrast | Insights | FAIL | chart label unreadable |
+| Tab selected state | All tabs | PASS | selected indicator moves |
+| Renamed copy | Today | PASS | no stale Strategy copy |
+
+Issues:
+| Severity | Screen/State | Issue | Evidence | Fix |
+|---|---|---|---|---|
+| WARNING | Insights/dark | Chart label has low contrast | after-dark-insights | Use onSurface token |
+| INFO | Settings/default | Missing baseline | after-dark-settings | Capture before image next run |
+
+Evidence For PRD Verification:
+- Today populated: light/dark before-after PASS.
+- Insights dark: FAIL due chart contrast.
+- Settings: UNVERIFIED because baseline missing.
+
+Recommended Next Action:
+Fix Insights dark chart label contrast and rerun Reskin QA for Insights and Settings.
 ```
 
 ---
