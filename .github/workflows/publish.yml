@@ -63,7 +63,12 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
         run: |
-          TAG="${GITHUB_REF_NAME}"
+          TAG="${{ github.ref_name }}"
+          if [ -z "$TAG" ]; then
+            echo "GitHub ref name is empty; cannot create release."
+            exit 1
+          fi
+
           PREVIOUS_TAG="$(gh release list --repo "$REPO" --exclude-drafts --limit 20 --json tagName --jq ".[] | select(.tagName != \"$TAG\") | .tagName" | head -n 1)"
 
           if [ -n "$PREVIOUS_TAG" ]; then
