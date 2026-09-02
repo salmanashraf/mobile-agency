@@ -79,17 +79,12 @@ jobs:
 
           if [[ "$TAG" == *-* ]]; then
             release_flags=(--prerelease)
-            latest_flags=()
           else
-            release_flags=()
-            latest_flags=(--latest)
+            release_flags=(--latest=false)
           fi
 
           if gh release view "$TAG" --repo "$REPO" >/dev/null 2>&1; then
-            gh release edit "$TAG" --repo "$REPO" --title "$TAG" --notes-file release-notes.md "${release_flags[@]}" "${latest_flags[@]}"
+            gh release edit "$TAG" --repo "$REPO" --title "$TAG" --notes-file release-notes.md "${release_flags[@]}"
           else
             gh release create "$TAG" --repo "$REPO" --title "$TAG" --notes-file release-notes.md --verify-tag "${release_flags[@]}"
-            if [ "${#latest_flags[@]}" -gt 0 ]; then
-              gh release edit "$TAG" --repo "$REPO" "${latest_flags[@]}"
-            fi
           fi
