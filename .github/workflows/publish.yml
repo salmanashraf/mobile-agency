@@ -88,7 +88,11 @@ jobs:
             PRERELEASE=false
           fi
 
-          RELEASE_ID="$(gh api "repos/$REPO/releases/tags/$TAG" --jq '.id' 2>/dev/null || true)"
+          if RELEASE_ID="$(gh api "repos/$REPO/releases/tags/$TAG" --jq '.id' 2>/dev/null)"; then
+            true
+          else
+            RELEASE_ID=""
+          fi
 
           if [ -n "$RELEASE_ID" ]; then
             gh api -X PATCH "repos/$REPO/releases/$RELEASE_ID" \
