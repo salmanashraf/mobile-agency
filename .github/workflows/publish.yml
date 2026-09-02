@@ -83,13 +83,29 @@ jobs:
           fi
 
           if [[ "$TAG" == *-* ]]; then
-            release_flags=(--prerelease)
+            PRERELEASE=true
           else
-            release_flags=(--latest=false)
+            PRERELEASE=false
           fi
 
-          if gh release view "$TAG" --repo "$REPO" >/dev/null 2>&1; then
-            gh release edit "$TAG" --repo "$REPO" --title "$TAG" --notes-file release-notes.md "${release_flags[@]}"
+          RELEASE_ID="$(gh api "repos/$REPO/releases/tags/$TAG" --jq '.id' 2>/dev/null || true)"
+
+          if [ -n "$RELEASE_ID" ]; then
+            gh api -X PATCH "repos/$REPO/releases/$RELEASE_ID" \
+              -f tag_name="$TAG" \
+              -f name="$TAG" \
+              -F draft=false \
+              -F prerelease="$PRERELEASE" \
+              -f body="$(cat release-notes.md)" \
+              >/dev/null
           else
-            gh release create "$TAG" --repo "$REPO" --title "$TAG" --notes-file release-notes.md --verify-tag "${release_flags[@]}"
+            gh api -X POST "repos/$REPO/releases" \
+              -f tag_name="$TAG" \
+              -f target_commitish="$GITHUB_SHA" \
+              -f name="$TAG" \
+              -F draft=false \
+              -F prerelease="$PRERELEASE" \
+              -f make_latest=false \
+              -f body="$(cat release-notes.md)" \
+              >/dev/null
           fi
