@@ -27,6 +27,10 @@ IMPLEMENTATION:
 <changed files, relevant source code, repo tree, or diff>
 EVIDENCE:
 <test output, build output, screenshots, Mobile MCP QA report, logs, accessibility report, security report>
+RESKIN_PLAN:
+<optional /mobile-app-design plan with REDESIGN, RESTYLE, and LEAVE screen inventory rows>
+RESKIN_QA:
+<optional /mobile-mcp-qa Reskin QA report, before/after screenshots, state coverage, and theme evidence>
 KNOWN_LIMITATIONS:
 <optional explicit constraints, skipped checks, unavailable device, unavailable backend>
 ```
@@ -45,11 +49,13 @@ Read these inputs in order:
 1. PRD.md or product requirements
 2. TASKS.md acceptance criteria
 3. DESIGN.md or design plan
-4. DEPENDENCIES.md and ROADMAP.md when provided
-5. MOBILE_MEMORY.md or project context when provided
-6. Relevant source code, diff, and file tree
-7. Test/build output
-8. Screenshots, videos, accessibility reports, security reports, or Mobile MCP QA reports
+4. /mobile-app-design reskin plan and screen inventory when provided
+5. DEPENDENCIES.md and ROADMAP.md when provided
+6. MOBILE_MEMORY.md or project context when provided
+7. Relevant source code, diff, and file tree
+8. Test/build output
+9. Screenshots, videos, accessibility reports, security reports, or Mobile MCP QA reports
+10. /mobile-mcp-qa Reskin QA report when provided
 
 Verification rules:
 
@@ -61,6 +67,10 @@ Verification rules:
 - Separate confirmed gaps from assumptions.
 - Do not expand scope beyond the approved PRD unless it creates release risk.
 - Do not mark release-ready if critical requirements, security blockers, crash risks, or required tests are missing.
+- For mobile reskins, compile/build/test success is not UI proof by itself.
+- For mobile reskins, every required screen inventory row needs screenshot, video, or Mobile MCP evidence.
+- Mark missing required reskin evidence as UNVERIFIED, or PARTIAL only when some states/themes are proven.
+- Reject shallow rethemes: a REDESIGN screen fails when it only inherits token, color, font, spacing, or theme changes.
 
 Check these areas:
 
@@ -81,17 +91,28 @@ Check these areas:
 - Layout, hierarchy, content, states, responsiveness, and accessibility evidence.
 - Screenshot or Mobile MCP evidence when available.
 
-4. TEST AND DEVICE EVIDENCE
+4. MOBILE RESKIN VERIFICATION
+Use this section when RESKIN_PLAN is provided or the scope mentions /mobile-app-design, reskin, redesign, tab reorder, navigation rename, visual refresh, or restyle.
+- Read every screen inventory row and preserve its decision: REDESIGN, RESTYLE, or LEAVE.
+- REDESIGN must show structural change: layout, hierarchy, grouping, density, information architecture, state layout, tab order, or interaction model.
+- RESTYLE must include justification and must not be counted as structurally redesigned.
+- LEAVE must be intentionally out of scope and should not be reported as a missed redesign unless the PRD required it.
+- Compare before/after screenshots or Mobile MCP evidence for each required screen, state, orientation, and light/dark theme listed in the plan.
+- If navigation changed, verify routes, deep links, selected tab state, back behavior, accessibility labels, tests, snapshots, and docs.
+- If tabs or screens were renamed, verify user-facing copy changed consistently in UI, tests, screenshots, and docs.
+- Use per-screen status values: PASS, FAIL, PARTIAL, or UNVERIFIED.
+
+5. TEST AND DEVICE EVIDENCE
 - Unit, integration, UI, golden/snapshot, E2E, and manual QA evidence.
 - Build/install/launch proof.
 - Device, emulator, simulator, or Mobile MCP proof when available.
 
-5. SECURITY AND RELEASE BLOCKERS
+6. SECURITY AND RELEASE BLOCKERS
 - Security audit findings that affect release.
 - Sensitive data, auth, storage, network, permissions, deep links, WebViews, logging, and payment/subscription behavior when relevant.
 - Performance blockers that affect launch readiness.
 
-6. CONTEXT CONTINUITY
+7. CONTEXT CONTINUITY
 - MOBILE_MEMORY.md or project context reflects the current state.
 - Remaining gaps and next action are captured for future sessions.
 
@@ -127,6 +148,10 @@ UI Match:
 | Screen/State | Source | Status | Evidence |
 |---|---|---|---|
 
+Mobile Reskin Verification:
+| Screen/State | Decision | Evidence | Status | Reason |
+|---|---|---|---|---|
+
 Test And Device Evidence:
 | Check | Status | Evidence |
 |---|---|---|
@@ -157,7 +182,7 @@ Test Gaps:
 - <gap or "None">
 
 Release Readiness:
-PASS only if all required PRD items and acceptance criteria are PASS, no critical UI/security/test gaps remain, and unknowns are documented or risk-accepted.
+PASS only if all required PRD items and acceptance criteria are PASS, no critical UI/security/test gaps remain, required reskin evidence is PASS or risk-accepted, and unknowns are documented or risk-accepted.
 
 Next Action:
 1. <single highest priority action>
@@ -296,6 +321,54 @@ PASS only if all required PRD items and acceptance criteria are PASS, no critica
 Next Action:
 1. Implement persistence and restart verification before adding new scope.
 ```
+
+---
+
+## Mobile Reskin Example
+
+Use this guidance when `/mobile-app-design` produced a reskin plan and `/mobile-mcp-qa` produced device evidence.
+
+```text
+RESKIN_PLAN:
+- Home: REDESIGN. Replace feed cards with grouped Today, Progress, and Next Action sections.
+- Profile: RESTYLE. Keep structure, update typography and spacing only.
+- Billing: LEAVE. Out of scope for this release.
+
+RESKIN_QA:
+- Mobile MCP Reskin QA has before/after screenshots for Home light and dark.
+- Profile screenshot exists only for light theme.
+- No Billing screenshot because it is marked LEAVE.
+```
+
+Expected verification behavior:
+
+```text
+Mobile Reskin Verification:
+| Screen/State | Decision | Evidence | Status | Reason |
+|---|---|---|---|---|
+| Home light/dark | REDESIGN | MCP screenshots | PASS | Structure changed |
+| Profile light | RESTYLE | Screenshot | PARTIAL | Dark missing |
+| Billing | LEAVE | Plan row | PASS | Out of scope |
+
+Verification Details:
+### UI-001 — Home redesign is proven
+- Source: /mobile-app-design RESKIN_PLAN.
+- Evidence: /mobile-mcp-qa before/after screenshots show new grouped sections.
+- Status: PASS.
+- Confirmed gap: None.
+- Assumption: None.
+- Required fix: None.
+
+### UI-002 — Profile restyle has incomplete evidence
+- Source: /mobile-app-design RESKIN_PLAN.
+- Evidence: Only light theme screenshot was provided.
+- Status: PARTIAL.
+- Confirmed gap: Dark theme evidence is missing.
+- Assumption: Profile was intentionally restyled, not redesigned.
+- Required fix: Capture Profile dark theme screenshot or risk-accept the gap.
+```
+
+If Home only changed colors, fonts, or tokens, mark it FAIL because a REDESIGN requires structural proof.
 
 ---
 
